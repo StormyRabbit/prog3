@@ -3,7 +3,7 @@ project(prog3)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${prog3_SOURCE_DIR}/cmake")
-set(SOURCE_FILES main.cpp GameEngine.cpp)
+set(SOURCE_FILES GameEngine.cpp GameEngine.h)
 add_executable(prog3 ${SOURCE_FILES})
 
 include_directories(${SDL2_INCLUDE_DIR}
