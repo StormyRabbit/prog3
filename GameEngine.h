@@ -7,5 +7,6 @@
 void sdlInit();
 SDL_Window* createWindow();
 SDL_Renderer* createRender(SDL_Window*);
+SDL_Surface *createSurface();
 
 #endif //PROG3_GAMEENGINE_H
