@@ -1,12 +1,28 @@
 //
-// Created by lasse on 11/16/17.
+// Created by lasse on 11/24/17.
 //
 
 #ifndef PROG3_GAMEENGINE_H
 #define PROG3_GAMEENGINE_H
-void sdlInit();
-SDL_Window* createWindow();
-SDL_Renderer* createRender(SDL_Window*);
-SDL_Surface *createSurface();
+
+
+#include <SDL_video.h>
+#include <SDL_render.h>
+
+class GameEngine {
+public:
+    void initiateGameEngine();
+    SDL_Window* createWindow(int width, int height);
+    SDL_Renderer* createREnderer(SDL_Window* win);
+    SDL_Surface* createSurface();
+    void startLoop();
+protected:
+
+private:
+    int SCREEN_WIDTH;
+    int SCREEN_HEIGHT;
+    bool running;
+};
+
 
 #endif //PROG3_GAMEENGINE_H
