@@ -7,6 +7,10 @@
 
 
 class HUDElement {
+public:
+protected:
+private:
+    std::string
 
 };
 

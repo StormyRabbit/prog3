@@ -9,7 +9,11 @@
 #include "Subject.h"
 
 class Observer {
+public:
     virtual void update(Subject subject) = 0;
+
+protected:
+private:
 };
 
 

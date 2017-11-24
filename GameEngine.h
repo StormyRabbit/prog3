@@ -8,20 +8,27 @@
 
 #include <SDL_video.h>
 #include <SDL_render.h>
+#include <vector>
+#include "HUD.h"
+#include "Level.h"
 
-class GameEngine {
+class GameEngine : public Subject {
 public:
     void initiateGameEngine();
     SDL_Window* createWindow(int width, int height);
     SDL_Renderer* createREnderer(SDL_Window* win);
     SDL_Surface* createSurface();
     void startLoop();
+
 protected:
 
 private:
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
     bool running;
+    HUD *hud;
+    std::vector<Level*> levelsVector;
+
 };
 
 
