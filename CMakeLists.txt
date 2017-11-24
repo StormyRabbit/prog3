@@ -3,7 +3,7 @@ project(prog3)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${prog3_SOURCE_DIR}/cmake")
-set(SOURCE_FILES GameEngine.cpp GameEngine.h sprite.cpp sprite.h HUD.cpp HUD.h Level.cpp Level.h spriteWithPhysics.cpp spriteWithPhysics.h)
+set(SOURCE_FILES GameEngine.cpp GameEngine.h sprite.cpp sprite.h HUD.cpp HUD.h Level.cpp Level.h spriteWithPhysics.cpp spriteWithPhysics.h nonPhysicsSprite.cpp nonPhysicsSprite.h PCSprite.cpp PCSprite.h npcSprite.cpp npcSprite.h objSprite.cpp objSprite.h)
 add_executable(prog3 ${SOURCE_FILES})
 
 find_package(SDL2 REQUIRED)
