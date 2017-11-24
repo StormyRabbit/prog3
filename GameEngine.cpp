@@ -42,8 +42,8 @@ SDL_Renderer *GameEngine::createREnderer(SDL_Window *win) {
 }
 
 SDL_Surface *GameEngine::createSurface() {
-    SDL_Surface *surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, rmask, gmask, bmask, amask );
-    if(surface == nullptr)
+   // SDL_Surface *surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, rmask, gmask, bmask, amask );
+    //if(surface == nullptr)
         std::cerr << "surface error:" << SDL_GetError() << std::endl;
     return nullptr;
 }
