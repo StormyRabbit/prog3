@@ -2,16 +2,22 @@
 // Created by lasse on 11/16/17.
 //
 
-#include <SDL2>
-
-#include <SDL_image.h>
 #include <iostream>
+#include <SDL_video.h>
+#include <SDL_render.h>
+#include <SDL_events.h>
+#include <SDL.h>
 #include "GameEngine.h"
 
+Uint32 rmask, gmask, bmask, amask;
 const int SCREEN_WIDTH = 600;
 const int SCREEN_HEIGHT = 600;
 bool running;
 int main(int argc, char *argv[]) {
+    rmask = 0xff000000;
+    gmask = 0x00ff0000;
+    bmask = 0x0000ff00;
+    amask = 0x000000ff;
     sdlInit();
     SDL_Window *win = createWindow();
     SDL_Renderer *ren = createRender(win);
