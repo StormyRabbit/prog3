@@ -2,11 +2,11 @@
 // Created by lasse on 11/16/17.
 //
 
+#include <SDL2>
+
 #include <SDL_image.h>
 #include <iostream>
-#include <string>
 #include "GameEngine.h"
-Uint32 rmask, gmask, bmask, amask;
 
 const int SCREEN_WIDTH = 600;
 const int SCREEN_HEIGHT = 600;
