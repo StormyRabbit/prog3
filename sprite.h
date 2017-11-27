@@ -3,6 +3,8 @@
 //
 
 #include<string>
+#include <SDL_render.h>
+
 #ifndef PROG3_SPRITE_H
 #define PROG3_SPRITE_H
 
@@ -11,7 +13,7 @@ class sprite {
 public:
     //sprite();
     sprite(int xPos, int yPos, int height,
-           int width, std::string spritePath): xPos(xPos) , yPos(yPos), height(height), width(width), spritePath(spritePath) {};
+           int width, std::string spritePath);
     ~sprite();
     virtual void draw() const = 0;
 
@@ -19,14 +21,18 @@ public:
     int getYPos();
     int getHeight();
     int getWidth();
-    int getSpritePath();
+    SDL_Surface* createSurface();
+    void drawTexture(SDL_Renderer* renderer, SDL_Surface* surface);
+
+    std::string static getSpritePath();
+
 
 
 
 protected:
 
 private:
-    std::string spritePath;
+    std::string static spritePath;
     int xPos;
     int yPos;
     int height;

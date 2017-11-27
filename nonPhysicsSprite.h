@@ -4,8 +4,6 @@
 #include "sprite.h"
 #include <string>
 
-#include
-
 #ifndef PROG3_NONPHYSICSSPRITE_H
 #define PROG3_NONPHYSICSSPRITE_H
 
