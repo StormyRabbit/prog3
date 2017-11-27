@@ -13,16 +13,16 @@ class sprite {
 public:
     //sprite();
     sprite(int xPos, int yPos, int height,
-           int width, std::string spritePath);
+           int width);
     ~sprite();
-    virtual void draw() const = 0;
+    //virtual void draw() const = 0; MAKES ABSTRACT REMOVE COMMENT LATER
 
     int getXPos();
     int getYPos();
     int getHeight();
     int getWidth();
     SDL_Surface* createSurface();
-    void drawTexture(SDL_Renderer* renderer, SDL_Surface* surface);
+    void drawTexture(SDL_Renderer* renderer);
 
     std::string static getSpritePath();
 
@@ -32,7 +32,7 @@ public:
 protected:
 
 private:
-    std::string static spritePath;
+    std::string static spritePath = "../sprites/Tiles/box.png";
     int xPos;
     int yPos;
     int height;

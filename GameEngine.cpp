@@ -82,6 +82,24 @@ void GameEngine::startLoop(SDL_Window* win, SDL_Surface* surf) {
     } // while running
 }
 
+//Test med sprite EJ final
+sprite* GameEngine::sprites[0];
+void GameEngine::addSprite() {
+    sprite* sprite = new sprite(0, 0, 0, 0);
+    sprites[0] = sprite;
+}
+sprite* GameEngine::getSprite() {
+    return sprites[0];
+}
+
+void GameEngine::drawTextures() {
+    addSprite();
+    sprite* sprite = GameEngine::getSprite();
+    sprite->drawTexture(ren);
+}
+
+//Slut med test av sprite
+
 GameEngine::~GameEngine() {
 
 }

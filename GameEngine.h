@@ -12,6 +12,7 @@
 #include "HUD.h"
 #include "Level.h"
 #include "Subject.h"
+#include "sprite.h"
 
 class GameEngine : public Subject {
 public:
@@ -22,6 +23,11 @@ public:
     void startLoop(SDL_Window*, SDL_Surface*);
     ~GameEngine();
     //static GameEngine* getInstance();
+    //Test med sprite ej final
+    sprite* getSprite();
+    void addSprite();
+    void drawTextures();
+    //Slut med sprite test
 protected:
 private:
     SDL_Renderer* ren;
@@ -30,6 +36,9 @@ private:
     bool running = true;
     HUD *hud;
     std::vector<Level*> levelsVector;
+    //Test med sprite ej final
+    sprite* sprites[0];
+    //slut med sprite test
 
 };
 /*

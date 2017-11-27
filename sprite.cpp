@@ -4,12 +4,13 @@
 
 #include <SDL_image.h>
 #include "sprite.h"
-void sprite::draw() const {
+/*void sprite::draw() const {
 
-}
+}*/
+
 
 sprite::sprite(int x, int y, int height,
-               int width, std::string spritePath) : xPos(xPos), yPos(yPos), height(height), spritePath(spritePath) {}
+               int width) : xPos(xPos), yPos(yPos), height(height) {}
 
 int sprite::getXPos() { return xPos; }
 int sprite::getYPos() { return yPos; }
