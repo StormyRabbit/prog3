@@ -7,11 +7,13 @@
 
 
 #include "HUDElement.h"
+#include "Observer.h"
 
-class HUD {
+class HUD : public Observer{
 public:
     void addHUDElement(HUDElement* he);
-    void setHUDElements(std::vector<HUDElement*> *hudElementList);
+    void setHUDElements(std::vector<HUDElement*> hudElementList);
+    void update();
 protected:
 
 private:

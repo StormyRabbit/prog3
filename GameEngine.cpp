@@ -4,12 +4,17 @@
 
 #include <SDL.h>
 #include <iostream>
+#include <SDL_image.h>
 #include "GameEngine.h"
 
-void GameEngine::initiateGameEngine() {
+void GameEngine::initiateSDL() {
     if (SDL_Init(SDL_INIT_VIDEO) == -1) {
         std::cerr << "SDL_init-fel" << SDL_GetError() << std::endl;
         exit(-1);
+    }
+    int imgFlags = IMG_INIT_PNG;
+    if(!( IMG_Init( imgFlags ) & imgFlags) ) {
+        std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
     }
 }
 
@@ -27,7 +32,7 @@ SDL_Window *GameEngine::createWindow(int width, int height) {
         return win;
 }
 
-SDL_Renderer *GameEngine::createREnderer(SDL_Window *win) {
+SDL_Renderer *GameEngine::createRenderer(SDL_Window *win) {
     SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_PRESENTVSYNC);
     if(renderer == nullptr) {
         std::cerr << "render error: " << SDL_GetError() << std::endl;
@@ -38,23 +43,33 @@ SDL_Renderer *GameEngine::createREnderer(SDL_Window *win) {
     return renderer;
 }
 
-SDL_Surface *GameEngine::createSurface() {
-   // SDL_Surface *surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, rmask, gmask, bmask, amask );
-    //if(surface == nullptr)
-        std::cerr << "surface error:" << SDL_GetError() << std::endl;
-    return nullptr;
+SDL_Surface *GameEngine::createSurface(std::string path, SDL_Window* win) {
+    SDL_Surface* optimizedSurface = NULL;
+    SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+
+    if(loadedSurface == NULL) {
+        std::cerr << "surface rror: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        exit(-1);
+    }
+    SDL_Surface *surface = SDL_GetWindowSurface(win);
+    optimizedSurface = SDL_ConvertSurface( loadedSurface, surface->format, NULL );
+    if(optimizedSurface == NULL) {
+        std::cerr << "surface error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        exit(-1);
+    }
+    SDL_FreeSurface(loadedSurface);
+    return optimizedSurface;
 }
 
 void GameEngine::startLoop() {
     while(running) {
-        SDL_Event event;
-        while(SDL_PollEvent(&event)) {
-            switch (event.type) {
-
-            }
-        }
+        std::cout << "running...";
     }
+    std::cout << "running ended..";
 }
+
 
 /* ObserverPattern */
 

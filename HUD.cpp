@@ -5,15 +5,23 @@
 #include <vector>
 #include "HUD.h"
 #include "HUDElement.h"
-
-std::vector<HUDElement*> *hudElements;
+#include <algorithm>
+std::vector<HUDElement*> hudElements;
 
 
 void HUD::addHUDElement(HUDElement* he) {
-    hudElements->push_back(he);
+    hudElements.push_back(he);
 }
 
-void HUD::setHUDElements(std::vector<HUDElement *> *hudElementList) {
+void HUD::setHUDElements(std::vector<HUDElement *> hudElementList) {
     hudElements = hudElementList;
+}
+void Observer::update() {
+    for(std::vector<HUDElement*>::const_iterator iter = hudElements.begin();
+            iter != hudElements.end(); ++iter) {
+        if(*iter != 0) {
+            // TODO execute
+        }
+    }
 }
 
