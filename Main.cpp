@@ -9,7 +9,7 @@ int main(int, char **){
     ge->initiateSDL();
     auto* win = ge->createWindow(400,400);
     auto* ren = ge->createRenderer(win);
-    auto* surf = ge->createSurface("../sprites/bgcastle.png", win);
+    auto* surf = ge->createSurface("../sprites/bg_castle.png", win);
     ge->startLoop(win, surf);
     return 0;
 }

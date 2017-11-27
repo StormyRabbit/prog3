@@ -9,16 +9,26 @@
 
 class sprite {
 public:
-    sprite(int x, int y, int height,
-           int width, std::string spritePath);
+    //sprite();
+    sprite(int xPos, int yPos, int height,
+           int width, std::string spritePath): xPos(xPos) , yPos(yPos), height(height), width(width), spritePath(spritePath) {};
+    ~sprite();
     virtual void draw() const = 0;
+
+    int getXPos();
+    int getYPos();
+    int getHeight();
+    int getWidth();
+    int getSpritePath();
+
+
 
 protected:
 
 private:
     std::string spritePath;
-    int x;
-    int y;
+    int xPos;
+    int yPos;
     int height;
     int width;
 };
