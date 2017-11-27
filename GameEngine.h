@@ -25,7 +25,7 @@ protected:
 private:
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
-    bool running;
+    bool running = true;
     HUD *hud;
     std::vector<Level*> levelsVector;
 

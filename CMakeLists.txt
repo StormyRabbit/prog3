@@ -2,11 +2,9 @@ cmake_minimum_required(VERSION 3.8)
 project(prog3)
 
 set(CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${prog3_SOURCE_DIR}/cmake")
 set(SOURCE_FILES sprite.cpp sprite.h HUD.cpp HUD.h Level.cpp Level.h spriteWithPhysics.cpp spriteWithPhysics.h nonPhysicsSprite.cpp nonPhysicsSprite.h PCSprite.cpp PCSprite.h npcSprite.cpp npcSprite.h objSprite.cpp objSprite.h HUDElement.cpp HUDElement.h Main.cpp GameEngine.cpp GameEngine.h)
 add_executable(prog3 ${SOURCE_FILES})
-
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)

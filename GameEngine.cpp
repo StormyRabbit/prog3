@@ -6,9 +6,6 @@
 #include <iostream>
 #include "GameEngine.h"
 
-GameEngine::running = true;
-
-
 void GameEngine::initiateGameEngine() {
     if (SDL_Init(SDL_INIT_VIDEO) == -1) {
         std::cerr << "SDL_init-fel" << SDL_GetError() << std::endl;
