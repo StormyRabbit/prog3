@@ -60,31 +60,5 @@ void GameEngine::startLoop() {
 }
 
 
-/*
- * Subject implementation
- */
-
-void Subject::addObserver(Observer *o) {
-    Subject::observers.push_back(o);
-}
-
-void Subject::pushUpdate(Subject *s) {
-    for(Observer* obs : observers)
-        obs->update(*this);
-}
-
-void Subject::getAmmo() {
-
-}
-
-void Subject::getLife() {
-
-}
-
-void Subject::getScore() {
-
-}
-
-
 
 

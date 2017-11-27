@@ -5,12 +5,13 @@
 #ifndef PROG3_HUDELEMENT_H
 #define PROG3_HUDELEMENT_H
 
+#include <string>
 
 class HUDElement {
 public:
 protected:
 private:
-    std::string
+    std::string resourcePath;
 
 };
 

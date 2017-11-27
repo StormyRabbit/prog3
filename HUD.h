@@ -11,7 +11,7 @@
 
 class HUD : public Observer {
 public:
-    void update(Subject subject) override;
+    void update(Subject subject);
     void addHUDElement(HUDElement* he);
     void setHUDElements(std::vector<HUDElement*> *hudElementList);
 protected:

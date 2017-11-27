@@ -11,11 +11,11 @@
 
 class Subject {
 public:
-    virtual void addObserver(Observer *o) = 0;
-    virtual void pushUpdate(Subject *s) = 0;
-    virtual void getLife() = 0;
-    virtual void getScore() = 0;
-    virtual void getAmmo() = 0;
+    virtual void addObserver(Observer *o);
+    virtual void pushUpdate(Subject *s);
+    virtual void getLife();
+    virtual void getScore();
+    virtual void getAmmo();
 protected:
 private:
     std::vector<class Observer*> observers;

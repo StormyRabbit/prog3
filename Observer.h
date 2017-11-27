@@ -10,7 +10,7 @@
 
 class Observer {
 public:
-    virtual void update(Subject subject) = 0;
+    virtual void update(Subject subj) = 0;
 
 protected:
 private:
