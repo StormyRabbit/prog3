@@ -6,12 +6,10 @@
 #define PROG3_HUD_H
 
 
-#include "Observer.h"
 #include "HUDElement.h"
 
-class HUD : public Observer {
+class HUD {
 public:
-    void update(Subject subject);
     void addHUDElement(HUDElement* he);
     void setHUDElements(std::vector<HUDElement*> *hudElementList);
 protected:

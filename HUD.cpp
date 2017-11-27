@@ -7,11 +7,6 @@
 #include "HUDElement.h"
 
 std::vector<HUDElement*> *hudElements;
-void HUD::update(Subject subject) {
-    for(HUDElement* he : *hudElements){
-
-    }
-}
 
 
 void HUD::addHUDElement(HUDElement* he) {

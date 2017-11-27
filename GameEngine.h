@@ -12,7 +12,7 @@
 #include "HUD.h"
 #include "Level.h"
 
-class GameEngine : public Subject {
+class GameEngine {
 public:
     void initiateGameEngine();
     SDL_Window* createWindow(int width, int height);
