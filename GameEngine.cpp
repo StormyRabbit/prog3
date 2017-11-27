@@ -28,7 +28,6 @@ SDL_Window *GameEngine::createWindow(int width, int height) {
         SDL_Quit();
         exit(-1);
     }
-    else
         return win;
 }
 
@@ -50,7 +49,7 @@ SDL_Surface *GameEngine::createSurface(std::string path, SDL_Window* win) {
     if(loadedSurface == NULL) {
         std::cerr << "surface rror: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        exit(-1);
+        exit(-5);
     }
     SDL_Surface *surface = SDL_GetWindowSurface(win);
     optimizedSurface = SDL_ConvertSurface( loadedSurface, surface->format, NULL );
@@ -63,11 +62,28 @@ SDL_Surface *GameEngine::createSurface(std::string path, SDL_Window* win) {
     return optimizedSurface;
 }
 
-void GameEngine::startLoop() {
+void GameEngine::startLoop(SDL_Window* win, SDL_Surface* surf) {
+    SDL_Delay(4000);
     while(running) {
-        std::cout << "running...";
-    }
-    std::cout << "running ended..";
+        SDL_Event event;
+        while(SDL_PollEvent(&event)) {
+            switch(event.type) {
+               case SDL_QUIT:
+                running = false;
+                    break;
+                case SDL_KEYDOWN:
+                    if(event.key.keysym.sym == SDLK_END)
+                        running = true;
+                    break;
+            } // switch ennd
+        } // while Poll
+        SDL_BlitSurface(surf, NULL, SDL_GetWindowSurface(win), NULL);
+        SDL_UpdateWindowSurface(win);
+    } // while running
+}
+
+GameEngine::~GameEngine() {
+
 }
 
 

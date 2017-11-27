@@ -19,10 +19,12 @@ public:
     SDL_Window* createWindow(int width, int height);
     SDL_Renderer* createRenderer(SDL_Window* win);
     SDL_Surface* createSurface(std::string path, SDL_Window*);
-    void startLoop();
+    void startLoop(SDL_Window*, SDL_Surface*);
+    ~GameEngine();
     //static GameEngine* getInstance();
 protected:
 private:
+    SDL_Renderer* ren;
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
     bool running = true;
