@@ -2,15 +2,11 @@
 // Created by lasse on 11/16/17.
 //
 #include <iostream>
+#include <SDL_timer.h>
 #include "GameEngine.h"
 
 int main(int, char **){
-    //auto* ge = new GameEngine();
-    //ge->initiateSDL();
-    //auto* win = ge->createWindow(400,400);
-    //auto* ren = ge->createRenderer(win);
-    //auto* surf = ge->createSurface("../sprites/bg_castle.png", win);
-    //ge->startLoop(win, surf);
+    SDL_Delay(5000);
     return 0;
 }
 

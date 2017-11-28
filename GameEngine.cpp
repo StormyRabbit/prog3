@@ -7,100 +7,44 @@
 #include <SDL_image.h>
 #include "GameEngine.h"
 
-void GameEngine::initiateSDL() {
-    if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-        std::cerr << "SDL_init-fel" << SDL_GetError() << std::endl;
-        exit(-1);
-    }
-    int imgFlags = IMG_INIT_PNG;
-    if(!( IMG_Init( imgFlags ) & imgFlags) ) {
-        std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
-    }
+//Test med sprite EJ final
+void GameEngine::addSprite() {
+
 }
 
-SDL_Window *GameEngine::createWindow(int width, int height) {
-    SDL_Window* win = SDL_CreateWindow("fönster",
-                                       SDL_WINDOWPOS_CENTERED,
-                                       SDL_WINDOWPOS_CENTERED,
-                                       width, height, SDL_WINDOW_SHOWN);
-    if(win == nullptr) {
-        std::cerr << "window error: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        exit(-1);
-    }
-        return win;
+
+GameEngine::~GameEngine() {
+
 }
 
-SDL_Renderer *GameEngine::createRenderer(SDL_Window *win) {
-    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_PRESENTVSYNC);
-    if(renderer == nullptr) {
-        std::cerr << "render error: " << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(win);
-        SDL_Quit();
-        exit(-1);
-    }
-    return renderer;
+void GameEngine::addLevelCollection() {
+    // TODO
 }
 
-SDL_Surface *GameEngine::createSurface(std::string path, SDL_Window* win) {
-    SDL_Surface* optimizedSurface = NULL;
-    SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-
-    if(loadedSurface == NULL) {
-        std::cerr << "surface rror: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        exit(-5);
-    }
-    SDL_Surface *surface = SDL_GetWindowSurface(win);
-    optimizedSurface = SDL_ConvertSurface( loadedSurface, surface->format, NULL );
-    if(optimizedSurface == NULL) {
-        std::cerr << "surface error: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        exit(-1);
-    }
-    SDL_FreeSurface(loadedSurface);
-    return optimizedSurface;
+void GameEngine::addHUDCollection() {
+    // TODO
 }
 
-void GameEngine::startLoop(SDL_Window* win, SDL_Surface* surf) {
+
+void GameEngine::run() {
     SDL_Delay(4000);
-    while(running) {
+    while (running) {
         SDL_Event event;
-        while(SDL_PollEvent(&event)) {
-            switch(event.type) {
-               case SDL_QUIT:
-                running = false;
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    running = false;
                     break;
                 case SDL_KEYDOWN:
-                    if(event.key.keysym.sym == SDLK_END)
+                    if (event.key.keysym.sym == SDLK_END)
                         running = true;
                     break;
             } // switch ennd
         } // while Poll
-        SDL_BlitSurface(surf, NULL, SDL_GetWindowSurface(win), NULL);
-        SDL_UpdateWindowSurface(win);
-    } // while running
-}
-
-//Test med sprite EJ final
-sprite* GameEngine::sprites[0];
-void GameEngine::addSprite() {
-    sprite* sprite = new sprite(0, 0, 0, 0);
-    sprites[0] = sprite;
-}
-sprite* GameEngine::getSprite() {
-    return sprites[0];
+    } // while running}
 }
 
 void GameEngine::drawTextures() {
-    addSprite();
-    sprite* sprite = GameEngine::getSprite();
-    sprite->drawTexture(ren);
-}
-
-//Slut med test av sprite
-
-GameEngine::~GameEngine() {
 
 }
 
