@@ -28,7 +28,6 @@ void System::init() {
         std::cerr << "SDL_init-fel" << SDL_GetError() << std::endl;
         exit(-1);
     }
-
     int imgFlags = IMG_INIT_PNG;
     if(!( IMG_Init( imgFlags ) & imgFlags) ) {
         std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
@@ -51,9 +50,6 @@ void System::createWindow(int width, int height, std::string name) {
 
 void System::createRenderer() {
     ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_PRESENTVSYNC);
-    SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
-    SDL_RenderClear(ren);
-    SDL_RenderPresent(ren);
     if(ren == nullptr) {
         std::cerr << "render error: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(win);
@@ -61,5 +57,4 @@ void System::createRenderer() {
         exit(-1);
     }
 }
-
 System sys;

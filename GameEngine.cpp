@@ -6,12 +6,12 @@
 #include <iostream>
 #include <SDL_image.h>
 #include "GameEngine.h"
+#include "System.h"
 
 //Test med sprite EJ final
 void GameEngine::addSprite() {
 
 }
-
 
 GameEngine::~GameEngine() {
 
@@ -27,9 +27,18 @@ void GameEngine::addHUDCollection() {
 
 
 void GameEngine::run() {
-    SDL_Delay(4000);
+    SDL_Texture *bgImg;
+    std::string IMG_PATH;
+    IMG_PATH = "bgImg.png";
+    bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
+
+
     while (running) {
+
+        SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
+        SDL_RenderPresent(sys.getRenderer());
         SDL_Event event;
+
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
@@ -39,16 +48,14 @@ void GameEngine::run() {
                     if (event.key.keysym.sym == SDLK_END)
                         running = true;
                     break;
-            } // switch ennd
+            } // switch end
         } // while Poll
-    } // while running}
+    } // while running
 }
 
 void GameEngine::drawTextures() {
 
 }
-
-
 /* ObserverPattern */
 
 
