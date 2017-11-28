@@ -32,12 +32,13 @@ public:
 protected:
 
 private:
-    std::string static spritePath = "../sprites/Tiles/box.png";
+    std::string static spritePath;
     int xPos;
     int yPos;
     int height;
     int width;
 };
 
+std::string sprite::spritePath = "../sprites/Tiles/box.png";
 
 #endif //PROG3_SPRITE_H
