@@ -10,10 +10,12 @@
 namespace rootengine {
     class Player : public PhysicsSprite {
     public:
+        static Player* getInstance(int xPos, int yPos,int width,int height);
         ~Player();
     protected:
-        Player(int xPos, int yPos, int width, int height, std::string pathToTexture);
+        Player(int xPos, int yPos, int width, int height);
     private:
+        std::string frontTexture = "assets/sprites/Player/p1_front.png";
     };
 }
 

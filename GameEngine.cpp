@@ -7,6 +7,7 @@
 #include <SDL_image.h>
 #include "GameEngine.h"
 #include "System.h"
+#include "Player.h"
 
 namespace rootengine {
 //Test med sprite EJ final
@@ -30,13 +31,16 @@ namespace rootengine {
     void GameEngine::run() {
         SDL_Texture *bgImg;
         std::string IMG_PATH;
-        IMG_PATH = "bgImg.png";
+        IMG_PATH = "assets/sprites/sample.pngs";
         bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
 
+        SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
+        Sprite* player = Player::getInstance(100,100,70,70);
+        player->draw();
 
         while (running) {
 
-            SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
+
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
 
