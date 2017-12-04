@@ -13,26 +13,31 @@
 #include "Level.h"
 #include "Subject.h"
 
-class GameEngine : public Subject {
-public:
-    void addLevelCollection();
-    void addHUDCollection();
-    void run();
-    ~GameEngine();
-    //Test med sprite ej final
-    void addSprite();
-    void drawTextures();
-    //Slut med sprite test
-protected:
-private:
-    bool running = true;
-    HUD *hud;
-    std::vector<Level*> levelsVector;
-    //Test med sprite ej final
-    //slut med sprite test
+namespace rootengine {
+    class GameEngine : public Subject {
+    public:
+        void addLevelCollection();
 
-};
+        void addHUDCollection();
 
-extern SDL_Renderer* ren;
+        void run();
 
+        ~GameEngine();
+
+        //Test med sprite ej final
+        void addSprite();
+
+        void drawTextures();
+        //Slut med sprite test
+    protected:
+    private:
+        bool running = true;
+        HUD *hud;
+        std::vector<Level *> levelsVector;
+        //Test med sprite ej final
+        //slut med sprite test
+
+    };
+    extern SDL_Renderer *ren;
+}
 #endif //PROG3_GAMEENGINE_H

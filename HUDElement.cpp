@@ -3,3 +3,7 @@
 //
 
 #include "HUDElement.h"
+namespace rootengine{
+
+
+}

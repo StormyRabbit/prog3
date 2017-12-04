@@ -3,6 +3,7 @@
 //
 #include "GameEngine.h"
 #include "System.h"
+using namespace rootengine;
 
 int main(int, char **) {
     System sys;

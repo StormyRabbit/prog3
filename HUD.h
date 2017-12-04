@@ -8,17 +8,21 @@
 
 #include "HUDElement.h"
 #include "Observer.h"
+namespace rootengine {
 
-class HUD : public Observer{
-public:
-    void addHUDElement(HUDElement* he);
-    void setHUDElements(std::vector<HUDElement*> hudElementList);
-    void update();
-protected:
+    class HUD : public Observer {
+    public:
+        void addHUDElement(HUDElement *he);
 
-private:
+        void setHUDElements(std::vector<HUDElement *> hudElementList);
 
-};
+        void update();
 
+    protected:
 
+    private:
+
+    };
+
+}
 #endif //PROG3_HUD_H

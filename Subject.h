@@ -9,15 +9,17 @@
 
 #include <vector>
 #include "Observer.h"
+namespace rootengine {
+    class Subject {
+        std::vector<Observer *> observerList;
 
-class Subject {
-    std::vector<Observer*> observerList;
+    public:
+        void attach(Observer *obs);
 
-public:
-    void attach(Observer *obs);
-    void detach(Observer *obs);
-    void notify();
-};
+        void detach(Observer *obs);
 
+        void notify();
+    };
+}
 
 #endif //PROG3_SUBJECT_H

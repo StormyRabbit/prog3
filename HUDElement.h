@@ -6,14 +6,15 @@
 #define PROG3_HUDELEMENT_H
 
 #include <string>
+namespace rootengine {
+    class HUDElement {
+    public:
+    protected:
+    private:
+        std::string resourcePath;
 
-class HUDElement {
-public:
-protected:
-private:
-    std::string resourcePath;
-
-};
+    };
+}
 
 
 #endif //PROG3_HUDELEMENT_H
