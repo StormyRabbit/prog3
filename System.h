@@ -7,6 +7,7 @@
 
 
 #include <SDL_render.h>
+#include <SDL_ttf.h>
 namespace rootengine {
     class System {
     public:
@@ -15,6 +16,7 @@ namespace rootengine {
         ~System();
 
         SDL_Renderer *getRenderer();
+        TTF_Font* getFont() const;
 
     private:
         void createWindow(int width, int height, std::string name);
@@ -25,6 +27,7 @@ namespace rootengine {
 
         SDL_Window *win;
         SDL_Renderer *ren;
+        TTF_Font* font;
     };
 
     extern System sys;

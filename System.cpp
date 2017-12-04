@@ -11,10 +11,15 @@ namespace rootengine {
         return ren;
     }
 
+    TTF_Font* System::getFont() const {
+        return font;
+    }
+
     System::System() {
         System::init();
         System::createWindow(600, 600, "Engine test");
         System::createRenderer();
+        font = TTF_OpenFont("assets/fonts/Roboto-Regular.ttf", 20);
     }
 
     System::~System() {

@@ -10,7 +10,7 @@
 namespace rootengine{
     class Sprite {
     public:
-        ~Sprite();
+        virtual ~Sprite();
         virtual void mouseDown(const SDL_Event&){};
         virtual void mouseUp(const SDL_Event&){};
         virtual void keyDown(const SDL_Event&){};
