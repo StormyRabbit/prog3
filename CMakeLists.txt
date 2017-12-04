@@ -3,7 +3,7 @@ project(prog3)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${prog3_SOURCE_DIR}/cmake")
-set(SOURCE_FILES HUD.cpp HUD.h Level.cpp Level.h HUDElement.cpp HUDElement.h Main.cpp GameEngine.cpp GameEngine.h Subject.cpp Subject.h Observer.h System.cpp System.h Sprite.cpp Sprite.h HUDSprite.cpp HUDSprite.h)
+set(SOURCE_FILES HUD.cpp HUD.h Level.cpp Level.h HUDElement.cpp HUDElement.h Main.cpp GameEngine.cpp GameEngine.h Subject.cpp Subject.h Observer.h System.cpp System.h Sprite.cpp Sprite.h HUDSprite.cpp HUDSprite.h PhysicsSprite.cpp PhysicsSprite.h Player.cpp Player.h)
 add_executable(prog3 ${SOURCE_FILES})
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
