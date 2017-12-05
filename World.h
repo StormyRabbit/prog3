@@ -5,15 +5,19 @@
 #ifndef PROG3_WORLD_H
 #define PROG3_WORLD_H
 
-#import "Level.h";
+#include "Level.h"
 #include "Player.h"
 
 namespace rootengine {
 
     class World {
         public:
+            void executeEvent(const SDL_Event& eve);
             void updateWorld();
             void setPlayer(Player* player);
+            static World* getInstance();
+        protected:
+            World();
         private:
             Player *activePlayer;
             Level *activeLevel;

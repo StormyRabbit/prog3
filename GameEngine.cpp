@@ -31,6 +31,7 @@ namespace rootengine {
 
 
     void GameEngine::run() {
+        activeWorld = World::getInstance();
         std::string IMG_PATH = "assets/sprites/i-know-c.jpg";
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
@@ -53,14 +54,14 @@ namespace rootengine {
             player->checkState();
 
             while (SDL_PollEvent(&event)) {
+                if(event.type)
                 switch (event.type) {
                     case SDL_QUIT:
                         running = false;
                         break;
-                    case SDL_KEYDOWN:
-                        std::cout << player->getRect().y << std::endl;
-                        player->keyDown(event);
-                        break;
+                    default:
+                        activeWorld->executeEvent(event);
+
                 } // switch end
             } // while Poll
         } // while running

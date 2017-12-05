@@ -15,6 +15,7 @@ namespace rootengine {
         Level(std::vector<EnvironmentSprite*> collEnvironment,
         std::vector<EnvironmentSprite*> nonCollEnvironment,
         std::vector<Enemy*> enemyCollection);
+        void updateEnemies();
         bool isOccupied(SDL_Rect& rect);
     private:
         std::vector<EnvironmentSprite*> collEnvironment;
