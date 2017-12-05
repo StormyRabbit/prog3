@@ -20,14 +20,6 @@
 
 # CMake
 cmake-build-debug/
-FindSDL2.cmake
-FindSDL2_image.cmake
-FindSDL2_mixer.cmake
-FindSDL2_ttf.cmake
-
-#Main2.cpp SDL TRY
-Main2.cpp
-Main2.h
 
 # Mongo Explorer plugin:
 .idea/**/mongoSettings.xml
