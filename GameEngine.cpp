@@ -5,12 +5,9 @@
 #include <SDL.h>
 #include <iostream>
 #include <SDL_image.h>
-#include <bits/ios_base.h>
-#include <ios>
 #include "GameEngine.h"
 #include "System.h"
 #include "Player.h"
-#include "HUDSprite.h"
 
 namespace rootengine {
 //Test med sprite EJ final
@@ -32,15 +29,11 @@ namespace rootengine {
 
 
     void GameEngine::run() {
-        std::string IMG_PATH = "assets/sprites/bg_castle.png";
-        
+        std::string IMG_PATH = "assets/sprites/i-know-c.jpg";
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
-        SDL_RenderCopy(sys.getRenderer(), bgImg, nullptr, nullptr);
-        HUDSprite* testSprite = HUDSprite::getInstance(100, 100, 250, 250, "test");
-        testSprite->draw();
+        SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
         Sprite* player = Player::getInstance(100,100,70,70);
         player->draw();
-        std::cout << IMG_GetError();
         while (running) {
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
