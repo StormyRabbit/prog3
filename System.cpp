@@ -12,14 +12,14 @@ namespace rootengine {
     }
 
     TTF_Font* System::getFont() const {
-        return font;
+        return mainFont;
     }
 
     System::System() {
         System::init();
         System::createWindow(600, 600, "Engine test");
         System::createRenderer();
-        System::createFont("assets/fonts/Roboto-Regular.ttf", 20);
+        System::createFont("assets/fonts/roboto.ttf", 50);
     }
 
     System::~System() {
@@ -54,7 +54,7 @@ namespace rootengine {
     }
 
     void System::createFont(std::string path, int size) {
-        font = TTF_OpenFont(path.c_str(), size);
+        mainFont = TTF_OpenFont(path.c_str(), size);
     }
 
     void System::createRenderer() {
