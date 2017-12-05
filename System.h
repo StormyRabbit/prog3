@@ -27,7 +27,7 @@ namespace rootengine {
 
         SDL_Window *win;
         SDL_Renderer *ren;
-        TTF_Font* font;
+        TTF_Font* mainFont;
     };
 
     extern System sys;

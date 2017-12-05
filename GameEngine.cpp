@@ -8,6 +8,7 @@
 #include "GameEngine.h"
 #include "System.h"
 #include "Player.h"
+#include "HUDSprite.h"
 
 namespace rootengine {
 //Test med sprite EJ final
@@ -34,6 +35,10 @@ namespace rootengine {
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
         Sprite* player = Player::getInstance(100,100,70,70);
         player->draw();
+
+        Sprite* text = HUDSprite::getInstance(200,200,100,100, "GIT GOD LASSE");
+        text->draw();
+
         while (running) {
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
