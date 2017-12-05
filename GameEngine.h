@@ -13,6 +13,7 @@
 #include "Level.h"
 #include "Subject.h"
 #include "LevelManager.h"
+#include "World.h"
 
 namespace rootengine {
     class GameEngine : public Subject {
@@ -32,6 +33,7 @@ namespace rootengine {
         //Slut med sprite test
     protected:
     private:
+        World* activeWorld;
         bool running = true;
         LevelManager* lvlMgr;
         HUD *hud;

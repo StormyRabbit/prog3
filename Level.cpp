@@ -17,4 +17,9 @@ namespace rootengine {
         }
         return false;
     }
+
+    void Level::updateEnemies() {
+        for(Enemy* enemy : enemyCollection) {}
+
+    }
 }

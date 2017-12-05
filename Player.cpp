@@ -133,5 +133,9 @@ namespace rootengine{
     void Player::updatePlayer() {
 
     }
+
+    void Player::handleEvent(const SDL_Event &eve) {
+
+    }
 }
 
