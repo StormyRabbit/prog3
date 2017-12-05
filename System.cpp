@@ -16,7 +16,7 @@ namespace rootengine {
         System::init();
         System::createWindow(600, 600, "Engine test");
         System::createRenderer();
-        System::createFont("C:\\Windows\\Fonts\\Arial.ttf", 36);
+        System::createFont("assets/fonts/Roboto-Regular.ttf", 36);
     }
 
     System::~System() {
@@ -35,12 +35,10 @@ namespace rootengine {
             std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
             exit(-1);
         }
-
         if (TTF_Init() == -1) {
             std::cerr << "SDL_TTF err:" << SDL_GetError() << std::endl;
             exit(-1);
         }
-
     }
 
     void System::createWindow(int width, int height, std::string name) {
