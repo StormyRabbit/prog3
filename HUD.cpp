@@ -4,27 +4,44 @@
 
 #include <vector>
 #include "HUD.h"
-#include "HUDElement.h"
 #include <algorithm>
 namespace rootengine {
-    std::vector<HUDElement *> hudElements;
 
-
-    void HUD::addHUDElement(HUDElement *he) {
+    void HUD::addHUDElement(HUDSprite *he) {
         hudElements.push_back(he);
     }
 
-    void HUD::setHUDElements(std::vector<HUDElement *> hudElementList) {
+    void HUD::setHUDElements(std::vector<HUDSprite *> hudElementList) {
         hudElements = hudElementList;
     }
 
+    void HUD::update() {
+
+    }
+
+    HUD::HUD() {
+
+    }
+
+    HUD *HUD::getInstance() {
+        return new HUD();
+    }
+
+    void HUD::draw() {
+        for(HUDSprite *hs : hudElements)
+            hs->draw();
+    }
+
     void Observer::update() {
-        for (std::vector<HUDElement *>::const_iterator iter = hudElements.begin();
+        // TODO FIX
+        /*
+        for (std::vector<HUDSprite *>::const_iterator iter = hudElements.begin();
              iter != hudElements.end(); ++iter) {
             if (*iter != 0) {
                 // TODO execute
             }
         }
+         */
     }
 }
 

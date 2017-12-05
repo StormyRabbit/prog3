@@ -6,21 +6,24 @@
 #define PROG3_HUD_H
 
 
-#include "HUDElement.h"
+#include "HUDSprite.h"
 #include "Observer.h"
 namespace rootengine {
 
     class HUD : public Observer {
     public:
-        void addHUDElement(HUDElement *he);
+        void addHUDElement(HUDSprite *he);
 
-        void setHUDElements(std::vector<HUDElement *> hudElementList);
-
+        void setHUDElements(std::vector<HUDSprite *> hudElementList);
+        static HUD* getInstance();
+        void draw();
         void update();
 
     protected:
+        HUD();
 
     private:
+        std::vector<HUDSprite *> hudElements;
 
     };
 

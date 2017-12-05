@@ -13,8 +13,7 @@ namespace rootengine {
     public:
         static Player* getInstance(int xPos, int yPos,int width,int height);
         void handleEvent(const SDL_Event &eve);
-        void keyDown(const SDL_Event& eve) override;
-        void keyUp(const SDL_Event& eve) override;
+
         void checkState();
         void updatePlayer();
     protected:
@@ -22,9 +21,10 @@ namespace rootengine {
     private:
         PlayerState currentState = PlayerState::standing;
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
+        void keyDown(const SDL_Event& eve) override;
+        void keyUp(const SDL_Event& eve) override;
         void running(std::string direction);
         void jumpMove(std::string direction);
-
         void upButton();
         void runningJump();
         void standingJump();

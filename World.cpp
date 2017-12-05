@@ -4,26 +4,25 @@
 
 #include "World.h"
 namespace rootengine {
-void rootengine::World::updateWorld() {
-    if(activePlayer != nullptr)
-        activePlayer->updatePlayer();
-    if(activeLevel != nullptr)
-        activeLevel->updateEnemies();
-    if(activeLevel->isLevelComplete()) {}
-}
+    void rootengine::World::updateWorld() {
+        if(activePlayer != nullptr)
+            activePlayer->updatePlayer();
+        if(activeLevel != nullptr)
+            activeLevel->updateEnemies();
+        if(activeLevel->isLevelComplete()) {}
+    }
 
+    void rootengine::World::setPlayer(rootengine::Player *player) {
+        activePlayer = player;
+    }
 
-void rootengine::World::setPlayer(rootengine::Player *player) {
-    activePlayer = player;
-}
+    void rootengine::World::executeEvent(const SDL_Event &eve) {
+        activePlayer->handleEvent(eve);
+    }
 
-void rootengine::World::executeEvent(const SDL_Event &eve) {
-    activePlayer->handleEvent(eve);
-}
-
-rootengine::World *rootengine::World::getInstance() {
-    return new World();
-}
+    rootengine::World *rootengine::World::getInstance() {
+        return new World();
+    }
 
     World::World() {
 
