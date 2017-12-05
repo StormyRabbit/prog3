@@ -8,7 +8,9 @@
 namespace rootengine{
     class Enemy {
     public:
+        static Enemy* getInstance(int xPos, int yPos,int width,int height);
     protected:
+        Enemy(int xPos, int yPos, int width, int height);
     private:
     };
 }

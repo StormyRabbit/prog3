@@ -30,6 +30,8 @@ namespace rootengine {
         void leftButton();
 
         void downButton();
+
+        void rightButton();
     };
 }
 

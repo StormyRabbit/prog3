@@ -26,6 +26,7 @@ namespace rootengine{
 
         switch (keysym.sym) {
             case SDLK_RIGHT :
+                rightButton();
                 break;
             case SDLK_LEFT :
                 leftButton();
@@ -84,6 +85,21 @@ namespace rootengine{
                 break;
         }
     }
+    void Player::rightButton() {
+        switch(Player::currentState) {
+            case(PlayerState::jumping):
+                jumpMove("RIGHT");
+                break;
+            case(PlayerState::running):
+                running("RIGHT");
+                break;
+            case(PlayerState::standing):
+                running("RIGHT");
+                break;
+            default:
+                break;
+        }
+    }
 
     void Player::running(std::string direction) {
         Player::currentState = PlayerState::running;
@@ -102,9 +118,12 @@ namespace rootengine{
         if(direction == "RIGHT")
             Player::changeRect().x = Player::changeRect().x + 10;
     }
-
     void Player::upButton() {
-
+        if (!(Player::currentState == PlayerState::jumping) || !(Player::currentState == PlayerState::falling) || !(Player::currentState == PlayerState::runningJump))
+            if (Player::currentState == PlayerState::running)
+                Player::currentState = PlayerState::runningJump;
+            else
+                Player::currentState = PlayerState::jumping;
     }
 
     void Player::downButton() {
@@ -115,3 +134,4 @@ namespace rootengine{
 
     }
 }
+

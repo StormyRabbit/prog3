@@ -7,7 +7,7 @@
 
 
 enum class PlayerState {
-    standing, running, jumping, attacking, dodging, dead, falling
+    standing, running, jumping, runningJump, attacking, dodging, dead, falling
 };
 
 
