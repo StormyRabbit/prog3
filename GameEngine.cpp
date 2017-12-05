@@ -59,7 +59,7 @@ namespace rootengine {
                     case SDL_QUIT:
                         running = false;
                         break;
-                    default:
+                    default: // OM SPELAREVENT
                         activeWorld->executeEvent(event);
 
                 } // switch end

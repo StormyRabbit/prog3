@@ -20,6 +20,21 @@ namespace rootengine {
 
     void Level::updateEnemies() {
         for(Enemy* enemy : enemyCollection) {}
+    }
 
+    bool Level::isLevelComplete() {
+        return levelComplete;
+    }
+
+    void Level::drawLevel() {
+        for(EnvironmentSprite* es : collEnvironment)
+            es->draw();
+
+        for(EnvironmentSprite* es : nonCollEnvironment)
+            es->draw();
+
+        for(Enemy* enemy : enemyCollection) {
+            // TODO enemy->draw();
+        }
     }
 }

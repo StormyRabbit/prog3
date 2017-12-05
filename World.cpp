@@ -3,12 +3,13 @@
 //
 
 #include "World.h"
-
+namespace rootengine {
 void rootengine::World::updateWorld() {
     if(activePlayer != nullptr)
         activePlayer->updatePlayer();
     if(activeLevel != nullptr)
         activeLevel->updateEnemies();
+    if(activeLevel->isLevelComplete()) {}
 }
 
 
@@ -22,4 +23,9 @@ void rootengine::World::executeEvent(const SDL_Event &eve) {
 
 rootengine::World *rootengine::World::getInstance() {
     return new World();
+}
+
+    World::World() {
+
+    }
 }

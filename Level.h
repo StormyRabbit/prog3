@@ -17,10 +17,13 @@ namespace rootengine {
         std::vector<Enemy*> enemyCollection);
         void updateEnemies();
         bool isOccupied(SDL_Rect& rect);
+        bool isLevelComplete();
+        void drawLevel();
     private:
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<EnvironmentSprite*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;
+        bool levelComplete;
     };
 }
 
