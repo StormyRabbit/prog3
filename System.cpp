@@ -35,12 +35,10 @@ namespace rootengine {
             std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
             exit(-1);
         }
-
         if (TTF_Init() == -1) {
             std::cerr << "SDL_TTF err:" << SDL_GetError() << std::endl;
             exit(-1);
         }
-
     }
 
     void System::createWindow(int width, int height, std::string name) {

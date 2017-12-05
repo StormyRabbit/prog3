@@ -5,7 +5,6 @@
 #ifndef PROG3_SYSTEM_H
 #define PROG3_SYSTEM_H
 
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
