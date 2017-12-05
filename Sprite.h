@@ -17,6 +17,7 @@ namespace rootengine{
         virtual void keyUp(const SDL_Event&){};
         virtual void draw() const = 0;
         const SDL_Rect& getRect() const { return rect; }
+        SDL_Rect& changeRect() { return rect; }
     protected:
         Sprite(int xPos, int yPos, int width, int height);
     private:

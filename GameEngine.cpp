@@ -30,16 +30,20 @@ namespace rootengine {
 
 
     void GameEngine::run() {
-        std::string IMG_PATH = "assets/sprites/i-know-c.jpg";
+        std::string IMG_PATH = "assets/sprites/i-know-c.pg";
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
-        Sprite* player = Player::getInstance(100,100,70,70);
-        player->draw();
 
-        Sprite* text = HUDSprite::getInstance(200,200,100,100, "GIT GOD LASSE");
-        text->draw();
+        HUDSprite* lasse = HUDSprite::getInstance(200,200,200,200, "GIT GOD LASSE");
+        lasse->draw();
+
+        Sprite* player = Player::getInstance(100,100,70,70);
+
 
         while (running) {
+            SDL_RenderClear(sys.getRenderer());
+            SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
+            player->draw();
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
 
@@ -49,8 +53,7 @@ namespace rootengine {
                         running = false;
                         break;
                     case SDL_KEYDOWN:
-                        if (event.key.keysym.sym == SDLK_END)
-                            running = true;
+                        player->keyDown(event);
                         break;
                 } // switch end
             } // while Poll

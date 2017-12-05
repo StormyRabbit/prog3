@@ -19,7 +19,7 @@ namespace rootengine {
         System::init();
         System::createWindow(600, 600, "Engine test");
         System::createRenderer();
-        System::createFont("assets/fonts/roboto.ttf", 50);
+        System::createFont("C:\\Windows\\Fonts\\Arial.ttf", 36);
     }
 
     System::~System() {

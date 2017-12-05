@@ -17,13 +17,13 @@ namespace rootengine{
         SDL_Keysym keysym = key.keysym;
 
         switch (keysym.sym) {
-            case SDLK_RIGHT : //getRect().x++;
+            case SDLK_RIGHT : changeRect().x = changeRect().x + 10;
                 break;
-            case SDLK_LEFT : //getRect().x--;
+            case SDLK_LEFT : changeRect().x = changeRect().x - 10;
                 break;
-            case SDLK_UP : //getRect().y++;
+            case SDLK_UP : changeRect().y = changeRect().y - 10;
                 break;
-            case SDLK_DOWN : //getRect().y--;
+            case SDLK_DOWN : changeRect().y = changeRect().y + 10;
                 break;
         }
 
