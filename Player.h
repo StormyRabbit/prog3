@@ -33,6 +33,10 @@ namespace rootengine {
         void downButton();
 
         void rightButton();
+
+        void jumping();
+
+        void falling();
     };
 }
 

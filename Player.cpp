@@ -14,10 +14,26 @@ namespace rootengine{
     void Player::checkState(){
         switch(Player::currentState) {
             case(PlayerState::jumping):
-                Player::changeRect().y--;
+                jumping();
                 break;
+            case (PlayerState ::falling):
+                falling();
 
         }
+    }
+
+    void Player::jumping(){
+        if (getRect().y > 350)
+            changeRect().y = changeRect().y - 3;
+        else
+            Player::currentState = PlayerState ::falling;
+    }
+
+    void Player::falling() {
+        if (getRect().y < 450)
+            changeRect().y = changeRect().y + 3;
+        else
+            Player::currentState = PlayerState ::standing;
     }
 
     void Player::keyDown(const SDL_Event &eve) {
@@ -119,11 +135,13 @@ namespace rootengine{
             Player::changeRect().x = Player::changeRect().x + 10;
     }
     void Player::upButton() {
-        if (!(Player::currentState == PlayerState::jumping) || !(Player::currentState == PlayerState::falling) || !(Player::currentState == PlayerState::runningJump))
+        if (!(Player::currentState == PlayerState::jumping) || !(Player::currentState == PlayerState::falling) || !(Player::currentState == PlayerState::runningJump)){
             if (Player::currentState == PlayerState::running)
                 Player::currentState = PlayerState::runningJump;
             else
                 Player::currentState = PlayerState::jumping;
+
+        }
     }
 
     void Player::downButton() {
