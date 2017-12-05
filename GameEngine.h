@@ -12,13 +12,14 @@
 #include "HUD.h"
 #include "Level.h"
 #include "Subject.h"
+#include "LevelManager.h"
 
 namespace rootengine {
     class GameEngine : public Subject {
     public:
-        void addLevelCollection();
+        void setLvlMgr(LevelManager* lvlMgr);
 
-        void addHUDCollection();
+        void setHUD(HUD *hud);
 
         void run();
 
@@ -32,6 +33,7 @@ namespace rootengine {
     protected:
     private:
         bool running = true;
+        LevelManager* lvlMgr;
         HUD *hud;
         std::vector<Level *> levelsVector;
         //Test med sprite ej final

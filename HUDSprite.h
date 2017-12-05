@@ -6,7 +6,7 @@
 #define PROG3_HUDSPRITE_H
 
 #include "Sprite.h"
-#include <String>
+#include <string>
 
 namespace rootengine {
     class HUDSprite : public Sprite {

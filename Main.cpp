@@ -6,7 +6,6 @@
 using namespace rootengine;
 
 int main(int, char **) {
-    System sys;
     GameEngine* ge = new GameEngine();
     ge->run();
     return 0;
