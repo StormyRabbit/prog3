@@ -12,7 +12,7 @@ namespace rootengine{
             exit(-1);
         }
 
-        SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), {0,0,0});
+        SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), {255,255,255});
         texture = SDL_CreateTextureFromSurface(sys.getRenderer(), surf);
         SDL_FreeSurface(surf);
     }

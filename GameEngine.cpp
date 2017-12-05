@@ -35,7 +35,7 @@ namespace rootengine {
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
 
         HUDSprite* lasse = HUDSprite::getInstance(200,200,200,200, "GIT GOD LASSE");
-        lasse->draw();
+
 
         Sprite* player = Player::getInstance(100,100,70,70);
 
@@ -44,6 +44,7 @@ namespace rootengine {
             SDL_RenderClear(sys.getRenderer());
             SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
             player->draw();
+            lasse->draw();
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
 
