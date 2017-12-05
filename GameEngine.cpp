@@ -19,28 +19,22 @@ namespace rootengine {
 
     }
 
-    void GameEngine::addLevelCollection() {
-        // TODO
+    void GameEngine::setLvlMgr(LevelManager *lvlMgr) {
+        GameEngine::lvlMgr = lvlMgr;
     }
 
-    void GameEngine::addHUDCollection() {
-        // TODO
+    void GameEngine::setHUD(HUD *hud) {
+        GameEngine::hud = hud;
     }
 
 
     void GameEngine::run() {
-        SDL_Texture *bgImg;
-        std::string IMG_PATH;
-        IMG_PATH = "assets/sprites/sample.png";
-        bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
-
+        std::string IMG_PATH = "assets/sprites/bg_castle.png";
+        SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
         Sprite* player = Player::getInstance(100,100,70,70);
         player->draw();
-
         while (running) {
-
-
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
 
@@ -61,6 +55,8 @@ namespace rootengine {
     void GameEngine::drawTextures() {
 
     }
+
+
 }
 /* ObserverPattern */
 
