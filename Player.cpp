@@ -135,6 +135,14 @@ namespace rootengine{
     }
 
     void Player::handleEvent(const SDL_Event &eve) {
+        switch (eve.type){
+            case SDL_KEYUP :
+                keyUp(eve);
+                break;
+            case SDL_KEYDOWN:
+                keyDown(eve);
+                break;
+        }
 
     }
 }
