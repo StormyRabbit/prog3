@@ -12,6 +12,21 @@ namespace rootengine{
         return new Player(xPos, yPos, width, height);
     }
 
+    void Player::checkState(){
+        if (isJumping == true)
+            if (getRect().y > 400)
+                changeRect().y--;
+            else
+                isJumping = false;
+                isFalling = true;
+        if (isFalling == true)
+            if (getRect().y < 450)
+                changeRect().y++;
+            else
+                isFalling = false;
+
+    }
+
     void Player::keyDown(const SDL_Event &eve) {
         SDL_KeyboardEvent key = eve.key;
         SDL_Keysym keysym = key.keysym;
@@ -21,9 +36,12 @@ namespace rootengine{
                 break;
             case SDLK_LEFT : changeRect().x = changeRect().x - 10;
                 break;
-            case SDLK_UP : changeRect().y = changeRect().y - 10;
+            case SDLK_UP : isJumping = true; //changeRect().y = changeRect().y - 10;
                 break;
-            case SDLK_DOWN : changeRect().y = changeRect().y + 10;
+            case SDLK_DOWN :
+                    if(getRect().y < 450)
+                        changeRect().y = changeRect().y + 10;
+
                 break;
         }
 

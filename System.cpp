@@ -16,7 +16,7 @@ namespace rootengine {
         System::init();
         System::createWindow(600, 600, "Engine test");
         System::createRenderer();
-        System::createFont("assets/fonts/Roboto-Regular.ttf", 36);
+        System::createFont("assets/fonts/Roboto-Regular.ttf", 10);
     }
 
     System::~System() {

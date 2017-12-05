@@ -13,11 +13,14 @@ namespace rootengine {
         static Player* getInstance(int xPos, int yPos,int width,int height);
         void keyDown(const SDL_Event& eve);
         void keyUp(const SDL_Event& eve);
+        void checkState();
         ~Player();
     protected:
         Player(int xPos, int yPos, int width, int height);
     private:
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
+        bool isJumping = false;
+        bool isFalling = false;
     };
 }
 

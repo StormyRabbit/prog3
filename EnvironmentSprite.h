@@ -13,6 +13,7 @@ namespace rootengine{
     class EnvironmentSprite : public Sprite{
     public:
         static EnvironmentSprite* getInstance(int xPos, int yPos,int width,int height, std::string pathToSprite);
+        void draw() const;
         ~EnvironmentSprite();
     protected:
         EnvironmentSprite(int xPos, int yPos, int width, int height, std::string pathToSprite);

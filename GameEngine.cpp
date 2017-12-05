@@ -9,6 +9,7 @@
 #include "System.h"
 #include "Player.h"
 #include "HUDSprite.h"
+#include "EnvironmentSprite.h"
 
 namespace rootengine {
 //Test med sprite EJ final
@@ -34,19 +35,22 @@ namespace rootengine {
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
 
-        HUDSprite* lasse = HUDSprite::getInstance(200,200,200,200, "GIT GOD LASSE");
-
-
-        Sprite* player = Player::getInstance(100,100,70,70);
-
+        HUDSprite* lasse = HUDSprite::getInstance(200,200,200,20, "GIT GOD LASSE");
+        Player* player = Player::getInstance(100,450,50,50);
+        Sprite* bottom = EnvironmentSprite::getInstance(0, 500, 600, 100, "assets/sprites/Tiles/grassMid.png");
+        int i = 0;
 
         while (running) {
             SDL_RenderClear(sys.getRenderer());
             SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
             player->draw();
             lasse->draw();
+            bottom->draw();
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
+
+            lasse->setText(std::to_string(i));
+            player->checkState();
 
             while (SDL_PollEvent(&event)) {
                 switch (event.type) {
