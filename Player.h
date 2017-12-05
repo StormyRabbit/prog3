@@ -15,6 +15,7 @@ namespace rootengine {
         void keyDown(const SDL_Event& eve) override;
         void keyUp(const SDL_Event& eve) override;
         void checkState();
+        void updatePlayer();
     protected:
         Player(int xPos, int yPos, int width, int height);
     private:

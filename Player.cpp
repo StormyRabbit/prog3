@@ -110,4 +110,8 @@ namespace rootengine{
     void Player::downButton() {
 
     }
+
+    void Player::updatePlayer() {
+
+    }
 }

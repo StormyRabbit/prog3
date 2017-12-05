@@ -3,7 +3,7 @@
 //
 
 #include "Level.h"
-namespace rootengine{
+namespace rootengine {
     Level::Level(std::vector<EnvironmentSprite *> collEnvironment, std::vector<EnvironmentSprite *> nonCollEnvironment,
                  std::vector<Enemy *> enemyCollection) {
         Level::collEnvironment = collEnvironment;
