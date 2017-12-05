@@ -9,6 +9,7 @@
 namespace rootengine{
     HUDSprite::HUDSprite(int xPos, int yPos, int width, int height, std::string txt) : Sprite(xPos,yPos,width,height), text(txt) {
         if (!sys.getFont()){
+            std::cout<<"Misslyckades med att ladda in font fil.";
             exit(-1);
         }
 
