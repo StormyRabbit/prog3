@@ -2,12 +2,9 @@
 // Created by lasse on 11/28/17.
 //
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
 #include "System.h"
 namespace rootengine {
-    SDL_Renderer *System::getRenderer() {
+    SDL_Renderer *System::getRenderer() const {
         return ren;
     }
 
@@ -36,10 +33,12 @@ namespace rootengine {
         int imgFlags = IMG_INIT_PNG;
         if (!(IMG_Init(imgFlags) & imgFlags)) {
             std::cerr << "SDL_imig_init-fel:" << SDL_GetError() << std::endl;
+            exit(-1);
         }
 
         if (TTF_Init() == -1) {
             std::cerr << "SDL_TTF err:" << SDL_GetError() << std::endl;
+            exit(-1);
         }
 
     }

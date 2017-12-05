@@ -6,6 +6,9 @@
 #define PROG3_SYSTEM_H
 
 
+#include <SDL.h>
+#include <SDL_image.h>
+#include <iostream>
 #include <SDL_render.h>
 #include <SDL_ttf.h>
 namespace rootengine {
@@ -15,7 +18,7 @@ namespace rootengine {
 
         ~System();
 
-        SDL_Renderer *getRenderer();
+        SDL_Renderer *getRenderer() const;
         TTF_Font* getFont() const;
 
     private:
