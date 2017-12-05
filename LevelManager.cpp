@@ -3,3 +3,14 @@
 //
 
 #include "LevelManager.h"
+namespace rootengine {
+
+    Level *LevelManager::getNextLevel() {
+        return levelCollection[currentLevel++];
+    }
+
+    void LevelManager::setLevelCollection(std::vector<Level *> levelCollection) {
+        LevelManager::levelCollection = levelCollection;
+    }
+
+}

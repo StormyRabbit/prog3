@@ -58,6 +58,7 @@ namespace rootengine {
                         running = false;
                         break;
                     case SDL_KEYDOWN:
+                        std::cout << player->getRect().y << std::endl;
                         player->keyDown(event);
                         break;
                 } // switch end
