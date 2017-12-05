@@ -11,6 +11,8 @@ namespace rootengine {
     class Player : public PhysicsSprite {
     public:
         static Player* getInstance(int xPos, int yPos,int width,int height);
+        void keyDown(const SDL_Event& eve);
+        void keyUp(const SDL_Event& eve);
         ~Player();
     protected:
         Player(int xPos, int yPos, int width, int height);

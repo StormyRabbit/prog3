@@ -20,7 +20,7 @@ namespace rootengine {
 
     private:
         void createWindow(int width, int height, std::string name);
-
+        void createFont(std::string path, int size);
         void createRenderer();
 
         void init();

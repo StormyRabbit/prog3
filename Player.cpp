@@ -11,4 +11,25 @@ namespace rootengine{
     Player* Player::getInstance(int xPos, int yPos, int width, int height) {
         return new Player(xPos, yPos, width, height);
     }
+
+    void Player::keyDown(const SDL_Event &eve) {
+        SDL_KeyboardEvent key = eve.key;
+        SDL_Keysym keysym = key.keysym;
+
+        switch (keysym.sym) {
+            case SDLK_RIGHT : //getRect().x++;
+                break;
+            case SDLK_LEFT : //getRect().x--;
+                break;
+            case SDLK_UP : //getRect().y++;
+                break;
+            case SDLK_DOWN : //getRect().y--;
+                break;
+        }
+
+    }
+
+    void Player::keyUp(const SDL_Event &eve) {
+
+    }
 }

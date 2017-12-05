@@ -31,7 +31,7 @@ namespace rootengine {
     void GameEngine::run() {
         SDL_Texture *bgImg;
         std::string IMG_PATH;
-        IMG_PATH = "assets/sprites/sample.pngs";
+        IMG_PATH = "assets/sprites/sample.png";
         bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
 
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
