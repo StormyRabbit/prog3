@@ -18,16 +18,19 @@
 namespace rootengine {
     class GameEngine : public Subject {
         public:
-            void setLvlMgr(LevelManager* lvlMgr);
-            void setPlayer(Player *player);
-            void setHUD(HUD *hud);
+            void setLvlMgr(LevelManager *);
+            void setPlayer(Player *);
+            void setHUD(HUD *);
             void run();
             void createWorld();
+            void setFPS(int, int);
             static GameEngine* getInstance();
             ~GameEngine();
         protected:
             GameEngine() = default;
         private:
+            int screenFPS{};
+            int tickRate{};
             Player *player{};
             World* activeWorld{};
             bool running = true;

@@ -15,6 +15,7 @@ int main(int, char **) {
     ge->setLvlMgr(createLvlMgr());
     ge->setHUD(createHUD());
     ge->setPlayer(createPlayer());
+    ge->setFPS(60, 1000);
     ge->run();
     return 0;
 }

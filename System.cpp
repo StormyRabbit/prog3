@@ -58,7 +58,7 @@ namespace rootengine {
     }
 
     void System::createRenderer() {
-        ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_PRESENTVSYNC);
+        ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
         if (ren == nullptr) {
             std::cerr << "render error: " << SDL_GetError() << std::endl;
             SDL_DestroyWindow(win);
