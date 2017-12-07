@@ -18,7 +18,6 @@ namespace rootengine{
                 break;
             case (PlayerState ::falling):
                 falling();
-
         }
     }
 

@@ -29,7 +29,7 @@ namespace rootengine {
         activeWorld = World::getInstance();
         Player* player = Player::getInstance(100,450,50,50);
         activeWorld->setPlayer(player);
-        std::string IMG_PATH = "assets/sprites/i-know-c.jpg";
+        std::string IMG_PATH = "assets/sprites/bg_castle.png";
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
 

@@ -9,8 +9,16 @@ namespace rootengine {
         return levelCollection[currentLevel++];
     }
 
-    void LevelManager::setLevelCollection(std::vector<Level *> levelCollection) {
+    void LevelManager::setLevelCollection(std::vector<Level *> &levelCollection) {
         LevelManager::levelCollection = levelCollection;
+    }
+
+    LevelManager *LevelManager::getInstance() {
+        return new LevelManager();
+    }
+
+    LevelManager::LevelManager() {
+
     }
 
 }

@@ -11,8 +11,11 @@ namespace rootengine {
 
 class LevelManager {
 public:
-    void setLevelCollection(std::vector<Level*> levelCollection);
+    void setLevelCollection(std::vector<Level*> &levelCollection);
     Level *getNextLevel();
+    static LevelManager* getInstance();
+protected:
+    LevelManager();
 private:
     std::vector<Level*> levelCollection;
     int currentLevel = 0;
