@@ -15,7 +15,7 @@ public:
     Level *getNextLevel();
     static LevelManager* getInstance();
 protected:
-    LevelManager();
+    LevelManager() = default;
 private:
     std::vector<Level*> levelCollection;
     int currentLevel = 0;

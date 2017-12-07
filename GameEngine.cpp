@@ -4,8 +4,8 @@
 
 #include <SDL.h>
 #include <iostream>
-#include <SDL_image.h>
 #include <sstream>
+#include <assert.h>
 #include "GameEngine.h"
 #include "System.h"
 #include "Timer.h"
@@ -20,6 +20,7 @@ namespace rootengine {
     }
 
     void GameEngine::setLvlMgr(LevelManager *lvlMgr) {
+        assert(lvlMgr);
         GameEngine::lvlMgr = lvlMgr;
     }
 
@@ -28,27 +29,20 @@ namespace rootengine {
     }
 
     void GameEngine::run() {
-        std::string IMG_PATH = "assets/sprites/bg_castle.png";
-        SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
-
-        SDL_RenderCopy(sys.getRenderer(), bgImg, nullptr, nullptr);
-        Sprite* bottom = EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png");
+        Level *nextLvl = lvlMgr->getNextLevel();
+        activeWorld->setLevel(nextLvl);
         Timer* fpsTimer = Timer::getInstance();
         Timer* capTimer = Timer::getInstance();
-        HUDSprite* fpsCounter = HUDSprite::getInstance(0,0,150,20, "FPS");
         int countedFrames = 0;
         fpsTimer->start();
         std::stringstream fpsText;
         while (running) {
             capTimer->start();
             SDL_RenderClear(sys.getRenderer());
-            SDL_RenderCopy(sys.getRenderer(), bgImg, nullptr, nullptr);
             activeWorld->drawWorld();
             hud->draw();
-            bottom->draw();
             SDL_Event event;
             player->checkState();
-
             /* För varje varv i loopen, efter att ha kontrollerat om det finns några
              * användargenererade händelser och i så fall ha tagit hand om dem, ska man gå igenom alla installerade
              * Sprite-objekt och anropa en medlemsfunktion (ofta kallas en sådan medlemsfunktion tick)
@@ -72,8 +66,6 @@ namespace rootengine {
             fpsText.str("");
             fpsText << "AVG FPS: " << avgFPS;
             std::string fpsString = fpsText.str().c_str();
-            fpsCounter->setText(fpsString);
-            fpsCounter->draw();
             ++countedFrames;
             int frameTicks = capTimer->getTicks();
             if( frameTicks < tickRate) {

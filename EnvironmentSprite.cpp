@@ -16,7 +16,7 @@ namespace rootengine{
     }
 
     void EnvironmentSprite::draw() const {
-        SDL_RenderCopy(sys.getRenderer(), texture, NULL, &getRect());
+        SDL_RenderCopy(sys.getRenderer(), texture, nullptr, &getRect());
     }
     EnvironmentSprite::~EnvironmentSprite() {}
 }

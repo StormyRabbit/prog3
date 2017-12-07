@@ -2,6 +2,8 @@
 // Created by lasse on 12/5/17.
 //
 
+#include <iostream>
+#include <assert.h>
 #include "World.h"
 namespace rootengine {
     void rootengine::World::updateWorld() {
@@ -25,7 +27,14 @@ namespace rootengine {
     }
 
     void World::drawWorld() {
-        activePlayer->draw();
+        if(activeLevel != nullptr)
+            activeLevel->drawLevel();
+        if(activePlayer != nullptr)
+            activePlayer->draw();
 
+    }
+
+    void World::setLevel(Level *lvl) {
+        activeLevel = lvl;
     }
 }

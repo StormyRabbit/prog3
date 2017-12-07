@@ -2,6 +2,7 @@
 // Created by lasse on 11/24/17.
 //
 
+#include <iostream>
 #include "Level.h"
 namespace rootengine {
     Level::Level(std::vector<EnvironmentSprite *> &collEnvironment, std::vector<EnvironmentSprite *> &nonCollEnvironment,
@@ -25,14 +26,30 @@ namespace rootengine {
     }
 
     void Level::drawLevel() {
+        for(EnvironmentSprite* es : nonCollEnvironment)
+            es->draw();
         for(EnvironmentSprite* es : collEnvironment)
             es->draw();
 
-        for(EnvironmentSprite* es : nonCollEnvironment)
-            es->draw();
-
         for(Enemy* enemy : enemyCollection) {
-            // TODO enemy->draw();
+            // enemy->draw();
         }
+    }
+
+    Level *Level::getInstance(std::vector<EnvironmentSprite *> &collEnvironment,
+                              std::vector<EnvironmentSprite *> &nonCollEnvironment,
+                              std::vector<Enemy *> &enemyCollection) {
+        return new Level(collEnvironment, nonCollEnvironment, enemyCollection);
+    }
+
+    Level::Level(std::vector<EnvironmentSprite *> &collEnvironment,
+                 std::vector<EnvironmentSprite *> &nonCollEnvironment) {
+        Level::collEnvironment = collEnvironment;
+        Level::nonCollEnvironment = nonCollEnvironment;
+    }
+
+    Level *Level::getEnemeyFreeLevel(std::vector<EnvironmentSprite *> &collEnvironment,
+                                     std::vector<EnvironmentSprite *> &nonCollEnvironment) {
+        return new Level(collEnvironment, nonCollEnvironment);
     }
 }

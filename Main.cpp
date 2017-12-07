@@ -1,13 +1,16 @@
 //
 // Created by lasse on 11/16/17.
 //
+#include <assert.h>
 #include "GameEngine.h"
 #include "System.h"
-rootengine::HUD *createHUD();
-rootengine::LevelManager *createLvlMgr();
-rootengine::Player *createPlayer();
-std::vector<rootengine::Level *> createLvlColl();
 using namespace rootengine;
+HUD *createHUD();
+LevelManager *createLvlMgr();
+Player *createPlayer();
+std::vector<Level *> createLvlColl();
+Level *createFirstLevel();
+
 
 int main(int, char **) {
     auto* ge = GameEngine::getInstance();
@@ -19,24 +22,35 @@ int main(int, char **) {
     ge->run();
     return 0;
 }
-
 Player *createPlayer() {
     // TODO: lägg till så sprite URL används i konstruktorn
     return Player::getInstance(100,450,50,50);
 }
 
 LevelManager *createLvlMgr() {
-    // TODO: dra ut lvlSkapandet
     LevelManager* lvlMgr = LevelManager::getInstance();
     std::vector<Level*> lvlColl = createLvlColl();
+    assert(lvlColl[0]);
     lvlMgr->setLevelCollection(lvlColl);
     return lvlMgr;
 }
 
 std::vector<Level *> createLvlColl() {
     std::vector<Level *> lvlColl;
-    lvlColl.push_back(nullptr); // INSERTLVL
+    Level* firstLevel = createFirstLevel();
+    lvlColl.push_back(firstLevel);
     return lvlColl;
+}
+
+Level *createFirstLevel() {
+    std::vector<EnvironmentSprite *> collEnv;
+    collEnv.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
+
+    std::vector<EnvironmentSprite *> nonCollEnv;
+    nonCollEnv.push_back(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
+    Level* aLvl = Level::getEnemeyFreeLevel(collEnv, nonCollEnv);
+    assert(aLvl);
+    return aLvl;
 }
 
 HUD *createHUD() {

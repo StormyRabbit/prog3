@@ -2,6 +2,7 @@
 // Created by lasse on 12/5/17.
 //
 
+#include <iostream>
 #include "LevelManager.h"
 namespace rootengine {
 
@@ -16,9 +17,4 @@ namespace rootengine {
     LevelManager *LevelManager::getInstance() {
         return new LevelManager();
     }
-
-    LevelManager::LevelManager() {
-
-    }
-
 }

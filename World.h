@@ -16,6 +16,7 @@ namespace rootengine {
             void drawWorld();
             void updateWorld();
             void setPlayer(Player* player);
+            void setLevel(Level* lvl);
             static World* getInstance();
         protected:
             World() = default;
