@@ -13,11 +13,12 @@ namespace rootengine {
     class World {
         public:
             void executeEvent(const SDL_Event& eve);
+            void drawWorld();
             void updateWorld();
             void setPlayer(Player* player);
             static World* getInstance();
         protected:
-            World();
+            World() = default;
         private:
             Player *activePlayer;
             Level *activeLevel;

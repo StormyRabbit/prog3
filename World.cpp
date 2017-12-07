@@ -24,7 +24,8 @@ namespace rootengine {
         return new World();
     }
 
-    World::World() {
+    void World::drawWorld() {
+        activePlayer->draw();
 
     }
 }

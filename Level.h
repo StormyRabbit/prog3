@@ -12,9 +12,9 @@
 namespace rootengine {
     class Level {
     public:
-        Level(std::vector<EnvironmentSprite*> collEnvironment,
-        std::vector<EnvironmentSprite*> nonCollEnvironment,
-        std::vector<Enemy*> enemyCollection);
+        Level(std::vector<EnvironmentSprite*> &collEnvironment,
+        std::vector<EnvironmentSprite*> &nonCollEnvironment,
+        std::vector<Enemy*> &enemyCollection);
         void updateEnemies();
         bool isOccupied(SDL_Rect& rect);
         bool isLevelComplete();

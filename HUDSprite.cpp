@@ -4,7 +4,6 @@
 
 #include "HUDSprite.h"
 #include "System.h"
-#include <iostream>
 
 namespace rootengine{
     HUDSprite::HUDSprite(int xPos, int yPos, int width, int height, std::string txt) : Sprite(xPos,yPos,width,height), text(txt) {
@@ -12,7 +11,6 @@ namespace rootengine{
             std::cout<<"Misslyckades med att ladda in font fil.";
             exit(-1);
         }
-
         SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), {255,255,255});
         texture = SDL_CreateTextureFromSurface(sys.getRenderer(), surf);
         SDL_FreeSurface(surf);
@@ -35,7 +33,7 @@ namespace rootengine{
     }
 
     void HUDSprite::draw() const {
-        SDL_RenderCopy(sys.getRenderer(), texture, NULL, &getRect());
+        SDL_RenderCopy(sys.getRenderer(), texture, nullptr, &getRect());
     }
 
     HUDSprite::~HUDSprite() {

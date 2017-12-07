@@ -7,14 +7,14 @@
 #include <SDL_image.h>
 #include "GameEngine.h"
 #include "System.h"
-#include "Player.h"
-#include "HUDSprite.h"
-#include "EnvironmentSprite.h"
 
 namespace rootengine {
 
     GameEngine::~GameEngine() {
-
+        delete player;
+        delete activeWorld;
+        delete lvlMgr;
+        delete hud;
     }
 
     void GameEngine::setLvlMgr(LevelManager *lvlMgr) {
@@ -26,21 +26,15 @@ namespace rootengine {
     }
 
     void GameEngine::run() {
-        activeWorld = World::getInstance();
-        Player* player = Player::getInstance(100,450,50,50);
-        activeWorld->setPlayer(player);
         std::string IMG_PATH = "assets/sprites/bg_castle.png";
         SDL_Texture *bgImg = IMG_LoadTexture(sys.getRenderer(), IMG_PATH.c_str());
         SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
-
         Sprite* bottom = EnvironmentSprite::getInstance(0, 500, 600, 100, "assets/sprites/Tiles/grassMid.png");
-        int i = 0;
-
         while (running) {
             SDL_RenderClear(sys.getRenderer());
             SDL_RenderCopy(sys.getRenderer(), bgImg, NULL, NULL);
+            activeWorld->drawWorld();
             hud->draw();
-            player->draw();
             bottom->draw();
             SDL_RenderPresent(sys.getRenderer());
             SDL_Event event;
@@ -58,12 +52,18 @@ namespace rootengine {
             } // while Poll
         } // while running
     }
-
-    void GameEngine::drawTextures() {
-
+    void GameEngine::setPlayer(Player *player) {
+        GameEngine::player = player; // TODO: remove när world->draw är implementerat
+        activeWorld->setPlayer(player);
     }
 
+    GameEngine *GameEngine::getInstance() {
+        return new GameEngine();
+    }
 
+    void GameEngine::createWorld() {
+        activeWorld = World::getInstance();
+    }
 }
 /* ObserverPattern */
 

@@ -51,7 +51,6 @@ namespace rootengine {
             SDL_Quit();
             exit(-1);
         }
-
     }
 
     void System::createFont(std::string path, int size) {
@@ -67,6 +66,5 @@ namespace rootengine {
             exit(-1);
         }
     }
-
     System sys;
 }

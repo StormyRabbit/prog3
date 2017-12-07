@@ -17,31 +17,22 @@
 
 namespace rootengine {
     class GameEngine : public Subject {
-    public:
-        void setLvlMgr(LevelManager* lvlMgr);
-
-        void setHUD(HUD *hud);
-
-        void run();
-
-        ~GameEngine();
-
-        //Test med sprite ej final
-        void addSprite();
-
-        void drawTextures();
-        //Slut med sprite test
-    protected:
-    private:
-        World* activeWorld;
-        bool running = true;
-        LevelManager* lvlMgr;
-        HUD *hud;
-        std::vector<Level *> levelsVector;
-        //Test med sprite ej final
-        //slut med sprite test
-
+        public:
+            void setLvlMgr(LevelManager* lvlMgr);
+            void setPlayer(Player *player);
+            void setHUD(HUD *hud);
+            void run();
+            void createWorld();
+            static GameEngine* getInstance();
+            ~GameEngine();
+        protected:
+            GameEngine() = default;
+        private:
+            Player *player{};
+            World* activeWorld{};
+            bool running = true;
+            LevelManager* lvlMgr{};
+            HUD *hud{};
     };
-    extern SDL_Renderer *ren;
 }
 #endif //PROG3_GAMEENGINE_H
