@@ -6,7 +6,7 @@
 #include "System.h"
 
 namespace rootengine{
-    HUDSprite::HUDSprite(int xPos, int yPos, int width, int height, std::string txt) : Sprite(xPos,yPos,width,height), text(txt) {
+    HUDSprite::HUDSprite(int xPos, int yPos, int width, int height, std::string &txt) : Sprite(xPos,yPos,width,height), text(txt) {
         if (!sys.getFont()){
             std::cout<<"Misslyckades med att ladda in font fil.";
             exit(-1);
@@ -20,7 +20,7 @@ namespace rootengine{
         return new HUDSprite(xPos, yPos, width, height, txt);
     }
 
-    void HUDSprite::setText(std::string newText) {
+    void HUDSprite::setText(std::string &newText) {
         text = newText;
         SDL_DestroyTexture(texture);
         SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), {255,255,255});

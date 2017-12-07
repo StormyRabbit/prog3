@@ -13,11 +13,11 @@ namespace rootengine {
     public:
         static HUDSprite* getInstance(int xPos, int yPos,int width,int height, std::string txt);
         std::string getText() const;
-        void setText(std::string newText);
-        void draw() const;
-        ~HUDSprite();
+        void setText(std::string &newText);
+        void draw() const override;
+        ~HUDSprite() override;
     protected:
-        HUDSprite(int xPos, int yPos,int width,int height, std::string txt);
+        HUDSprite(int xPos, int yPos,int width,int height, std::string &txt);
     private:
         std::string text;
         SDL_Texture* texture;
