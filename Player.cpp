@@ -5,10 +5,10 @@
 #include "Player.h"
 
 namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height) : PhysicsSprite(xPos,yPos, width, height, "assets/sprites/Player/p1_front.png"){}
+    Player::Player(int xPos, int yPos, int width, int height, std::string spritePath) : PhysicsSprite(xPos,yPos, width, height, spritePath){}
 
-    Player* Player::getInstance(int xPos, int yPos, int width, int height) {
-        return new Player(xPos, yPos, width, height);
+    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::string spritePath) {
+        return new Player(xPos, yPos, width, height, spritePath);
     }
 
     void Player::checkState(){

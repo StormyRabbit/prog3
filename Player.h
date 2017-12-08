@@ -11,12 +11,13 @@
 namespace rootengine {
     class Player : public PhysicsSprite {
     public:
-        static Player* getInstance(int xPos, int yPos,int width,int height);
+        static Player *getInstance(int xPos, int yPos, int width, int height, std::string spritePath);
+        static Player* getInstance(int xPos, int yPos, int width, int height);
         void handleEvent(const SDL_Event &eve);
-
         void checkState();
         void updatePlayer();
     protected:
+        Player(int xPos, int yPos, int width, int height, std::string spritePath);
         Player(int xPos, int yPos, int width, int height);
     private:
         PlayerState currentState = PlayerState::standing;

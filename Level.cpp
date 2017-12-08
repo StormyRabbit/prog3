@@ -22,7 +22,13 @@ namespace rootengine {
     }
 
     bool Level::isLevelComplete() {
-        return levelComplete;
+        for(Enemy* enemy : enemyCollection) {
+            bool alive;
+            if(!alive) {
+                return false;
+            }
+        }
+        return true;
     }
 
     void Level::drawLevel() {

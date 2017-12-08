@@ -12,6 +12,7 @@ namespace rootengine{
     protected:
         Enemy(int xPos, int yPos, int width, int height);
     private:
+        bool alive;
     };
 }
 

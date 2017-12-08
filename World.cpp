@@ -11,7 +11,9 @@ namespace rootengine {
             activePlayer->updatePlayer();
         if(activeLevel != nullptr)
             activeLevel->updateEnemies();
-        if(activeLevel->isLevelComplete()) {}
+        if(activeLevel->isLevelComplete()) {
+
+        }
     }
 
     void rootengine::World::setPlayer(rootengine::Player *player) {
