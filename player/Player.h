@@ -20,7 +20,7 @@ namespace rootengine {
         Player(int xPos, int yPos, int width, int height, std::string spritePath);
         Player(int xPos, int yPos, int width, int height);
     private:
-        PlayerState currentState = PlayerState::standing;
+        //PlayerState currentState = PlayerState::standing;
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
         void keyDown(const SDL_Event& eve) override;
         void keyUp(const SDL_Event& eve) override;

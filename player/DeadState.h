@@ -1,0 +1,16 @@
+//
+// Created by Oskar on 2017-12-10.
+//
+
+#ifndef PROG3_DEADSTATE_H
+#define PROG3_DEADSTATE_H
+
+#include "PlayerState.h"
+
+namespace rootengine {
+    class DeadState : public PlayerState {
+
+    };
+}
+
+#endif //PROG3_DEADSTATE_H

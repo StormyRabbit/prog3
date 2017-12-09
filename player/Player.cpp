@@ -10,7 +10,7 @@ namespace rootengine{
     Player* Player::getInstance(int xPos, int yPos, int width, int height, std::string spritePath) {
         return new Player(xPos, yPos, width, height, spritePath);
     }
-
+/*
     void Player::checkState(){
         switch(Player::currentState) {
             case(PlayerState::jumping):
@@ -25,7 +25,7 @@ namespace rootengine{
         if (getRect().y > 350)
             changeRect().y = changeRect().y - 3;
         else
-            Player::currentState = PlayerState ::falling;
+            //Player::currentState = PlayerState ::falling;
     }
 
     void Player::falling() {
@@ -34,7 +34,7 @@ namespace rootengine{
         else
             Player::currentState = PlayerState ::standing;
     }
-
+*/
     void Player::keyDown(const SDL_Event &eve) {
         SDL_KeyboardEvent key = eve.key;
         SDL_Keysym keysym = key.keysym;
@@ -76,7 +76,7 @@ namespace rootengine{
                 break;
         }
     }
-
+/*
     void Player::runningJump() {
 
     }
@@ -162,5 +162,6 @@ namespace rootengine{
         }
 
     }
+    */
 }
 
