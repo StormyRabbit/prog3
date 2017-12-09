@@ -5,8 +5,8 @@
 #ifndef PROG3_WORLD_H
 #define PROG3_WORLD_H
 
-#include "Level.h"
-#include "Player.h"
+#include "level/Level.h"
+#include "player/Player.h"
 
 namespace rootengine {
 

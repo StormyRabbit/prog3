@@ -9,10 +9,10 @@
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <vector>
-#include "HUD.h"
-#include "Level.h"
-#include "Subject.h"
-#include "LevelManager.h"
+#include "hud/HUD.h"
+#include "level/Level.h"
+#include "util/Subject.h"
+#include "level/LevelManager.h"
 #include "World.h"
 
 namespace rootengine {

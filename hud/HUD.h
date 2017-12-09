@@ -6,8 +6,9 @@
 #define PROG3_HUD_H
 
 
+#include <vector>
 #include "HUDSprite.h"
-#include "Observer.h"
+#include "../util/Observer.h"
 namespace rootengine {
 
     class HUD : public Observer {

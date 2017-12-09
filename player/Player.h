@@ -5,7 +5,7 @@
 #ifndef PROG3_PLAYER_H
 #define PROG3_PLAYER_H
 
-#include "PhysicsSprite.h"
+#include "../PhysicsSprite.h"
 #include "PlayerState.h"
 
 namespace rootengine {

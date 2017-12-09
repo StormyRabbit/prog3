@@ -6,8 +6,8 @@
 #define PROG3_LEVEL_H
 
 #include <vector>
-#include "Enemy.h"
-#include "EnvironmentSprite.h"
+#include "../Enemy.h"
+#include "../EnvironmentSprite.h"
 
 namespace rootengine {
     class Level {

@@ -8,7 +8,7 @@
 #include <assert.h>
 #include "GameEngine.h"
 #include "System.h"
-#include "Timer.h"
+#include "util/Timer.h"
 
 namespace rootengine {
 

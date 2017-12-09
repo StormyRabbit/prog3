@@ -5,7 +5,7 @@
 #ifndef PROG3_HUDSPRITE_H
 #define PROG3_HUDSPRITE_H
 
-#include "Sprite.h"
+#include "../Sprite.h"
 #include <string>
 
 namespace rootengine {
