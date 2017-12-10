@@ -21,6 +21,9 @@ namespace rootengine{
     }
 
     void HUDSprite::setText(std::string &newText) {
+        if(fpointer != nullptr) {
+          // TODO: fyll ut
+        }
         text = newText;
         SDL_DestroyTexture(texture);
         SDL_Surface* surf = TTF_RenderText_Solid(sys.getFont(), text.c_str(), {255,255,255});
