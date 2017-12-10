@@ -10,8 +10,9 @@ namespace rootengine{
     Player* Player::getInstance(int xPos, int yPos, int width, int height, std::string spritePath) {
         return new Player(xPos, yPos, width, height, spritePath);
     }
-/*
+
     void Player::checkState(){
+    /*
         switch(Player::currentState) {
             case(PlayerState::jumping):
                 jumping();
@@ -19,8 +20,9 @@ namespace rootengine{
             case (PlayerState ::falling):
                 falling();
         }
-    }
-
+    */
+     }
+/*
     void Player::jumping(){
         if (getRect().y > 350)
             changeRect().y = changeRect().y - 3;
@@ -41,16 +43,16 @@ namespace rootengine{
 
         switch (keysym.sym) {
             case SDLK_RIGHT :
-                rightButton();
+                //rightButton();
                 break;
             case SDLK_LEFT :
-                leftButton();
+                //leftButton();
                 break;
             case SDLK_UP :
-                upButton();
+                //upButton();
                 break;
             case SDLK_DOWN :
-                downButton();
+                //downButton();
                 break;
         }
     }
@@ -64,11 +66,11 @@ namespace rootengine{
                 changeRect().x = changeRect().x + 10;
                 break;
             case SDLK_LEFT :
-                leftButton();
+//                leftButton();
                 changeRect().x = changeRect().x - 10;
                 break;
             case SDLK_UP :
-                upButton();
+//                upButton();
                 break;
             case SDLK_DOWN :
                 if (getRect().y < 450)
@@ -146,7 +148,7 @@ namespace rootengine{
     void Player::downButton() {
 
     }
-
+*/
     void Player::updatePlayer() {
 
     }
@@ -156,12 +158,11 @@ namespace rootengine{
             case SDL_KEYUP :
                 keyUp(eve);
                 break;
-            case SDL_KEYDOWN:
-                keyDown(eve);
+            case SDL_KEYDOWN:keyDown(eve);
                 break;
         }
 
     }
-    */
+
 }
 

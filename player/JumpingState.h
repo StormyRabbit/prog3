@@ -8,8 +8,10 @@
 #include "PlayerState.h"
 
 namespace rootengine {
-    class JumpingState : public PlayerState {
 
+    class JumpingState : public PlayerState {
+    public:
+        JumpingState();
     };
 }
 

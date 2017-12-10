@@ -8,6 +8,7 @@
 #include "PlayerState.h"
 
 namespace rootengine{
+
     class DodgingState : public PlayerState {
 
     };
