@@ -4,7 +4,7 @@
 #include "GameEngine.h"
 #include "System.h"
 using namespace rootengine;
-HUD *createHUD();
+HUD *createHUD(GameEngine* game);
 LevelManager *createLvlMgr();
 Player *createPlayer();
 std::vector<Level *> createLvlColl();
@@ -16,7 +16,7 @@ int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
     ge->setLvlMgr(createLvlMgr());
-    ge->setHUD(createHUD());
+    ge->setHUD(createHUD(ge));
     ge->setPlayer(createPlayer());
     ge->setFPS(60, 1000);
     ge->run();
@@ -45,10 +45,9 @@ std::vector<Level *> createLvlColl() {
 Level *createFirstLevel() {
     std::vector<EnvironmentSprite *> collEnv;
     collEnv.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
-
     std::vector<EnvironmentSprite *> nonCollEnv;
-    nonCollEnv.push_back(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     Level* aLvl = Level::getEnemeyFreeLevel(collEnv, nonCollEnv);
+    aLvl->setBackGround(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     return aLvl;
 }
 
@@ -57,16 +56,18 @@ Level *createSecondLevel() {
     collEnv.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/sand.png"));
 
     std::vector<EnvironmentSprite *> nonCollEnv;
-    nonCollEnv.push_back(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
     Level* aLvl = Level::getEnemeyFreeLevel(collEnv, nonCollEnv);
+    aLvl->setBackGround(   EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
+
     return aLvl;
 }
 
-HUD *createHUD() {
+HUD *createHUD(GameEngine* game) {
     // TODO: lägg till restsen av hud
     HUD* hud = HUD::getInstance();
     HUDSprite* lasse = HUDSprite::getInstance(500,280,200,20, "LASSE > osCar");
     HUDSprite* scoreSprite = HUDSprite::getInstance(0,0,200,20, "SCORE: ");
+    scoreSprite->setValueToObserver(game, &GameEngine::getScore);
     HUDSprite* lifeSprite = HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");
     HUDSprite* enemyLeft = HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
     hud->addHUDElement(scoreSprite);

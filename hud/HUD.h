@@ -13,8 +13,7 @@ namespace rootengine {
 
     class HUD : public Observer {
     public:
-        void addHUDElement(HUDSprite *he);
-
+        void addHUDElement(class HUDSprite *he);
         void setHUDElements(std::vector<HUDSprite *> hudElementList);
         static HUD* getInstance();
         void draw();

@@ -40,4 +40,10 @@ namespace rootengine{
         SDL_DestroyTexture(texture);
     }
 
+    void HUDSprite::setValueToObserver(GameEngine *geObj, int (GameEngine:: *fpoint)()) {
+        ge = geObj;
+        fpointer = fpoint;
+    }
+
+
 }

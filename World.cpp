@@ -37,6 +37,13 @@ namespace rootengine {
     }
 
     void World::setLevel(Level *lvl) {
+        if(activeLevel == nullptr)
+            delete activeLevel;
+
         activeLevel = lvl;
+    }
+
+    bool World::readyForNextLvl() {
+        return activeLevel == nullptr || activeLevel->isLevelComplete();
     }
 }

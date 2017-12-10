@@ -7,6 +7,7 @@
 
 #include "../Sprite.h"
 #include <string>
+#include "../GameEngine.h"
 
 namespace rootengine {
     class HUDSprite : public Sprite {
@@ -14,11 +15,15 @@ namespace rootengine {
         static HUDSprite* getInstance(int xPos, int yPos,int width,int height, std::string txt);
         std::string getText() const;
         void setText(std::string &newText);
+        void setValueToObserver(class GameEngine*, int (GameEngine:: *fpoint)());
         void draw() const override;
         ~HUDSprite() override;
+
     protected:
         HUDSprite(int xPos, int yPos,int width,int height, std::string &txt);
     private:
+        GameEngine* ge;
+        int (GameEngine:: *fpointer)();
         std::string text;
         SDL_Texture* texture;
     };

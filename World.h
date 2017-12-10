@@ -7,6 +7,7 @@
 
 #include "level/Level.h"
 #include "player/Player.h"
+#include "level/LevelManager.h"
 
 namespace rootengine {
 
@@ -18,6 +19,7 @@ namespace rootengine {
             void setPlayer(Player* player);
             void setLevel(Level* lvl);
             static World* getInstance();
+            bool readyForNextLvl();
         protected:
             World() = default;
         private:

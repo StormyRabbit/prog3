@@ -20,8 +20,10 @@ namespace rootengine {
         public:
             void setLvlMgr(LevelManager *);
             void setPlayer(Player *);
-            void setHUD(HUD *);
+            void setHUD(class HUD *);
             void run();
+            void handleNextlvl();
+            int getScore();
             void createWorld();
             void setFPS(int, int);
             static GameEngine* getInstance();
@@ -29,6 +31,7 @@ namespace rootengine {
         protected:
             GameEngine() = default;
         private:
+            int score;
             int screenFPS{};
             int tickRate{};
             Player *player{};
@@ -36,6 +39,8 @@ namespace rootengine {
             bool running = true;
             LevelManager* lvlMgr{};
             HUD *hud{};
+
+        void endGame();
     };
 }
 #endif //PROG3_GAMEENGINE_H

@@ -12,10 +12,6 @@ namespace rootengine {
         Level::enemyCollection = enemyCollection;
     }
 
-    bool Level::isOccupied(SDL_Rect &rect) {
-        for(EnvironmentSprite* es : collEnvironment){}
-        return false;
-    }
 
     void Level::updateEnemies() {
         for(Enemy* enemy : enemyCollection) {}
@@ -32,6 +28,9 @@ namespace rootengine {
     }
 
     void Level::drawLevel() {
+        if(background != nullptr)
+            background->draw();
+
         for(EnvironmentSprite* es : nonCollEnvironment)
             es->draw();
         for(EnvironmentSprite* es : collEnvironment)
@@ -57,5 +56,9 @@ namespace rootengine {
     Level *Level::getEnemeyFreeLevel(std::vector<EnvironmentSprite *> &collEnvironment,
                                      std::vector<EnvironmentSprite *> &nonCollEnvironment) {
         return new Level(collEnvironment, nonCollEnvironment);
+    }
+
+    void Level::setBackGround(EnvironmentSprite *bgSprite) {
+        background = bgSprite;
     }
 }

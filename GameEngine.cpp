@@ -27,10 +27,17 @@ namespace rootengine {
     void GameEngine::setHUD(HUD *hud) {
         GameEngine::hud = hud;
     }
-
+    void GameEngine::handleNextlvl() {
+        if(activeWorld->readyForNextLvl()) {
+            Level* nextLvl = lvlMgr->getNextLevel();
+            if(nextLvl != nullptr)
+                activeWorld->setLevel(nextLvl);
+            else
+                endGame();
+        }
+    }
     void GameEngine::run() {
-        Level *nextLvl = lvlMgr->getNextLevel();
-        activeWorld->setLevel(nextLvl);
+        handleNextlvl();
         Timer* fpsTimer = Timer::getInstance();
         Timer* capTimer = Timer::getInstance();
         int countedFrames = 0;
@@ -72,6 +79,7 @@ namespace rootengine {
                 SDL_Delay( tickRate - frameTicks); // TODO: updatera till Uint32
             }
             SDL_RenderPresent(sys.getRenderer());
+
         } // while running
     }
 
@@ -91,6 +99,29 @@ namespace rootengine {
     void GameEngine::setFPS(int fps, int ticksPerFrame) {
         screenFPS = fps;
         tickRate = ticksPerFrame / fps;
+    }
+
+    int GameEngine::getScore() {
+        return score;
+    }
+
+    void GameEngine::endGame() {
+        bool endGameRunning = true;
+        while(endGameRunning) {
+
+            SDL_Event event;
+             while (SDL_PollEvent(&event)) {
+                if(event.type)
+                    switch (event.type) {
+                        case SDL_QUIT:
+                            endGameRunning = false;
+                            break;
+                        default:
+                            break;
+                            // OM SPELAREVENT
+                    } // switch end
+            } // while Poll
+        }
     }
 }
 /* ObserverPattern */
