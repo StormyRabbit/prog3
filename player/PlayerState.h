@@ -7,32 +7,18 @@
 
 #include <SDL.h>
 #include "Player.h"
-/*
-#include "StandingState.h"
-#include "RunningState.h"
-#include "JumpingState.h"
-#include "DeadState.h"
-#include "FallingState.h"
-#include "DodgingState.h"
-*/
+
 
 namespace rootengine{
 
     class PlayerState {
     public:
-        PlayerState();
         ~PlayerState();
-        //static StandingState standing;
-        //static RunningState running;
-        //static JumpingState jumping;
-        //static FallingState falling;
-        //static DeadState dead;
-        //static DodgingState dodging;
-        virtual PlayerState* handleInput(class Player& player, SDL_KeyboardEvent keysum) {};
-
-
-
-        //standing, running, jumping, runningJump, attacking, dodging, dead, falling
+        virtual PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent); //Tried removing class before Player&
+        virtual void updateState(class Player& player);
+        virtual void enterState(class Player& player);
+    protected:
+        PlayerState();
     };
 }
 

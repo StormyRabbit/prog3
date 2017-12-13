@@ -5,10 +5,25 @@
 #include "Player.h"
 
 namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height, std::string spritePath) : PhysicsSprite(xPos,yPos, width, height, spritePath){}
+    Player::Player(int xPos, int yPos, int width, int height, std::string spritePath) : PhysicsSprite(xPos,yPos, width, height, spritePath){
+        playerState = new StandingState();
+        playerState->enterState(*this);
+    }
 
     Player* Player::getInstance(int xPos, int yPos, int width, int height, std::string spritePath) {
         return new Player(xPos, yPos, width, height, spritePath);
+    }
+
+    void Player::handleInput(SDL_KeyboardEvent &keyEvent) {
+        PlayerState* tempState = playerState->handleInput(*this, keyEvent);
+        //Returns NULL if PlayerState is not changed.
+        if (tempState != NULL){
+            delete playerState;
+            playerState = tempState;
+
+            //Enter new state.
+            playerState->enterState(*this);
+        }
     }
 
     void Player::checkState(){

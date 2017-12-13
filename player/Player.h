@@ -7,6 +7,12 @@
 
 #include "../PhysicsSprite.h"
 #include "PlayerState.h"
+#include "StandingState.h"
+#include "RunningState.h"
+#include "JumpingState.h"
+#include "FallingState.h"
+#include "DodgingState.h"
+#include "DeadState.h"
 
 namespace rootengine {
     class Player : public PhysicsSprite {
@@ -24,20 +30,9 @@ namespace rootengine {
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
         void keyDown(const SDL_Event& eve) override;
         void keyUp(const SDL_Event& eve) override;
-        void running(std::string direction);
-        void jumpMove(std::string direction);
-        void upButton();
-        void runningJump();
-        void standingJump();
-        void leftButton();
+        void handleInput(SDL_KeyboardEvent& keyEvent);
+        PlayerState* playerState;
 
-        void downButton();
-
-        void rightButton();
-
-        void jumping();
-
-        void falling();
     };
 }
 

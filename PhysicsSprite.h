@@ -13,10 +13,10 @@ namespace rootengine{
     class PhysicsSprite : public Sprite {
     public:
         void draw() const;
+        void changeTexture(std::string pathToNewTexture);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::string pathToDraw);
         ~PhysicsSprite(); //Osäker på om det ska vara protected???
-        void changeTexture(std::string pathToNewTexture); //Kan vara public, tror dock högre säkerhet och inget större behov av att öppna. ??
     private:
         SDL_Texture* texture;
     };
