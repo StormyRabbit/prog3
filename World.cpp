@@ -8,7 +8,7 @@
 namespace rootengine {
     void rootengine::World::updateWorld() {
         if(activePlayer != nullptr)
-            activePlayer->updatePlayer();
+            activePlayer->tick();
         if(activeLevel != nullptr)
             activeLevel->updateEnemies();
         if(activeLevel->isLevelComplete()) {
@@ -22,6 +22,7 @@ namespace rootengine {
 
     void rootengine::World::executeEvent(const SDL_Event &eve) {
         activePlayer->handleEvent(eve);
+
     }
 
     rootengine::World *rootengine::World::getInstance() {

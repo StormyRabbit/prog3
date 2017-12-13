@@ -3,30 +3,36 @@
 //
 
 #include "RunningState.h"
+#include "StandingState.h"
 
 namespace rootengine{
-    RunningState::RunningState(int leftOrRight) {
-
+    RunningState::RunningState(bool isLeftBool) {
+        isLeft = isLeftBool;
     }
     RunningState::~RunningState() {}
     void RunningState::enterState(Player &player) {
-        //TODO ADD WORKING RUNNING TEXTURE PATH HERE
-        //TODO ALSO FIX SO THERE IS RIGHT OR LEFT RUNNING
-        //player.changeTexture("");
+        if (isLeft) {
+            player.changeTexture("assets/sprites/Player/p2_duck.png");
+        } else {
+            player.changeTexture("assets/sprites/Player/p2_jump.png");
+        }
     }
 
     PlayerState* RunningState::handleInput(Player& player, SDL_KeyboardEvent& keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
+
+        /*
         if (keyEvent.type == SDL_KEYDOWN){
-            switch (keysym.sym) {
-                case SDLK_LEFT :
-                    player.changeRect().x = player.changeRect().x - 10;
-                    break;
-                case SDLK_RIGHT :
-                    player.changeRect().x = player.changeRect().x + 10;
-                    break;
+            if (keysym.sym == SDLK_RIGHT && isLeft){
+                return new StandingState();
+            } else if (keysym.sym == SDLK_LEFT && !isLeft){
+                return new StandingState();
             }
-        } else if (keyEvent.type == SDL_KEYUP){
+        }
+        */
+
+
+        if (keyEvent.type == SDL_KEYUP){
             switch (keysym.sym) {
                 case SDLK_LEFT :
                     return new StandingState();
@@ -34,7 +40,16 @@ namespace rootengine{
                     return new StandingState();
             }
         }
+
         return NULL;
+    }
+
+    void RunningState::updateState(Player& player){
+        if (isLeft){
+            player.changeRect().x = player.getRect().x - 5;
+        } else {
+            player.changeRect().x = player.getRect().x + 5;
+        }
     }
 
 }

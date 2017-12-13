@@ -12,6 +12,7 @@ namespace rootengine {
     class RunningJumpState : public PlayerState{
     public:
         RunningJumpState();
+        ~RunningJumpState();
 
     };
 }

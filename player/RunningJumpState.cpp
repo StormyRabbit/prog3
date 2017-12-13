@@ -3,3 +3,8 @@
 //
 
 #include "RunningJumpState.h"
+
+namespace rootengine{
+    RunningJumpState::RunningJumpState(){}
+    RunningJumpState::~RunningJumpState() {}
+}

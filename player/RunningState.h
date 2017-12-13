@@ -10,10 +10,13 @@
 namespace rootengine {
     class RunningState : public PlayerState {
     public:
-        explicit RunningState(int leftOrRight); //Left (-1) or right (1)
+        explicit RunningState(bool isLeft);
         ~RunningState();
+        void updateState(class Player& player);
         PlayerState *handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
         void enterState(class Player& player);
+    private:
+        bool isLeft;
 
     };
 }

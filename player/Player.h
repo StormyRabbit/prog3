@@ -7,12 +7,7 @@
 
 #include "../PhysicsSprite.h"
 #include "PlayerState.h"
-#include "StandingState.h"
-#include "RunningState.h"
-#include "JumpingState.h"
-#include "FallingState.h"
-#include "DodgingState.h"
-#include "DeadState.h"
+
 
 namespace rootengine {
     class Player : public PhysicsSprite {
@@ -20,18 +15,17 @@ namespace rootengine {
         static Player *getInstance(int xPos, int yPos, int width, int height, std::string spritePath);
         static Player* getInstance(int xPos, int yPos, int width, int height);
         void handleEvent(const SDL_Event &eve);
-        void checkState();
-        void updatePlayer();
+        void tick();
+        void enterNewState(class PlayerState* newState);
+        ~Player();
     protected:
         Player(int xPos, int yPos, int width, int height, std::string spritePath);
         Player(int xPos, int yPos, int width, int height);
     private:
-        //PlayerState currentState = PlayerState::standing;
+
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
-        void keyDown(const SDL_Event& eve) override;
-        void keyUp(const SDL_Event& eve) override;
+        class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
-        PlayerState* playerState;
 
     };
 }

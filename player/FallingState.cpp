@@ -3,21 +3,21 @@
 //
 
 #include "FallingState.h"
+#include "StandingState.h"
 
 namespace rootengine{
     FallingState::FallingState() {}
     FallingState::~FallingState() {}
     void FallingState::enterState(Player &player) {
-        //TODO ADD FALLING TEXTURE!
-        //player.changeTexture("");
+        player.changeTexture("assets/sprites/Player/p1_jump.png");
     }
 
     void FallingState::updateState(class Player &player) {
-        if (player.getRect().y < groundHeight){
-            //TODO CHANGE TO STANDING PLZ HELP
+        if (player.getRect().y > groundHeight){
+            player.enterNewState(new StandingState());
             player.changeRect().y = groundHeight;
         } else {
-            player.changeRect().y = player.getRect().y + 10;
+            player.changeRect().y = player.getRect().y + 5;
         }
     }
 
@@ -33,5 +33,6 @@ namespace rootengine{
                     break;
             }
         }
+        return nullptr;
     }
 }

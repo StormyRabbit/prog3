@@ -10,6 +10,9 @@
 namespace rootengine{
 
     class DodgingState : public PlayerState {
+    public:
+        DodgingState();
+        ~DodgingState();
 
     };
 }

@@ -4,6 +4,7 @@
 
 #include "JumpingState.h"
 #include "RunningJumpState.h"
+#include "FallingState.h"
 
 namespace rootengine{
     JumpingState::JumpingState() {}
@@ -13,24 +14,25 @@ namespace rootengine{
         player.changeTexture("assets/sprites/Player/p1_jump.png");
     }
 
-    PlayerState* PlayerState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
+    PlayerState* JumpingState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
 
         if (keyEvent.type == SDL_KEYDOWN) {
             switch (keysym.sym) {
                 case SDLK_LEFT :
-                    return new RunningJumpState();
+                    break;
                 case SDLK_RIGHT :
-                    return new RunningJumpState();
+                    break;
             }
         }
+        return nullptr;
     }
 
     void JumpingState::updateState(class Player &player) {
-        if (player.getRect().y > startingHeight + 100) {
-            //TODO CALL FALLING STATE, NO IDE HOW PLZ HELP
+        if (player.getRect().y < startingHeight - 100) {
+            player.enterNewState(new FallingState());
         } else {
-            player.changeRect().y = player.getRect().y - 10;
+            player.changeRect().y = player.getRect().y - 5;
         }
     }
 }
