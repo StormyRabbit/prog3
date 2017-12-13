@@ -6,6 +6,7 @@
 #define PROG3_HUDSPRITE_H
 
 #include "../Sprite.h"
+#include "../GameEngine.h"
 #include <string>
 #include "../GameEngine.h"
 

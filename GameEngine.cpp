@@ -27,7 +27,7 @@ namespace rootengine {
     void GameEngine::setHUD(HUD *hud) {
         GameEngine::hud = hud;
     }
-    void GameEngine::handleNextlvl() {
+    void GameEngine::handleNextLvl() {
         if(activeWorld->readyForNextLvl()) {
             Level* nextLvl = lvlMgr->getNextLevel();
             if(nextLvl != nullptr)
@@ -37,7 +37,7 @@ namespace rootengine {
         }
     }
     void GameEngine::run() {
-        handleNextlvl();
+        handleNextLvl();
         Timer* fpsTimer = Timer::getInstance();
         Timer* capTimer = Timer::getInstance();
         int countedFrames = 0;
@@ -59,14 +59,20 @@ namespace rootengine {
              * Det är meningen att tillämpningar (de specifika spelen) ska kunna överskugga
              * denna medlemsfunktion i sina egna subklasser till Sprite eller dess subklasser. */
             while (SDL_PollEvent(&event)) {
-                if(event.type)
+                if(event.type) {
+                    SDL_KeyboardEvent keyEvent = event.key;
+                    SDL_Keysym keysym = keyEvent.keysym;
+                    if (keysym.sym == SDLK_h)
+                        activeWorld->setLevel(lvlMgr->getNextLevel());
                     switch (event.type) {
+
                         case SDL_QUIT:
                             running = false;
                             break;
                         default: // OM SPELAREVENT
                             activeWorld->executeEvent(event);
                     } // switch end
+                }
             } // while Poll
             // TODO: MAKE WORK
             float avgFPS = countedFrames / (fpsTimer->getTicks() / 1000.f);

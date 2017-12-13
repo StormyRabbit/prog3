@@ -46,4 +46,8 @@ namespace rootengine {
     bool World::readyForNextLvl() {
         return activeLevel == nullptr || activeLevel->isLevelComplete();
     }
+
+    void World::testNextLvlStuff() {
+
+    }
 }

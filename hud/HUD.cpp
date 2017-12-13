@@ -32,6 +32,7 @@ namespace rootengine {
             hs->draw();
     }
 
+
     void Observer::update() {
         // TODO FIX
         /*

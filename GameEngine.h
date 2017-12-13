@@ -22,7 +22,7 @@ namespace rootengine {
             void setPlayer(Player *);
             void setHUD(class HUD *);
             void run();
-            void handleNextlvl();
+            void handleNextLvl();
             int getScore();
             void createWorld();
             void setFPS(int, int);
@@ -35,7 +35,7 @@ namespace rootengine {
             int screenFPS{};
             int tickRate{};
             Player *player{};
-            World* activeWorld{};
+            World *activeWorld{};
             bool running = true;
             LevelManager* lvlMgr{};
             HUD *hud{};
