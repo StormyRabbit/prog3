@@ -5,24 +5,14 @@
 #include <iostream>
 #include "Level.h"
 namespace rootengine {
-    Level::Level(std::vector<EnvironmentSprite *> &collEnvironment, std::vector<EnvironmentSprite *> &nonCollEnvironment,
-                 std::vector<Enemy *> &enemyCollection) {
-        Level::collEnvironment = collEnvironment;
-        Level::nonCollEnvironment = nonCollEnvironment;
-        Level::enemyCollection = enemyCollection;
-    }
-
-
     void Level::updateEnemies() {
         for(Enemy* enemy : enemyCollection) {}
     }
 
     bool Level::isLevelComplete() {
         for(Enemy* enemy : enemyCollection) {
-            bool alive;
-            if(!alive) {
+            bool alive = false;
                 return false;
-            }
         }
         return true;
     }
@@ -41,21 +31,8 @@ namespace rootengine {
         }
     }
 
-    Level *Level::getInstance(std::vector<EnvironmentSprite *> &collEnvironment,
-                              std::vector<EnvironmentSprite *> &nonCollEnvironment,
-                              std::vector<Enemy *> &enemyCollection) {
-        return new Level(collEnvironment, nonCollEnvironment, enemyCollection);
-    }
-
-    Level::Level(std::vector<EnvironmentSprite *> &collEnvironment,
-                 std::vector<EnvironmentSprite *> &nonCollEnvironment) {
-        Level::collEnvironment = collEnvironment;
-        Level::nonCollEnvironment = nonCollEnvironment;
-    }
-
-    Level *Level::getEnemeyFreeLevel(std::vector<EnvironmentSprite *> &collEnvironment,
-                                     std::vector<EnvironmentSprite *> &nonCollEnvironment) {
-        return new Level(collEnvironment, nonCollEnvironment);
+    Level *Level::getInstance() {
+        return new Level();
     }
 
     void Level::setBackGround(EnvironmentSprite *bgSprite) {
@@ -70,5 +47,17 @@ namespace rootengine {
         for(Enemy *enemy : enemyCollection)
             delete enemy;
         delete background;
+    }
+
+    void Level::addNonCollEnv(EnvironmentSprite *es) {
+        nonCollEnvironment.push_back(es);
+    }
+
+    void Level::addEnemy(Enemy *en) {
+        enemyCollection.push_back(en);
+    }
+
+    void Level::addCollEnv(EnvironmentSprite *collEnv) {
+        collEnvironment.push_back(collEnv);
     }
 }

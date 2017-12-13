@@ -2,12 +2,10 @@
 // Created by lasse on 11/16/17.
 //
 #include "GameEngine.h"
-#include "System.h"
 using namespace rootengine;
 HUD *createHUD(GameEngine* game);
 LevelManager *createLvlMgr();
 Player *createPlayer();
-std::vector<Level *> createLvlColl();
 Level *createFirstLevel();
 Level *createSecondLevel();
 
@@ -28,37 +26,22 @@ Player *createPlayer() {
 
 LevelManager *createLvlMgr() {
     LevelManager* lvlMgr = LevelManager::getInstance();
-    std::vector<Level*> lvlColl = createLvlColl();
-    lvlMgr->setLevelCollection(lvlColl);
+    lvlMgr->addLevel(createFirstLevel());
+    lvlMgr->addLevel(createSecondLevel());
     return lvlMgr;
 }
 
-std::vector<Level *> createLvlColl() {
-    std::vector<Level *> lvlColl;
-    Level* firstLevel = createFirstLevel();
-    lvlColl.push_back(firstLevel);
-    lvlColl.push_back(createSecondLevel());
-
-    return lvlColl;
-}
-
 Level *createFirstLevel() {
-    std::vector<EnvironmentSprite *> collEnv;
-    collEnv.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
-    std::vector<EnvironmentSprite *> nonCollEnv;
-    Level* aLvl = Level::getEnemeyFreeLevel(collEnv, nonCollEnv);
+    Level* aLvl = Level::getInstance();
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
     aLvl->setBackGround(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     return aLvl;
 }
 
 Level *createSecondLevel() {
-    std::vector<EnvironmentSprite *> collEnv;
-    collEnv.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/sand.png"));
-
-    std::vector<EnvironmentSprite *> nonCollEnv;
-    Level* aLvl = Level::getEnemeyFreeLevel(collEnv, nonCollEnv);
+    Level* aLvl = Level::getInstance();
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/sand.png"));
     aLvl->setBackGround(   EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
-
     return aLvl;
 }
 

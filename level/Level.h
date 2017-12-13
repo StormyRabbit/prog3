@@ -8,32 +8,27 @@
 #include <vector>
 #include "../Enemy.h"
 #include "../EnvironmentSprite.h"
+#include "../PhysicsSprite.h"
 
 namespace rootengine {
     class Level {
     public:
+        void addNonCollEnv(EnvironmentSprite*);
+        void addCollEnv(EnvironmentSprite*);
         void setBackGround(EnvironmentSprite*);
+        void addEnemy(Enemy *);
         void updateEnemies();
         bool isLevelComplete();
         void drawLevel();
         ~Level();
-        static Level* getEnemeyFreeLevel(std::vector<EnvironmentSprite *> &collEnvironment,
-                                         std::vector<EnvironmentSprite *> &nonCollEnvironment);
-        static Level* getInstance(std::vector<EnvironmentSprite*> &collEnvironment,
-                                  std::vector<EnvironmentSprite*> &nonCollEnvironment,
-                                  std::vector<Enemy*> &enemyCollection);
+        static Level* getInstance();
     protected:
-        Level(std::vector<EnvironmentSprite*> &collEnvironment,
-              std::vector<EnvironmentSprite*> &nonCollEnvironment);
-        Level(std::vector<EnvironmentSprite*> &collEnvironment,
-              std::vector<EnvironmentSprite*> &nonCollEnvironment,
-              std::vector<Enemy*> &enemyCollection);
+        Level() = default;
     private:
         EnvironmentSprite* background;
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<EnvironmentSprite*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;
-        bool levelComplete;
     };
 }
 

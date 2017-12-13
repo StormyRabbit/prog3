@@ -62,23 +62,26 @@ namespace rootengine {
                 if(event.type) {
                     SDL_KeyboardEvent keyEvent = event.key;
                     SDL_Keysym keysym = keyEvent.keysym;
-                    if (keysym.sym == SDLK_h)
-                        activeWorld->setLevel(lvlMgr->getNextLevel());
+                    if (keysym.sym == SDLK_h) {
+                        Level *nxtLvl = lvlMgr->getNextLevel();
+                        if(nxtLvl != nullptr)
+                            activeWorld->setLevel(nxtLvl);
+                    }
                     switch (event.type) {
 
-                        case SDL_QUIT:
-                            running = false;
-                            break;
-                        default: // OM SPELAREVENT
-                            activeWorld->executeEvent(event);
-                    } // switch end
+                    case SDL_QUIT:
+                        running = false;
+                        break;
+                    default: // OM SPELAREVENT
+                        activeWorld->executeEvent(event);
+                } // switch end
                 }
             } // while Poll
             // TODO: MAKE WORK
             float avgFPS = countedFrames / (fpsTimer->getTicks() / 1000.f);
             fpsText.str("");
             fpsText << "AVG FPS: " << avgFPS;
-            std::string fpsString = fpsText.str().c_str();
+            std::string fpsString = fpsText.str();
             ++countedFrames;
             int frameTicks = capTimer->getTicks();
             if( frameTicks < tickRate) {
@@ -112,6 +115,7 @@ namespace rootengine {
     }
 
     void GameEngine::endGame() {
+        /*
         bool endGameRunning = true;
         while(endGameRunning) {
 
@@ -128,9 +132,6 @@ namespace rootengine {
                     } // switch end
             } // while Poll
         }
+         */
     }
 }
-/* ObserverPattern */
-
-
-

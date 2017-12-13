@@ -16,7 +16,7 @@ namespace rootengine {
         System();
         ~System();
         SDL_Renderer *getRenderer() const;
-        TTF_Font* getFont() const;
+        TTF_Font *getFont() const;
     private:
         void createWindow(int width, int height, std::string name);
         void createFont(std::string path, int size);
@@ -24,7 +24,7 @@ namespace rootengine {
         void init();
         SDL_Window *win;
         SDL_Renderer *ren;
-        TTF_Font* mainFont;
+        TTF_Font *mainFont;
     };
 
     extern System sys;

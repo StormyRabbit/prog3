@@ -6,25 +6,23 @@
 #include <assert.h>
 #include "World.h"
 namespace rootengine {
-    void rootengine::World::updateWorld() {
+    void World::updateWorld() {
         if(activePlayer != nullptr)
             activePlayer->updatePlayer();
         if(activeLevel != nullptr)
             activeLevel->updateEnemies();
-        if(activeLevel->isLevelComplete()) {
-
-        }
+        if(activeLevel->isLevelComplete()) {}
     }
 
-    void rootengine::World::setPlayer(rootengine::Player *player) {
+    void World::setPlayer(rootengine::Player *player) {
         activePlayer = player;
     }
 
-    void rootengine::World::executeEvent(const SDL_Event &eve) {
+    void World::executeEvent(const SDL_Event &eve) {
         activePlayer->handleEvent(eve);
     }
 
-    rootengine::World *rootengine::World::getInstance() {
+    World *rootengine::World::getInstance() {
         return new World();
     }
 
@@ -39,7 +37,6 @@ namespace rootengine {
     void World::setLevel(Level *lvl) {
         if(activeLevel != nullptr)
             delete activeLevel;
-
         activeLevel = lvl;
     }
 

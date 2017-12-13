@@ -7,11 +7,14 @@
 namespace rootengine {
 
     Level *LevelManager::getNextLevel() {
-        return levelCollection[currentLevel++];
+        int lvlToReturn = currentLevel++;
+        if(lvlToReturn > levelCollection.size())
+            return nullptr;
+        return levelCollection[lvlToReturn];
     }
 
-    void LevelManager::setLevelCollection(std::vector<Level *> &levelCollection) {
-        LevelManager::levelCollection = levelCollection;
+    void LevelManager::addLevel(Level* aLvl) {
+        LevelManager::levelCollection.push_back(aLvl);
     }
 
     LevelManager *LevelManager::getInstance() {
