@@ -8,12 +8,13 @@
 #include "PlayerState.h"
 
 namespace rootengine {
-
     class StandingState : public PlayerState {
     public:
         StandingState() {};
         ~StandingState() {};
-
+        PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        void enterState(class Player& player);
+        void updateState(class Player& player);
     };
 }
 

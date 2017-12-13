@@ -8,36 +8,25 @@
 #include "../PhysicsSprite.h"
 #include "PlayerState.h"
 
+
 namespace rootengine {
     class Player : public PhysicsSprite {
     public:
         static Player *getInstance(int xPos, int yPos, int width, int height, std::string spritePath);
         static Player* getInstance(int xPos, int yPos, int width, int height);
         void handleEvent(const SDL_Event &eve);
-        void checkState();
-        void updatePlayer();
+        void tick();
+        void enterNewState(class PlayerState* newState);
+        ~Player();
     protected:
         Player(int xPos, int yPos, int width, int height, std::string spritePath);
         Player(int xPos, int yPos, int width, int height);
     private:
-        //PlayerState currentState = PlayerState::standing;
+
         std::string frontTexture = "assets/sprites/Player/p1_front.png";
-        void keyDown(const SDL_Event& eve) override;
-        void keyUp(const SDL_Event& eve) override;
-        void running(std::string direction);
-        void jumpMove(std::string direction);
-        void upButton();
-        void runningJump();
-        void standingJump();
-        void leftButton();
+        class PlayerState* playerState;
+        void handleInput(SDL_KeyboardEvent& keyEvent);
 
-        void downButton();
-
-        void rightButton();
-
-        void jumping();
-
-        void falling();
     };
 }
 

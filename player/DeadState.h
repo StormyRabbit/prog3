@@ -9,6 +9,9 @@
 
 namespace rootengine {
     class DeadState : public PlayerState {
+    public:
+        DeadState();
+        ~DeadState();
 
     };
 }

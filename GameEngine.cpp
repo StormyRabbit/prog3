@@ -49,7 +49,8 @@ namespace rootengine {
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
-            player->checkState();
+            SDL_KeyboardEvent keyEvent = event.key;
+            player->tick();
             /* För varje varv i loopen, efter att ha kontrollerat om det finns några
              * användargenererade händelser och i så fall ha tagit hand om dem, ska man gå igenom alla installerade
              * Sprite-objekt och anropa en medlemsfunktion (ofta kallas en sådan medlemsfunktion tick)

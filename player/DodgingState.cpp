@@ -3,3 +3,8 @@
 //
 
 #include "DodgingState.h"
+
+namespace rootengine{
+    DodgingState::DodgingState() {}
+    DodgingState::~DodgingState() {}
+}
