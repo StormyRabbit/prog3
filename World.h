@@ -13,7 +13,6 @@ namespace rootengine {
 
     class World {
         public:
-            void testNextLvlStuff();
             void executeEvent(const SDL_Event& eve);
             void drawWorld();
             void updateWorld();

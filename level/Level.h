@@ -16,6 +16,7 @@ namespace rootengine {
         void updateEnemies();
         bool isLevelComplete();
         void drawLevel();
+        ~Level();
         static Level* getEnemeyFreeLevel(std::vector<EnvironmentSprite *> &collEnvironment,
                                          std::vector<EnvironmentSprite *> &nonCollEnvironment);
         static Level* getInstance(std::vector<EnvironmentSprite*> &collEnvironment,

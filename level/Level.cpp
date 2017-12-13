@@ -61,4 +61,14 @@ namespace rootengine {
     void Level::setBackGround(EnvironmentSprite *bgSprite) {
         background = bgSprite;
     }
+
+    Level::~Level() {
+        for(EnvironmentSprite *es : collEnvironment)
+            delete es;
+        for(EnvironmentSprite *es : nonCollEnvironment)
+            delete es;
+        for(Enemy *enemy : enemyCollection)
+            delete enemy;
+        delete background;
+    }
 }
