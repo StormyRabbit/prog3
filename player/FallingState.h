@@ -12,6 +12,13 @@ namespace rootengine {
     class FallingState : public PlayerState {
     public:
         FallingState();
+        ~FallingState();
+        void updateState(Player& player);
+        PlayerState* handleInput(Player& player, SDL_KeyboardEvent& keyEvent);
+        void enterState(Player& player);
+
+    private:
+        int groundHeight = 450; //TODO MAKE RESOPONSIVE TO ACUAL CLOSES "GROUND"
     };
 }
 

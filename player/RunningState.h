@@ -8,10 +8,12 @@
 #include "PlayerState.h"
 
 namespace rootengine {
-
-    class RunningState : public PlayerState{
+    class RunningState : public PlayerState {
     public:
-        RunningState();
+        explicit RunningState(int leftOrRight); //Left (-1) or right (1)
+        ~RunningState();
+        PlayerState *handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        void enterState(class Player& player);
 
     };
 }
