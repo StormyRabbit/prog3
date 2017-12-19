@@ -4,6 +4,8 @@
 
 #include "RunningState.h"
 #include "StandingState.h"
+#include "JumpingState.h"
+#include "RunningJumpState.h"
 
 namespace rootengine{
     RunningState::RunningState(bool isLeftBool) {
@@ -21,15 +23,13 @@ namespace rootengine{
     PlayerState* RunningState::handleInput(Player& player, SDL_KeyboardEvent& keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
 
-        /*
+
         if (keyEvent.type == SDL_KEYDOWN){
-            if (keysym.sym == SDLK_RIGHT && isLeft){
-                return new StandingState();
-            } else if (keysym.sym == SDLK_LEFT && !isLeft){
-                return new StandingState();
+            if (keysym.sym == SDLK_UP ) {
+                return new RunningJumpState(isLeft);
             }
         }
-        */
+
 
 
         if (keyEvent.type == SDL_KEYUP){
