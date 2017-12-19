@@ -11,8 +11,8 @@ namespace rootengine{
 
 
     void DodgingState::enterState(class Player &player) {
-            player.changeRect().y = player.getRect().y + 10;
-            player.changeRect().h = 40;
+            player.changeRect().y = player.getRect().y + 20;
+            player.changeRect().h = 50;
             player.changeTexture("assets/sprites/Player/p1_duck.png");
         }
 
@@ -22,8 +22,8 @@ namespace rootengine{
             if (keyEvent.type == SDL_KEYUP) {
                 switch (keysym.sym) {
                     case SDLK_DOWN :
-                        player.changeRect().y = player.getRect().y - 10;
-                        player.changeRect().h = 50;
+                        player.changeRect().y = player.getRect().y - 20;
+                        player.changeRect().h = 70;
                         return new StandingState();
                 }
             }

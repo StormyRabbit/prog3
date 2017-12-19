@@ -18,7 +18,7 @@ namespace rootengine {
         void enterState(class Player& player);
 
     private:
-        int startingHeight = 450; //TODO change so that it implements starting height of jump!
+        int startingHeight = 430; //TODO change so that it implements starting height of jump!
     };
 }
 

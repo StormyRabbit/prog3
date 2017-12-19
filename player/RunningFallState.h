@@ -20,7 +20,7 @@ namespace rootengine {
         void enterState(class Player& player);
 
     private:
-        int groundHeight = 450; //TODO MAKE RESOPONSIVE TO ACUAL CLOSES "GROUND"
+        int groundHeight = 430; //TODO MAKE RESOPONSIVE TO ACUAL CLOSES "GROUND"
         bool isFallingLeft;
 
 

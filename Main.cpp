@@ -21,7 +21,7 @@ int main(int, char **) {
     return 0;
 }
 Player *createPlayer() {
-    return Player::getInstance(100,450,50,50, "assets/sprites/Player/p1_front.png");
+    return Player::getInstance(100,430,50,70, "assets/sprites/Player/p1_front.png");
 }
 
 LevelManager *createLvlMgr() {
