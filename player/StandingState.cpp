@@ -21,10 +21,8 @@ namespace rootengine{
                     return new JumpingState();
                 case SDLK_DOWN :
                     return new DodgingState();
-
             }
         }
-
         return nullptr;
     }
 

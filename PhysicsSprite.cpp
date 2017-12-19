@@ -22,10 +22,10 @@ namespace rootengine{
 
     void PhysicsSprite::animatedTextureChange(std::string pathToNewTexture, SDL_Rect framesPos[]) {
         animatedTexture = true;
-        //delete(framePositions);
         SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToNewTexture.c_str());
         framePositions;
+        //TODO MAKE RESPONSIVE TO DIFFERENT SIZES
         for (int i = 0; i <= 10; i++){
             framePositions[i].x = framesPos[i].x;
             framePositions[i].y = framesPos[i].y;
@@ -38,6 +38,7 @@ namespace rootengine{
         if (animatedTexture)
         {
             frame++;
+            //TODO MAKE RESPONSIVE TO DIFFERENT SIZES
             if (frame > 10) {
                 frame = 0;
             }
@@ -48,8 +49,7 @@ namespace rootengine{
         if (!animatedTexture){
             SDL_RenderCopy(sys.getRenderer(), texture, NULL, &getRect());
         } else {
-
-            SDL_Rect tempClip = framePositions[frame];
+            SDL_Rect tempClip = framePositions[frame]; //Change to frame/2 too make slower.
             SDL_RenderCopy(sys.getRenderer(), texture, &tempClip, &getRect());
         }
     }

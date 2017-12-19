@@ -16,6 +16,7 @@ namespace rootengine{
     void RunningState::enterState(Player &player) {
         SDL_Rect tempFrameRect[10];
 
+        //TODO GÖR SNYGGARE???
         tempFrameRect[0].x = 0;
         tempFrameRect[0].y = 0;
         tempFrameRect[0].w = 67;
@@ -71,6 +72,8 @@ namespace rootengine{
         tempFrameRect[10].w = 67;
         tempFrameRect[10].h = 92;
 
+
+        //TODO FLIP TEXTURES
         if (isLeft) {
             player.animatedTextureChange("assets/sprites/Player/p1_walk/p1_walk.png", tempFrameRect);
         } else {
@@ -83,7 +86,6 @@ namespace rootengine{
     PlayerState* RunningState::handleInput(Player& player, SDL_KeyboardEvent& keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
 
-
         if (keyEvent.type == SDL_KEYDOWN){
             switch (keysym.sym) {
                 case SDLK_UP :
@@ -92,8 +94,6 @@ namespace rootengine{
                     return new DodgingState();
             }
         }
-
-
 
         if (keyEvent.type == SDL_KEYUP){
             switch (keysym.sym) {
@@ -104,7 +104,7 @@ namespace rootengine{
             }
         }
 
-        return NULL;
+        return nullptr;
     }
 
     void RunningState::updateState(Player& player){
