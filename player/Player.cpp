@@ -25,6 +25,7 @@ namespace rootengine{
     }
 
     void Player::tick() {
+        Player::animatedTick();
         playerState->updateState(*this);
     }
 

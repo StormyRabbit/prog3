@@ -17,7 +17,7 @@ namespace rootengine {
         void enterState(class Player& player);
     private:
         bool isLeft;
-
+        SDL_Rect framePos[11];
     };
 }
 

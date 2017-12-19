@@ -4,6 +4,7 @@
 
 #include "FallingState.h"
 #include "StandingState.h"
+#include "RunningFallState.h"
 
 namespace rootengine{
     FallingState::FallingState() {}
@@ -26,10 +27,9 @@ namespace rootengine{
         if (keyEvent.type = SDL_KEYDOWN){
             switch (keysym.sym) {
                 case SDLK_LEFT :
-                    //TODO MAKE FALLING RUNNING CLASS OR CHANGE EXISTING JUMPINGRUNNING CLASS TO WORK
-                    break;
+                    return new RunningFallState(true);
                 case SDLK_RIGHT :
-                    //TODO MAKE FALLING RUNNING CLASS OR CHANGE EXISTING JUMPINGRUNNING CLASS TO WORK
+                    return new RunningFallState(false);
                     break;
             }
         }

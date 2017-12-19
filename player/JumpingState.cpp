@@ -16,36 +16,19 @@ namespace rootengine{
 
     PlayerState* JumpingState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
-        if (keyEvent.type == SDL_KEYUP) {
-            switch (keysym.sym) {
-                case SDLK_LEFT :
-                    isJumpingLeft = false;
-                    break;
-                case SDLK_RIGHT :
-                    isJumpingRight = false;
-                    break;
-            }
-        }
 
         if (keyEvent.type == SDL_KEYDOWN) {
             switch (keysym.sym) {
                 case SDLK_LEFT :
-                    isJumpingLeft = true;
-                    break;
+                    return new RunningJumpState(true);
                 case SDLK_RIGHT :
-                    isJumpingRight = true;
-                    break;
+                    return new RunningJumpState(false);
             }
         }
         return nullptr;
     }
 
     void JumpingState::updateState(class Player &player) {
-        if (isJumpingLeft)
-            player.changeRect().x = player.getRect().x - 5;
-        if (isJumpingRight)
-            player.changeRect().x = player.getRect().x + 5;
-
         if (player.getRect().y < startingHeight - 100) {
             player.enterNewState(new FallingState());
         } else {

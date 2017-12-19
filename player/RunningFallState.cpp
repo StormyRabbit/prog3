@@ -3,9 +3,8 @@
 //
 
 #include "RunningFallState.h"
-#include "StandingState.h"
-#include "Player.h"
-#include "PlayerState.h"
+#include "RunningState.h"
+#include "FallingState.h"
 
 namespace rootengine{
     RunningFallState::RunningFallState(bool isLeftBool) : isFallingLeft(isLeftBool) {}
@@ -21,7 +20,7 @@ namespace rootengine{
             player.changeRect().x = player.getRect().x + 5;
 
         if (player.getRect().y > groundHeight){
-            player.enterNewState(new StandingState());
+            player.enterNewState(new RunningState(isFallingLeft));
             player.changeRect().y = groundHeight;
         } else {
             player.changeRect().y = player.getRect().y + 5;
@@ -30,16 +29,26 @@ namespace rootengine{
 
     PlayerState* RunningFallState::handleInput(Player &player, SDL_KeyboardEvent &keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
-        if (keyEvent.type = SDL_KEYDOWN){
+        if (keyEvent.type == SDL_KEYUP) {
             switch (keysym.sym) {
                 case SDLK_LEFT :
-                    //TODO MAKE FALLING RUNNING CLASS OR CHANGE EXISTING JUMPINGRUNNING CLASS TO WORK
-                    break;
+                    return new FallingState();
                 case SDLK_RIGHT :
-                    //TODO MAKE FALLING RUNNING CLASS OR CHANGE EXISTING JUMPINGRUNNING CLASS TO WORK
-                    break;
+                    return new FallingState();
+
             }
         }
+
+        if (keyEvent.type == SDL_KEYDOWN) {
+            switch (keysym.sym) {
+                case SDLK_LEFT :
+                    return new RunningFallState(true);
+                case SDLK_RIGHT :
+                    return new RunningFallState(false);
+            }
+        }
+
+
         return nullptr;
     }
 }

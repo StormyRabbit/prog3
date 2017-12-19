@@ -22,8 +22,6 @@ namespace rootengine {
         Player(int xPos, int yPos, int width, int height, std::string spritePath);
         Player(int xPos, int yPos, int width, int height);
     private:
-
-        std::string frontTexture = "assets/sprites/Player/p1_front.png";
         class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
 

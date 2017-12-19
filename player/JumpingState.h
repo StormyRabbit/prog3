@@ -19,8 +19,6 @@ namespace rootengine {
 
     private:
         int startingHeight = 450; //TODO change so that it implements starting height of jump!
-        bool isJumpingLeft = false;
-        bool isJumpingRight = false;
     };
 }
 

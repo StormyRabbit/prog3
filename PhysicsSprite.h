@@ -14,11 +14,18 @@ namespace rootengine{
     public:
         void draw() const;
         void changeTexture(std::string pathToNewTexture);
+        void animatedTextureChange(std::string pathToNewTexture, SDL_Rect framesPos[]);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::string pathToDraw);
         ~PhysicsSprite(); //Osäker på om det ska vara protected???
+        bool animatedTexture;
+        int frame = 0;
+        void animatedTick();
     private:
         SDL_Texture* texture;
+        SDL_Rect framePositions[11];
+        SDL_Rect* currentClip;
+
     };
 }
 
