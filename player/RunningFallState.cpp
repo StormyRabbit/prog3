@@ -47,8 +47,6 @@ namespace rootengine{
                     return new RunningFallState(false);
             }
         }
-
-
         return nullptr;
     }
 }

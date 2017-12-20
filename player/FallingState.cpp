@@ -2,6 +2,7 @@
 // Created by Oskar on 2017-12-10.
 //
 
+#include <vector>
 #include "FallingState.h"
 #include "StandingState.h"
 #include "RunningFallState.h"
@@ -14,9 +15,28 @@ namespace rootengine{
     }
 
     void FallingState::updateState(class Player &player) {
-        if (player.getRect().y > groundHeight){
+        /*if (player.getRect().y > groundHeight){
             player.enterNewState(new StandingState());
             player.changeRect().y = groundHeight;
+        }*/
+        //TODO ADD GET FUNCTION FOR ENVI OBJECTS
+        //JUST TRY CODE
+        SDL_Rect ground1;
+        ground1.x = 0;
+        ground1.y = 500;
+        ground1.h = 100;
+        ground1.w = 1200;
+        SDL_Rect ground2;
+        ground2.x = 500;
+        ground2.y = 420;
+        ground2.h = 20;
+        ground2.w = 200;
+        std::vector<SDL_Rect> grounds;
+        grounds.push_back(ground1);
+        grounds.push_back(ground2);
+
+        if (player.checkIfOnGround(player.changeRect(), grounds)){
+            player.enterNewState(new StandingState());
         } else {
             player.changeRect().y = player.getRect().y + 5;
         }
@@ -30,7 +50,7 @@ namespace rootengine{
                     return new RunningFallState(true);
                 case SDLK_RIGHT :
                     return new RunningFallState(false);
-                    break;
+
             }
         }
         return nullptr;

@@ -7,7 +7,7 @@
 #include "FallingState.h"
 
 namespace rootengine{
-    JumpingState::JumpingState() {}
+    JumpingState::JumpingState(int startingYPos) : startingHeight(startingYPos) {}
     JumpingState::~JumpingState() {}
 
     void JumpingState::enterState(class Player &player) {

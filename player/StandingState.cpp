@@ -18,7 +18,7 @@ namespace rootengine{
                 case  SDLK_RIGHT :
                     return new RunningState(false);
                 case  SDLK_UP :
-                    return new JumpingState();
+                    return new JumpingState(player.getRect().y);
                 case SDLK_DOWN :
                     return new DodgingState();
             }

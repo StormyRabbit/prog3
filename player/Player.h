@@ -25,6 +25,7 @@ namespace rootengine {
         class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
 
+
     };
 }
 

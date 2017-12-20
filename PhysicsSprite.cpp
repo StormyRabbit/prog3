@@ -45,6 +45,26 @@ namespace rootengine{
         }
     }
 
+    bool PhysicsSprite::checkIfOnGround(SDL_Rect object, std::vector<SDL_Rect> collEnvironmentRect) {
+        int leftObject = object.x;
+        int rightObject = object.x + object.w;
+        int topObject = object.y;
+        int bottomObject = object.y + object.h;
+
+        for (SDL_Rect ground : collEnvironmentRect) {
+            int leftGround = ground.x;
+            int rightGround = ground.x + ground.w;
+            int topGround = ground.y;
+            int bottomGround = ground.y + ground.h;
+
+            if (bottomObject >= topGround && leftObject >= leftGround && rightObject <= rightGround && bottomObject <= bottomGround){
+                return true;
+            }
+        }
+
+        return false ;
+    }
+
     void PhysicsSprite::draw() const {
         if (!animatedTexture){
             SDL_RenderCopy(sys.getRenderer(), texture, NULL, &getRect());

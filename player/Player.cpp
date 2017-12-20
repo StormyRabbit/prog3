@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "StandingState.h"
 #include "FallingState.h"
+#include "../GameEngine.h"
 
 namespace rootengine{
     Player::Player(int xPos, int yPos, int width, int height, std::string spritePath) : PhysicsSprite(xPos,yPos, width, height, spritePath){
@@ -49,6 +50,7 @@ namespace rootengine{
     }
 
     Player::~Player() {}
+
 
 }
 

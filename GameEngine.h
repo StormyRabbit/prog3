@@ -27,6 +27,7 @@ namespace rootengine {
             void createWorld();
             void setFPS(int, int);
             static GameEngine* getInstance();
+            World* getWorld();
             ~GameEngine();
         protected:
             GameEngine() = default;

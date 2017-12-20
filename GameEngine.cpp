@@ -102,6 +102,10 @@ namespace rootengine {
         return new GameEngine();
     }
 
+    World* GameEngine::getWorld() {
+        return activeWorld;
+    }
+
     void GameEngine::createWorld() {
         activeWorld = World::getInstance();
     }

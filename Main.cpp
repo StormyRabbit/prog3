@@ -33,6 +33,7 @@ LevelManager *createLvlMgr() {
 
 Level *createFirstLevel() {
     Level* aLvl = Level::getInstance();
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, "assets/sprites/Tiles/grassMid.png"));
     aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
     aLvl->setBackGround(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     return aLvl;
@@ -48,7 +49,7 @@ Level *createSecondLevel() {
 HUD *createHUD(GameEngine* game) {
     // TODO: lägg till restsen av hud
     HUD* hud = HUD::getInstance();
-    HUDSprite* lasse = HUDSprite::getInstance(500,280,200,20, "LASSE > osCar");
+    HUDSprite* lasse = HUDSprite::getInstance(500,280,200,20, "LASSE < OSBE1337");
     HUDSprite* scoreSprite = HUDSprite::getInstance(0,0,200,20, "SCORE: ");
     scoreSprite->setValueToObserver(game, &GameEngine::getScore);
     HUDSprite* lifeSprite = HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");

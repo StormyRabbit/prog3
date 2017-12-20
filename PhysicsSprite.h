@@ -7,6 +7,7 @@
 
 #include "Sprite.h"
 #include <SDL_image.h>
+#include <vector>
 #include <string>
 
 namespace rootengine{
@@ -15,6 +16,7 @@ namespace rootengine{
         void draw() const;
         void changeTexture(std::string pathToNewTexture);
         void animatedTextureChange(std::string pathToNewTexture, SDL_Rect framesPos[]);
+        bool checkIfOnGround(SDL_Rect player, std::vector<SDL_Rect> ground);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::string pathToDraw);
         ~PhysicsSprite(); //Osäker på om det ska vara protected???
@@ -25,6 +27,7 @@ namespace rootengine{
         SDL_Texture* texture;
         SDL_Rect framePositions[11];
         SDL_Rect* currentClip;
+
 
     };
 }
