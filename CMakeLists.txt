@@ -8,7 +8,8 @@ set(SOURCE_FILES hud/HUD.cpp hud/HUD.h level/Level.cpp level/Level.h Main.cpp Ga
         player/Player.h level/LevelManager.cpp level/LevelManager.h EnvironmentSprite.cpp EnvironmentSprite.h player/PlayerState.h World.cpp World.h util/Timer.cpp util/Timer.h
         player/StandingState.cpp player/StandingState.h player/RunningState.cpp player/RunningState.h player/JumpingState.cpp player/JumpingState.h player/RunningJumpState.cpp
         player/RunningJumpState.h player/DeadState.cpp player/DeadState.h player/FallingState.cpp player/FallingState.h player/DodgingState.cpp player/DodgingState.h
-        player/PlayerState.cpp player/RunningFallState.cpp player/RunningFallState.h UserInput.cpp UserInput.h InputMgr.cpp InputMgr.h)
+        player/PlayerState.cpp player/RunningFallState.cpp player/RunningFallState.h
+        UserInput.cpp UserInput.h InputMgr.cpp InputMgr.h testStruct.cpp testStruct.h)
 add_executable(prog3 ${SOURCE_FILES})
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)

@@ -6,6 +6,7 @@
 #define PROG3_USERINPUT_H
 
 #include <SDL_keycode.h>
+#include "testStruct.h"
 
 namespace rootengine {
 
@@ -47,6 +48,7 @@ namespace rootengine {
         }
 
     private:
+        testStruct ts;
         SDL_Keycode key;
         bool state;
         aClass *obj;
