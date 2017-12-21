@@ -16,7 +16,7 @@ namespace rootengine{
     }
     RunningState::~RunningState() {}
     void RunningState::enterState(Player &player) {
-        SDL_Rect tempFrameRect[10];
+        SDL_Rect tempFrameRect[11];
 
         //TODO GÖR SNYGGARE???
         tempFrameRect[0].x = 0;
