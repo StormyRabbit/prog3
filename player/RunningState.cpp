@@ -16,64 +16,31 @@ namespace rootengine{
     }
     RunningState::~RunningState() {}
     void RunningState::enterState(Player &player) {
-        SDL_Rect tempFrameRect[10];
+        std::vector<SDL_Rect> tempFrameRect;
 
-        //TODO GÖR SNYGGARE???
-        tempFrameRect[0].x = 0;
-        tempFrameRect[0].y = 0;
-        tempFrameRect[0].w = 67;
-        tempFrameRect[0].h = 92;
+        SDL_Rect rect1{0,0,67,92};
+        SDL_Rect rect2{67,0,66,93};
+        SDL_Rect rect3{133,0,67,92};
+        SDL_Rect rect4{0,93,67,93};
+        SDL_Rect rect5{67,93,66,93};
+        SDL_Rect rect6{133,93,71,92};
+        SDL_Rect rect7{0,186,71,93};
+        SDL_Rect rect8{71,186,71,93};
+        SDL_Rect rect9{142,186,70,93};
+        SDL_Rect rect10{0,279,71,93};
+        SDL_Rect rect11{71,279,67,92};
 
-        tempFrameRect[1].x = 67;
-        tempFrameRect[1].y = 0;
-        tempFrameRect[1].w = 66;
-        tempFrameRect[1].h = 93;
-
-        tempFrameRect[2].x = 133;
-        tempFrameRect[2].y = 0;
-        tempFrameRect[2].w = 67;
-        tempFrameRect[2].h = 92;
-
-        tempFrameRect[3].x = 0;
-        tempFrameRect[3].y = 93;
-        tempFrameRect[3].w = 67;
-        tempFrameRect[3].h = 93;
-
-        tempFrameRect[4].x = 67;
-        tempFrameRect[4].y = 93;
-        tempFrameRect[4].w = 66;
-        tempFrameRect[4].h = 93;
-
-        tempFrameRect[5].x = 133;
-        tempFrameRect[5].y = 93;
-        tempFrameRect[5].w = 71;
-        tempFrameRect[5].h = 92;
-
-        tempFrameRect[6].x = 0;
-        tempFrameRect[6].y = 186;
-        tempFrameRect[6].w = 71;
-        tempFrameRect[6].h = 93;
-
-        tempFrameRect[7].x = 71;
-        tempFrameRect[7].y = 186;
-        tempFrameRect[7].w = 71;
-        tempFrameRect[7].h = 93;
-
-        tempFrameRect[8].x = 142;
-        tempFrameRect[8].y = 186;
-        tempFrameRect[8].w = 70;
-        tempFrameRect[8].h = 93;
-
-        tempFrameRect[9].x = 0;
-        tempFrameRect[9].y = 279;
-        tempFrameRect[9].w = 71;
-        tempFrameRect[9].h = 93;
-
-        tempFrameRect[10].x = 71;
-        tempFrameRect[10].y = 279;
-        tempFrameRect[10].w = 67;
-        tempFrameRect[10].h = 92;
-
+        tempFrameRect.push_back(rect1);
+        tempFrameRect.push_back(rect2);
+        tempFrameRect.push_back(rect3);
+        tempFrameRect.push_back(rect4);
+        tempFrameRect.push_back(rect5);
+        tempFrameRect.push_back(rect6);
+        tempFrameRect.push_back(rect7);
+        tempFrameRect.push_back(rect8);
+        tempFrameRect.push_back(rect9);
+        tempFrameRect.push_back(rect10);
+        tempFrameRect.push_back(rect11);
 
         //TODO FLIP TEXTURES
         if (isLeft) {

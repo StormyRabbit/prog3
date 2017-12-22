@@ -22,18 +22,15 @@ namespace rootengine{
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
-    void PhysicsSprite::animatedTextureChange(std::string keyToMap, SDL_Rect framesPos[]) {
+    void PhysicsSprite::animatedTextureChange(std::string keyToMap, std::vector<SDL_Rect> framesPos) {
         std::string pathToDraw = spriteMap.find(keyToMap)->second;
         animatedTexture = true;
         SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
         framePositions;
-        //TODO MAKE RESPONSIVE TO DIFFERENT SIZES
-        for (int i = 0; i <= 10; i++){
-            framePositions[i].x = framesPos[i].x;
-            framePositions[i].y = framesPos[i].y;
-            framePositions[i].w = framesPos[i].w;
-            framePositions[i].h = framesPos[i].h;
+
+        for (SDL_Rect rect : framesPos){
+            framePositions.push_back(rect);
         }
     }
 
@@ -41,8 +38,7 @@ namespace rootengine{
         if (animatedTexture)
         {
             frame++;
-            //TODO MAKE RESPONSIVE TO DIFFERENT SIZES
-            if (frame > 10) {
+            if (frame >= framePositions.size()) {
                 frame = 0;
             }
         }

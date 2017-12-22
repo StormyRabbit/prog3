@@ -21,6 +21,30 @@ int main(int, char **) {
     return 0;
 }
 Player *createPlayer() {
+    std::vector<SDL_Rect> runningTexture;
+    SDL_Rect rect1{0,0,67,92};
+    SDL_Rect rect2{67,0,66,93};
+    SDL_Rect rect3{133,0,67,92};
+    SDL_Rect rect4{0,93,67,93};
+    SDL_Rect rect5{67,93,66,93};
+    SDL_Rect rect6{133,93,71,92};
+    SDL_Rect rect7{0,186,71,93};
+    SDL_Rect rect8{71,186,71,93};
+    SDL_Rect rect9{142,186,70,93};
+    SDL_Rect rect10{0,279,71,93};
+    SDL_Rect rect11{71,279,67,92};
+    runningTexture.push_back(rect1);
+    runningTexture.push_back(rect2);
+    runningTexture.push_back(rect3);
+    runningTexture.push_back(rect4);
+    runningTexture.push_back(rect5);
+    runningTexture.push_back(rect6);
+    runningTexture.push_back(rect7);
+    runningTexture.push_back(rect8);
+    runningTexture.push_back(rect9);
+    runningTexture.push_back(rect10);
+    runningTexture.push_back(rect11);
+
     std::map<std::string, std::string> playerSprites;
     playerSprites.insert(std::pair<std::string, std::string>("standing", "assets/sprites/Player/p1_front.png"));
     playerSprites.insert(std::pair<std::string, std::string>("running", "assets/sprites/Player/p1_walk/p1_walk.png"));

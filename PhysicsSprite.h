@@ -16,7 +16,7 @@ namespace rootengine{
     public:
         void draw() const;
         void changeTexture(std::string pathToNewTexture);
-        void animatedTextureChange(std::string pathToNewTexture, SDL_Rect framesPos[]);
+        void animatedTextureChange(std::string pathToNewTexture, std::vector<SDL_Rect> framesPos);
         bool checkIfOnGround(SDL_Rect player, std::vector<SDL_Rect> ground);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::map<std::string, std::string> sprites);
@@ -26,7 +26,7 @@ namespace rootengine{
         void animatedTick();
     private:
         SDL_Texture* texture;
-        SDL_Rect framePositions[11];
+        std::vector<SDL_Rect> framePositions;
         SDL_Rect* currentClip;
         std::map<std::string, std::string> spriteMap;
 
