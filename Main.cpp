@@ -21,29 +21,19 @@ int main(int, char **) {
     return 0;
 }
 Player *createPlayer() {
-    std::vector<SDL_Rect> runningTexture;
-    SDL_Rect rect1{0,0,67,92};
-    SDL_Rect rect2{67,0,66,93};
-    SDL_Rect rect3{133,0,67,92};
-    SDL_Rect rect4{0,93,67,93};
-    SDL_Rect rect5{67,93,66,93};
-    SDL_Rect rect6{133,93,71,92};
-    SDL_Rect rect7{0,186,71,93};
-    SDL_Rect rect8{71,186,71,93};
-    SDL_Rect rect9{142,186,70,93};
-    SDL_Rect rect10{0,279,71,93};
-    SDL_Rect rect11{71,279,67,92};
-    runningTexture.push_back(rect1);
-    runningTexture.push_back(rect2);
-    runningTexture.push_back(rect3);
-    runningTexture.push_back(rect4);
-    runningTexture.push_back(rect5);
-    runningTexture.push_back(rect6);
-    runningTexture.push_back(rect7);
-    runningTexture.push_back(rect8);
-    runningTexture.push_back(rect9);
-    runningTexture.push_back(rect10);
-    runningTexture.push_back(rect11);
+
+    std::vector<SDL_Rect> runningFrames{{0,0,67,92},{67,0,66,93},{133,0,67,92},{0,93,67,93},{133,93,71,92},{133,93,71,92},{0,186,71,93},{71,186,71,93},{142,186,70,93},{0,279,71,93},{71,279,67,92}};
+    std::vector<SDL_Rect> standingFrames{{0,0,66,92}};
+    std::vector<SDL_Rect> dodgingFrames{{0,0,69,71}};
+    std::vector<SDL_Rect> jumpingFrames{{0,0,67,94}};
+    std::vector<SDL_Rect> fallingFrames{{0,0,67,94}};
+
+    std::map<std::string, std::vector<SDL_Rect>> frameRects;
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("running", runningFrames));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("standing", standingFrames));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dodging", dodgingFrames));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("jumping", jumpingFrames));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("falling", fallingFrames));
 
     std::map<std::string, std::string> playerSprites;
     playerSprites.insert(std::pair<std::string, std::string>("standing", "assets/sprites/Player/p1_front.png"));
@@ -51,7 +41,7 @@ Player *createPlayer() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
-    return Player::getInstance(100,430,50,70, playerSprites);
+    return Player::getInstance(100,430,50,70, playerSprites, frameRects);
 }
 
 LevelManager *createLvlMgr() {

@@ -29,6 +29,6 @@ namespace rootengine{
     void StandingState::updateState(Player& player){}
 
     void StandingState::enterState(Player &player) {
-        player.changeTexture("standing");
+        player.animatedTextureChange("standing");
     }
 }

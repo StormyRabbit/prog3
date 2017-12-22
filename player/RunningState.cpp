@@ -44,9 +44,9 @@ namespace rootengine{
 
         //TODO FLIP TEXTURES
         if (isLeft) {
-            player.animatedTextureChange("running", tempFrameRect);
+            player.animatedTextureChange("running");
         } else {
-            player.animatedTextureChange("running", tempFrameRect);
+            player.animatedTextureChange("running");
         }
 
         //delete(tempFrameRect);

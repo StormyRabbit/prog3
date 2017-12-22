@@ -12,7 +12,7 @@ namespace rootengine{
     RunningFallState::RunningFallState(bool isLeftBool) : isFallingLeft(isLeftBool) {}
     RunningFallState::~RunningFallState() {}
     void RunningFallState::enterState(Player &player) {
-        player.changeTexture("falling");
+        player.animatedTextureChange("falling");
     }
 
     void RunningFallState::updateState(class Player &player) {

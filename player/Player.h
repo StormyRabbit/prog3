@@ -13,8 +13,7 @@
 namespace rootengine {
     class Player : public PhysicsSprite {
     public:
-        static Player *getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings);
-        static Player* getInstance(int xPos, int yPos, int width, int height);
+        static Player *getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames);
         void handleEvent(const SDL_Event &eve);
         double getGravity();
         int getRunningSpeed();
@@ -24,8 +23,7 @@ namespace rootengine {
         void enterNewState(class PlayerState* newState);
         ~Player();
     protected:
-        Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings);
-        Player(int xPos, int yPos, int width, int height);
+        Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames);
     private:
         class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);

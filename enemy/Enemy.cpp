@@ -4,7 +4,7 @@
 
 #include "Enemy.h"
 namespace rootengine{
-    Enemy::Enemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites) : PhysicsSprite(xPos,yPos, width, height, sprites){}
+    Enemy::Enemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : PhysicsSprite(xPos,yPos, width, height, sprites, frames){}
     Enemy::~Enemy(){}
 
     void Enemy::tick() {}

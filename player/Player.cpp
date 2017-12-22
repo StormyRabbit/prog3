@@ -8,13 +8,13 @@
 #include "../GameEngine.h"
 
 namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings) : PhysicsSprite(xPos,yPos, width, height, strings){
+    Player::Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames) : PhysicsSprite(xPos,yPos, width, height, strings, frames){
         playerState = new StandingState();
         playerState->enterState(*this);
     }
 
-    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings) {
-        return new Player(xPos, yPos, width, height, strings);
+    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames) {
+        return new Player(xPos, yPos, width, height, strings, frames);
     }
 
     double Player::getGravity() {

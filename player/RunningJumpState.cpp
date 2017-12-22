@@ -16,7 +16,7 @@ namespace rootengine{
         if (player.getYVelocity() == 0){
             player.getYVelocity() = player.getJumpingPower();
         }
-        player.changeTexture("jumping");
+        player.animatedTextureChange("jumping");
     }
 
     PlayerState* RunningJumpState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {

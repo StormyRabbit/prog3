@@ -12,7 +12,7 @@ namespace rootengine{
     FallingState::FallingState() {}
     FallingState::~FallingState() {}
     void FallingState::enterState(Player &player) {
-        player.changeTexture("falling");
+        player.animatedTextureChange("falling");
     }
 
     void FallingState::updateState(class Player &player) {

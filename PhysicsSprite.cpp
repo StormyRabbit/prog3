@@ -7,7 +7,7 @@
 #include "System.h"
 
 namespace rootengine{
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites) : spriteMap(sprites), Sprite(xPos, yPos, width, height) {
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : framesMap(frames), spriteMap(sprites), Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find("standing")->second;
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
@@ -22,16 +22,12 @@ namespace rootengine{
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
-    void PhysicsSprite::animatedTextureChange(std::string keyToMap, std::vector<SDL_Rect> framesPos) {
+    void PhysicsSprite::animatedTextureChange(std::string keyToMap) {
+        framePositions = framesMap.find(keyToMap)->second;
         std::string pathToDraw = spriteMap.find(keyToMap)->second;
         animatedTexture = true;
         SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
-        framePositions;
-
-        for (SDL_Rect rect : framesPos){
-            framePositions.push_back(rect);
-        }
     }
 
     void PhysicsSprite::animatedTick() {
