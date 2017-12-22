@@ -2,6 +2,7 @@
 // Created by Oskar on 2017-12-10.
 //
 
+#include <cmath>
 #include "RunningJumpState.h"
 #include "FallingState.h"
 #include "JumpingState.h"
@@ -12,7 +13,10 @@ namespace rootengine{
     RunningJumpState::~RunningJumpState() {}
 
     void RunningJumpState::enterState(class Player &player) {
-        player.changeTexture("assets/sprites/Player/p1_jump.png");
+        if (player.getYVelocity() == 0){
+            player.getYVelocity() = player.getJumpingPower();
+        }
+        player.changeTexture("jumping");
     }
 
     PlayerState* RunningJumpState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
@@ -40,14 +44,16 @@ namespace rootengine{
 
     void RunningJumpState::updateState(class Player &player) {
         if (isJumpingLeft)
-            player.changeRect().x = player.getRect().x - 5;
+            player.changeRect().x = player.getRect().x - player.getRunningSpeed();
         if (!isJumpingLeft)
-            player.changeRect().x = player.getRect().x + 5;
+            player.changeRect().x = player.getRect().x + player.getRunningSpeed();
 
-        if (player.getRect().y < startingHeight - 100) {
+        if (player.getYVelocity() <= 0) {
             player.enterNewState(new RunningFallState(isJumpingLeft));
         } else {
-            player.changeRect().y = player.getRect().y - 5;
+            player.changeRect().y = ceil(player.getRect().y - player.getYVelocity());
+            player.getYVelocity() = player.getYVelocity() - player.getGravity();
+
         }
     }
 

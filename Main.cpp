@@ -21,7 +21,13 @@ int main(int, char **) {
     return 0;
 }
 Player *createPlayer() {
-    return Player::getInstance(100,430,50,70, "assets/sprites/Player/p1_front.png");
+    std::map<std::string, std::string> playerSprites;
+    playerSprites.insert(std::pair<std::string, std::string>("standing", "assets/sprites/Player/p1_front.png"));
+    playerSprites.insert(std::pair<std::string, std::string>("running", "assets/sprites/Player/p1_walk/p1_walk.png"));
+    playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
+    playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
+    playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
+    return Player::getInstance(100,430,50,70, playerSprites);
 }
 
 LevelManager *createLvlMgr() {

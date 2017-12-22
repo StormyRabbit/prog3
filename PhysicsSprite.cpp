@@ -7,23 +7,26 @@
 #include "System.h"
 
 namespace rootengine{
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::string pathToDraw) : Sprite(xPos, yPos, width, height) {
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites) : spriteMap(sprites), Sprite(xPos, yPos, width, height) {
+        std::string pathToDraw = sprites.find("standing")->second;
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
     PhysicsSprite::~PhysicsSprite() {
         SDL_DestroyTexture(texture);
     }
 
-    void PhysicsSprite::changeTexture(std::string pathToNewTexture) {
+    void PhysicsSprite::changeTexture(std::string keyToMap) {
+        std::string pathToDraw = spriteMap.find(keyToMap)->second;
         animatedTexture = false;
         SDL_DestroyTexture(texture);
-        texture = IMG_LoadTexture(sys.getRenderer(), pathToNewTexture.c_str());
+        texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
-    void PhysicsSprite::animatedTextureChange(std::string pathToNewTexture, SDL_Rect framesPos[]) {
+    void PhysicsSprite::animatedTextureChange(std::string keyToMap, SDL_Rect framesPos[]) {
+        std::string pathToDraw = spriteMap.find(keyToMap)->second;
         animatedTexture = true;
         SDL_DestroyTexture(texture);
-        texture = IMG_LoadTexture(sys.getRenderer(), pathToNewTexture.c_str());
+        texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
         framePositions;
         //TODO MAKE RESPONSIVE TO DIFFERENT SIZES
         for (int i = 0; i <= 10; i++){

@@ -13,7 +13,7 @@ namespace rootengine{
     void DodgingState::enterState(class Player &player) {
             player.changeRect().y = player.getRect().y + 20;
             player.changeRect().h = 50;
-            player.changeTexture("assets/sprites/Player/p1_duck.png");
+            player.changeTexture("dodging");
         }
 
         PlayerState* DodgingState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {

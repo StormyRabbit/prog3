@@ -77,9 +77,9 @@ namespace rootengine{
 
         //TODO FLIP TEXTURES
         if (isLeft) {
-            player.animatedTextureChange("assets/sprites/Player/p1_walk/p1_walk.png", tempFrameRect);
+            player.animatedTextureChange("running", tempFrameRect);
         } else {
-            player.animatedTextureChange("assets/sprites/Player/p1_walk/p1_walk.png", tempFrameRect);
+            player.animatedTextureChange("running", tempFrameRect);
         }
 
         //delete(tempFrameRect);
@@ -132,9 +132,9 @@ namespace rootengine{
 
 
         if (isLeft){
-            player.changeRect().x = player.getRect().x - 5;
+            player.changeRect().x = player.getRect().x - player.getRunningSpeed();
         } else {
-            player.changeRect().x = player.getRect().x + 5;
+            player.changeRect().x = player.getRect().x + player.getRunningSpeed();
         }
     }
 

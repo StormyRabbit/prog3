@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <cmath>
 #include "FallingState.h"
 #include "StandingState.h"
 #include "RunningFallState.h"
@@ -11,7 +12,7 @@ namespace rootengine{
     FallingState::FallingState() {}
     FallingState::~FallingState() {}
     void FallingState::enterState(Player &player) {
-        player.changeTexture("assets/sprites/Player/p1_jump.png");
+        player.changeTexture("falling");
     }
 
     void FallingState::updateState(class Player &player) {
@@ -36,9 +37,11 @@ namespace rootengine{
         grounds.push_back(ground2);
 
         if (player.checkIfOnGround(player.changeRect(), grounds)){
+            player.getYVelocity() = 0;
             player.enterNewState(new StandingState());
         } else {
-            player.changeRect().y = player.getRect().y + 5;
+            player.changeRect().y = ceil(player.getRect().y + player.getYVelocity());
+            player.getYVelocity() = player.getYVelocity() + player.getGravity();
         }
     }
 

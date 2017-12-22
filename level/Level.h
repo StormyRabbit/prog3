@@ -6,7 +6,7 @@
 #define PROG3_LEVEL_H
 
 #include <vector>
-#include "../Enemy.h"
+#include "../enemy/Enemy.h"
 #include "../EnvironmentSprite.h"
 #include "../PhysicsSprite.h"
 

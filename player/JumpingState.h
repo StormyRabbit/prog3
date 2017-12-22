@@ -19,6 +19,9 @@ namespace rootengine {
 
     private:
         int startingHeight; //TODO change so that it implements starting height of jump!
+        double gravity = 0.2;
+        double yMaxVelocity = 7;
+        double jumpHeight = 250;
     };
 }
 

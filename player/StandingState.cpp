@@ -29,6 +29,6 @@ namespace rootengine{
     void StandingState::updateState(Player& player){}
 
     void StandingState::enterState(Player &player) {
-        player.changeTexture("assets/sprites/Player/p1_front.png");
+        player.changeTexture("standing");
     }
 }
