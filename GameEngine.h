@@ -14,6 +14,7 @@
 #include "util/Subject.h"
 #include "level/LevelManager.h"
 #include "World.h"
+#include "InputHandler.h"
 
 namespace rootengine {
     class GameEngine : public Subject {
@@ -22,16 +23,22 @@ namespace rootengine {
             void setPlayer(Player *);
             void setHUD(class HUD *);
             void run();
+            void printScore();
             void handleNextLvl();
             int getScore();
             void createWorld();
             void setFPS(int, int);
             static GameEngine* getInstance();
             World* getWorld();
+
+            void addUserInput(SDL_Keycode k, VirtualUserInput *);
+            void addUserInput(UserInput *);
             ~GameEngine();
-        protected:
             GameEngine() = default;
+        protected:
+
         private:
+            InputHandler* ih;
             int score;
             int screenFPS{};
             int tickRate{};

@@ -49,18 +49,13 @@ namespace rootengine {
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
-            SDL_KeyboardEvent keyEvent = event.key;
             player->tick();
-            /* För varje varv i loopen, efter att ha kontrollerat om det finns några
-             * användargenererade händelser och i så fall ha tagit hand om dem, ska man gå igenom alla installerade
-             * Sprite-objekt och anropa en medlemsfunktion (ofta kallas en sådan medlemsfunktion tick)
-             * som uppdaterar deras tillstånd (t.ex. ändrar positionen om objektet rör sig o.s.v.).
-             * Denna metod bör ta som argument något som ger Sprite-objekten åtkomst till omvärlden, så att de kan
-             * interagera med omvärlden (t.ex. samligen av andra Sprite-objekt eller själva GameEngine-objektet).
-             * Det är meningen att tillämpningar (de specifika spelen) ska kunna överskugga
-             * denna medlemsfunktion i sina egna subklasser till Sprite eller dess subklasser. */
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
+                    if(ih != nullptr) {
+                        ih->handleInput(event);
+                    }
+
                     SDL_KeyboardEvent keyEvent = event.key;
                     SDL_Keysym keysym = keyEvent.keysym;
                     if (keysym.sym == SDLK_h) {
@@ -139,4 +134,21 @@ namespace rootengine {
         }
          */
     }
+
+    void GameEngine::addUserInput(UserInput *ui) {
+        if(ih == nullptr)
+            ih = InputHandler::getInstance();
+        ih->addUserInput(ui);
+    }
+
+    void GameEngine::printScore() {
+        std::cout << score;
+    }
+
+    void GameEngine::addUserInput(SDL_Keycode k, VirtualUserInput *ui) {
+        if(ih == nullptr)
+            ih = InputHandler::getInstance();
+        ih->addUserInput(k, ui);
+    }
+
 }

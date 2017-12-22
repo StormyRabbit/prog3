@@ -1,15 +1,16 @@
 //
 // Created by lasse on 11/16/17.
 //
+#include <iostream>
 #include "GameEngine.h"
+
 using namespace rootengine;
 HUD *createHUD(GameEngine* game);
 LevelManager *createLvlMgr();
 Player *createPlayer();
 Level *createFirstLevel();
 Level *createSecondLevel();
-
-
+void testFunc();
 int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
@@ -17,9 +18,23 @@ int main(int, char **) {
     ge->setHUD(createHUD(ge));
     ge->setPlayer(createPlayer());
     ge->setFPS(60, 1000);
+    auto *testInput = new UserInput();
+    testInput->key = SDLK_b;
+    testInput->f = testFunc;
+    ge->addUserInput(testInput);
+
+    VirtualUserInput *testMem = new UserInputMemberFunction<GameEngine>(
+            ge, &GameEngine::printScore, SDLK_t, true);
+    ge->addUserInput(SDLK_t, testMem);
     ge->run();
     return 0;
 }
+
+void testFunc() {
+    std::cout << "HEJ!";
+}
+
+
 Player *createPlayer() {
     return Player::getInstance(100,430,50,70, "assets/sprites/Player/p1_front.png");
 }

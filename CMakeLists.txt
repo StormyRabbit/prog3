@@ -9,7 +9,7 @@ set(SOURCE_FILES hud/HUD.cpp hud/HUD.h level/Level.cpp level/Level.h Main.cpp Ga
         player/StandingState.cpp player/StandingState.h player/RunningState.cpp player/RunningState.h player/JumpingState.cpp player/JumpingState.h player/RunningJumpState.cpp
         player/RunningJumpState.h player/DeadState.cpp player/DeadState.h player/FallingState.cpp player/FallingState.h player/DodgingState.cpp player/DodgingState.h
         player/PlayerState.cpp player/RunningFallState.cpp player/RunningFallState.h
-        UserInput.cpp UserInput.h InputMgr.cpp InputMgr.h testStruct.cpp testStruct.h)
+        UserInput.cpp UserInput.h InputHandler.cpp InputHandler.h UserInputMemberFunction.cpp UserInputMemberFunction.h VirtualUserInput.cpp VirtualUserInput.h)
 add_executable(prog3 ${SOURCE_FILES})
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
