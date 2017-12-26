@@ -49,16 +49,7 @@ namespace rootengine {
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
-            SDL_KeyboardEvent keyEvent = event.key;
             player->tick();
-            /* För varje varv i loopen, efter att ha kontrollerat om det finns några
-             * användargenererade händelser och i så fall ha tagit hand om dem, ska man gå igenom alla installerade
-             * Sprite-objekt och anropa en medlemsfunktion (ofta kallas en sådan medlemsfunktion tick)
-             * som uppdaterar deras tillstånd (t.ex. ändrar positionen om objektet rör sig o.s.v.).
-             * Denna metod bör ta som argument något som ger Sprite-objekten åtkomst till omvärlden, så att de kan
-             * interagera med omvärlden (t.ex. samligen av andra Sprite-objekt eller själva GameEngine-objektet).
-             * Det är meningen att tillämpningar (de specifika spelen) ska kunna överskugga
-             * denna medlemsfunktion i sina egna subklasser till Sprite eller dess subklasser. */
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
                     SDL_KeyboardEvent keyEvent = event.key;
@@ -68,21 +59,18 @@ namespace rootengine {
                         if(nxtLvl != nullptr)
                             activeWorld->setLevel(nxtLvl);
                     }
+                    if(usrInMgr != nullptr)
+                        usrInMgr->handleEvent(event);
                     switch (event.type) {
 
                     case SDL_QUIT:
                         running = false;
                         break;
-                    default: // OM SPELAREVENT
+                    default:
                         activeWorld->executeEvent(event);
                 } // switch end
                 }
             } // while Poll
-            // TODO: MAKE WORK
-            float avgFPS = countedFrames / (fpsTimer->getTicks() / 1000.f);
-            fpsText.str("");
-            fpsText << "AVG FPS: " << avgFPS;
-            std::string fpsString = fpsText.str();
             ++countedFrames;
             int frameTicks = capTimer->getTicks();
             if( frameTicks < tickRate) {
@@ -102,17 +90,13 @@ namespace rootengine {
         return new GameEngine();
     }
 
-    World* GameEngine::getWorld() {
-        return activeWorld;
-    }
-
     void GameEngine::createWorld() {
         activeWorld = World::getInstance();
     }
 
-    void GameEngine::setFPS(int fps, int ticksPerFrame) {
+    void GameEngine::setFPS(int fps) {
         screenFPS = fps;
-        tickRate = ticksPerFrame / fps;
+        tickRate = 1000 / fps;
     }
 
     int GameEngine::getScore() {
@@ -138,5 +122,14 @@ namespace rootengine {
             } // while Poll
         }
          */
+    }
+
+    void GameEngine::setUsrInMgr(UserInputMgr *uim) {
+        usrInMgr = uim;
+    }
+
+    void GameEngine::printScore(UserInput *) {
+        std::cout << getScore();
+
     }
 }

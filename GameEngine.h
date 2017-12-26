@@ -14,6 +14,9 @@
 #include "util/Subject.h"
 #include "level/LevelManager.h"
 #include "World.h"
+#include "UserInput.h"
+#include "UserInputCallback.h"
+#include "UserInputMgr.h"
 
 namespace rootengine {
     class GameEngine : public Subject {
@@ -21,18 +24,20 @@ namespace rootengine {
             void setLvlMgr(LevelManager *);
             void setPlayer(Player *);
             void setHUD(class HUD *);
+            void setUsrInMgr(UserInputMgr *);
             void run();
             void handleNextLvl();
             int getScore();
             void createWorld();
-            void setFPS(int, int);
+            void setFPS(int);
+            void printScore(UserInput*);
             static GameEngine* getInstance();
-            World* getWorld();
             ~GameEngine();
         protected:
             GameEngine() = default;
         private:
-            int score;
+            UserInputMgr *usrInMgr{};
+            int score{};
             int screenFPS{};
             int tickRate{};
             Player *player{};
