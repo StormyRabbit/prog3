@@ -8,13 +8,20 @@
 #include "../GameEngine.h"
 
 namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames) : PhysicsSprite(xPos,yPos, width, height, strings, frames){
+    Player::Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables) : PhysicsSprite(xPos,yPos, width, height, strings, frames){
+
+        gravity = movingVariables.find("gravity")->second;
+
+        runningSpeed = movingVariables.find("runningSpeed")->second;
+
+        jumpingPower = movingVariables.find("jumpPower")->second;
+
         playerState = new StandingState();
         playerState->enterState(*this);
     }
 
-    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames) {
-        return new Player(xPos, yPos, width, height, strings, frames);
+    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables) {
+        return new Player(xPos, yPos, width, height, strings, frames, movingVariables);
     }
 
     double Player::getGravity() {

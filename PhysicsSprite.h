@@ -15,19 +15,16 @@ namespace rootengine{
     class PhysicsSprite : public Sprite {
     public:
         void draw() const;
-        void changeTexture(std::string pathToNewTexture);
         void animatedTextureChange(std::string keyToMap);
         bool checkIfOnGround(SDL_Rect player, std::vector<SDL_Rect> ground);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
         ~PhysicsSprite(); //Osäker på om det ska vara protected???
-        bool animatedTexture;
         int frame = 0;
         void animatedTick();
     private:
         SDL_Texture* texture;
         std::vector<SDL_Rect> framePositions;
-        SDL_Rect* currentClip;
         std::map<std::string, std::string> spriteMap;
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
 

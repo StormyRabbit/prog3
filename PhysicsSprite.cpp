@@ -15,28 +15,17 @@ namespace rootengine{
         SDL_DestroyTexture(texture);
     }
 
-    void PhysicsSprite::changeTexture(std::string keyToMap) {
-        std::string pathToDraw = spriteMap.find(keyToMap)->second;
-        animatedTexture = false;
-        SDL_DestroyTexture(texture);
-        texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
-    }
-
     void PhysicsSprite::animatedTextureChange(std::string keyToMap) {
         framePositions = framesMap.find(keyToMap)->second;
         std::string pathToDraw = spriteMap.find(keyToMap)->second;
-        animatedTexture = true;
         SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
     void PhysicsSprite::animatedTick() {
-        if (animatedTexture)
-        {
-            frame++;
-            if (frame >= framePositions.size()) {
-                frame = 0;
-            }
+        frame++;
+        if (frame >= framePositions.size()) {
+            frame = 0;
         }
     }
 
@@ -60,12 +49,22 @@ namespace rootengine{
         return false ;
     }
 
+
+
     void PhysicsSprite::draw() const {
-        if (!animatedTexture){
-            SDL_RenderCopy(sys.getRenderer(), texture, NULL, &getRect());
-        } else {
-            SDL_Rect tempClip = framePositions[frame]; //Change to frame/2 too make slower.
-            SDL_RenderCopy(sys.getRenderer(), texture, &tempClip, &getRect());
-        }
+        SDL_Rect tempClip = framePositions[frame]; //Change to frame/2 too make slower.
+        SDL_Rect playerSize = getRect();
+
+        //playerSize.h = tempClip.h * 1;
+        //playerSize.w = tempClip.w * 1;
+
+        /*if (framePositions.size() > 1 && frame != 0){
+            SDL_Rect previousRect = framePositions[frame - 1];
+
+            playerSize.h = tempClip.h - (tempClip.h - previousRect.h);
+            playerSize.w = tempClip.w - (tempClip.w - previousRect.w);
+        }*/
+
+        SDL_RenderCopy(sys.getRenderer(), texture, &tempClip, &playerSize);
     }
 }
