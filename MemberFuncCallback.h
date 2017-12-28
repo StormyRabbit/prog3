@@ -20,10 +20,8 @@ namespace rootengine {
         }
         UserInput* getUserInput() override;
     protected:
-        MemberFuncCallback(UserInput *ui, T* inObj, void(T::*inf)(UserInput*)) {
-            usrInput = ui;
-            aObj = inObj;
-            f = inf;
+        MemberFuncCallback(UserInput *usrInput, T* aObj, void(T::*f)(UserInput*)):usrInput(usrInput), aObj(aObj), f(f) {
+
         }
 
     private:
