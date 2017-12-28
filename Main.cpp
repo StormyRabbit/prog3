@@ -96,7 +96,6 @@ HUD *createHUD(GameEngine* game) {
     hud->addHUDElement(scoreSprite);
     hud->addHUDElement(lifeSprite);
     hud->addHUDElement(enemyLeft);
-
     return hud;
 }
 
