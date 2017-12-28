@@ -49,6 +49,7 @@ namespace rootengine {
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
+
             //player->tick();
             activeWorld->updateWorld();
             while (SDL_PollEvent(&event)) {
