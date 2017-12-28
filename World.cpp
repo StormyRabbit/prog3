@@ -10,8 +10,9 @@ namespace rootengine {
         if(activePlayer != nullptr)
             activePlayer->tick();
         if(activeLevel != nullptr)
-            activeLevel->updateEnemies();
-        if(activeLevel->isLevelComplete()) {}
+            //activeLevel->updateEnemies();
+        //if(activeLevel->isLevelComplete()) {}
+        activeLevel->updateEnemies();
     }
 
     void World::setPlayer(rootengine::Player *player) {

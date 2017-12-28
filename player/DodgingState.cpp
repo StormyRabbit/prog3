@@ -11,9 +11,13 @@ namespace rootengine{
 
 
     void DodgingState::enterState(class Player &player) {
-            player.changeRect().y = player.getRect().y + 20;
-            player.changeRect().h = 50;
-            player.animatedTextureChange("dodging");
+        nonDodgingHeight = player.getRect().h;
+        int newHeight = player.changeRect().h * 0.8;
+        int posChange = nonDodgingHeight - newHeight;
+
+        player.changeRect().y = player.getRect().y + posChange;
+        player.changeRect().h = newHeight;
+        player.animatedTextureChange("dodging");
         }
 
         PlayerState* DodgingState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
@@ -22,8 +26,9 @@ namespace rootengine{
             if (keyEvent.type == SDL_KEYUP) {
                 switch (keysym.sym) {
                     case SDLK_DOWN :
-                        player.changeRect().y = player.getRect().y - 20;
-                        player.changeRect().h = 70;
+                        int posChange = nonDodgingHeight - player.getRect().h;
+                        player.changeRect().y = player.getRect().y - posChange;
+                        player.changeRect().h = nonDodgingHeight;
                         return new StandingState();
                 }
             }

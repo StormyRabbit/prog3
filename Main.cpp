@@ -5,6 +5,7 @@
 #include "GameEngine.h"
 #include "freeFuncCallback.h"
 #include "MemberFuncCallback.h"
+#include "enemy/FlyingEnemy.h"
 
 using namespace rootengine;
 HUD *createHUD(GameEngine* game);
@@ -69,8 +70,25 @@ Player *createPlayer() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
-    return Player::getInstance(100,100,100,200, playerSprites, frameRects, movingVariables);
+    return Player::getInstance(100,100,50,70, playerSprites, frameRects, movingVariables);
 }
+
+Enemy* createFlyingEnemy(){
+    //TEST ENEMY
+    std::map<std::string, std::string> sprites;
+    sprites.insert(std::pair<std::string, std::string>("standing", "assets/sprites/Enemies/enemies_spritesheet.png"));
+
+    std::vector<SDL_Rect> flyingFrame{{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31}};
+    std::map<std::string, std::vector<SDL_Rect>> frameRects;
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("standing", flyingFrame));
+
+    std::map<std::string, double> movingVariables;
+    movingVariables.insert(std::pair<std::string, double>("speed", 3));
+    movingVariables.insert(std::pair<std::string, double>("maxX", 1000));
+    movingVariables.insert(std::pair<std::string, double>("minX", 300));
+    return FlyingEnemy::getInstance(30, 310, 50, 50, sprites, frameRects, movingVariables);
+    //return
+};
 
 LevelManager *createLvlMgr() {
     LevelManager* lvlMgr = LevelManager::getInstance();
@@ -84,6 +102,7 @@ Level *createFirstLevel() {
     aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, "assets/sprites/Tiles/grassMid.png"));
     aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
     aLvl->setBackGround(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
+    aLvl->addEnemy(createFlyingEnemy());
     return aLvl;
 }
 

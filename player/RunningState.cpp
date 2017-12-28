@@ -93,7 +93,7 @@ namespace rootengine{
         std::vector<SDL_Rect> grounds;
         grounds.push_back(ground1);
         grounds.push_back(ground2);
-        if (!player.checkIfOnGround(player.changeRect(), grounds)){
+        if (!player.checkIfOnGround(&player, grounds)){
             player.enterNewState(new RunningFallState(isLeft));
         }
 

@@ -3,3 +3,7 @@
 //
 
 #include "WalkingEnemy.h"
+
+namespace rootengine{
+
+}

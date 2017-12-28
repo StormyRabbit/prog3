@@ -5,10 +5,11 @@
 #ifndef PROG3_WALKINGENEMY_H
 #define PROG3_WALKINGENEMY_H
 
+namespace rootengine {
+    class WalkingEnemy {
 
-class WalkingEnemy {
-
-};
+    };
+}
 
 
 #endif //PROG3_WALKINGENEMY_H

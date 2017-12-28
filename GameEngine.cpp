@@ -49,7 +49,8 @@ namespace rootengine {
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
-            player->tick();
+            //player->tick();
+            activeWorld->updateWorld();
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
                     SDL_KeyboardEvent keyEvent = event.key;

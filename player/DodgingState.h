@@ -16,6 +16,9 @@ namespace rootengine{
         PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
         void updateState(class Player& player);
         void enterState(class Player& player);
+
+    private:
+        int nonDodgingHeight;
     };
 }
 

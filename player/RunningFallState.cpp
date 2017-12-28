@@ -37,7 +37,7 @@ namespace rootengine{
         grounds.push_back(ground1);
         grounds.push_back(ground2);
 
-        if (player.checkIfOnGround(player.changeRect(), grounds)){
+        if (player.checkIfOnGround(&player, grounds)){
             player.getYVelocity() = 0;
             player.enterNewState(new RunningState(isFallingLeft));
         } else {

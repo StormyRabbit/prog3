@@ -6,7 +6,9 @@
 #include "Level.h"
 namespace rootengine {
     void Level::updateEnemies() {
-        for(Enemy* enemy : enemyCollection) {}
+        for(Enemy* enemy : enemyCollection) {
+            enemy->tick();
+        }
     }
 
     bool Level::isLevelComplete() {
@@ -27,7 +29,7 @@ namespace rootengine {
             es->draw();
 
         for(Enemy* enemy : enemyCollection) {
-            // enemy->draw();
+             enemy->draw();
         }
     }
 
