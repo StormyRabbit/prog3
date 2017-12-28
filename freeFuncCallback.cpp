@@ -9,22 +9,15 @@ namespace rootengine  {
         (f)(usrInput);
     }
 
-
-    freeFuncCallback::freeFuncCallback(UserInput *inUI, void (*inF)(UserInput *)) {
-        usrInput = inUI;
-        f = inF;
+    freeFuncCallback::freeFuncCallback(UserInput *usrInput, void (*f)(UserInput *)):usrInput(usrInput), f(f) {
+        // nothing to do
     }
 
     freeFuncCallback *freeFuncCallback::getInstance(UserInput *inUI, void (*inF)(UserInput *)) {
-
         return new freeFuncCallback(inUI, inF);
     }
 
     UserInput *freeFuncCallback::getUserInput() {
         return usrInput;
-    }
-
-    freeFuncCallback::ftype freeFuncCallback::getFuncCall() {
-        return f;
     }
 }

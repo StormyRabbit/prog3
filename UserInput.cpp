@@ -8,9 +8,8 @@ namespace rootengine {
         return new UserInput(e);
     }
 
-    UserInput::UserInput(SDL_Event &e) {
-        ke = e.key;
-        asString = std::to_string(e.key.keysym.sym) + std::to_string(e.key.type);
+    UserInput::UserInput(SDL_Event &e):ke(e.key), asString(std::to_string(e.key.keysym.sym) + std::to_string(e.key.type)) {
+
     }
 
     SDL_Event UserInput::getAsEvent() {

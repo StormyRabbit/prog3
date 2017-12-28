@@ -15,10 +15,8 @@ namespace rootengine {
         void executeCallback() override;
         static freeFuncCallback *getInstance(UserInput *inUI, void(*inF)(UserInput*));
         UserInput *getUserInput() override;
-        typedef void (*ftype)(UserInput *);
-        ftype getFuncCall();
     protected:
-        freeFuncCallback(UserInput *inUI, void(*inF)(UserInput*));
+        freeFuncCallback(UserInput *usrInput, void(*f)(UserInput*));
     private:
         UserInput *usrInput;
         void (*f)(UserInput*);

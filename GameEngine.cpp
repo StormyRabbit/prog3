@@ -105,24 +105,7 @@ namespace rootengine {
     }
 
     void GameEngine::endGame() {
-        /*
-        bool endGameRunning = true;
-        while(endGameRunning) {
 
-            SDL_Event event;
-             while (SDL_PollEvent(&event)) {
-                if(event.type)
-                    switch (event.type) {
-                        case SDL_QUIT:
-                            endGameRunning = false;
-                            break;
-                        default:
-                            break;
-                            // OM SPELAREVENT
-                    } // switch end
-            } // while Poll
-        }
-         */
     }
 
     void GameEngine::setUsrInMgr(UserInputMgr *uim) {
