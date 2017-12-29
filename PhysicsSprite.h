@@ -28,7 +28,9 @@ namespace rootengine{
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
     protected:
-        PhysicsSprite(int xPos,int yPos,int width,int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
+        typedef std::map<std::string, std::string> spritesMap;
+        typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
+        PhysicsSprite(int xPos,int yPos,int width,int height, spritesMap sprites, fMapType frames);
         ~PhysicsSprite();
         int frame = 0;
     private:
