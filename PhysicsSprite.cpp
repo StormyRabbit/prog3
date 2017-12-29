@@ -7,9 +7,10 @@
 #include "PhysicsSprite.h"
 #include "System.h"
 
-namespace rootengine{
+namespace rootengine {
     PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites), Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find(sprites.begin()->first)->second;
+        surf = IMG_Load(pathToDraw.c_str());
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
 
     }
@@ -81,5 +82,9 @@ namespace rootengine{
 
     void PhysicsSprite::setResetHeight(int height) {
         resetHeight = height;
+    }
+
+    SDL_Surface *PhysicsSprite::getSurface() {
+        return surf;
     }
 }

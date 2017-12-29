@@ -16,6 +16,7 @@ namespace rootengine {
         CollEngine() = default;
 
     private:
+        int getAlpha(PhysicsSprite *, int x, int y );
         std::vector<PhysicsSprite *> physObjects;
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);

@@ -30,7 +30,6 @@ namespace rootengine {
             int getScore();
             void createWorld();
             void setFPS(int);
-            void printScore(UserInput*);
             static GameEngine* getInstance();
             ~GameEngine();
         protected:
@@ -38,9 +37,7 @@ namespace rootengine {
         private:
             UserInputMgr *usrInMgr{};
             int score{};
-            int screenFPS{};
             int tickRate{};
-            Player *player{};
             World *activeWorld{};
             bool running = true;
             LevelManager* lvlMgr{};

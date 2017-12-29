@@ -33,13 +33,16 @@ int main(int, char **) {
 
 UserInputMgr *createUIM(GameEngine *ge) {
     UserInputMgr *uimgr = UserInputMgr::getInstance();
-    UserInput *ui = UserInput::getInstance(SDLK_t, true);
-    rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);
-    UserInput *mUI = UserInput::getInstance(SDLK_g, true);
-    rootengine::MemberFuncCallback<GameEngine> *test = MemberFuncCallback<GameEngine>::getInstance(mUI, ge, &GameEngine::printScore);
-    uimgr->addEvent(test);
-    uimgr->addEvent(asd);
+    /*
+        UserInput *ui = UserInput::getInstance(SDLK_t, true);
+        rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);
+        UserInput *mUI = UserInput::getInstance(SDLK_g, true);
+        template : rootengine::MemberFuncCallback<GameEngine> *test = MemberFuncCallback<GameEngine>::getInstance(mUI, ge, &GameEngine::printScore);
+        uimgr->addEvent(test);
+        uimgr->addEvent(asd);
+     */
     return uimgr;
+
 }
 
 Player *createPlayer() {

@@ -21,6 +21,7 @@ namespace rootengine{
         void setResetHeight(int height);
         void setResetWidth(int width);
         int getResetHeight();
+        SDL_Surface *getSurface();
         int getResetWidth();
         void setOnGround(bool isOnGround);
     protected:
@@ -30,6 +31,7 @@ namespace rootengine{
         void animatedTick();
     private:
         bool isDrawable = true;
+        SDL_Surface *surf; // behövs för pixel detection ?
         SDL_Texture* texture;
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;

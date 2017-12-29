@@ -1,5 +1,6 @@
 //
 // Created by lasse on 12/7/17.
+// based on http://lazyfoo.net/tutorials/SDL/23_advanced_timers/index.php
 //
 
 #ifndef PROG3_TIMER_H
@@ -11,22 +12,13 @@ namespace rootengine {
     class Timer {
     public:
         void start();
-        void stop();
-        void pause();
-        void unpause();
-
-        int getTicks();
-
-        bool isStarted();
-        bool isPaused();
-
+        Uint32 getTicks();
         static Timer* getInstance();
     protected:
         Timer() = default;
     private:
-        int startTicks;
-        int pausedTicks;
-        bool paused;
+        Uint32 startTicks;
+        Uint32 pausedTicks;
         bool started;
 
     };

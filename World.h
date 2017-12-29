@@ -17,15 +17,13 @@ namespace rootengine {
         void executeEvent(const SDL_Event& eve);
         void updateWorld();
         void drawWorld();
-        void tick();
         void setPlayer(Player* player);
         void setLevel(Level* lvl);
-        static World* getInstance();
+        static World *getInstance();
         bool readyForNextLvl();
     protected:
-        World();
+        World() = default;
     private:
-        CollEngine *collEngine;
         Player *activePlayer;
         Level *activeLevel;
     };

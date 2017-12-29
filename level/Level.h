@@ -14,10 +14,8 @@
 namespace rootengine {
     class Level {
     public:
-        void addNonCollEnv(EnvironmentSprite*);
         void addCollEnv(EnvironmentSprite*);
         void setBackGround(EnvironmentSprite*);
-
         void addEnemy(Enemy *);
         void updateEnemies();
         bool isLevelComplete();
@@ -29,7 +27,7 @@ namespace rootengine {
     protected:
         Level() = default;
     private:
-        EnvironmentSprite* background;
+        EnvironmentSprite* background{};
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<EnvironmentSprite*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;

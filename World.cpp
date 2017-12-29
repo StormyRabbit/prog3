@@ -2,8 +2,6 @@
 // Created by lasse on 12/5/17.
 //
 
-#include <iostream>
-#include <assert.h>
 #include "World.h"
 #include "player/JumpingState.h"
 
@@ -31,7 +29,7 @@ namespace rootengine {
         activePlayer->handleEvent(eve);
     }
 
-    World *rootengine::World::getInstance() {
+    World *World::getInstance() {
         return new World();
     }
 
@@ -40,12 +38,10 @@ namespace rootengine {
             activeLevel->drawLevel();
         if(activePlayer != nullptr)
             activePlayer->draw();
-
     }
 
     void World::setLevel(Level *lvl) {
-        if(activeLevel != nullptr)
-            delete activeLevel;
+        delete activeLevel;
         activeLevel = lvl;
     }
 

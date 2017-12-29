@@ -4,60 +4,23 @@
 
 #include <SDL_timer.h>
 #include "Timer.h"
-namespace {
+namespace rootengine {
+    Uint32 Timer::getTicks() {
+        Uint32 time = 0;
+        if(started)
+            time = pausedTicks;
+        else
+            time = SDL_GetTicks() -startTicks;
+        return time;
+    }
 
-}
-
-bool rootengine::Timer::isPaused() {
-    return started && paused;
-}
-
-bool rootengine::Timer::isStarted() {
-    return started;
-}
-
-int rootengine::Timer::getTicks() {
-    int time = 0;
-
-    if(started)
-        time = pausedTicks;
-    else
-        time = SDL_GetTicks() -startTicks;
-
-    return time;
-}
-
-void rootengine::Timer::unpause() {
-    if(started && paused) {
-        paused = false;
-        startTicks = SDL_GetTicks() - pausedTicks;
+    void Timer::start() {
+        started = true;
+        startTicks = SDL_GetTicks();
         pausedTicks = 0;
     }
-}
 
-void rootengine::Timer::pause() {
-    if(started && !paused) {
-        paused = true;
-        pausedTicks = SDL_GetTicks() - startTicks;
-        startTicks = 0;
+    Timer *rootengine::Timer::getInstance() {
+        return new Timer();
     }
-
-}
-
-void rootengine::Timer::start() {
-    started = true;
-    paused = false;
-    startTicks = SDL_GetTicks();
-    pausedTicks = 0;
-}
-
-void rootengine::Timer::stop() {
-    started = false;
-    paused = false;
-    startTicks = 0;
-    pausedTicks = 0;
-}
-
-rootengine::Timer *rootengine::Timer::getInstance() {
-    return new Timer();
 }

@@ -15,7 +15,7 @@ namespace rootengine {
 
     bool Level::isLevelComplete() {
         for(Enemy* enemy : enemyCollection) {
-            bool alive = false;
+            if(enemy->getIsAlive())
                 return false;
         }
         return true;
@@ -82,10 +82,6 @@ namespace rootengine {
         for(Enemy *enemy : enemyCollection)
             delete enemy;
         delete background;
-    }
-
-    void Level::addNonCollEnv(EnvironmentSprite *es) {
-        nonCollEnvironment.push_back(es);
     }
 
     void Level::addEnemy(Enemy *en) {

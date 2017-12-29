@@ -1,5 +1,7 @@
 //
 // Created by lasse on 12/29/17.
+// based on https://stackoverflow.com/questions/28098164/alpha-value-of-pixel-color-and-per-pixel-collision-using-sdl
+// and http://www.sdltutorials.com/sdl-per-pixel-collision
 //
 
 #include "CollEngine.h"
@@ -39,6 +41,8 @@ namespace rootengine {
         return false;
     }
 
+
+
     bool CollEngine::detectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
             if (aObject == otherObject)
                 return false;
@@ -49,5 +53,20 @@ namespace rootengine {
 
    CollEngine *CollEngine::getInstance() {
         return new CollEngine();
+    }
+
+    int CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
+
+        SDL_PixelFormat *pixelFormat = ps->getSurface()->format;
+        int bytesPerPixel = pixelFormat->BitsPerPixel;
+
+        Uint8 *p = (Uint8*)ps->getSurface()->pixels + y * ps->getSurface()->pitch + x * bytesPerPixel;
+        Uint32 pixelColor = *p;
+        Uint8 red;
+        Uint8 green;
+        Uint8 blue;
+        Uint8 alpha;
+        SDL_GetRGBA(pixelColor, pixelFormat, &red, &green, &blue, &alpha);
+        return 0;
     }
 }

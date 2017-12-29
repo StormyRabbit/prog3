@@ -3,9 +3,6 @@
 //
 
 #include <SDL.h>
-#include <iostream>
-#include <sstream>
-#include <assert.h>
 #include "GameEngine.h"
 #include "System.h"
 #include "util/Timer.h"
@@ -13,14 +10,13 @@
 namespace rootengine {
 
     GameEngine::~GameEngine() {
-        delete player;
         delete activeWorld;
         delete lvlMgr;
         delete hud;
+        delete usrInMgr;
     }
 
     void GameEngine::setLvlMgr(LevelManager *lvlMgr) {
-        assert(lvlMgr);
         GameEngine::lvlMgr = lvlMgr;
     }
 
@@ -38,19 +34,17 @@ namespace rootengine {
     }
     void GameEngine::run() {
         handleNextLvl();
-        Timer* fpsTimer = Timer::getInstance();
-        Timer* capTimer = Timer::getInstance();
-        int countedFrames = 0;
+        Timer *fpsTimer = Timer::getInstance();
+        Timer *capTimer = Timer::getInstance();
         fpsTimer->start();
-        std::stringstream fpsText;
         while (running) {
+            handleNextLvl();
             capTimer->start();
             SDL_RenderClear(sys.getRenderer());
             activeWorld->drawWorld();
             hud->draw();
             SDL_Event event;
-
-            activeWorld->tick();
+            activeWorld->updateWorld();
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
                     SDL_KeyboardEvent keyEvent = event.key;
@@ -71,18 +65,16 @@ namespace rootengine {
                 } // switch end
                 }
             } // while Poll
-            ++countedFrames;
-            int frameTicks = capTimer->getTicks();
-            if( frameTicks < tickRate) {
-                SDL_Delay( tickRate - frameTicks); // TODO: updatera till Uint32
-            }
+            Uint32 frameTicks = capTimer->getTicks();
+            if( frameTicks < tickRate)
+                SDL_Delay( tickRate - frameTicks);
+
             SDL_RenderPresent(sys.getRenderer());
 
         } // while running
     }
 
     void GameEngine::setPlayer(Player *player) {
-        GameEngine::player = player; // TODO: remove när world->draw är implementerat
         activeWorld->setPlayer(player);
     }
 
@@ -95,7 +87,6 @@ namespace rootengine {
     }
 
     void GameEngine::setFPS(int fps) {
-        screenFPS = fps;
         tickRate = 1000 / fps;
     }
 
@@ -104,15 +95,10 @@ namespace rootengine {
     }
 
     void GameEngine::endGame() {
-
+        // TODO
     }
 
     void GameEngine::setUsrInMgr(UserInputMgr *uim) {
         usrInMgr = uim;
-    }
-
-    void GameEngine::printScore(UserInput *) {
-        std::cout << getScore();
-
     }
 }
