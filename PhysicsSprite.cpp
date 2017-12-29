@@ -47,11 +47,11 @@ namespace rootengine {
     void PhysicsSprite::updateSize(){
         int tempFrame = frame;
         if (tempFrame != 0){
-            double diffrenceInHeight = (double)framePositions[frame].h / (double)framePositions[frame - 1].h;
-            double diffrenceInWitdh = (double)framePositions[frame].w / (double)framePositions[frame - 1].w;
+            double differenceInHeight = (double)framePositions[frame].h / (double)framePositions[frame - 1].h;
+            double differenceInWidth = (double)framePositions[frame].w / (double)framePositions[frame - 1].w;
 
-            changeRect().h = round(getRect().h * diffrenceInHeight);
-            changeRect().w = round(getRect().w * diffrenceInWitdh);
+            changeRect().h = round(getRect().h * differenceInHeight);
+            changeRect().w = round(getRect().w * differenceInWidth);
         }
     }
 
