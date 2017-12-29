@@ -34,6 +34,7 @@ namespace rootengine{
         ~PhysicsSprite();
         int frame = 0;
     private:
+
         bool isDrawable = true;
         SDL_Surface *surf; // behövs för pixel detection ?
         SDL_Texture* texture;
