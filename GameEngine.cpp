@@ -5,7 +5,6 @@
 #include <SDL.h>
 #include "GameEngine.h"
 #include "System.h"
-#include "util/Timer.h"
 
 namespace rootengine {
 
@@ -33,10 +32,7 @@ namespace rootengine {
         }
     }
     void GameEngine::run() {
-        // TODO add startup method that checks for nullptrs.
-        handleNextLvl();
-        startFPSTimers();
-        fpsTimer->start();
+        preLoopProcess();
         while (running) {
             handleNextLvl();
             capTimer->start();
@@ -102,5 +98,31 @@ namespace rootengine {
         Uint32 frameTicks = capTimer->getTicks();
         if( frameTicks < tickRate)
             SDL_Delay( tickRate - frameTicks);
+    }
+
+    void GameEngine::runStartUpChecks() {
+        if(usrInMgr == nullptr) {
+
+        }
+
+        if(activeWorld == nullptr) {
+
+        }
+
+        if(hud == nullptr) {
+
+        }
+
+        if(lvlMgr == nullptr) {
+
+        }
+
+    }
+
+    void GameEngine::preLoopProcess() {
+        runStartUpChecks();
+        handleNextLvl();
+        startFPSTimers();
+        fpsTimer->start();
     }
 }

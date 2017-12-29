@@ -36,6 +36,8 @@ namespace rootengine {
         protected:
             GameEngine() = default;
         private:
+            void runStartUpChecks();
+            void preLoopProcess();
             UserInputMgr *usrInMgr{};
             int score{};
             World *activeWorld{};
