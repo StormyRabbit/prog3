@@ -11,28 +11,25 @@ namespace rootengine{
         return new FlyingEnemy(xPos, yPos, width, height, sprites, frames, enemyValues);
     }
 
-    FlyingEnemy::FlyingEnemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues) : Enemy(xPos, yPos, width, height, sprites, frames) {
-        flyingSpeed = enemyValues.find("speed")->second;
+    FlyingEnemy::FlyingEnemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues) : Enemy(xPos, yPos, width, height, sprites, frames, enemyValues) {
         flyingMinX = enemyValues.find("maxX")->second;
         flyingMaxX = enemyValues.find("minX")->second;
-        gravity = enemyValues.find("gravity")->second;
-        fallingPower = enemyValues.find("fallPower")->second;
 
-        this->animatedTextureChange("flying");
+        this->animatedTextureChange("moving");
     }
     FlyingEnemy::~FlyingEnemy(){}
 
     void FlyingEnemy::tick(){
-        FlyingEnemy::animatedTick();
+        Enemy::tick();
         if (this->getRect().x <= flyingMaxX)
             flyingLeft = false;
         if (this->getRect().x >= flyingMinX)
             flyingLeft = true;
 
         if (flyingLeft){
-            this->changeRect().x = this->getRect().x - floor(flyingSpeed);
+            this->changeRect().x = this->getRect().x - floor(movingSpeed);
         } else {
-            this->changeRect().x = this->getRect().x + floor(flyingSpeed);
+            this->changeRect().x = this->getRect().x + floor(movingSpeed);
         }
 
         if (!getIsAlive()){
@@ -48,7 +45,7 @@ namespace rootengine{
                 }
 
                 fallingPower = fallingPower * 0.97;
-                flyingSpeed = flyingSpeed * 0.99;
+                movingSpeed = movingSpeed * 0.99;
 
                 changeRect().y = ceil(getRect().y - yVelocity);
                 yVelocity = yVelocity - gravity;

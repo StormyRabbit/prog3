@@ -27,7 +27,7 @@ namespace rootengine {
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
-    void PhysicsSprite::animatedTick() {
+    void PhysicsSprite::tick(){
         updateSize();
         frame++;
         if (frame >= framePositions.size()) {
@@ -86,5 +86,13 @@ namespace rootengine {
 
     SDL_Surface *PhysicsSprite::getSurface() {
         return surf;
+    }
+
+    bool PhysicsSprite::checkIfOnGroundBorder() {
+        return onGrundBorder;
+    }
+
+    void PhysicsSprite::setOnGroundBorder(bool isBorder) {
+        onGrundBorder = isBorder;
     }
 }

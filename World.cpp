@@ -17,6 +17,7 @@ namespace rootengine {
         if (enemy != nullptr && enemy->getIsAlive()){
             activePlayer->enterNewState(new JumpingState());
             enemy->killEnemy();
+            enemy->setOnGroundBorder(activeLevel->checkIfOnGroundBorder(enemy));
         }
         activePlayer->setOnGround(activeLevel->checkIfOnGround(activePlayer));
     }

@@ -20,7 +20,7 @@ namespace rootengine {
         int getRunningSpeed();
         double& getYVelocity();
         double& getJumpingPower();
-        void tick();
+        void tick() override;
         void enterNewState(class PlayerState* newState);
         ~Player();
     protected:

@@ -20,15 +20,17 @@ namespace rootengine{
         bool checkIfOnGround();
         void setResetHeight(int height);
         void setResetWidth(int width);
+        virtual void tick();
         int getResetHeight();
         SDL_Surface *getSurface();
         int getResetWidth();
         void setOnGround(bool isOnGround);
+        void setOnGroundBorder(bool isBorder);
+        bool checkIfOnGroundBorder();
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
         ~PhysicsSprite();
         int frame = 0;
-        void animatedTick();
     private:
         bool isDrawable = true;
         SDL_Surface *surf; // behövs för pixel detection ?
@@ -39,6 +41,7 @@ namespace rootengine{
         int resetHeight;
         int resetWidth;
         bool onGround = true;
+        bool onGrundBorder = true;
         void updateSize();
     };
 }

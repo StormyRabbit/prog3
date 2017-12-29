@@ -35,6 +35,28 @@ namespace rootengine {
         }
     }
 
+    bool Level::checkIfOnGroundBorder(PhysicsSprite* sprite){
+        int leftObject = sprite->getRect().x;
+        int rightObject = sprite->getRect().x + sprite->getRect().w;
+        int topObject = sprite->getRect().y;
+        int bottomObject = sprite->getRect().y + sprite->getRect().h;
+
+        for (EnvironmentSprite* groundObj : collEnvironment) {
+            SDL_Rect ground = groundObj->getRect();
+            int leftGround = ground.x;
+            int rightGround = ground.x + ground.w;
+            int topGround = ground.y;
+            int bottomGround = ground.y + ground.h;
+
+            if (bottomObject >= topGround && leftObject >= leftGround && rightObject <= rightGround && bottomGround >= bottomObject){
+                sprite->changeRect().y = sprite->getRect().y;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     bool Level::checkIfOnGround(PhysicsSprite* sprite){
         int leftObject = sprite->getRect().x;
         int rightObject = sprite->getRect().x + sprite->getRect().w;

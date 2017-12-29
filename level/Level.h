@@ -24,6 +24,7 @@ namespace rootengine {
         static Level* getInstance();
         Enemy *checkIfEnemyCollWithPlayer(rootengine::Player *player);
         bool checkIfOnGround(PhysicsSprite *sprite);
+        bool checkIfOnGroundBorder(PhysicsSprite *sprite);
     protected:
         Level() = default;
     private:
@@ -31,9 +32,6 @@ namespace rootengine {
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<EnvironmentSprite*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;
-
-
-
     };
 }
 

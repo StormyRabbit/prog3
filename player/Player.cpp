@@ -49,7 +49,7 @@ namespace rootengine{
     }
 
     void Player::tick() {
-        Player::animatedTick();
+        PhysicsSprite::tick();
         playerState->updateState(*this);
     }
 
