@@ -17,6 +17,7 @@
 #include "UserInput.h"
 #include "UserInputCallback.h"
 #include "UserInputMgr.h"
+#include "util/Timer.h"
 
 namespace rootengine {
     class GameEngine : public Subject {
@@ -37,12 +38,16 @@ namespace rootengine {
         private:
             UserInputMgr *usrInMgr{};
             int score{};
-            int tickRate{};
             World *activeWorld{};
             bool running = true;
             LevelManager* lvlMgr{};
             HUD *hud{};
-
+            // FPS cap stuff
+            int tickRate{};
+            void startFPSTimers();
+            void pauseTickDur();
+            Timer *fpsTimer;
+            Timer *capTimer;
         void endGame();
     };
 }

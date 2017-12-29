@@ -33,9 +33,9 @@ namespace rootengine {
         }
     }
     void GameEngine::run() {
+        // TODO add startup method that checks for nullptrs.
         handleNextLvl();
-        Timer *fpsTimer = Timer::getInstance();
-        Timer *capTimer = Timer::getInstance();
+        startFPSTimers();
         fpsTimer->start();
         while (running) {
             handleNextLvl();
@@ -43,32 +43,23 @@ namespace rootengine {
             SDL_RenderClear(sys.getRenderer());
             activeWorld->drawWorld();
             hud->draw();
-            SDL_Event event;
             activeWorld->updateWorld();
+            SDL_Event event;
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
-                    SDL_KeyboardEvent keyEvent = event.key;
-                    SDL_Keysym keysym = keyEvent.keysym;
-                    if (keysym.sym == SDLK_h) {
-                        Level *nxtLvl = lvlMgr->getNextLevel();
-                        if(nxtLvl != nullptr)
-                            activeWorld->setLevel(nxtLvl);
-                    }
-                    if(usrInMgr != nullptr)
                         usrInMgr->handleEvent(event);
                     switch (event.type) {
                     case SDL_QUIT:
                         running = false;
                         break;
                     default:
-                        activeWorld->executeEvent(event);
-                } // switch end
+                        activeWorld->executeEvent(event); // TODO: gör denna något efter usrInMgr är fixad ?
+                    } // switch end
                 }
             } // while Poll
-            Uint32 frameTicks = capTimer->getTicks();
-            if( frameTicks < tickRate)
-                SDL_Delay( tickRate - frameTicks);
 
+            // pause if tick timer not completed
+            pauseTickDur();
             SDL_RenderPresent(sys.getRenderer());
 
         } // while running
@@ -100,5 +91,16 @@ namespace rootengine {
 
     void GameEngine::setUsrInMgr(UserInputMgr *uim) {
         usrInMgr = uim;
+    }
+
+    void GameEngine::startFPSTimers() {
+        fpsTimer = Timer::getInstance();
+        capTimer = Timer::getInstance();
+    }
+
+    void GameEngine::pauseTickDur() {
+        Uint32 frameTicks = capTimer->getTicks();
+        if( frameTicks < tickRate)
+            SDL_Delay( tickRate - frameTicks);
     }
 }
