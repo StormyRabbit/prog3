@@ -14,6 +14,7 @@ namespace rootengine{
         ~Enemy();
         void killEnemy();
         virtual void tick();
+        bool getIsAlive();
     protected:
         Enemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
     private:

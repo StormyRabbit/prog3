@@ -76,16 +76,22 @@ Player *createPlayer() {
 Enemy* createFlyingEnemy(){
     //TEST ENEMY
     std::map<std::string, std::string> sprites;
-    sprites.insert(std::pair<std::string, std::string>("standing", "assets/sprites/Enemies/enemies_spritesheet.png"));
+    sprites.insert(std::pair<std::string, std::string>("flying", "assets/sprites/Enemies/enemies_spritesheet.png"));
+    sprites.insert(std::pair<std::string, std::string>("dead", "assets/sprites/Enemies/enemies_spritesheet.png"));
 
     std::vector<SDL_Rect> flyingFrame{{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31}};
+    std::vector<SDL_Rect> deadFrame{{143,0,59,33}};
     std::map<std::string, std::vector<SDL_Rect>> frameRects;
-    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("standing", flyingFrame));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("flying", flyingFrame));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dead", deadFrame));
+
 
     std::map<std::string, double> movingVariables;
     movingVariables.insert(std::pair<std::string, double>("speed", 3));
     movingVariables.insert(std::pair<std::string, double>("maxX", 1000));
     movingVariables.insert(std::pair<std::string, double>("minX", 300));
+    movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
+    movingVariables.insert(std::pair<std::string, double>("fallPower", 7));
     return FlyingEnemy::getInstance(30, 310, 50, 50, sprites, frameRects, movingVariables);
     //return
 };

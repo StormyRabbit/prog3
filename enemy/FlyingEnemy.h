@@ -16,10 +16,14 @@ namespace rootengine{
         FlyingEnemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues);
         ~FlyingEnemy();
     private:
-        int flyingSpeed;
+        double flyingSpeed;
         int flyingMaxX;
         int flyingMinX;
+        double gravity;
+        double fallingPower;
+        double yVelocity;
         bool flyingLeft = false;
+        bool isBouncing = false;
     };
 }
 

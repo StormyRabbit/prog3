@@ -12,5 +12,9 @@ namespace rootengine{
     void Enemy::killEnemy() {
         setIsDraweble(false);
         isAlive = false;
+    }
+
+    bool Enemy::getIsAlive() {
+        return isAlive;
     };
 }
