@@ -17,6 +17,7 @@ namespace rootengine {
         void addNonCollEnv(EnvironmentSprite*);
         void addCollEnv(EnvironmentSprite*);
         void setBackGround(EnvironmentSprite*);
+
         void addEnemy(Enemy *);
         void updateEnemies();
         bool isLevelComplete();

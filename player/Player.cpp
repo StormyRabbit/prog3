@@ -73,7 +73,5 @@ namespace rootengine{
     }
 
     Player::~Player() {}
-
-
 }
 

@@ -11,6 +11,7 @@ namespace rootengine{
     PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites), Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find(sprites.begin()->first)->second;
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
+
     }
     PhysicsSprite::~PhysicsSprite() {
         SDL_DestroyTexture(texture);

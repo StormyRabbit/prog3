@@ -8,6 +8,7 @@
 #include <map>
 #include "../PhysicsSprite.h"
 #include "PlayerState.h"
+#include "../util/CollEngine.h"
 
 
 namespace rootengine {

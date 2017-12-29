@@ -50,8 +50,7 @@ namespace rootengine {
             hud->draw();
             SDL_Event event;
 
-            //player->tick();
-            activeWorld->updateWorld();
+            activeWorld->tick();
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
                     SDL_KeyboardEvent keyEvent = event.key;
@@ -64,7 +63,6 @@ namespace rootengine {
                     if(usrInMgr != nullptr)
                         usrInMgr->handleEvent(event);
                     switch (event.type) {
-
                     case SDL_QUIT:
                         running = false;
                         break;
