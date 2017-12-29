@@ -10,7 +10,7 @@
 namespace rootengine {
     typedef std::map<std::string, std::string> spritesMap;
     typedef std::map<std::string, std::vector<SDL_Rect>> framesMap;
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, framesMap frames)
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, std::map<std::string, std::vector<SDL_Rect>> frames)
             : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites),
               Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find(sprites.begin()->first)->second;

@@ -21,7 +21,7 @@ namespace rootengine{
             changeRect().y = getRect().y + movingSpeed;
         }
 
-        if (!checkIfOnGroundBorder()){
+        if (!checkIfOnGround()){
             movingLeft = !movingLeft;
         }
 
