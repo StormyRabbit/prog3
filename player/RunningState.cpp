@@ -77,31 +77,14 @@ namespace rootengine{
     }
 
     void RunningState::updateState(Player& player){
-
-        //TODO ADD GET FUNCTION FOR ENVI OBJECTS
-        //JUST TRY CODE
-        SDL_Rect ground1;
-        ground1.x = 0;
-        ground1.y = 500;
-        ground1.h = 100;
-        ground1.w = 1200;
-        SDL_Rect ground2;
-        ground2.x = 500;
-        ground2.y = 420;
-        ground2.h = 20;
-        ground2.w = 200;
-        std::vector<SDL_Rect> grounds;
-        grounds.push_back(ground1);
-        grounds.push_back(ground2);
-        if (!player.checkIfOnGround(&player, grounds)){
-            player.enterNewState(new RunningFallState(isLeft));
-        }
-
-
         if (isLeft){
             player.changeRect().x = player.getRect().x - player.getRunningSpeed();
         } else {
             player.changeRect().x = player.getRect().x + player.getRunningSpeed();
+        }
+
+        if (!player.checkIfOnGround()){
+            player.enterNewState(new RunningFallState(isLeft));
         }
     }
 

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <assert.h>
 #include "World.h"
+#include "player/JumpingState.h"
+
 namespace rootengine {
     void World::updateWorld() {
         if(activePlayer != nullptr)
@@ -14,9 +16,11 @@ namespace rootengine {
         //if(activeLevel->isLevelComplete()) {}
         activeLevel->updateEnemies();
         Enemy* enemy = activeLevel->checkIfEnemyCollWithPlayer(activePlayer);
-        if (enemy != nullptr){
+        if (enemy != nullptr && enemy->getIsAlive()){
+            activePlayer->enterNewState(new JumpingState());
             enemy->killEnemy();
         }
+        activePlayer->setOnGround(activeLevel->checkIfOnGround(activePlayer));
     }
 
     void World::setPlayer(rootengine::Player *player) {
@@ -25,7 +29,6 @@ namespace rootengine {
 
     void World::executeEvent(const SDL_Event &eve) {
         activePlayer->handleEvent(eve);
-
     }
 
     World *rootengine::World::getInstance() {

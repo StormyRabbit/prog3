@@ -12,11 +12,11 @@ namespace rootengine{
 
     void DodgingState::enterState(class Player &player) {
         nonDodgingHeight = player.getRect().h;
-        int newHeight = player.changeRect().h * 0.8;
-        int posChange = nonDodgingHeight - newHeight;
+        player.setResetHeight(player.changeRect().h * 0.8);
+        int posChange = nonDodgingHeight - player.getResetHeight();
 
         player.changeRect().y = player.getRect().y + posChange;
-        player.changeRect().h = newHeight;
+        player.changeRect().h = player.getResetHeight();
         player.animatedTextureChange("dodging");
         }
 
@@ -26,9 +26,9 @@ namespace rootengine{
             if (keyEvent.type == SDL_KEYUP) {
                 switch (keysym.sym) {
                     case SDLK_DOWN :
-                        int posChange = nonDodgingHeight - player.getRect().h;
+                        int posChange = nonDodgingHeight - player.getResetHeight();
                         player.changeRect().y = player.getRect().y - posChange;
-                        player.changeRect().h = nonDodgingHeight;
+                        player.setResetHeight(nonDodgingHeight);
                         return new StandingState();
                 }
             }

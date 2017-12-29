@@ -24,9 +24,9 @@ namespace rootengine{
         if (keyEvent.type == SDL_KEYUP) {
             switch (keysym.sym) {
                 case SDLK_LEFT :
-                    return new JumpingState(player.getRect().y);
+                    return new JumpingState();
                 case SDLK_RIGHT :
-                    return new JumpingState(player.getRect().y);
+                    return new JumpingState();
 
             }
         }

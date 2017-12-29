@@ -8,7 +8,7 @@
 #include "System.h"
 
 namespace rootengine{
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : originalW(width), originalH(height), framesMap(frames), spriteMap(sprites), Sprite(xPos, yPos, width, height) {
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames) : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites), Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find(sprites.begin()->first)->second;
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
@@ -17,6 +17,7 @@ namespace rootengine{
     }
 
     void PhysicsSprite::animatedTextureChange(std::string keyToMap) {
+        frame = 0;
         framePositions = framesMap.find(keyToMap)->second;
         std::string pathToDraw = spriteMap.find(keyToMap)->second;
 
@@ -29,30 +30,13 @@ namespace rootengine{
         frame++;
         if (frame >= framePositions.size()) {
             frame = 0;
-            changeRect().h = originalH;
-            changeRect().w = originalW;
+            changeRect().h = resetHeight;
+            changeRect().w = resetWidth;
         }
     }
 
-    bool PhysicsSprite::checkIfOnGround(PhysicsSprite* sprite, std::vector<SDL_Rect> collEnvironmentRect) {
-        int leftObject = sprite->getRect().x;
-        int rightObject = sprite->getRect().x + sprite->getRect().w;
-        int topObject = sprite->getRect().y;
-        int bottomObject = sprite->getRect().y + sprite->getRect().h;
-
-        for (SDL_Rect ground : collEnvironmentRect) {
-            int leftGround = ground.x;
-            int rightGround = ground.x + ground.w;
-            int topGround = ground.y;
-            int bottomGround = ground.y + ground.h;
-
-            if (bottomObject >= topGround && leftObject >= leftGround && rightObject <= rightGround && bottomGround >= bottomObject){
-                sprite->changeRect().y = sprite->getRect().y;
-                return true;
-            }
-        }
-
-        return false;
+    bool PhysicsSprite::checkIfOnGround() {
+        return onGround;
     }
 
     void PhysicsSprite::updateSize(){
@@ -76,5 +60,25 @@ namespace rootengine{
 
     void PhysicsSprite::setIsDraweble(bool draw) {
         isDrawable = draw;
+    }
+
+    void PhysicsSprite::setOnGround(bool isOnGround) {
+        onGround = isOnGround;
+    }
+
+    int PhysicsSprite::getResetWidth() {
+        return resetWidth;
+    }
+
+    int PhysicsSprite::getResetHeight() {
+        return resetWidth;
+    }
+
+    void PhysicsSprite::setResetWidth(int width) {
+        resetWidth = width;
+    }
+
+    void PhysicsSprite::setResetHeight(int height) {
+        resetHeight = height;
     }
 }

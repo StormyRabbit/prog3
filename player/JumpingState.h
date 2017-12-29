@@ -11,17 +11,11 @@ namespace rootengine {
 
     class JumpingState : public PlayerState {
     public:
-        JumpingState(int startingYPos);
+        JumpingState();
         ~JumpingState();
         PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
         void updateState(class Player& player);
         void enterState(class Player& player);
-
-    private:
-        int startingHeight; //TODO change so that it implements starting height of jump!
-        double gravity = 0.2;
-        double yMaxVelocity = 7;
-        double jumpHeight = 250;
     };
 }
 

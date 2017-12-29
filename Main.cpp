@@ -74,12 +74,13 @@ Player *createPlayer() {
 }
 
 Enemy* createFlyingEnemy(){
-    //TEST ENEMY
+    //MUST CONTAIN DEAD! Path to all sprite sheets. MUST HAVE CORRESPONDING VECTORS IN frameRects WITH SAME KEY!"
     std::map<std::string, std::string> sprites;
     sprites.insert(std::pair<std::string, std::string>("flying", "assets/sprites/Enemies/enemies_spritesheet.png"));
     sprites.insert(std::pair<std::string, std::string>("dead", "assets/sprites/Enemies/enemies_spritesheet.png"));
 
-    std::vector<SDL_Rect> flyingFrame{{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31}};
+    //MUST CONTAIN SAME KEYS AS sprites!! Contains all positions there are sprites in spritesheet, if not sprite sheet just use position 0,0,PictureWitdh,PictureHeight.
+    std::vector<SDL_Rect> flyingFrame{{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,32,72,36},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31},{0,0,75,31}};
     std::vector<SDL_Rect> deadFrame{{143,0,59,33}};
     std::map<std::string, std::vector<SDL_Rect>> frameRects;
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("flying", flyingFrame));
@@ -92,7 +93,7 @@ Enemy* createFlyingEnemy(){
     movingVariables.insert(std::pair<std::string, double>("minX", 300));
     movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
     movingVariables.insert(std::pair<std::string, double>("fallPower", 7));
-    return FlyingEnemy::getInstance(30, 310, 50, 50, sprites, frameRects, movingVariables);
+    return FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
     //return
 };
 

@@ -4,12 +4,12 @@
 
 #include <iostream>
 #include "Level.h"
-#include "../player/Player.h"
 
 namespace rootengine {
     void Level::updateEnemies() {
         for(Enemy* enemy : enemyCollection) {
             enemy->tick();
+            enemy->setOnGround(checkIfOnGround(enemy));
         }
     }
 
@@ -33,6 +33,28 @@ namespace rootengine {
         for(Enemy* enemy : enemyCollection) {
              enemy->draw();
         }
+    }
+
+    bool Level::checkIfOnGround(PhysicsSprite* sprite){
+        int leftObject = sprite->getRect().x;
+        int rightObject = sprite->getRect().x + sprite->getRect().w;
+        int topObject = sprite->getRect().y;
+        int bottomObject = sprite->getRect().y + sprite->getRect().h;
+
+        for (EnvironmentSprite* groundObj : collEnvironment) {
+            SDL_Rect ground = groundObj->getRect();
+            int leftGround = ground.x;
+            int rightGround = ground.x + ground.w;
+            int topGround = ground.y;
+            int bottomGround = ground.y + ground.h;
+
+            if (bottomObject >= topGround && rightObject >= leftGround && leftObject <= rightGround && bottomGround >= bottomObject){
+                sprite->changeRect().y = sprite->getRect().y;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     Enemy* Level::checkIfEnemyCollWithPlayer(Player* player){

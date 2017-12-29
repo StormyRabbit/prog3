@@ -17,10 +17,15 @@ namespace rootengine{
         void draw() const;
         void animatedTextureChange(std::string keyToMap);
         void setIsDraweble(bool draw);
-        bool checkIfOnGround(PhysicsSprite* sprite, std::vector<SDL_Rect> ground);
+        bool checkIfOnGround();
+        void setResetHeight(int height);
+        void setResetWidth(int width);
+        int getResetHeight();
+        int getResetWidth();
+        void setOnGround(bool isOnGround);
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
-        ~PhysicsSprite(); //Osäker på om det ska vara protected???
+        ~PhysicsSprite();
         int frame = 0;
         void animatedTick();
     private:
@@ -29,8 +34,9 @@ namespace rootengine{
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
-        int originalH;
-        int originalW;
+        int resetHeight;
+        int resetWidth;
+        bool onGround = true;
         void updateSize();
     };
 }
