@@ -16,7 +16,7 @@ namespace rootengine{
     public:
         void draw() const;
         void animatedTextureChange(std::string keyToMap);
-        void setIsDraweble(bool draw);
+        void setIsDrawable(bool draw);
         bool checkIfOnGround();
         void setResetHeight(int height);
         void setResetWidth(int width);
