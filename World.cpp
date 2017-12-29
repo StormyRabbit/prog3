@@ -13,6 +13,10 @@ namespace rootengine {
             //activeLevel->updateEnemies();
         //if(activeLevel->isLevelComplete()) {}
         activeLevel->updateEnemies();
+        Enemy* enemy = activeLevel->checkIfEnemyCollWithPlayer(activePlayer);
+        if (enemy != nullptr){
+            enemy->killEnemy();
+        }
     }
 
     void World::setPlayer(rootengine::Player *player) {

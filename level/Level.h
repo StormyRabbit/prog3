@@ -9,6 +9,7 @@
 #include "../enemy/Enemy.h"
 #include "../EnvironmentSprite.h"
 #include "../PhysicsSprite.h"
+#include "../player/Player.h"
 
 namespace rootengine {
     class Level {
@@ -22,6 +23,7 @@ namespace rootengine {
         void drawLevel();
         ~Level();
         static Level* getInstance();
+        Enemy *checkIfEnemyCollWithPlayer(rootengine::Player *player);
     protected:
         Level() = default;
     private:
@@ -29,6 +31,8 @@ namespace rootengine {
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<EnvironmentSprite*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;
+
+
     };
 }
 

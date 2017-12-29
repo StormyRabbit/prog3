@@ -18,7 +18,7 @@ namespace rootengine{
     protected:
         Enemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames);
     private:
-        bool isAlive;
+        bool isAlive = true;
     };
 }
 

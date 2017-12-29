@@ -10,7 +10,6 @@ namespace rootengine{
     void Enemy::tick() {}
 
     void Enemy::killEnemy() {
-        setIsDraweble(false);
         isAlive = false;
     }
 

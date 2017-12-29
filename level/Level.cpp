@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "Level.h"
+#include "../player/Player.h"
+
 namespace rootengine {
     void Level::updateEnemies() {
         for(Enemy* enemy : enemyCollection) {
@@ -31,6 +33,15 @@ namespace rootengine {
         for(Enemy* enemy : enemyCollection) {
              enemy->draw();
         }
+    }
+
+    Enemy* Level::checkIfEnemyCollWithPlayer(Player* player){
+        for(Enemy* enemy : enemyCollection) {
+            bool result = SDL_HasIntersection(&player->getRect(), &enemy->getRect());
+            if (result)
+                return enemy;
+        }
+        return nullptr;
     }
 
     Level *Level::getInstance() {
