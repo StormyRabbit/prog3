@@ -12,9 +12,12 @@
 
 
 namespace rootengine {
+    typedef std::map<std::string, std::string> stringsMap;
+    typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
+    typedef std::map<std::string, double> mvMap;
     class Player : public PhysicsSprite {
     public:
-        static Player *getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables);
+        static Player *getInstance(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
         void handleEvent(const SDL_Event &eve);
         double getGravity();
         int getRunningSpeed();
@@ -22,9 +25,9 @@ namespace rootengine {
         double& getJumpingPower();
         void tick() override;
         void enterNewState(class PlayerState* newState);
-        ~Player();
+        ~Player() override;
     protected:
-        Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables);
+        Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
         class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
@@ -32,11 +35,6 @@ namespace rootengine {
         double jumpingPower;
         double currentYVelocity = 0;
         double runningSpeed;
-
-
-
     };
 }
-
-
 #endif //PROG3_PLAYER_H

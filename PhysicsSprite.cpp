@@ -8,9 +8,7 @@
 #include "System.h"
 
 namespace rootengine {
-    typedef std::map<std::string, std::string> spritesMap;
-    typedef std::map<std::string, std::vector<SDL_Rect>> framesMap;
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, std::map<std::string, std::vector<SDL_Rect>> frames)
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, fMapType frames)
             : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites),
               Sprite(xPos, yPos, width, height) {
         std::string pathToDraw = sprites.find(sprites.begin()->first)->second;
@@ -51,8 +49,8 @@ namespace rootengine {
             double differenceInHeight = (double)framePositions[frame].h / (double)framePositions[frame - 1].h;
             double differenceInWidth = (double)framePositions[frame].w / (double)framePositions[frame - 1].w;
 
-            changeRect().h = round(getRect().h * differenceInHeight);
-            changeRect().w = round(getRect().w * differenceInWidth);
+            changeRect().h = (int)round(getRect().h * (int)differenceInHeight);
+            changeRect().w = (int)round(getRect().w * (int)differenceInWidth);
         }
     }
 

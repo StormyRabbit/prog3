@@ -16,10 +16,6 @@ Level *createFirstLevel();
 Level *createSecondLevel();
 UserInputMgr *createUIM(GameEngine *);
 
-void testFunc(UserInput *) {
-    std::cout << "TEST FUNC";
-}
-
 int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
@@ -54,7 +50,7 @@ Player *createPlayer() {
     movingVariables.insert(std::pair<std::string, double>("jumpPower", 7));
 
     //MUST CONTAIN SAME KEYS AS playerSprites!! Contains all positions there are sprites in spritesheet, if not sprite sheet just use position 0,0,PictureWitdh,PictureHeight.
-    std::vector<SDL_Rect> runningFrames{{0,0,67,92},{67,0,66,93},{133,0,67,92},{0,93,67,93},{133,93,71,92},{133,93,71,92},{0,186,71,93},{71,186,71,93},{142,186,70,93},{0,279,71,93},{71,279,67,92}};
+    std::vector<SDL_Rect> runningFrames{{0,0,67,92},{67,0,66,93},{133,0,67,92},{0,93,67,93},{133,93,71,92}, {133,93,71,92},{0,186,71,93},{71,186,71,93},{142,186,70,93},{0,279,71,93},{71,279,67,92}};
     std::vector<SDL_Rect> standingFrames{{0,0,66,92}};
     std::vector<SDL_Rect> dodgingFrames{{0,0,69,71}};
     std::vector<SDL_Rect> jumpingFrames{{0,0,67,94}};

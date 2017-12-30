@@ -12,6 +12,8 @@
 #include <map>
 
 namespace rootengine{
+    typedef std::map<std::string, std::string> spritesMap;
+    typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
     class PhysicsSprite : public Sprite {
     public:
         void draw() const;
@@ -28,13 +30,11 @@ namespace rootengine{
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
     protected:
-        typedef std::map<std::string, std::string> spritesMap;
-        typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
+
         PhysicsSprite(int xPos,int yPos,int width,int height, spritesMap sprites, fMapType frames);
         ~PhysicsSprite();
         int frame = 0;
     private:
-
         bool isDrawable = true;
         SDL_Surface *surf; // behövs för pixel detection ?
         SDL_Texture* texture;

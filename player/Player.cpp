@@ -8,19 +8,18 @@
 #include "../GameEngine.h"
 
 namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables) : PhysicsSprite(xPos,yPos, width, height, strings, frames){
+    Player::Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables)
+            : PhysicsSprite(xPos,yPos, width, height, strings, frames){
 
         gravity = movingVariables.find("gravity")->second;
-
         runningSpeed = movingVariables.find("runningSpeed")->second;
-
         jumpingPower = movingVariables.find("jumpPower")->second;
-
         playerState = new StandingState();
         playerState->enterState(*this);
     }
 
-    Player* Player::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> strings, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> movingVariables) {
+    Player* Player::getInstance(int xPos, int yPos, int width, int height, stringsMap strings,
+                                fMapType frames, mvMap movingVariables) {
         return new Player(xPos, yPos, width, height, strings, frames, movingVariables);
     }
 
@@ -29,7 +28,7 @@ namespace rootengine{
     }
 
     int Player::getRunningSpeed() {
-        return runningSpeed;
+        return (int)runningSpeed;
     }
 
     double& Player::getYVelocity(){
@@ -59,7 +58,6 @@ namespace rootengine{
         if (tempState != nullptr){
             delete playerState;
             playerState = tempState;
-
             //Enter new state.
             playerState->enterState(*this);
         }
