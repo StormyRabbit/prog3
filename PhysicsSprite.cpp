@@ -45,12 +45,12 @@ namespace rootengine {
 
     void PhysicsSprite::updateSize(){
         int tempFrame = frame;
-        if (tempFrame != 0){
+        if (tempFrame > 0){
             double differenceInHeight = (double)framePositions[frame].h / (double)framePositions[frame - 1].h;
             double differenceInWidth = (double)framePositions[frame].w / (double)framePositions[frame - 1].w;
 
-            changeRect().h = (int)round(getRect().h * (int)differenceInHeight);
-            changeRect().w = (int)round(getRect().w * (int)differenceInWidth);
+            changeRect().h = (int)round(getRect().h * differenceInHeight);
+            changeRect().w = (int)round(getRect().w * differenceInWidth);
         }
     }
 
