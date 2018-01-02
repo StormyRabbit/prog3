@@ -9,17 +9,18 @@
 #include "../PhysicsSprite.h"
 #include "PlayerState.h"
 #include "../util/CollEngine.h"
-
-
-namespace rootengine {
+#include "../interfaces/PlayerInterface.h"
+namespace jumpyboy {
     typedef std::map<std::string, std::string> stringsMap;
     typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
     typedef std::map<std::string, double> mvMap;
-    class Player : public PhysicsSprite {
+    class Player : public rootengine::PhysicsSprite, rootengine::PlayerInterface {
     public:
         static Player *getInstance(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
         void handleEvent(const SDL_Event &eve);
         double getGravity();
+        void kill();
+        void respawn();
         int getRunningSpeed();
         double& getYVelocity();
         double& getJumpingPower();
@@ -29,7 +30,7 @@ namespace rootengine {
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
-        class PlayerState* playerState;
+        class rootengine::PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
         double gravity;
         double jumpingPower;

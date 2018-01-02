@@ -6,15 +6,15 @@
 #include "StandingState.h"
 #include "FallingState.h"
 #include "../GameEngine.h"
+namespace jumpyboy {
 
-namespace rootengine{
-    Player::Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables)
+ Player::Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables)
             : PhysicsSprite(xPos,yPos, width, height, strings, frames){
 
         gravity = movingVariables.find("gravity")->second;
         runningSpeed = movingVariables.find("runningSpeed")->second;
         jumpingPower = movingVariables.find("jumpPower")->second;
-        playerState = new StandingState();
+        playerState = new rootengine::StandingState();
         playerState->enterState(*this);
     }
 
@@ -39,7 +39,7 @@ namespace rootengine{
         return jumpingPower;
     }
 
-    void Player::enterNewState(PlayerState* newState) {
+    void Player::enterNewState(rootengine::PlayerState* newState) {
         if (newState != nullptr) {
             delete playerState;
             playerState = newState;
@@ -53,7 +53,7 @@ namespace rootengine{
     }
 
     void Player::handleInput(SDL_KeyboardEvent &keyEvent) {
-        PlayerState* tempState = playerState->handleInput(*this, keyEvent);
+        rootengine::PlayerState* tempState = playerState->handleInput(*this, keyEvent);
         //Returns NULL if PlayerState is not changed.
         if (tempState != nullptr){
             delete playerState;
@@ -71,5 +71,12 @@ namespace rootengine{
     }
 
     Player::~Player() {}
-}
 
+    void Player::respawn() {
+
+    }
+
+    void Player::kill() {
+
+    }
+}

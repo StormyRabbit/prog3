@@ -9,7 +9,6 @@
 #include "../enemy/Enemy.h"
 #include "../EnvironmentSprite.h"
 #include "../PhysicsSprite.h"
-#include "../player/Player.h"
 
 namespace rootengine {
     class Level {
@@ -22,7 +21,7 @@ namespace rootengine {
         void drawLevel();
         ~Level();
         static Level* getInstance();
-        Enemy *checkIfEnemyCollWithPlayer(rootengine::Player *player);
+        Enemy *checkIfEnemyCollWithPlayer(PhysicsSprite *player);
         bool checkIfOnGround(PhysicsSprite *sprite);
         bool checkIfOnGroundBorder(PhysicsSprite *sprite);
     protected:

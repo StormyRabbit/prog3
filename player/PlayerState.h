@@ -8,15 +8,13 @@
 #include <SDL.h>
 #include "Player.h"
 
-
-namespace rootengine{
-
+namespace rootengine {
     class PlayerState {
     public:
         ~PlayerState();
-        virtual PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent); //Tried removing class before Player&
-        virtual void updateState(class Player& player);
-        virtual void enterState(class Player& player);
+        virtual PlayerState *handleInput(jumpyboy::Player &player, SDL_KeyboardEvent& keyEvent); //Tried removing class before Player&
+        virtual void updateState(class jumpyboy::Player& player);
+        virtual void enterState(class jumpyboy::Player& player);
     protected:
         PlayerState();
     };

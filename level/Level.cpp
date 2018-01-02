@@ -79,7 +79,7 @@ namespace rootengine {
         return false;
     }
 
-    Enemy* Level::checkIfEnemyCollWithPlayer(Player* player){
+    Enemy* Level::checkIfEnemyCollWithPlayer(PhysicsSprite* player){
         for(Enemy* enemy : enemyCollection) {
             bool result = SDL_HasIntersection(&player->getRect(), &enemy->getRect());
             if (result)

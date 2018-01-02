@@ -13,28 +13,22 @@ namespace rootengine {
     class MemberFuncCallback : public UserInputCallback {
     public:
         void executeCallback() override {
-            (aObj->*f)(usrInput);
+            (aObj->*f)();
         }
-        static MemberFuncCallback *getInstance(UserInput *ui, T* inObj, void(T::*inf)(UserInput*)) {
-            return new MemberFuncCallback(ui, inObj, inf);
+        static MemberFuncCallback *getInstance(T* inObj, void(T::*inf)()) {
+            return new MemberFuncCallback(inObj );
         }
         UserInput* getUserInput() override;
     protected:
-        MemberFuncCallback(UserInput *usrInput, T* aObj, void(T::*f)(UserInput*)):usrInput(usrInput), aObj(aObj), f(f) {
+        MemberFuncCallback(T* aObj, void(T::*f)()): aObj(aObj), f(f) {
 
         }
 
     private:
-        UserInput* usrInput;
         T* aObj;
-        void (T::*f)(UserInput*);
+        void (T::*f)();
 
     };
-
-    template<typename T>
-    UserInput *MemberFuncCallback<T>::getUserInput() {
-        return usrInput;
-    }
 }
 
 #endif //PROG3_MEMBERFUNCCALLBACK_H

@@ -15,19 +15,17 @@ namespace rootengine {
         activeLevel->updateEnemies();
         Enemy* enemy = activeLevel->checkIfEnemyCollWithPlayer(activePlayer);
         if (enemy != nullptr && enemy->getIsAlive()){
-            activePlayer->enterNewState(new JumpingState());
             enemy->killEnemy();
             enemy->setOnGroundBorder(activeLevel->checkIfOnGroundBorder(enemy));
         }
         activePlayer->setOnGround(activeLevel->checkIfOnGround(activePlayer));
     }
 
-    void World::setPlayer(rootengine::Player *player) {
+    void World::setPlayer(PhysicsSprite *player) {
         activePlayer = player;
     }
 
     void World::executeEvent(const SDL_Event &eve) {
-        activePlayer->handleEvent(eve);
     }
 
     World *World::getInstance() {

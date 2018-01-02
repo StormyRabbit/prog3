@@ -7,11 +7,11 @@
 #include "MemberFuncCallback.h"
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
-
+#include "player/Player.h"
 using namespace rootengine;
 HUD *createHUD(GameEngine* game);
 LevelManager *createLvlMgr();
-Player *createPlayer();
+jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
 Level *createSecondLevel();
 UserInputMgr *createUIM(GameEngine *);
@@ -42,7 +42,7 @@ UserInputMgr *createUIM(GameEngine *ge) {
 
 }
 
-Player *createPlayer() {
+jumpyboy::Player *createPlayer() {
     //Changes player moving speed, gravity and fall. MUST HAVE KEYS: gravity, runningSpeed, jumpPower
     std::map<std::string, double> movingVariables;
     movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
@@ -70,7 +70,7 @@ Player *createPlayer() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
-    return Player::getInstance(100,100,50,70, playerSprites, frameRects, movingVariables);
+    return jumpyboy::Player::getInstance(100,100,50,70, playerSprites, frameRects, movingVariables);
 }
 
 Enemy* createFlyingEnemy(){

@@ -61,7 +61,7 @@ namespace rootengine {
         } // while running
     }
 
-    void GameEngine::setPlayer(Player *player) {
+    void GameEngine::setPlayer(PhysicsSprite *player) {
         activeWorld->setPlayer(player);
     }
 

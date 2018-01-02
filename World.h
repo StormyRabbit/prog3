@@ -6,7 +6,6 @@
 #define PROG3_WORLD_H
 
 #include "level/Level.h"
-#include "player/Player.h"
 #include "level/LevelManager.h"
 #include "util/CollEngine.h"
 
@@ -17,14 +16,14 @@ namespace rootengine {
         void executeEvent(const SDL_Event& eve);
         void updateWorld();
         void drawWorld();
-        void setPlayer(Player* player);
+        void setPlayer(PhysicsSprite* player);
         void setLevel(Level* lvl);
         static World *getInstance();
         bool readyForNextLvl();
     protected:
         World() = default;
     private:
-        Player *activePlayer;
+        PhysicsSprite *activePlayer;
         Level *activeLevel;
     };
 }

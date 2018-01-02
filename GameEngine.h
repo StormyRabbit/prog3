@@ -22,7 +22,7 @@ namespace rootengine {
     class GameEngine  {
         public:
             void setLvlMgr(LevelManager *);
-            void setPlayer(Player *);
+            void setPlayer(PhysicsSprite *);
             void setHUD(class HUD *);
             void setUsrInMgr(UserInputMgr *);
             void run();
