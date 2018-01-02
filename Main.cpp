@@ -140,16 +140,11 @@ Level *createFirstLevel() {
     Level* aLvl = Level::getInstance();
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
-
-
     std::vector<SDL_Rect> rects{{0,0,70,70}};
     std::map<std::string, std::vector<SDL_Rect>> frameMap;
-
     frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
-
     aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
     aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
-
     aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     aLvl->addEnemy(createFlyingEnemy());
     aLvl->addEnemy(createWalkingEnemy());
@@ -160,13 +155,9 @@ Level *createSecondLevel() {
     Level* aLvl = Level::getInstance();
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/sand.png"));
-
-
     std::vector<SDL_Rect> rects{{0,0,70,70}};
     std::map<std::string, std::vector<SDL_Rect>> frameMap;
-
     frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
-
     aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
     aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
     return aLvl;

@@ -7,28 +7,28 @@
 
 namespace rootengine {
     void Level::updateEnemies() {
-        for(Enemy* enemy : enemyCollection)
+        for(Enemy *enemy : enemyCollection)
             enemy->tick();
     }
 
     bool Level::isLevelComplete() {
-        for(Enemy* enemy : enemyCollection)
+        for(Enemy *enemy : enemyCollection)
             if(enemy->getIsAlive())
                 return false;
+
         return true;
     }
 
     void Level::drawLevel() {
         if(background != nullptr)
             background->draw();
-        for(NonCollEnvironment* es : nonCollEnvironment)
+        for(NonCollEnvironment *es : nonCollEnvironment)
             es->draw();
-        for(EnvironmentSprite* es : collEnvironment)
+        for(EnvironmentSprite *es : collEnvironment)
             es->draw();
         for(Enemy* enemy : enemyCollection)
             enemy->draw();
     }
-
 
     Level *Level::getInstance() {
         return new Level();

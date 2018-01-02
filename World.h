@@ -23,9 +23,9 @@ namespace rootengine {
     protected:
         World();
     private:
-        CollEngine *ce;
-        PhysicsSprite *activePlayer;
-        Level *activeLevel;
+        CollEngine *ce = nullptr;
+        PhysicsSprite *activePlayer = nullptr;
+        Level *activeLevel = nullptr;
     };
 }
 

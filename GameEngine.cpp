@@ -19,8 +19,8 @@ namespace rootengine {
         GameEngine::lvlMgr = lvlMgr;
     }
 
-    void GameEngine::setHUD(HUD *hud) {
-        GameEngine::hud = hud;
+    void GameEngine::setHUD(HUD *h) {
+        hud = h;
     }
     void GameEngine::handleNextLvl() {
         if(activeWorld->readyForNextLvl()) {
@@ -43,7 +43,7 @@ namespace rootengine {
             SDL_Event event;
             while (SDL_PollEvent(&event)) {
                 if(event.type) {
-                        usrInMgr->handleEvent(event);
+                    usrInMgr->handleEvent(event);
                     switch (event.type) {
                     case SDL_QUIT:
                         running = false;
