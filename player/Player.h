@@ -26,7 +26,7 @@ namespace jumpyboy {
         double& getJumpingPower();
         void tick() override;
         void enterNewState(class PlayerState* newState);
-        void setController(Controller* controller);
+        void setController(class Controller* controller);
         ~Player() override;
         void handleInput(std::string action, bool isDown);
     protected:

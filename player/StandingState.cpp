@@ -10,19 +10,19 @@
 namespace jumpyboy{
 
     PlayerState* StandingState::handleInput(Player &player, std::string action, bool isDown) {
-
         if (isDown){
-            switch (std::stoi(action)){
-                case std::stoi("left") :
-                    return new RunningState(true);
-                case  std::stoi("right") :
-                    return new RunningState(false);
-                case  std::stoi("up") :
+
+            if (action == "left")
+                return new RunningState(true);
+            if (action == "right")
+                return new RunningState(false);
+            if (action == "up")
                     return new JumpingState();
-                case std::stoi("down") :
-                    return new DodgingState();
-            }
+            if (action == "down")
+                return new DodgingState();
+
         }
+
         return nullptr;
     }
 

@@ -23,12 +23,11 @@ namespace jumpyboy{
         PlayerState* DodgingState::handleInput(Player &player, std::string action, bool isDown) {
 
             if (!isDown) {
-                switch (std::stoi(action)) {
-                    case std::stoi("down") :
-                        int posChange = nonDodgingHeight - player.getResetHeight();
-                        player.changeRect().y = player.getRect().y - posChange;
-                        player.setResetHeight(nonDodgingHeight);
-                        return new StandingState();
+                if (action =="down") {
+                    int posChange = nonDodgingHeight - player.getResetHeight();
+                    player.changeRect().y = player.getRect().y - posChange;
+                    player.setResetHeight(nonDodgingHeight);
+                    return new StandingState();
                 }
             }
             return nullptr;
