@@ -8,6 +8,7 @@
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
 #include "player/Player.h"
+#include "environment/EnvironmentSprite.h"
 
 using namespace rootengine;
 HUD *createHUD(GameEngine *);
@@ -137,9 +138,20 @@ LevelManager *createLvlMgr() {
 
 Level *createFirstLevel() {
     Level* aLvl = Level::getInstance();
-    aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, "assets/sprites/Tiles/grassMid.png"));
-    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/grassMid.png"));
-    aLvl->setBackGround(EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
+    Level* aLvl = Level::getInstance();
+    std::map<std::string, std::string> spritesMapColl;
+    spritesMap.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
+
+
+    std::vector<SDL_Rect> rects{{0,0,70,70}};
+    std::map<std::string, std::vector<SDL_Rect>> frameMap;
+
+    frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
+
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
+
+    aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     aLvl->addEnemy(createFlyingEnemy());
     aLvl->addEnemy(createWalkingEnemy());
     return aLvl;
@@ -147,8 +159,17 @@ Level *createFirstLevel() {
 
 Level *createSecondLevel() {
     Level* aLvl = Level::getInstance();
-    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, "assets/sprites/Tiles/sand.png"));
-    aLvl->setBackGround(   EnvironmentSprite::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
+    std::map<std::string, std::string> spritesMapColl;
+    spritesMap.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/sand.png"));
+
+
+    std::vector<SDL_Rect> rects{{0,0,70,70}};
+    std::map<std::string, std::vector<SDL_Rect>> frameMap;
+
+    frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
+
+    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
+    aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
     return aLvl;
 }
 
