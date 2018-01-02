@@ -52,21 +52,14 @@ namespace jumpyboy {
         playerState->updateState(*this);
     }
 
-    void Player::handleInput(SDL_KeyboardEvent &keyEvent) {
-        PlayerState* tempState = playerState->handleInput(*this, keyEvent);
+    void Player::handleInput(std::string action, bool isDown) {
+        PlayerState* tempState = playerState->handleInput(*this, action, isDown);
         //Returns NULL if PlayerState is not changed.
         if (tempState != nullptr){
             delete playerState;
             playerState = tempState;
             //Enter new state.
             playerState->enterState(*this);
-        }
-    }
-
-    void Player::handleEvent(const SDL_Event &eve) {
-        if (eve.type == SDL_KEYUP || eve.type == SDL_KEYDOWN){
-            SDL_KeyboardEvent keyEvent = eve.key;
-            handleInput(keyEvent);
         }
     }
 
@@ -78,5 +71,9 @@ namespace jumpyboy {
 
     void Player::kill() {
 
+    }
+
+    void Player::setController(Controller *controll) {
+        controller = controll;
     }
 }

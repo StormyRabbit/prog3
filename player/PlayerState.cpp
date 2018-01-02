@@ -9,5 +9,8 @@ namespace jumpyboy{
 
     void PlayerState::enterState(class Player &player) {}
     void PlayerState::updateState(class Player &player) {}
-    PlayerState* PlayerState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {}
+
+    PlayerState *PlayerState::handleInput(class Player &player, std::string action, bool isDown) {}
+
+
 }

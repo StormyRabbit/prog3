@@ -30,23 +30,22 @@ namespace jumpyboy {
         }
     }
 
-    PlayerState* RunningFallState::handleInput(Player &player, SDL_KeyboardEvent &keyEvent) {
-        SDL_Keysym keysym = keyEvent.keysym;
-        if (keyEvent.type == SDL_KEYUP) {
-            switch (keysym.sym) {
-                case SDLK_LEFT :
+    PlayerState* RunningFallState::handleInput(Player &player, std::string action, bool isDown) {
+        if (!isDown) {
+            switch (std::stoi(action)) {
+                case std::stoi("left") :
                     return new FallingState();
-                case SDLK_RIGHT :
+                case std::stoi("right") :
                     return new FallingState();
 
             }
         }
 
-        if (keyEvent.type == SDL_KEYDOWN) {
-            switch (keysym.sym) {
-                case SDLK_LEFT :
+        if (isDown) {
+            switch (std::stoi(action)) {
+                case std::stoi("left") :
                     return new RunningFallState(true);
-                case SDLK_RIGHT :
+                case std::stoi("right") :
                     return new RunningFallState(false);
             }
         }

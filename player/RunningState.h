@@ -13,7 +13,7 @@ namespace jumpyboy {
         explicit RunningState(bool isLeft);
         ~RunningState();
         void updateState(class Player& player);
-        PlayerState *handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        PlayerState *handleInput(Player &player, std::string action, bool isDown);
         void enterState(class Player& player);
     private:
         bool isLeft;

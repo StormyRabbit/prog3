@@ -19,23 +19,22 @@ namespace jumpyboy{
         player.animatedTextureChange("jumping");
     }
 
-    PlayerState* RunningJumpState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
-        SDL_Keysym keysym = keyEvent.keysym;
-        if (keyEvent.type == SDL_KEYUP) {
-            switch (keysym.sym) {
-                case SDLK_LEFT :
+    PlayerState* RunningJumpState::handleInput(Player &player, std::string action, bool isDown) {
+        if (!isDown) {
+            switch (std::stoi(action)) {
+                case std::stoi("left") :
                     return new JumpingState();
-                case SDLK_RIGHT :
+                case std::stoi("right") :
                     return new JumpingState();
 
             }
         }
 
-        if (keyEvent.type == SDL_KEYDOWN) {
-            switch (keysym.sym) {
-                case SDLK_LEFT :
+        if (isDown) {
+            switch (std::stoi(action)) {
+                case std::stoi("left") :
                     return new RunningJumpState(true);
-                case SDLK_RIGHT :
+                case std::stoi("right") :
                     return new RunningJumpState(false);
             }
         }

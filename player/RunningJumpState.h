@@ -13,15 +13,12 @@ namespace jumpyboy {
     public:
         RunningJumpState(bool isLeftBool);
         ~RunningJumpState();
-        PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        PlayerState* handleInput(Player &player, std::string action, bool isDown);
         void updateState(class Player& player);
         void enterState(class Player& player);
 
     private:
-        int startingHeight = 430; //TODO change so that it implements starting height of jump!
         bool isJumpingLeft;
-
-
     };
 }
 

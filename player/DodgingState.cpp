@@ -20,12 +20,11 @@ namespace jumpyboy{
         player.animatedTextureChange("dodging");
         }
 
-        PlayerState* DodgingState::handleInput(class Player &player, SDL_KeyboardEvent &keyEvent) {
-            SDL_Keysym keysym = keyEvent.keysym;
+        PlayerState* DodgingState::handleInput(Player &player, std::string action, bool isDown) {
 
-            if (keyEvent.type == SDL_KEYUP) {
-                switch (keysym.sym) {
-                    case SDLK_DOWN :
+            if (!isDown) {
+                switch (std::stoi(action)) {
+                    case std::stoi("down") :
                         int posChange = nonDodgingHeight - player.getResetHeight();
                         player.changeRect().y = player.getRect().y - posChange;
                         player.setResetHeight(nonDodgingHeight);

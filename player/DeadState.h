@@ -12,6 +12,7 @@ namespace jumpyboy {
     public:
         DeadState();
         ~DeadState();
+        PlayerState* handleInput(Player &player, std::string action, bool isDown) override;
 
     };
 }

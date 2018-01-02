@@ -13,7 +13,7 @@ namespace jumpyboy{
     public:
         DodgingState();
         ~DodgingState();
-        PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        PlayerState* handleInput(class Player &player, std::string action, bool isDown);
         void updateState(class Player& player);
         void enterState(class Player& player);
 

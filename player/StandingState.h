@@ -12,7 +12,7 @@ namespace jumpyboy {
     public:
         StandingState() {};
         ~StandingState() {};
-        PlayerState* handleInput(class Player& player, SDL_KeyboardEvent& keyEvent);
+        PlayerState* handleInput(Player &player, std::string action, bool isDown);
         void enterState(class Player& player);
         void updateState(class Player& player);
     };

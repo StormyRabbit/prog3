@@ -12,7 +12,7 @@ namespace jumpyboy {
     class PlayerState {
     public:
         ~PlayerState();
-        virtual PlayerState *handleInput(class Player &player, SDL_KeyboardEvent& keyEvent); //Tried removing class before Player&
+        virtual PlayerState *handleInput(class Player &player, std::string action, bool isDown); //Tried removing class before Player&
         virtual void updateState(class Player& player);
         virtual void enterState(class Player& player);
     protected:

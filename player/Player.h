@@ -10,6 +10,7 @@
 #include "PlayerState.h"
 #include "../util/CollEngine.h"
 #include "../interfaces/PlayerInterface.h"
+#include "../Controller.h"
 namespace jumpyboy {
     typedef std::map<std::string, std::string> stringsMap;
     typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
@@ -17,7 +18,6 @@ namespace jumpyboy {
     class Player : public rootengine::PhysicsSprite, rootengine::PlayerInterface {
     public:
         static Player *getInstance(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
-        void handleEvent(const SDL_Event &eve);
         double getGravity();
         void kill();
         void respawn();
@@ -26,12 +26,14 @@ namespace jumpyboy {
         double& getJumpingPower();
         void tick() override;
         void enterNewState(class PlayerState* newState);
+        void setController(Controller* controller);
         ~Player() override;
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
         class PlayerState* playerState;
-        void handleInput(SDL_KeyboardEvent& keyEvent);
+        Controller* controller;
+        void handleInput(std::string action, bool isDown);
         double gravity;
         double jumpingPower;
         double currentYVelocity = 0;

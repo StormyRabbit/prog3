@@ -14,7 +14,7 @@ namespace jumpyboy {
         FallingState();
         ~FallingState();
         void updateState(Player& player);
-        PlayerState* handleInput(Player& player, SDL_KeyboardEvent& keyEvent);
+        PlayerState* handleInput(Player &player, std::string action, bool isDown);
         void enterState(Player& player);
     private:
         int groundHeight = 430; //TODO MAKE RESOPONSIVE TO ACUAL CLOSES "GROUND"
