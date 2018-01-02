@@ -11,7 +11,6 @@
 #include <vector>
 #include "hud/HUD.h"
 #include "level/Level.h"
-#include "util/Subject.h"
 #include "level/LevelManager.h"
 #include "World.h"
 #include "UserInput.h"
@@ -20,7 +19,7 @@
 #include "util/Timer.h"
 
 namespace rootengine {
-    class GameEngine : public Subject {
+    class GameEngine  {
         public:
             void setLvlMgr(LevelManager *);
             void setPlayer(Player *);

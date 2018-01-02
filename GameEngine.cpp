@@ -102,19 +102,15 @@ namespace rootengine {
 
     void GameEngine::runStartUpChecks() {
         if(usrInMgr == nullptr) {
-
         }
 
         if(activeWorld == nullptr) {
-
         }
 
         if(hud == nullptr) {
-
         }
 
         if(lvlMgr == nullptr) {
-
         }
 
     }

@@ -4,28 +4,21 @@
 
 #ifndef PROG3_HUD_H
 #define PROG3_HUD_H
-
-
 #include <vector>
 #include "HUDSprite.h"
-#include "../util/Observer.h"
-namespace rootengine {
+#include "../interfaces/Drawable.h"
 
-    class HUD : public Observer {
+namespace rootengine {
+    class HUD : public Drawable {
     public:
         void addHUDElement(class HUDSprite *he);
-        void setHUDElements(std::vector<HUDSprite *> hudElementList);
         static HUD* getInstance();
-        void draw();
-        void update();
-
+        void draw() override;
+        ~HUD();
     protected:
-        HUD();
-
+        HUD() = default;
     private:
         std::vector<HUDSprite *> hudElements;
-
     };
-
 }
 #endif //PROG3_HUD_H

@@ -11,18 +11,6 @@ namespace rootengine {
         hudElements.push_back(he);
     }
 
-    void HUD::setHUDElements(std::vector<HUDSprite *> hudElementList) {
-        hudElements = hudElementList;
-    }
-
-    void HUD::update() {
-
-    }
-
-    HUD::HUD() {
-
-    }
-
     HUD *HUD::getInstance() {
         return new HUD();
     }
@@ -32,17 +20,9 @@ namespace rootengine {
             hs->draw();
     }
 
-
-    void Observer::update() {
-        // TODO FIX
-        /*
-        for (std::vector<HUDSprite *>::const_iterator iter = hudElements.begin();
-             iter != hudElements.end(); ++iter) {
-            if (*iter != 0) {
-                // TODO execute
-            }
-        }
-         */
+    HUD::~HUD() {
+        for(HUDSprite *hs : hudElements)
+            delete hs;
     }
 }
 
