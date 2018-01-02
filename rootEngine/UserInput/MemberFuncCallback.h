@@ -19,9 +19,7 @@ namespace rootengine {
             UserInput *ui = UserInput::getInstance(k,b);
             return new MemberFuncCallback(ui, inObj, inf);
         }
-        static MemberFuncCallback *getInstance(UserInput *ui, T* inObj, void(T::*inf)()) {
-            return new MemberFuncCallback(ui, inObj, inf);
-        }
+
         UserInput* getUserInput() override {
             return userInput;
         }

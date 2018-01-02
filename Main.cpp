@@ -8,13 +8,13 @@
 #include "jumpyBoy/player/Player.h"
 #include "jumpyBoy/hud/HUD.h"
 #include "rootEngine/collision/GroundBehaivor.h"
+#include "jumpyBoy/player/KeyBindings.h"
 
 using namespace rootengine;
 LevelManager *createLvlMgr();
 jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
 Level *createSecondLevel();
-UserInputMgr *createUIM(jumpyboy::Player *);
 
 int main(int, char **) {
     auto* ge = GameEngine::getInstance();
@@ -22,32 +22,11 @@ int main(int, char **) {
     ge->setLvlMgr(createLvlMgr());
     ge->setHUD(jumpyboy::HUD::getInstance(ge));
     jumpyboy::Player *player = createPlayer();
-    ge->setUsrInMgr(createUIM(player));
+    jumpyboy::KeyBindings::bindKeybindings(ge, player);
     ge->setPlayer(player);
     ge->setFPS(60);
     ge->run();
     return 0;
-}
-
-UserInputMgr *createUIM(jumpyboy::Player *p) {
-    typedef jumpyboy::Controller contr;
-    typedef MemberFuncCallback<jumpyboy::Controller> cb;
-    UserInputMgr *uimgr = UserInputMgr::getInstance();
-    contr *cObj = jumpyboy::Controller::getInstance();
-    cObj->setPlayer(p);
-    p->setController(cObj);
-    /*rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);*/
-    uimgr->addEvent(cb::getInstance(SDLK_w, true, cObj, &contr::upActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_w, false, cObj, &contr::upActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_a, true, cObj, &contr::leftActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_a, false, cObj, &contr::leftActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_s, true, cObj, &contr::downActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_s, false, cObj, &contr::downActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_d, true, cObj, &contr::rightActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_d, false, cObj, &contr::rightActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_SPACE, true, cObj, &contr::jumpActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_SPACE, false, cObj, &contr::jumpActionReleased));
-    return uimgr;
 }
 
 jumpyboy::Player *createPlayer() {

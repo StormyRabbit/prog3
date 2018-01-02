@@ -23,7 +23,6 @@ namespace rootengine {
             void setLvlMgr(LevelManager *);
             void setPlayer(PhysicsSprite *);
             void setHUD(Drawable *);
-            void setUsrInMgr(UserInputMgr *);
             void addEvent(UserInputCallback *);
             void run();
             void handleNextLvl();

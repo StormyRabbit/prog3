@@ -83,10 +83,6 @@ namespace rootengine {
         // TODO
     }
 
-    void GameEngine::setUsrInMgr(UserInputMgr *uim) {
-        usrInMgr = uim;
-    }
-
     void GameEngine::startFPSTimers() {
         fpsTimer = Timer::getInstance();
         capTimer = Timer::getInstance();

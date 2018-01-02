@@ -5,13 +5,13 @@
 #include "Controller.h"
 namespace jumpyboy {
 
-void Controller::setPlayer(Player *p) {
-    aPlayer = p;
-}
+    void Controller::setPlayer(Player *p) {
+        aPlayer = p;
+    }
 
-Controller *Controller::getInstance() {
-    return new Controller();
-}
+    Controller *Controller::getInstance() {
+        return new Controller();
+    }
 
     void Controller::upActionPressed() {
         aPlayer->handleInput("up", true);
