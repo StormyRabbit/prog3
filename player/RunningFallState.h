@@ -9,7 +9,7 @@
 
 #include "PlayerState.h"
 
-namespace rootengine {
+namespace jumpyboy {
 
     class RunningFallState : public PlayerState{
     public:

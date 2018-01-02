@@ -8,7 +8,7 @@
 #include "JumpingState.h"
 #include "RunningFallState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     RunningJumpState::RunningJumpState(bool isLeftBool) : isJumpingLeft(isLeftBool){}
     RunningJumpState::~RunningJumpState() {}
 

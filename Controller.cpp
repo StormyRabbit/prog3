@@ -3,11 +3,14 @@
 //
 
 #include "Controller.h"
+namespace jumpyboy {
 
-void Controller::setPlayer(rootengine::Player *p) {
+void Controller::setPlayer(Player *p) {
     aPlayer = p;
 }
 
 Controller *Controller::getInstance() {
     return new Controller();
+}
+
 }

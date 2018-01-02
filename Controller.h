@@ -7,9 +7,11 @@
 
 
 #include "player/Player.h"
+namespace jumpyboy {
+
 class Controller {
 public:
-    void setPlayer(rootengine::Player *);
+    void setPlayer(Player *);
     void upActionPressed();
     void upActionReleased();
     void downActionPressed();
@@ -24,8 +26,7 @@ public:
 protected:
     Controller() = default;
 private:
-    rootengine::Player *aPlayer;
+    Player *aPlayer;
 };
-
-
+}
 #endif //PROG3_CONTROLLER_H

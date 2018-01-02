@@ -5,7 +5,7 @@
 #include "DodgingState.h"
 #include "StandingState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     DodgingState::DodgingState() {}
     DodgingState::~DodgingState() {}
 

@@ -7,7 +7,7 @@
 
 #include "PlayerState.h"
 
-namespace rootengine {
+namespace jumpyboy {
     class RunningState : public PlayerState {
     public:
         explicit RunningState(bool isLeft);

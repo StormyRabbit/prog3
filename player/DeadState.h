@@ -7,7 +7,7 @@
 
 #include "PlayerState.h"
 
-namespace rootengine {
+namespace jumpyboy {
     class DeadState : public PlayerState {
     public:
         DeadState();

@@ -3,7 +3,7 @@
 //
 #include "PlayerState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     PlayerState::PlayerState() {}
     PlayerState::~PlayerState() {}
 

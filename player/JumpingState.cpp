@@ -7,7 +7,7 @@
 #include "RunningJumpState.h"
 #include "FallingState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     JumpingState::JumpingState() {}
     JumpingState::~JumpingState() {}
 

@@ -8,7 +8,7 @@
 #include "StandingState.h"
 #include "RunningFallState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     FallingState::FallingState() {}
     FallingState::~FallingState() {}
     void FallingState::enterState(Player &player) {

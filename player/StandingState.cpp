@@ -7,7 +7,7 @@
 #include "JumpingState.h"
 #include "DodgingState.h"
 
-namespace rootengine{
+namespace jumpyboy{
     PlayerState* StandingState::handleInput(Player& player, SDL_KeyboardEvent &keyEvent) {
         SDL_Keysym keysym = keyEvent.keysym;
 

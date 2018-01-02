@@ -30,7 +30,7 @@ namespace jumpyboy {
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
-        class rootengine::PlayerState* playerState;
+        class PlayerState* playerState;
         void handleInput(SDL_KeyboardEvent& keyEvent);
         double gravity;
         double jumpingPower;

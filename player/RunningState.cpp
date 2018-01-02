@@ -10,7 +10,7 @@
 #include "FallingState.h"
 #include "RunningFallState.h"
 
-namespace rootengine{
+namespace jumpyboy {
     RunningState::RunningState(bool isLeftBool) {
         isLeft = isLeftBool;
     }

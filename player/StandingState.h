@@ -7,7 +7,7 @@
 
 #include "PlayerState.h"
 
-namespace rootengine {
+namespace jumpyboy {
     class StandingState : public PlayerState {
     public:
         StandingState() {};

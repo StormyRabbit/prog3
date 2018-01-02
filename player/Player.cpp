@@ -14,7 +14,7 @@ namespace jumpyboy {
         gravity = movingVariables.find("gravity")->second;
         runningSpeed = movingVariables.find("runningSpeed")->second;
         jumpingPower = movingVariables.find("jumpPower")->second;
-        playerState = new rootengine::StandingState();
+        playerState = new StandingState();
         playerState->enterState(*this);
     }
 
@@ -39,7 +39,7 @@ namespace jumpyboy {
         return jumpingPower;
     }
 
-    void Player::enterNewState(rootengine::PlayerState* newState) {
+    void Player::enterNewState(PlayerState* newState) {
         if (newState != nullptr) {
             delete playerState;
             playerState = newState;
@@ -53,7 +53,7 @@ namespace jumpyboy {
     }
 
     void Player::handleInput(SDL_KeyboardEvent &keyEvent) {
-        rootengine::PlayerState* tempState = playerState->handleInput(*this, keyEvent);
+        PlayerState* tempState = playerState->handleInput(*this, keyEvent);
         //Returns NULL if PlayerState is not changed.
         if (tempState != nullptr){
             delete playerState;
