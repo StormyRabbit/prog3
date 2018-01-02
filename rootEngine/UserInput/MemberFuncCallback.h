@@ -15,6 +15,10 @@ namespace rootengine {
         void executeCallback() override {
             (aObj->*f)();
         }
+        static MemberFuncCallback *getInstance(SDL_Keycode k,bool b, T* inObj, void(T::*inf)()) {
+            UserInput *ui = UserInput::getInstance(k,b);
+            return new MemberFuncCallback(ui, inObj, inf);
+        }
         static MemberFuncCallback *getInstance(UserInput *ui, T* inObj, void(T::*inf)()) {
             return new MemberFuncCallback(ui, inObj, inf);
         }

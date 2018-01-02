@@ -5,12 +5,12 @@
 #ifndef PROG3_PHYSICSSPRITE_H
 #define PROG3_PHYSICSSPRITE_H
 
-#include "Sprite.h"
-#include "../collision/CollisionStrategy.h"
 #include <SDL_image.h>
 #include <vector>
 #include <string>
 #include <map>
+#include "../collision/CollisionStrategy.h"
+#include "Sprite.h"
 
 namespace rootengine{
     typedef std::map<std::string, std::string> spritesMap;

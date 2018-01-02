@@ -19,9 +19,6 @@ namespace rootengine {
         GameEngine::lvlMgr = lvlMgr;
     }
 
-    void GameEngine::setHUD(HUD *h) {
-        hud = h;
-    }
     void GameEngine::handleNextLvl() {
         if(activeWorld->readyForNextLvl()) {
             Level* nextLvl = lvlMgr->getNextLevel();
@@ -31,6 +28,7 @@ namespace rootengine {
                 endGame();
         }
     }
+
     void GameEngine::run() {
         preLoopProcess();
         while (running) {
@@ -124,5 +122,17 @@ namespace rootengine {
 
     int GameEngine::getLives() {
         return lives;
+    }
+
+    void GameEngine::setHUD(Drawable *h) {
+        hud = h;
+    }
+
+    GameEngine::GameEngine() {
+        usrInMgr = UserInputMgr::getInstance();
+    }
+
+    void GameEngine::addEvent(UserInputCallback *uic) {
+        usrInMgr->addEvent(uic);
     }
 }

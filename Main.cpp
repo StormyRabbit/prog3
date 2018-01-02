@@ -8,11 +8,10 @@
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
 #include "jumpyBoy/player/Player.h"
-#include "rootEngine/sprite/EnvironmentSprite.h"
+#include "jumpyBoy/hud/HUD.h"
 #include "rootEngine/collision/GroundBehaivor.h"
 
 using namespace rootengine;
-HUD *createHUD(GameEngine *);
 LevelManager *createLvlMgr();
 jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
@@ -23,7 +22,7 @@ int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
     ge->setLvlMgr(createLvlMgr());
-    ge->setHUD(createHUD(ge));
+    ge->setHUD(jumpyboy::HUD::getInstance(ge));
     jumpyboy::Player *player = createPlayer();
     ge->setUsrInMgr(createUIM(player));
     ge->setPlayer(player);
@@ -33,22 +32,23 @@ int main(int, char **) {
 }
 
 UserInputMgr *createUIM(jumpyboy::Player *p) {
+    typedef jumpyboy::Controller contr;
+    typedef MemberFuncCallback<jumpyboy::Controller> cb;
     UserInputMgr *uimgr = UserInputMgr::getInstance();
-    jumpyboy::Controller *c = jumpyboy::Controller::getInstance();
+    contr *c = jumpyboy::Controller::getInstance();
     c->setPlayer(p);
     p->setController(c);
     /*rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);*/
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, true), c, &jumpyboy::Controller::upActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, false), c, &jumpyboy::Controller::upActionReleased));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, true), c, &jumpyboy::Controller::leftActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, false), c, &jumpyboy::Controller::leftActionReleased));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_s, true), c, &jumpyboy::Controller::downActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_s, false), c, &jumpyboy::Controller::downActionReleased));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_d, true), c, &jumpyboy::Controller::rightActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_d, false), c, &jumpyboy::Controller::rightActionReleased));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_SPACE, true), c, &jumpyboy::Controller::jumpActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_SPACE, false), c, &jumpyboy::Controller::jumpActionReleased));
-
+    uimgr->addEvent(cb::getInstance(SDLK_w, true, c, &contr::upActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_w, false, c, &contr::upActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_a, true, c, &contr::leftActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_a, false, c, &contr::leftActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_s, true, c, &contr::downActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_s, false, c, &contr::downActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_d, true, c, &contr::rightActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_d, false, c, &contr::rightActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_SPACE, true, c, &contr::jumpActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_SPACE, false, c, &contr::jumpActionReleased));
     return uimgr;
 }
 
@@ -174,17 +174,3 @@ Level *createSecondLevel() {
     aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
     return aLvl;
 }
-
-HUD *createHUD(GameEngine* game) {
-    HUD* hud = HUD::getInstance();
-    HUDSprite* scoreSprite = HUDSprite::getInstance(0,0,200,20, "SCORE: ");
-    scoreSprite->setValueToObserver(game, &GameEngine::getScore);
-    HUDSprite* lifeSprite = HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");
-    lifeSprite->setValueToObserver(game, &GameEngine::getLives);
-    HUDSprite* enemyLeft = HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
-    hud->addHUDElement(scoreSprite);
-    hud->addHUDElement(lifeSprite);
-    hud->addHUDElement(enemyLeft);
-    return hud;
-}
-

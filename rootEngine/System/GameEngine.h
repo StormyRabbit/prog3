@@ -9,7 +9,6 @@
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <vector>
-#include "../../hud/HUD.h"
 #include "../level/Level.h"
 #include "../level/LevelManager.h"
 #include "World.h"
@@ -17,14 +16,15 @@
 #include "../UserInput/UserInputCallback.h"
 #include "../UserInput/UserInputMgr.h"
 #include "../util/Timer.h"
-
+#include "../interfaces/Drawable.h"
 namespace rootengine {
     class GameEngine  {
         public:
             void setLvlMgr(LevelManager *);
             void setPlayer(PhysicsSprite *);
-            void setHUD(class HUD *);
+            void setHUD(Drawable *);
             void setUsrInMgr(UserInputMgr *);
+            void addEvent(UserInputCallback *);
             void run();
             void handleNextLvl();
             int getScore();
@@ -34,7 +34,7 @@ namespace rootengine {
             static GameEngine* getInstance();
             ~GameEngine();
         protected:
-            GameEngine() = default;
+            GameEngine();
         private:
             void runStartUpChecks();
             void preLoopProcess();
@@ -44,7 +44,7 @@ namespace rootengine {
             World *activeWorld = nullptr;
             bool running = true;
             LevelManager* lvlMgr = nullptr;
-            HUD *hud = nullptr;
+            Drawable *hud = nullptr;
             // FPS cap stuff
             int tickRate{};
             void startFPSTimers();
