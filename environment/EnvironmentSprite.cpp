@@ -10,7 +10,7 @@ namespace rootengine{
     }
 
     EnvironmentSprite::EnvironmentSprite(int xPos, int yPos, int height, int width, spritesMap sprites, fMapType frames) : PhysicsSprite(xPos, yPos, height, width, sprites, frames) {
-
+        this->animatedTextureChange("default");
     }
 
     EnvironmentSprite::~EnvironmentSprite() {
