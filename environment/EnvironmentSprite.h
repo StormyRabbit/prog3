@@ -8,10 +8,13 @@
 #include "../PhysicsSprite.h"
 
 namespace rootengine{
+    typedef std::map<std::string, std::string> spritesMap;
+    typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
     class EnvironmentSprite :  public PhysicsSprite {
     public:
+        static EnvironmentSprite* getInstance(int xPos, int yPos, int height, int width,spritesMap sprites, fMapType frames);
     protected:
-        EnvironmentSprite();
+        EnvironmentSprite(int xPos, int yPos, int height, int width,spritesMap sprites, fMapType frames);
         ~EnvironmentSprite();
     private:
 
