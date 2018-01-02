@@ -11,7 +11,7 @@ namespace jumpyboy {
 
 class Controller {
 public:
-    void setPlayer(Player *);
+    void setPlayer(class Player *);
     void upActionPressed();
     void upActionReleased();
     void downActionPressed();

@@ -42,7 +42,7 @@ namespace rootengine {
             World *activeWorld{};
             bool running = true;
             LevelManager* lvlMgr{};
-            HUD *hud{};return nullptr;
+            HUD *hud{};
             // FPS cap stuff
             int tickRate{};
             void startFPSTimers();

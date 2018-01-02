@@ -16,13 +16,13 @@ LevelManager *createLvlMgr();
 jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
 Level *createSecondLevel();
-UserInputMgr *createUIM(GameEngine *);
+UserInputMgr *createUIM(jumpyboy::Player *);
 
 int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
     ge->setLvlMgr(createLvlMgr());
-    ge->setHUD(createHUD(ge));
+    ge->setHUD(createHUD());
     jumpyboy::Player *player = createPlayer();
     ge->setUsrInMgr(createUIM(player));
     ge->setPlayer(player);
