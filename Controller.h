@@ -21,7 +21,7 @@ public:
     void rightActionPressed();
     void rightActionReleased();
     void jumpActionPressed();
-    void jumpACtionReleased();
+    void jumpActionReleased();
     static Controller *getInstance();
 protected:
     Controller() = default;
