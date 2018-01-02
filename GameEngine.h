@@ -38,19 +38,19 @@ namespace rootengine {
         private:
             void runStartUpChecks();
             void preLoopProcess();
-            UserInputMgr *usrInMgr{};
+            UserInputMgr *usrInMgr = nullptr;
             int score{};
             int lives{};
-            World *activeWorld{};
+            World *activeWorld = nullptr;
             bool running = true;
-            LevelManager* lvlMgr{};
-            HUD *hud{};
+            LevelManager* lvlMgr = nullptr;
+            HUD *hud = nullptr;
             // FPS cap stuff
             int tickRate{};
             void startFPSTimers();
             void pauseTickDur();
-            Timer *fpsTimer;
-            Timer *capTimer;
+            Timer *fpsTimer = nullptr;
+            Timer *capTimer = nullptr;
         void endGame();
     };
 }

@@ -4,6 +4,7 @@
 // and http://www.sdltutorials.com/sdl-per-pixel-collision
 //
 
+#include <iostream>
 #include "CollEngine.h"
 namespace rootengine {
     bool CollEngine::rectCollision(rootengine::PhysicsSprite *aObject, rootengine::PhysicsSprite *otherObject) {
@@ -45,8 +46,11 @@ namespace rootengine {
 
     void CollEngine::detectCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
             for(PhysicsSprite *ps : physObjects)
-                if (rectCollision(player, ps))
+                if (rectCollision(player, ps)) {
+                    player->setOnGround(true);
                     handleCollision(player, ps);
+                }
+
     }
 
    CollEngine *CollEngine::getInstance() {
@@ -67,7 +71,7 @@ namespace rootengine {
         return 0;
     }
 
-    void CollEngine::handleCollision(PhysicsSprite *, PhysicsSprite *) {
-
+    void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
+        // TODO:
     }
 }
