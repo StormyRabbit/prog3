@@ -5,10 +5,10 @@
 #ifndef PROG3_HUDSPRITE_H
 #define PROG3_HUDSPRITE_H
 
-#include "../Sprite.h"
-#include "../GameEngine.h"
+#include "Sprite.h"
+#include "../System/GameEngine.h"
 #include <string>
-#include "../GameEngine.h"
+#include "../System/GameEngine.h"
 
 namespace rootengine {
     class HUDSprite : public Sprite {

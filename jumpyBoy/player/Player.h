@@ -6,11 +6,11 @@
 #define PROG3_PLAYER_H
 
 #include <map>
-#include "../PhysicsSprite.h"
+#include "../../rootEngine/sprite/PhysicsSprite.h"
 #include "PlayerState.h"
-#include "../util/CollEngine.h"
-#include "../interfaces/PlayerInterface.h"
-#include "../Controller.h"
+#include "../../rootEngine/util/CollEngine.h"
+#include "../../rootEngine/interfaces/PlayerInterface.h"
+#include "Controller.h"
 namespace jumpyboy {
     typedef std::map<std::string, std::string> stringsMap;
     typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;

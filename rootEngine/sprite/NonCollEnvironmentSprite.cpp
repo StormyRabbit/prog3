@@ -4,7 +4,7 @@
 
 #include <SDL_image.h>
 #include "NonCollEnvironmentSprite.h"
-#include "System.h"
+#include "../System/System.h"
 
 namespace rootengine{
     NonCollEnvironment::NonCollEnvironment(int xPos, int yPos, int width, int height, std::string pathToSprite) : Sprite(xPos, yPos, width, height) {

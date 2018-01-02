@@ -5,7 +5,7 @@
 #ifndef PROG3_COLLENGINE_H
 #define PROG3_COLLENGINE_H
 
-#include "../PhysicsSprite.h"
+#include "../sprite/PhysicsSprite.h"
 
 namespace rootengine {
     class CollEngine {

@@ -5,7 +5,7 @@
 #ifndef PROG3_COLLISIONSTRATEGY_H
 #define PROG3_COLLISIONSTRATEGY_H
 
-#include "../PhysicsSprite.h"
+#include "../sprite/PhysicsSprite.h"
 
 namespace rootengine {
     class CollisionStrategy{

@@ -5,9 +5,9 @@
 #ifndef PROG3_WORLD_H
 #define PROG3_WORLD_H
 
-#include "level/Level.h"
-#include "level/LevelManager.h"
-#include "util/CollEngine.h"
+#include "../level/Level.h"
+#include "../level/LevelManager.h"
+#include "../util/CollEngine.h"
 
 namespace rootengine {
 

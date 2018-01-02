@@ -4,7 +4,7 @@
 
 #include <SDL_events.h>
 #include "ScoreBoard.h"
-#include "hud/HUDSprite.h"
+#include "../rootEngine/sprite/HUDSprite.h"
 namespace rootengine {
     ScoreBoard *ScoreBoard::getInstance() {
         return new ScoreBoard();

@@ -6,9 +6,8 @@
 #define PROG3_CONTROLLER_H
 
 
-#include "player/Player.h"
+#include "Player.h"
 namespace jumpyboy {
-
 class Controller {
 public:
     void setPlayer(class Player *);

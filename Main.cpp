@@ -2,14 +2,14 @@
 // Created by lasse on 11/16/17.
 //
 #include <iostream>
-#include "GameEngine.h"
-#include "freeFuncCallback.h"
-#include "MemberFuncCallback.h"
+#include "rootEngine/System/GameEngine.h"
+#include "rootEngine/UserInput/freeFuncCallback.h"
+#include "rootEngine/UserInput/MemberFuncCallback.h"
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
-#include "player/Player.h"
-#include "environment/EnvironmentSprite.h"
-#include "collision/GroundBehaivor.h"
+#include "jumpyBoy/player/Player.h"
+#include "rootEngine/sprite/EnvironmentSprite.h"
+#include "rootEngine/collision/GroundBehaivor.h"
 
 using namespace rootengine;
 HUD *createHUD(GameEngine *);

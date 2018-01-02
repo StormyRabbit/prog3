@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "StandingState.h"
 #include "FallingState.h"
-#include "../GameEngine.h"
+#include "../../rootEngine/System/GameEngine.h"
 namespace jumpyboy {
 
  Player::Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables)

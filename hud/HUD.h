@@ -5,8 +5,8 @@
 #ifndef PROG3_HUD_H
 #define PROG3_HUD_H
 #include <vector>
-#include "HUDSprite.h"
-#include "../interfaces/Drawable.h"
+#include "../rootEngine/sprite/HUDSprite.h"
+#include "../rootEngine/interfaces/Drawable.h"
 
 namespace rootengine {
     class HUD : public Drawable {

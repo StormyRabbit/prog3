@@ -3,7 +3,7 @@
 //
 
 #include "HUDSprite.h"
-#include "../System.h"
+#include "../System/System.h"
 
 namespace rootengine{
     HUDSprite::HUDSprite(int xPos, int yPos, int width, int height, std::string &txt) : Sprite(xPos,yPos,width,height), text(txt) {

@@ -9,14 +9,14 @@
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <vector>
-#include "hud/HUD.h"
-#include "level/Level.h"
-#include "level/LevelManager.h"
+#include "../../hud/HUD.h"
+#include "../level/Level.h"
+#include "../level/LevelManager.h"
 #include "World.h"
-#include "UserInput.h"
-#include "UserInputCallback.h"
-#include "UserInputMgr.h"
-#include "util/Timer.h"
+#include "../UserInput/UserInput.h"
+#include "../UserInput/UserInputCallback.h"
+#include "../UserInput/UserInputMgr.h"
+#include "../util/Timer.h"
 
 namespace rootengine {
     class GameEngine  {

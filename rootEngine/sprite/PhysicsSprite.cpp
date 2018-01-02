@@ -5,7 +5,7 @@
 #include <vector>
 #include <cmath>
 #include "PhysicsSprite.h"
-#include "System.h"
+#include "../System/System.h"
 
 namespace rootengine {
     PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, fMapType frames)

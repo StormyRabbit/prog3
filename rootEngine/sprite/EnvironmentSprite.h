@@ -5,7 +5,7 @@
 #ifndef PROG3_ENVIRONMENTSPRITE_H
 #define PROG3_ENVIRONMENTSPRITE_H
 
-#include "../PhysicsSprite.h"
+#include "PhysicsSprite.h"
 
 namespace rootengine{
     typedef std::map<std::string, std::string> spritesMap;

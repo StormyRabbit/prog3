@@ -6,7 +6,7 @@
 #define PROG3_GROUNDBEHAIVOR_H
 
 #include "CollisionStrategy.h"
-
+// TODO: flytta till jumpyBoy
 namespace rootengine{
     class GroundBehaivor : public CollisionStrategy {
     public:

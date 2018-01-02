@@ -6,7 +6,7 @@
 #define PROG3_PHYSICSSPRITE_H
 
 #include "Sprite.h"
-#include "collision/CollisionStrategy.h"
+#include "../collision/CollisionStrategy.h"
 #include <SDL_image.h>
 #include <vector>
 #include <string>
