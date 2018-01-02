@@ -45,13 +45,15 @@ namespace rootengine {
 
 
     void CollEngine::detectCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
-            for(PhysicsSprite *ps : physObjects)
-                if (rectCollision(player, ps)) {
-                    handleCollision(player, ps);
-                } else {
-                    player->setOnGround(false);
-                }
-
+        bool collOccured = false;
+        for(PhysicsSprite *ps : physObjects) {
+            if (rectCollision(player, ps)) {
+                collOccured = true;
+                handleCollision(player, ps);
+            }
+        }
+        if(!collOccured)
+            player->setOnGround(false);
     }
 
    CollEngine *CollEngine::getInstance() {
