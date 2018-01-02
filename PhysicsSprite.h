@@ -45,7 +45,7 @@ namespace rootengine{
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
-        CollisionStrategy* collStrategy;
+        CollisionStrategy* collStrategy = nullptr;
         int resetHeight;
         int resetWidth;
         bool onGround = false;
