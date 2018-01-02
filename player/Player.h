@@ -28,12 +28,12 @@ namespace jumpyboy {
         void enterNewState(class PlayerState* newState);
         void setController(Controller* controller);
         ~Player() override;
+        void handleInput(std::string action, bool isDown);
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
         class PlayerState* playerState;
         Controller* controller;
-        void handleInput(std::string action, bool isDown);
         double gravity;
         double jumpingPower;
         double currentYVelocity = 0;

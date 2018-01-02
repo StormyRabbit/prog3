@@ -8,6 +8,7 @@
 #include "DodgingState.h"
 
 namespace jumpyboy{
+
     PlayerState* StandingState::handleInput(Player &player, std::string action, bool isDown) {
 
         if (isDown){
@@ -30,4 +31,5 @@ namespace jumpyboy{
     void StandingState::enterState(Player &player) {
         player.animatedTextureChange("standing");
     }
+
 }

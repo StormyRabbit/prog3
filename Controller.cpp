@@ -14,43 +14,43 @@ Controller *Controller::getInstance() {
 }
 
     void Controller::upActionPressed() {
-        aPlayer->handleEvent("up", true);
+        aPlayer->handleInput("up", true);
     }
 
     void Controller::upActionReleased() {
-        aPlayer->handleEvent("up", false);
+        aPlayer->handleInput("up", false);
     }
 
     void Controller::downActionPressed() {
-        aPlayer->handleEvent("down", true);
+        aPlayer->handleInput("down", true);
     }
 
     void Controller::downActionReleased() {
-        aPlayer->handleEvent("down", false);
+        aPlayer->handleInput("down", false);
     }
 
     void Controller::leftActionPressed() {
-        aPlayer->handleEvent("left", false);
+        aPlayer->handleInput("left", false);
     }
 
     void Controller::leftActionReleased() {
-        aPlayer->handleEvent("left", false);
+        aPlayer->handleInput("left", false);
     }
 
     void Controller::rightActionPressed() {
-        aPlayer->handleEvent("right", true);
+        aPlayer->handleInput("right", true);
     }
 
     void Controller::rightActionReleased() {
-        aPlayer->handleEvent("right", false);
+        aPlayer->handleInput("right", false);
     }
 
     void Controller::jumpActionPressed() {
-        aPlayer->handleEvent("jump", true);
+        aPlayer->handleInput("jump", true);
     }
 
     void Controller::jumpActionReleased() {
-        aPlayer->handleEvent("jump", false);
+        aPlayer->handleInput("jump", false);
     }
 
 }

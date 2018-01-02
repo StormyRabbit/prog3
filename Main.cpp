@@ -8,7 +8,6 @@
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
 #include "player/Player.h"
-#include "Controller.h"
 
 using namespace rootengine;
 HUD *createHUD();
@@ -34,10 +33,11 @@ int main(int, char **) {
 UserInputMgr *createUIM(jumpyboy::Player *p) {
     UserInputMgr *uimgr = UserInputMgr::getInstance();
     jumpyboy::Controller *c = jumpyboy::Controller::getInstance();
+    c->setPlayer(p);
     p->setController(c);
     /*rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);*/
     uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, true), c, &jumpyboy::Controller::upActionPressed));
-    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, false), c, &jumpyboy::Controller::upActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, false), c, &jumpyboy::Controller::upActionReleased));
     uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, true), c, &jumpyboy::Controller::leftActionPressed));
     uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, false), c, &jumpyboy::Controller::leftActionReleased));
     uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_s, true), c, &jumpyboy::Controller::downActionPressed));
