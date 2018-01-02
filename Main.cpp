@@ -10,7 +10,7 @@
 #include "player/Player.h"
 
 using namespace rootengine;
-HUD *createHUD();
+HUD *createHUD(GameEngine *);
 LevelManager *createLvlMgr();
 jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
@@ -21,7 +21,7 @@ int main(int, char **) {
     auto* ge = GameEngine::getInstance();
     ge->createWorld();
     ge->setLvlMgr(createLvlMgr());
-    ge->setHUD(createHUD());
+    ge->setHUD(createHUD(ge));
     jumpyboy::Player *player = createPlayer();
     ge->setUsrInMgr(createUIM(player));
     ge->setPlayer(player);
