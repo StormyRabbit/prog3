@@ -3,8 +3,6 @@
 //
 #include <iostream>
 #include "rootEngine/System/GameEngine.h"
-#include "rootEngine/UserInput/freeFuncCallback.h"
-#include "rootEngine/UserInput/MemberFuncCallback.h"
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
 #include "jumpyBoy/player/Player.h"
@@ -35,20 +33,20 @@ UserInputMgr *createUIM(jumpyboy::Player *p) {
     typedef jumpyboy::Controller contr;
     typedef MemberFuncCallback<jumpyboy::Controller> cb;
     UserInputMgr *uimgr = UserInputMgr::getInstance();
-    contr *c = jumpyboy::Controller::getInstance();
-    c->setPlayer(p);
-    p->setController(c);
+    contr *cObj = jumpyboy::Controller::getInstance();
+    cObj->setPlayer(p);
+    p->setController(cObj);
     /*rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);*/
-    uimgr->addEvent(cb::getInstance(SDLK_w, true, c, &contr::upActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_w, false, c, &contr::upActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_a, true, c, &contr::leftActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_a, false, c, &contr::leftActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_s, true, c, &contr::downActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_s, false, c, &contr::downActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_d, true, c, &contr::rightActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_d, false, c, &contr::rightActionReleased));
-    uimgr->addEvent(cb::getInstance(SDLK_SPACE, true, c, &contr::jumpActionPressed));
-    uimgr->addEvent(cb::getInstance(SDLK_SPACE, false, c, &contr::jumpActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_w, true, cObj, &contr::upActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_w, false, cObj, &contr::upActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_a, true, cObj, &contr::leftActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_a, false, cObj, &contr::leftActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_s, true, cObj, &contr::downActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_s, false, cObj, &contr::downActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_d, true, cObj, &contr::rightActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_d, false, cObj, &contr::rightActionReleased));
+    uimgr->addEvent(cb::getInstance(SDLK_SPACE, true, cObj, &contr::jumpActionPressed));
+    uimgr->addEvent(cb::getInstance(SDLK_SPACE, false, cObj, &contr::jumpActionReleased));
     return uimgr;
 }
 

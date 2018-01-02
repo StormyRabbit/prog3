@@ -26,9 +26,9 @@ namespace rootengine {
             return userInput;
         }
     protected:
-        MemberFuncCallback(UserInput *ui, T* aObj, void(T::*f)()):userInput(ui), aObj(aObj), f(f) {}
+        MemberFuncCallback(UserInput *userInput, T* aObj, void(T::*f)()):userInput(userInput), aObj(aObj), f(f) {}
     private:
-        UserInput *userInput;
+        UserInput *userInput{};
         T* aObj;
         void (T::*f)();
     };
