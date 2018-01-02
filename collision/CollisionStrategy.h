@@ -11,7 +11,7 @@ namespace rootengine {
     class CollisionStrategy{
     public:
         virtual void CollBehaivor(class PhysicsSprite* sprite ) = 0;
-        bool standeble = false;
+        bool standeble = true;
     private:
     };
 }
