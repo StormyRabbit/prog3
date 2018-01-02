@@ -28,6 +28,7 @@ namespace rootengine {
             void run();
             void handleNextLvl();
             int getScore();
+            int getLives();
             void createWorld();
             void setFPS(int);
             static GameEngine* getInstance();
@@ -39,6 +40,7 @@ namespace rootengine {
             void preLoopProcess();
             UserInputMgr *usrInMgr{};
             int score{};
+            int lives{};
             World *activeWorld{};
             bool running = true;
             LevelManager* lvlMgr{};

@@ -121,4 +121,8 @@ namespace rootengine {
         startFPSTimers();
         fpsTimer->start();
     }
+
+    int GameEngine::getLives() {
+        return lives;
+    }
 }

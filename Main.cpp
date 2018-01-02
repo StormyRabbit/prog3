@@ -157,6 +157,7 @@ HUD *createHUD(GameEngine* game) {
     HUDSprite* scoreSprite = HUDSprite::getInstance(0,0,200,20, "SCORE: ");
     scoreSprite->setValueToObserver(game, &GameEngine::getScore);
     HUDSprite* lifeSprite = HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");
+    lifeSprite->setValueToObserver(game, &GameEngine::getLives);
     HUDSprite* enemyLeft = HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
     hud->addHUDElement(scoreSprite);
     hud->addHUDElement(lifeSprite);
