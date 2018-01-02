@@ -10,15 +10,8 @@ namespace rootengine {
         if(activePlayer != nullptr)
             activePlayer->tick();
         if(activeLevel != nullptr)
-            //activeLevel->updateEnemies();
-        //if(activeLevel->isLevelComplete()) {}
-        activeLevel->updateEnemies();
-        Enemy* enemy = activeLevel->checkIfEnemyCollWithPlayer(activePlayer);
-        if (enemy != nullptr && enemy->getIsAlive()){
-            enemy->killEnemy();
-            enemy->setOnGroundBorder(activeLevel->checkIfOnGroundBorder(enemy));
-        }
-        activePlayer->setOnGround(activeLevel->checkIfOnGround(activePlayer));
+            activeLevel->updateEnemies();
+        ce->detectCollision(activePlayer, activeLevel->getCollVector());
     }
 
     void World::setPlayer(PhysicsSprite *player) {
@@ -46,5 +39,9 @@ namespace rootengine {
 
     bool World::readyForNextLvl() {
         return activeLevel == nullptr || activeLevel->isLevelComplete();
+    }
+
+    World::World() {
+        ce = CollEngine::getInstance();
     }
 }

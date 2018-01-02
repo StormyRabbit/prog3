@@ -21,8 +21,9 @@ namespace rootengine {
         static World *getInstance();
         bool readyForNextLvl();
     protected:
-        World() = default;
+        World();
     private:
+        CollEngine *ce;
         PhysicsSprite *activePlayer;
         Level *activeLevel;
     };

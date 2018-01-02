@@ -7,93 +7,31 @@
 
 namespace rootengine {
     void Level::updateEnemies() {
-        for(Enemy* enemy : enemyCollection) {
+        for(Enemy* enemy : enemyCollection)
             enemy->tick();
-            enemy->setOnGround(checkIfOnGround(enemy));
-        }
     }
 
     bool Level::isLevelComplete() {
-        for(Enemy* enemy : enemyCollection) {
+        for(Enemy* enemy : enemyCollection)
             if(enemy->getIsAlive())
                 return false;
-        }
         return true;
     }
 
     void Level::drawLevel() {
         if(background != nullptr)
             background->draw();
-
-        for(EnvironmentSprite* es : nonCollEnvironment)
+        for(NonCollEnvironment* es : nonCollEnvironment)
             es->draw();
         for(EnvironmentSprite* es : collEnvironment)
             es->draw();
-
-        for(Enemy* enemy : enemyCollection) {
-             enemy->draw();
-        }
+        for(Enemy* enemy : enemyCollection)
+            enemy->draw();
     }
 
-    bool Level::checkIfOnGroundBorder(PhysicsSprite* sprite){
-        int leftObject = sprite->getRect().x;
-        int rightObject = sprite->getRect().x + sprite->getRect().w;
-        int topObject = sprite->getRect().y;
-        int bottomObject = sprite->getRect().y + sprite->getRect().h;
-
-        for (EnvironmentSprite* groundObj : collEnvironment) {
-            SDL_Rect ground = groundObj->getRect();
-            int leftGround = ground.x;
-            int rightGround = ground.x + ground.w;
-            int topGround = ground.y;
-            int bottomGround = ground.y + ground.h;
-
-            if (bottomObject >= topGround && leftObject >= leftGround && rightObject <= rightGround && bottomGround >= bottomObject){
-                sprite->changeRect().y = sprite->getRect().y;
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    bool Level::checkIfOnGround(PhysicsSprite* sprite){
-        int leftObject = sprite->getRect().x;
-        int rightObject = sprite->getRect().x + sprite->getRect().w;
-        int topObject = sprite->getRect().y;
-        int bottomObject = sprite->getRect().y + sprite->getRect().h;
-
-        for (EnvironmentSprite* groundObj : collEnvironment) {
-            SDL_Rect ground = groundObj->getRect();
-            int leftGround = ground.x;
-            int rightGround = ground.x + ground.w;
-            int topGround = ground.y;
-            int bottomGround = ground.y + ground.h;
-
-            if (bottomObject >= topGround && rightObject >= leftGround && leftObject <= rightGround && bottomGround >= bottomObject){
-                sprite->changeRect().y = sprite->getRect().y;
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    Enemy* Level::checkIfEnemyCollWithPlayer(PhysicsSprite* player){
-        for(Enemy* enemy : enemyCollection) {
-            bool result = SDL_HasIntersection(&player->getRect(), &enemy->getRect());
-            if (result)
-                return enemy;
-        }
-        return nullptr;
-    }
 
     Level *Level::getInstance() {
         return new Level();
-    }
-
-    void Level::setBackGround(EnvironmentSprite *bgSprite) {
-        background = bgSprite;
     }
 
     Level::~Level() {
@@ -112,5 +50,17 @@ namespace rootengine {
 
     void Level::addCollEnv(EnvironmentSprite *collEnv) {
         collEnvironment.push_back(collEnv);
+    }
+
+    std::vector<PhysicsSprite *> Level::getCollVector() {
+        std::vector<PhysicsSprite *> retVector;
+        retVector.reserve( enemyCollection.size() + collEnvironment.size() ); 
+        retVector.insert( retVector.end(), collEnvironment.begin(), collEnvironment.end() );
+        retVector.insert( retVector.end(), enemyCollection.begin(), enemyCollection.end() );
+        return retVector;
+    }
+
+    void Level::setBackGround(NonCollEnvironment *bgSprite) {
+        background = bgSprite;
     }
 }

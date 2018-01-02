@@ -9,27 +9,26 @@
 #include "../enemy/Enemy.h"
 #include "../NonCollEnvironmentSprite.h"
 #include "../PhysicsSprite.h"
+#include "../environment/EnvironmentSprite.h"
 
 namespace rootengine {
     class Level {
     public:
         void addCollEnv(EnvironmentSprite*);
-        void setBackGround(EnvironmentSprite*);
+        void setBackGround(NonCollEnvironment*);
         void addEnemy(Enemy *);
         void updateEnemies();
         bool isLevelComplete();
         void drawLevel();
         ~Level();
         static Level* getInstance();
-        Enemy *checkIfEnemyCollWithPlayer(PhysicsSprite *player);
-        bool checkIfOnGround(PhysicsSprite *sprite);
-        bool checkIfOnGroundBorder(PhysicsSprite *sprite);
+        std::vector<PhysicsSprite*> getCollVector();
     protected:
         Level() = default;
     private:
-        EnvironmentSprite* background{};
+        NonCollEnvironment* background{};
         std::vector<EnvironmentSprite*> collEnvironment;
-        std::vector<EnvironmentSprite*> nonCollEnvironment;
+        std::vector<NonCollEnvironment*> nonCollEnvironment;
         std::vector<Enemy*> enemyCollection;
     };
 }

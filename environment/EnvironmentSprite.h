@@ -12,10 +12,10 @@ namespace rootengine{
     typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
     class EnvironmentSprite :  public PhysicsSprite {
     public:
+        ~EnvironmentSprite();
         static EnvironmentSprite* getInstance(int xPos, int yPos, int height, int width,spritesMap sprites, fMapType frames);
     protected:
         EnvironmentSprite(int xPos, int yPos, int height, int width,spritesMap sprites, fMapType frames);
-        ~EnvironmentSprite();
     private:
 
     };

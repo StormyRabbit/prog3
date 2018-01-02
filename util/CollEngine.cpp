@@ -43,12 +43,10 @@ namespace rootengine {
 
 
 
-    bool CollEngine::detectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
-            if (aObject == otherObject)
-                return false;
-            if (rectCollision(aObject, otherObject))
-                    return true;
-            return false;
+    void CollEngine::detectCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
+            for(PhysicsSprite *ps : physObjects)
+                if (rectCollision(player, ps))
+                    handleCollision(player, ps);
     }
 
    CollEngine *CollEngine::getInstance() {
@@ -56,7 +54,6 @@ namespace rootengine {
     }
 
     int CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
-
         SDL_PixelFormat *pixelFormat = ps->getSurface()->format;
         int bytesPerPixel = pixelFormat->BitsPerPixel;
 
@@ -68,5 +65,9 @@ namespace rootengine {
         Uint8 alpha;
         SDL_GetRGBA(pixelColor, pixelFormat, &red, &green, &blue, &alpha);
         return 0;
+    }
+
+    void CollEngine::handleCollision(PhysicsSprite *, PhysicsSprite *) {
+
     }
 }

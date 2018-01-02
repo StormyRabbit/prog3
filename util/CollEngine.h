@@ -10,14 +10,14 @@
 namespace rootengine {
     class CollEngine {
     public:
-        bool detectCollision(PhysicsSprite *, PhysicsSprite *);
+        void detectCollision(PhysicsSprite *, std::vector<PhysicsSprite*> physObjects);
         static CollEngine *getInstance();
     protected:
         CollEngine() = default;
 
     private:
+        void handleCollision(PhysicsSprite *, PhysicsSprite *);
         int getAlpha(PhysicsSprite *, int x, int y );
-        std::vector<PhysicsSprite *> physObjects;
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
     };
