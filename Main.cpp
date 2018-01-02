@@ -9,6 +9,7 @@
 #include "enemy/WalkingEnemy.h"
 #include "player/Player.h"
 #include "environment/EnvironmentSprite.h"
+#include "collision/GroundBehaivor.h"
 
 using namespace rootengine;
 HUD *createHUD(GameEngine *);
@@ -138,13 +139,22 @@ LevelManager *createLvlMgr() {
 
 Level *createFirstLevel() {
     Level* aLvl = Level::getInstance();
+    std::vector<EnvironmentSprite*> collSprites;
+
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
     std::vector<SDL_Rect> rects{{0,0,70,70}};
     std::map<std::string, std::vector<SDL_Rect>> frameMap;
     frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
-    aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
-    aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
+
+    collSprites.push_back(EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
+
+    for (EnvironmentSprite* sprite : collSprites){
+        sprite->setCollisionStrategy(new GroundBehaivor());
+        aLvl->addCollEnv(sprite);
+    }
+
     aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
 
     aLvl->addEnemy(createFlyingEnemy());

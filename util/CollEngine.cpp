@@ -47,8 +47,9 @@ namespace rootengine {
     void CollEngine::detectCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
             for(PhysicsSprite *ps : physObjects)
                 if (rectCollision(player, ps)) {
-                    player->setOnGround(true);
                     handleCollision(player, ps);
+                } else {
+                    player->setOnGround(false);
                 }
 
     }
@@ -72,6 +73,8 @@ namespace rootengine {
     }
 
     void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
-        // TODO:
+        if(object->getCollisionStrategy()->standeble)
+            player->setOnGround(true);
+
     }
 }

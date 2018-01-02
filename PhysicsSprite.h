@@ -6,6 +6,7 @@
 #define PROG3_PHYSICSSPRITE_H
 
 #include "Sprite.h"
+#include "collision/CollisionStrategy.h"
 #include <SDL_image.h>
 #include <vector>
 #include <string>
@@ -22,6 +23,8 @@ namespace rootengine{
         bool checkIfOnGround();
         void setResetHeight(int height);
         void setResetWidth(int width);
+        void setCollisionStrategy(class CollisionStrategy* collStrategy);
+        CollisionStrategy* getCollisionStrategy();
         virtual void tick();
         int getResetHeight();
         virtual void collBehavior();
@@ -42,6 +45,7 @@ namespace rootengine{
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
+        CollisionStrategy* collStrategy;
         int resetHeight;
         int resetWidth;
         bool onGround = false;

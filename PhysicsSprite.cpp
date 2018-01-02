@@ -101,4 +101,12 @@ namespace rootengine {
     void PhysicsSprite::collBehavior() {
 
     }
+
+    void PhysicsSprite::setCollisionStrategy(CollisionStrategy *collStrategy) {
+        PhysicsSprite::collStrategy = collStrategy;
+    }
+
+    CollisionStrategy *PhysicsSprite::getCollisionStrategy() {
+        return collStrategy;
+    }
 }
