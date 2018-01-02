@@ -30,7 +30,7 @@ Controller *Controller::getInstance() {
     }
 
     void Controller::leftActionPressed() {
-        aPlayer->handleInput("left", false);
+        aPlayer->handleInput("left", true);
     }
 
     void Controller::leftActionReleased() {
