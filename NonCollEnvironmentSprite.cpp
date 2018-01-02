@@ -7,7 +7,7 @@
 #include "System.h"
 
 namespace rootengine{
-    NonCollEnvironment::EnvironmentSprite(int xPos, int yPos, int width, int height, std::string pathToSprite) : Sprite(xPos, yPos, width, height) {
+    NonCollEnvironment::NonCollEnvironment(int xPos, int yPos, int width, int height, std::string pathToSprite) : Sprite(xPos, yPos, width, height) {
         texture = IMG_LoadTexture(sys.getRenderer(), pathToSprite.c_str());
     }
     NonCollEnvironment* NonCollEnvironment::getInstance(int xPos, int yPos, int width, int height,
@@ -18,7 +18,7 @@ namespace rootengine{
     void NonCollEnvironment::draw() const {
         SDL_RenderCopy(sys.getRenderer(), texture, nullptr, &getRect());
     }
-    NonCollEnvironment::~EnvironmentSprite() {}
+    NonCollEnvironment::~NonCollEnvironment() {}
 
 
 }

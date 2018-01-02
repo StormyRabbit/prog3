@@ -138,9 +138,8 @@ LevelManager *createLvlMgr() {
 
 Level *createFirstLevel() {
     Level* aLvl = Level::getInstance();
-    Level* aLvl = Level::getInstance();
     std::map<std::string, std::string> spritesMapColl;
-    spritesMap.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
+    spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
 
 
     std::vector<SDL_Rect> rects{{0,0,70,70}};
@@ -160,7 +159,7 @@ Level *createFirstLevel() {
 Level *createSecondLevel() {
     Level* aLvl = Level::getInstance();
     std::map<std::string, std::string> spritesMapColl;
-    spritesMap.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/sand.png"));
+    spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/sand.png"));
 
 
     std::vector<SDL_Rect> rects{{0,0,70,70}};

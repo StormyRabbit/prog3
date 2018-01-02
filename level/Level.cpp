@@ -37,7 +37,7 @@ namespace rootengine {
     Level::~Level() {
         for(EnvironmentSprite *es : collEnvironment)
             delete es;
-        for(EnvironmentSprite *es : nonCollEnvironment)
+        for(NonCollEnvironment *es : nonCollEnvironment)
             delete es;
         for(Enemy *enemy : enemyCollection)
             delete enemy;
