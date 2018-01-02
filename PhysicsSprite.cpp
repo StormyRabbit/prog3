@@ -97,4 +97,8 @@ namespace rootengine {
     void PhysicsSprite::setOnGroundBorder(bool isBorder) {
         onGrundBorder = isBorder;
     }
+
+    void PhysicsSprite::collBehavior() {
+
+    }
 }

@@ -24,6 +24,7 @@ namespace rootengine{
         void setResetWidth(int width);
         virtual void tick();
         int getResetHeight();
+        virtual void collBehavior();
         SDL_Surface *getSurface();
         int getResetWidth();
         void setOnGround(bool isOnGround);

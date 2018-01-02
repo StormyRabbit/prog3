@@ -11,7 +11,6 @@ namespace jumpyboy{
 
     PlayerState* StandingState::handleInput(Player &player, std::string action, bool isDown) {
         if (isDown){
-
             if (action == "left")
                 return new RunningState(true);
             if (action == "right")

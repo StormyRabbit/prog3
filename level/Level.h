@@ -7,7 +7,7 @@
 
 #include <vector>
 #include "../enemy/Enemy.h"
-#include "../EnvironmentSprite.h"
+#include "../NonCollEnvironmentSprite.h"
 #include "../PhysicsSprite.h"
 
 namespace rootengine {
