@@ -15,19 +15,18 @@ namespace rootengine {
         void executeCallback() override {
             (aObj->*f)();
         }
-        static MemberFuncCallback *getInstance(T* inObj, void(T::*inf)()) {
-            return new MemberFuncCallback(inObj );
+        static MemberFuncCallback *getInstance(UserInput *ui, T* inObj, void(T::*inf)()) {
+            return new MemberFuncCallback(ui, inObj, inf);
         }
-        UserInput* getUserInput() override;
+        UserInput* getUserInput() override {
+            return userInput;
+        }
     protected:
-        MemberFuncCallback(T* aObj, void(T::*f)()): aObj(aObj), f(f) {
-
-        }
-
+        MemberFuncCallback(UserInput *ui, T* aObj, void(T::*f)()):userInput(ui), aObj(aObj), f(f) {}
     private:
+        UserInput *userInput;
         T* aObj;
         void (T::*f)();
-
     };
 }
 

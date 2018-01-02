@@ -8,8 +8,10 @@
 #include "enemy/FlyingEnemy.h"
 #include "enemy/WalkingEnemy.h"
 #include "player/Player.h"
+#include "Controller.h"
+
 using namespace rootengine;
-HUD *createHUD(GameEngine* game);
+HUD *createHUD();
 LevelManager *createLvlMgr();
 jumpyboy::Player *createPlayer();
 Level *createFirstLevel();
@@ -21,25 +23,31 @@ int main(int, char **) {
     ge->createWorld();
     ge->setLvlMgr(createLvlMgr());
     ge->setHUD(createHUD(ge));
-    ge->setPlayer(createPlayer());
+    jumpyboy::Player *player = createPlayer();
+    ge->setUsrInMgr(createUIM(player));
+    ge->setPlayer(player);
     ge->setFPS(60);
-    ge->setUsrInMgr(createUIM(ge));
     ge->run();
     return 0;
 }
 
-UserInputMgr *createUIM(GameEngine *ge) {
+UserInputMgr *createUIM(jumpyboy::Player *p) {
     UserInputMgr *uimgr = UserInputMgr::getInstance();
-    /*
-        UserInput *ui = UserInput::getInstance(SDLK_t, true);
-        rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);
-        UserInput *mUI = UserInput::getInstance(SDLK_g, true);
-        template : rootengine::MemberFuncCallback<GameEngine> *test = MemberFuncCallback<GameEngine>::getInstance(mUI, ge, &GameEngine::printScore);
-        uimgr->addEvent(test);
-        uimgr->addEvent(asd);
-     */
-    return uimgr;
+    jumpyboy::Controller *c = jumpyboy::Controller::getInstance();
+    p->setController(c);
+    /*rootengine::freeFuncCallback *asd = freeFuncCallback::getInstance(ui, testFunc);*/
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, true), c, &jumpyboy::Controller::upActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_w, false), c, &jumpyboy::Controller::upActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, true), c, &jumpyboy::Controller::leftActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_a, false), c, &jumpyboy::Controller::leftActionReleased));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_s, true), c, &jumpyboy::Controller::downActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_s, false), c, &jumpyboy::Controller::downActionReleased));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_d, true), c, &jumpyboy::Controller::rightActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_d, false), c, &jumpyboy::Controller::rightActionReleased));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_SPACE, true), c, &jumpyboy::Controller::jumpActionPressed));
+    uimgr->addEvent(MemberFuncCallback<jumpyboy::Controller>::getInstance(UserInput::getInstance(SDLK_SPACE, false), c, &jumpyboy::Controller::jumpActionReleased));
 
+    return uimgr;
 }
 
 jumpyboy::Player *createPlayer() {

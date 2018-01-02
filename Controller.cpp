@@ -49,7 +49,7 @@ Controller *Controller::getInstance() {
         aPlayer->handleEvent("jump", true);
     }
 
-    void Controller::jumpACtionReleased() {
+    void Controller::jumpActionReleased() {
         aPlayer->handleEvent("jump", false);
     }
 
