@@ -16,4 +16,8 @@ namespace rootengine{
     EnvironmentSprite::~EnvironmentSprite() {
 
     }
+
+    void EnvironmentSprite::tick() {
+        PhysicsSprite::tick();
+    }
 }

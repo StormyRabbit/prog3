@@ -146,8 +146,10 @@ Level *createFirstLevel() {
     aLvl->addCollEnv(EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
     aLvl->addCollEnv(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
     aLvl->setBackGround(NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
+
     aLvl->addEnemy(createFlyingEnemy());
     aLvl->addEnemy(createWalkingEnemy());
+
     return aLvl;
 }
 

@@ -44,7 +44,7 @@ namespace rootengine{
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
         int resetHeight;
         int resetWidth;
-        bool onGround = true;
+        bool onGround = false;
         bool onGrundBorder = true;
         void updateSize();
     };
