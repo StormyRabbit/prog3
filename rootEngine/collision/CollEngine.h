@@ -21,6 +21,7 @@ namespace rootengine {
         bool getAlpha(PhysicsSprite *,SDL_Surface*, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
+        SDL_Rect intersection(PhysicsSprite*, PhysicsSprite*);
     };
 }
 

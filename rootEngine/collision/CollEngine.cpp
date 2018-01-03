@@ -43,9 +43,10 @@ namespace rootengine {
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
         SDL_Rect boundsA = aObject->getRect();
         SDL_Rect boundsB = otherObject->getRect();
-        SDL_Rect collisionRect;
+        SDL_Rect collisionRect = intersection(aObject,otherObject);
 
-        if(SDL_IntersectRect(&boundsA,&boundsB, &collisionRect)){
+
+
             std::string currentSpritePathA = aObject->getCurrentSprite();
             SDL_Surface* surfaceA = IMG_Load(currentSpritePathA.c_str());
             std::string currentSpritePathB = otherObject->getCurrentSprite();
@@ -62,7 +63,7 @@ namespace rootengine {
             }
             SDL_FreeSurface(surfaceA);
             SDL_FreeSurface(surfaceB);
-        }
+
     }
 
 
@@ -129,5 +130,28 @@ namespace rootengine {
         normalized.w = rect->w;
 
         return normalized;
+    }
+
+    SDL_Rect CollEngine::intersection(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
+        SDL_Rect boundsA = aObject->getRect();
+        SDL_Rect boundsB = otherObject->getRect();
+        int x1 = fmax(boundsA.x, boundsB.x);
+        int y1 = fmax(boundsA.y, boundsB.y);
+        int x2 = fmax(boundsA.x + boundsA.w, boundsB.x + boundsB.w);
+        int y2 = fmax(boundsA.y + boundsA.h, boundsB.y + boundsB.h);
+
+        int width = x2 - x1;
+        int height = y2 - y1;
+
+        if(width > 0 && height > 0)
+        {
+            SDL_Rect intersect = {x1, y1, width, height};
+            return intersect;
+        }
+        else
+        {
+            SDL_Rect intersect = {0, 0, 0, 0};
+            return intersect;
+        }
     }
 }
