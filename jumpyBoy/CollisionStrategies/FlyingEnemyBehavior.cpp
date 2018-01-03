@@ -3,11 +3,11 @@
 //
 
 #include "FlyingEnemyBehavior.h"
-#include "../../enemy/Enemy.h"
+#include "../../jumpyBoy/enemy/Enemy.h"
 
 void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *thisObj, rootengine::PhysicsSprite *otherObj) {
     if(otherObj->getCollisionStrategy() != nullptr) {
-        auto *e = (rootengine::Enemy*)thisObj;
+        auto *e = (jumpyboy::Enemy*)thisObj;
         e->killEnemy();
     }
 }

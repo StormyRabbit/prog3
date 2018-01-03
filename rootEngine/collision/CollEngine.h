@@ -6,7 +6,7 @@
 #define PROG3_COLLENGINE_H
 
 #include "../sprite/PhysicsSprite.h"
-
+#include <cmath>
 namespace rootengine {
     class CollEngine {
     public:

@@ -7,9 +7,15 @@
 
 
 #include "../../rootEngine/collision/CollisionStrategy.h"
+#include "CollisionVariables.h"
+
 namespace jumpyboy {
     class PlayerCollBehavior : public rootengine::CollisionStrategy {
+    public:
         void handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) override;
+        //rootengine::CollisionVariables *getCollisionVariables() override;
+    private:
+        rootengine::CollisionVariables *cv = nullptr;
     };
 }
 

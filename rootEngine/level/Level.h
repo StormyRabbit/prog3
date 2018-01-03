@@ -6,7 +6,7 @@
 #define PROG3_LEVEL_H
 
 #include <vector>
-#include "../../enemy/Enemy.h"
+#include "../../jumpyBoy/enemy/Enemy.h"
 #include "../sprite/NonCollEnvironmentSprite.h"
 #include "../sprite/PhysicsSprite.h"
 #include "../sprite/EnvironmentSprite.h"
@@ -16,7 +16,7 @@ namespace rootengine {
     public:
         void addCollEnv(EnvironmentSprite*);
         void setBackGround(NonCollEnvironment*);
-        void addEnemy(Enemy *);
+        void addEnemy(jumpyboy::Enemy *);
         void updateEnemies();
         bool isLevelComplete();
         void drawLevel();
@@ -29,7 +29,7 @@ namespace rootengine {
         NonCollEnvironment* background{};
         std::vector<EnvironmentSprite*> collEnvironment;
         std::vector<NonCollEnvironment*> nonCollEnvironment;
-        std::vector<Enemy*> enemyCollection;
+        std::vector<jumpyboy::Enemy*> enemyCollection;
     };
 }
 

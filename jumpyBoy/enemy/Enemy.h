@@ -6,10 +6,10 @@
 #define PROG3_ENEMY_H
 
 #include <map>
-#include "../rootEngine/sprite/PhysicsSprite.h"
+#include "../../rootEngine/sprite/PhysicsSprite.h"
 
-namespace rootengine{
-    class Enemy : public PhysicsSprite{
+namespace jumpyboy {
+    class Enemy : public rootengine::PhysicsSprite{
     public:
         ~Enemy();
         void killEnemy();

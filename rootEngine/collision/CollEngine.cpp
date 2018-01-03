@@ -38,7 +38,6 @@ namespace rootengine {
     }
 
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
-
         return false;
     }
 

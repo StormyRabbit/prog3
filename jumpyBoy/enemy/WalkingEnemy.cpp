@@ -4,7 +4,7 @@
 
 #include "WalkingEnemy.h"
 
-namespace rootengine{
+namespace jumpyboy{
 
     WalkingEnemy* WalkingEnemy::getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues) {
         return new WalkingEnemy(xPos, yPos, width, height, sprites, frames, enemyValues);

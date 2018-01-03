@@ -6,6 +6,7 @@
 #define PROG3_COLLISIONSTRATEGY_H
 
 #include "../sprite/PhysicsSprite.h"
+#include "CollisionVariables.h"
 
 namespace rootengine {
     class CollisionStrategy{

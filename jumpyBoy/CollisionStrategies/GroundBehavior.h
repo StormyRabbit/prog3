@@ -12,6 +12,10 @@ namespace jumpyboy {
     class GroundBehavior : public rootengine::CollisionStrategy {
     public:
         void handleCollision(rootengine::PhysicsSprite *, rootengine::PhysicsSprite *) override;
+        //rootengine::CollisionVariables *getCollisionVariables() override;
+    private:
+        rootengine::CollisionVariables *cv = nullptr;
+
     };
 }
 
