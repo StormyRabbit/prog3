@@ -35,7 +35,6 @@ namespace rootengine {
             GameEngine();
         private:
             void createWorld();
-            void runStartUpChecks();
             void preLoopProcess();
             UserInputMgr *usrInMgr = nullptr;
             int score{};

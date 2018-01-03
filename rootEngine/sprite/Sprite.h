@@ -14,12 +14,13 @@ namespace rootengine{
         virtual void draw() const = 0;
         const SDL_Rect& getRect() const { return rect; }
         SDL_Rect& changeRect() { return rect; }
+        Sprite(const Sprite&) = delete;
+        const Sprite& operator=(const Sprite&) = delete;
     protected:
         Sprite(int xPos, int yPos, int width, int height);
     private:
         SDL_Rect rect;
-        Sprite(const Sprite&) = delete;
-        const Sprite& operator=(const Sprite&) = delete;
+
     };
 }
 

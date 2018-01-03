@@ -61,7 +61,7 @@ namespace rootengine {
         return new CollEngine();
     }
 
-    bool CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
+    int CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
         //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = ps->getCurrentFrame();
         std::string currentSpritePath = ps->getCurrentSprite();

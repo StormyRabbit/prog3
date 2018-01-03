@@ -15,10 +15,6 @@ namespace rootengine {
         delete usrInMgr;
     }
 
-    void GameEngine::setLvlMgr(LevelManager *lvlMgr) {
-        GameEngine::lvlMgr = lvlMgr;
-    }
-
     void GameEngine::handleNextLvl() {
         if(activeWorld->readyForNextLvl()) {
             Level* nextLvl = lvlMgr->getNextLevel();
@@ -94,23 +90,8 @@ namespace rootengine {
             SDL_Delay( tickRate - frameTicks);
     }
 
-    void GameEngine::runStartUpChecks() {
-        if(usrInMgr == nullptr) {
-        }
-
-        if(activeWorld == nullptr) {
-        }
-
-        if(hud == nullptr) {
-        }
-
-        if(lvlMgr == nullptr) {
-        }
-
-    }
 
     void GameEngine::preLoopProcess() {
-        runStartUpChecks();
         handleNextLvl();
         startFPSTimers();
         fpsTimer->start();
