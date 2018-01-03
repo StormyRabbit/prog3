@@ -7,7 +7,7 @@
 
 #include "Enemy.h"
 
-namespace rootengine {
+namespace jumpyboy {
     class WalkingEnemy : public Enemy {
     public:
         static WalkingEnemy* getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues);

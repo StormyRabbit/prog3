@@ -7,12 +7,12 @@
 
 namespace rootengine {
     void Level::updateEnemies() {
-        for(Enemy *enemy : enemyCollection)
+        for(jumpyboy::Enemy *enemy : enemyCollection)
             enemy->tick();
     }
 
     bool Level::isLevelComplete() {
-        for(Enemy *enemy : enemyCollection)
+        for(jumpyboy::Enemy *enemy : enemyCollection)
             if(enemy->getIsAlive())
                 return false;
 
@@ -26,7 +26,7 @@ namespace rootengine {
             es->draw();
         for(EnvironmentSprite *es : collEnvironment)
             es->draw();
-        for(Enemy* enemy : enemyCollection)
+        for(jumpyboy::Enemy* enemy : enemyCollection)
             enemy->draw();
     }
 
@@ -39,12 +39,12 @@ namespace rootengine {
             delete es;
         for(NonCollEnvironment *es : nonCollEnvironment)
             delete es;
-        for(Enemy *enemy : enemyCollection)
+        for(jumpyboy::Enemy *enemy : enemyCollection)
             delete enemy;
         delete background;
     }
 
-    void Level::addEnemy(Enemy *en) {
+    void Level::addEnemy(jumpyboy::Enemy *en) {
         enemyCollection.push_back(en);
     }
 

@@ -39,7 +39,6 @@ namespace rootengine {
     }
 
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
-
         return false;
     }
 
@@ -99,8 +98,8 @@ namespace rootengine {
 
     void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
         if(player->getCollisionStrategy() != nullptr)
-            player->getCollisionStrategy()->CollBehaivor(player, object);
+            player->getCollisionStrategy()->handleCollision(player, object);
         if(object->getCollisionStrategy() != nullptr)
-            object->getCollisionStrategy()->CollBehaivor(object, player);
+            object->getCollisionStrategy()->handleCollision(object, player);
     }
 }

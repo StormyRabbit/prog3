@@ -2,22 +2,22 @@
 // Created by lasse on 1/3/18.
 //
 
-#ifndef PROG3_PLAYERCOLLBEHAVIOR_H
-#define PROG3_PLAYERCOLLBEHAVIOR_H
-
+#ifndef PROG3_GROUNDBEHAVIOR_H
+#define PROG3_GROUNDBEHAVIOR_H
 
 #include "../../rootEngine/collision/CollisionStrategy.h"
 #include "CollisionVariables.h"
 
 namespace jumpyboy {
-    class PlayerCollBehavior : public rootengine::CollisionStrategy {
+    class GroundBehavior : public rootengine::CollisionStrategy {
     public:
-        void handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) override;
+        void handleCollision(rootengine::PhysicsSprite *, rootengine::PhysicsSprite *) override;
         //rootengine::CollisionVariables *getCollisionVariables() override;
     private:
         rootengine::CollisionVariables *cv = nullptr;
+
     };
 }
 
 
-#endif //PROG3_PLAYERCOLLBEHAVIOR_H
+#endif //PROG3_GROUNDBEHAVIOR_H

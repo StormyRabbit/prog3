@@ -5,11 +5,8 @@
 #ifndef PROG3_COLLENGINE_H
 #define PROG3_COLLENGINE_H
 
-#include <SDL.h>
-#include <stdint.h>
 #include "../sprite/PhysicsSprite.h"
-
-
+#include <cmath>
 namespace rootengine {
     class CollEngine {
     public:
@@ -20,7 +17,7 @@ namespace rootengine {
 
     private:
         void handleCollision(PhysicsSprite *, PhysicsSprite *);
-        bool getAlpha(PhysicsSprite *, int x, int y );
+        int getAlpha(PhysicsSprite *, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
     };

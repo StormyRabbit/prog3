@@ -6,12 +6,13 @@
 #define PROG3_COLLISIONSTRATEGY_H
 
 #include "../sprite/PhysicsSprite.h"
+#include "CollisionVariables.h"
 
 namespace rootengine {
     class CollisionStrategy{
     public:
-        virtual void CollBehaivor(class PhysicsSprite *firstObj, PhysicsSprite *secondObj) = 0;
-        bool standeble = true;
+        virtual void handleCollision(class PhysicsSprite *firstObj, PhysicsSprite *secondObj) = 0;
+        bool standable = true;
     private:
     };
 }
