@@ -14,13 +14,11 @@
 #include "jumpyBoy/player/PlayerFactory.h"
 #include "jumpyBoy/LevelFactory/LevelFactory.h"
 
-using namespace rootengine;
-LevelManager *createLvlMgr();
-
 int main(int, char **) {
-    auto* ge = GameEngine::getInstance();
-    ge->createWorld();
-    ge->setLvlMgr(createLvlMgr());
+    auto* ge = rootengine::GameEngine::getInstance();
+    typedef jumpyboy::LevelFactory getLvl;
+    ge->addLvl(getLvl::firstLvl());
+    ge->addLvl(getLvl::secondLvl());
     ge->setHUD(jumpyboy::HUD::getInstance(ge));
     jumpyboy::Player *player = jumpyboy::PlayerFactory::player();
     jumpyboy::KeyBindings::bindKeybindings(ge, player);
@@ -30,11 +28,4 @@ int main(int, char **) {
     return 0;
 }
 
-LevelManager *createLvlMgr() {
-    LevelManager* lvlMgr = LevelManager::getInstance();
-    typedef jumpyboy::LevelFactory getLvl;
-    lvlMgr->addLevel(getLvl::firstLvl());
-    lvlMgr->addLevel(getLvl::secondLvl());
-    return lvlMgr;
-}
 
