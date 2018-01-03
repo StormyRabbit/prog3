@@ -16,6 +16,7 @@ namespace rootengine {
         CollEngine() = default;
 
     private:
+        SDL_Rect normalizeBounds(SDL_Rect*, PhysicsSprite*);
         void handleCollision(PhysicsSprite *, PhysicsSprite *);
         int getAlpha(PhysicsSprite *,SDL_Surface*, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
