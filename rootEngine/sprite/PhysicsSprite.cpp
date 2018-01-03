@@ -8,22 +8,19 @@
 #include "../System/System.h"
 
 namespace rootengine {
-    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, spritesMap sprites, fMapType frames)
+    PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, sMapType sprites, fMapType frames)
             : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites),
-              Sprite(xPos, yPos, width, height) {
-        std::string pathToDraw = sprites.find(sprites.begin()->first)->second;
-        surf = IMG_Load(pathToDraw.c_str());
-        texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
-
-    }
+              Sprite(xPos, yPos, width, height) {}
     PhysicsSprite::~PhysicsSprite() {
         SDL_DestroyTexture(texture);
     }
 
     void PhysicsSprite::animatedTextureChange(std::string keyToMap) {
         frame = 0;
-        framePositions = framesMap.find(keyToMap)->second;
-        std::string pathToDraw = spriteMap.find(keyToMap)->second;
+        currentStateKey = keyToMap;
+
+        framePositions = framesMap.find(currentStateKey)->second;
+        std::string pathToDraw = spriteMap.find(currentStateKey)->second;
 
         SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
@@ -55,7 +52,7 @@ namespace rootengine {
     }
 
     void PhysicsSprite::draw() const {
-        if (isDrawable) {
+        if (isDrawable && texture != nullptr) {
             SDL_Rect tempClip = framePositions[frame];
             SDL_RenderCopy(sys.getRenderer(), texture, &tempClip, &getRect());
         }
@@ -86,18 +83,6 @@ namespace rootengine {
         resetHeight = height;
     }
 
-    SDL_Surface *PhysicsSprite::getSurface() {
-        return surf;
-    }
-
-    bool PhysicsSprite::checkIfOnGroundBorder() {
-        return onGrundBorder;
-    }
-
-    void PhysicsSprite::setOnGroundBorder(bool isBorder) {
-        onGrundBorder = isBorder;
-    }
-
     void PhysicsSprite::collBehavior() {
 
     }
@@ -108,5 +93,14 @@ namespace rootengine {
 
     CollisionStrategy *PhysicsSprite::getCollisionStrategy() {
         return collStrategy;
+    }
+
+    SDL_Rect PhysicsSprite::getCurrentFrame() {
+        return framesMap.find(currentStateKey)->second[frame];
+    }
+
+
+    std::string PhysicsSprite::getCurrentSprite() {
+        return spriteMap.find(currentStateKey)->second;
     }
 }

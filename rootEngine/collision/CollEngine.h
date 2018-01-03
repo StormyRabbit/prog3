@@ -5,7 +5,10 @@
 #ifndef PROG3_COLLENGINE_H
 #define PROG3_COLLENGINE_H
 
+#include <SDL.h>
+#include <stdint.h>
 #include "../sprite/PhysicsSprite.h"
+
 
 namespace rootengine {
     class CollEngine {
@@ -17,7 +20,7 @@ namespace rootengine {
 
     private:
         void handleCollision(PhysicsSprite *, PhysicsSprite *);
-        int getAlpha(PhysicsSprite *, int x, int y );
+        bool getAlpha(PhysicsSprite *, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
     };

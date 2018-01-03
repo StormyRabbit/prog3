@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include "CollEngine.h"
+
 namespace rootengine {
     bool CollEngine::rectCollision(rootengine::PhysicsSprite *aObject, rootengine::PhysicsSprite *otherObject) {
         // object 1
@@ -54,24 +55,46 @@ namespace rootengine {
         }
         if(!collOccured)
             player->setOnGround(false);
+
     }
 
    CollEngine *CollEngine::getInstance() {
         return new CollEngine();
     }
 
-    int CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
-        SDL_PixelFormat *pixelFormat = ps->getSurface()->format;
-        int bytesPerPixel = pixelFormat->BitsPerPixel;
+    bool CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
+        //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
+        SDL_Rect currentFrame = ps->getCurrentFrame();
+        std::string currentSpritePath = ps->getCurrentSprite();
+        SDL_Surface* surface = IMG_Load(currentSpritePath.c_str());
+        SDL_SetClipRect(surface, &currentFrame);
 
-        Uint8 *p = (Uint8*)ps->getSurface()->pixels + y * ps->getSurface()->pitch + x * bytesPerPixel;
-        Uint32 pixelColor = *p;
-        Uint8 red;
-        Uint8 green;
-        Uint8 blue;
-        Uint8 alpha;
-        SDL_GetRGBA(pixelColor, pixelFormat, &red, &green, &blue, &alpha);
-        return 0;
+        int bpp = surface->format->BytesPerPixel;
+        Uint8* p = (Uint8*)surface->pixels + y * surface->pitch + x * bpp;
+        Uint32  pixelColor;
+
+        switch (bpp){
+            case (1):
+                pixelColor = *p;
+                break;
+            case (2):
+                pixelColor = *(Uint16 *)p;
+                break;
+            case (3):
+                if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+                    pixelColor = p[0] << 16 | p[1] << 8 | p[2];
+                else
+                    pixelColor = p[0] | p[1] << 8 | p[2] << 16;
+                break;
+            case (4):
+                pixelColor = *(Uint32*)p;
+                break;
+        }
+
+        Uint8 red, green, blue, alpha;
+        SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
+
+        return alpha > 200;
     }
 
     void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
