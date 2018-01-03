@@ -24,7 +24,8 @@ rootengine::Level *jumpyboy::LevelFactory::firstLvl() {
     typedef jumpyboy::EnemyFactory getEnemy;
     aLvl->addEnemy(getEnemy::fly());
     aLvl->addEnemy(getEnemy::slime());
-    return aLvl;}
+    return aLvl;
+}
 
 rootengine::Level *jumpyboy::LevelFactory::secondLvl() {
     rootengine::Level* aLvl = rootengine::Level::getInstance();

@@ -39,7 +39,16 @@ namespace rootengine {
     }
 
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
-        return false;
+        SDL_Rect boundsA = aObject->getRect();
+        SDL_Rect boundsB = otherObject->getRect();
+        SDL_Rect collisionRect;
+
+        if(SDL_IntersectRect(&boundsA,&boundsB, &collisionRect)){
+            for(int y = 0; y < collisionRect.h; y++)
+                for(int x = 0; x < collisionRect.w; x++)
+                    if(getAlpha(aObject, boundsA.x + x, boundsA.y + y) && getAlpha(otherObject, boundsB.x + x, boundsB.y + y))
+                        return true;
+        }
     }
 
 
@@ -48,8 +57,10 @@ namespace rootengine {
         bool collOccured = false;
         for(PhysicsSprite *ps : physObjects) {
             if (rectCollision(player, ps)) {
-                collOccured = true;
-                handleCollision(player, ps);
+                if(pixelCollition(player, ps)){
+                    collOccured = true;
+                    handleCollision(player, ps);
+                }
             }
         }
         if(!collOccured)
@@ -69,7 +80,7 @@ namespace rootengine {
         SDL_SetClipRect(surface, &currentFrame);
 
         int bpp = surface->format->BytesPerPixel;
-        Uint8* p = (Uint8*)surface->pixels + y * surface->pitch + x * bpp;
+        Uint8* p = (Uint8*)surface->pixels - y * surface->pitch - x * bpp;
         Uint32  pixelColor;
 
         switch (bpp){
@@ -80,9 +91,6 @@ namespace rootengine {
                 pixelColor = *(Uint16 *)p;
                 break;
             case (3):
-                if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-                    pixelColor = p[0] << 16 | p[1] << 8 | p[2];
-                else
                     pixelColor = p[0] | p[1] << 8 | p[2] << 16;
                 break;
             case (4):
@@ -92,7 +100,7 @@ namespace rootengine {
 
         Uint8 red, green, blue, alpha;
         SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
-
+        delete surface;
         return alpha > 200;
     }
 

@@ -29,7 +29,7 @@ namespace rootengine {
             int getScore();
             int getLives();
             void setFPS(int);
-            static GameEngine* getInstance();
+            static GameEngine *getInstance();
             ~GameEngine();
         protected:
             GameEngine();
@@ -41,7 +41,7 @@ namespace rootengine {
             int lives{};
             World *activeWorld = nullptr;
             bool running = true;
-            LevelManager* lvlMgr = nullptr;
+            LevelManager *lvlMgr = nullptr;
             Drawable *hud = nullptr;
             // FPS cap stuff
             int tickRate{};
