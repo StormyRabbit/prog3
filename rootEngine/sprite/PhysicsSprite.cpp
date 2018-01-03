@@ -23,7 +23,8 @@ namespace rootengine {
         framePositions = framesMap.find(currentStateKey)->second;
         std::string pathToDraw = spriteMap.find(currentStateKey)->second;
 
-        SDL_DestroyTexture(texture);
+        if (texture != nullptr)
+            SDL_DestroyTexture(texture);
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
