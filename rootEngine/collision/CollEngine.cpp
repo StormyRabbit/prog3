@@ -52,10 +52,14 @@ namespace rootengine {
             SDL_Surface* surfaceB = IMG_Load(currentSpritePathB.c_str());
             SDL_Rect normalA = normalizeBounds(&collisionRect, aObject);
             SDL_Rect normalB = normalizeBounds(&collisionRect, otherObject);
-            for(int y = 0; y < collisionRect.h; y++)
-                for(int x = 0; x < collisionRect.w; x++)
-                    if(getAlpha(aObject,surfaceA, normalA.x + x, normalA.y + y) && getAlpha(otherObject,surfaceB, normalB.x + x, normalB.y + y))
-                        return true;
+            for(int y = 0; y < collisionRect.h; y++) {
+                for(int x = 0; x < collisionRect.w; x++) {
+                    std::cout << "Y: " << y << "X: " << x << "BoundsA: " << boundsA.x << " " << boundsA.y << std::endl;
+                    if(getAlpha(aObject, surfaceA, normalA.x + x, normalA.y + y) && getAlpha(otherObject, surfaceB, normalB.x + x, normalB.y + y)){}
+                       // return true;
+                }
+
+            }
             SDL_FreeSurface(surfaceA);
             SDL_FreeSurface(surfaceB);
         }
@@ -75,14 +79,13 @@ namespace rootengine {
         }
         if(!collOccured)
             player->setOnGround(false);
-
     }
 
    CollEngine *CollEngine::getInstance() {
         return new CollEngine();
     }
 
-    int CollEngine::getAlpha(PhysicsSprite *ps, SDL_Surface* surface, int x, int y) {
+    bool CollEngine::getAlpha(PhysicsSprite *ps, SDL_Surface* surface, int x, int y) {
         //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = ps->getCurrentFrame();
         SDL_SetClipRect(surface, &currentFrame);

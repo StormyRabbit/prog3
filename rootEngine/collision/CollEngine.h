@@ -18,7 +18,7 @@ namespace rootengine {
     private:
         SDL_Rect normalizeBounds(SDL_Rect*, PhysicsSprite*);
         void handleCollision(PhysicsSprite *, PhysicsSprite *);
-        int getAlpha(PhysicsSprite *,SDL_Surface*, int x, int y );
+        bool getAlpha(PhysicsSprite *,SDL_Surface*, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
     };
