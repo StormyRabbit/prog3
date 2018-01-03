@@ -125,10 +125,17 @@ namespace rootengine {
     }
 
     GameEngine::GameEngine() {
+        this->createWorld();
         usrInMgr = UserInputMgr::getInstance();
     }
 
     void GameEngine::addEvent(UserInputCallback *uic) {
         usrInMgr->addEvent(uic);
+    }
+
+    void GameEngine::addLvl(Level *lvl) {
+        if(lvlMgr == nullptr)
+            lvlMgr = LevelManager::getInstance();
+        lvlMgr->addLevel(lvl);
     }
 }

@@ -20,7 +20,7 @@
 namespace rootengine {
     class GameEngine  {
         public:
-            void setLvlMgr(LevelManager *);
+            void addLvl(Level *);
             void setPlayer(PhysicsSprite *);
             void setHUD(Drawable *);
             void addEvent(UserInputCallback *);
@@ -28,13 +28,13 @@ namespace rootengine {
             void handleNextLvl();
             int getScore();
             int getLives();
-            void createWorld();
             void setFPS(int);
             static GameEngine* getInstance();
             ~GameEngine();
         protected:
             GameEngine();
         private:
+            void createWorld();
             void runStartUpChecks();
             void preLoopProcess();
             UserInputMgr *usrInMgr = nullptr;
