@@ -10,6 +10,7 @@
 #include "jumpyBoy/CollisionStrategies/GroundBehaivor.h"
 #include "jumpyBoy/player/KeyBindings.h"
 #include "jumpyBoy/CollisionStrategies/PlayerCollBehavior.h"
+#include "jumpyBoy/CollisionStrategies/FlyingEnemyBehavior.h"
 
 using namespace rootengine;
 LevelManager *createLvlMgr();
@@ -83,7 +84,9 @@ Enemy* createFlyingEnemy(){
     movingVariables.insert(std::pair<std::string, double>("minX", 300));
     movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
     movingVariables.insert(std::pair<std::string, double>("fallPower", 7));
-    return FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
+    FlyingEnemy *fe = FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
+    fe->setCollisionStrategy(new jumpyboy::FlyingEnemyBehavior());
+    return fe;
     //return
 };
 

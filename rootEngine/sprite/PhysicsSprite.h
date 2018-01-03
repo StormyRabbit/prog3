@@ -34,7 +34,6 @@ namespace rootengine{
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
     protected:
-
         PhysicsSprite(int xPos,int yPos,int width,int height, spritesMap sprites, fMapType frames);
         ~PhysicsSprite();
         int frame = 0;
