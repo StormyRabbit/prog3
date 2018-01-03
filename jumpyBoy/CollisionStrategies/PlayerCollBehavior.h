@@ -9,7 +9,7 @@
 #include "../../rootEngine/collision/CollisionStrategy.h"
 namespace jumpyboy {
     class PlayerCollBehavior : public rootengine::CollisionStrategy {
-        void CollBehaivor(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) override;
+        void handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) override;
     };
 }
 

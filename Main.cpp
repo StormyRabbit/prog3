@@ -7,9 +7,9 @@
 #include "enemy/WalkingEnemy.h"
 #include "jumpyBoy/player/Player.h"
 #include "jumpyBoy/hud/HUD.h"
-#include "jumpyBoy/CollisionStrategies/GroundBehaivor.h"
 #include "jumpyBoy/player/KeyBindings.h"
 #include "jumpyBoy/CollisionStrategies/PlayerCollBehavior.h"
+#include "jumpyBoy/CollisionStrategies/GroundBehavior.h"
 #include "jumpyBoy/CollisionStrategies/FlyingEnemyBehavior.h"
 
 using namespace rootengine;
@@ -87,7 +87,6 @@ Enemy* createFlyingEnemy(){
     FlyingEnemy *fe = FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
     fe->setCollisionStrategy(new jumpyboy::FlyingEnemyBehavior());
     return fe;
-    //return
 };
 
 Enemy* createWalkingEnemy(){
@@ -134,7 +133,7 @@ Level *createFirstLevel() {
     collSprites.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
 
     for (EnvironmentSprite* sprite : collSprites){
-        sprite->setCollisionStrategy(new jumpyboy::GroundBehaivor());
+        sprite->setCollisionStrategy(new jumpyboy::GroundBehavior());
         aLvl->addCollEnv(sprite);
     }
 

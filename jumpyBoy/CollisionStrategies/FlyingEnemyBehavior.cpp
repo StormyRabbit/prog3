@@ -5,11 +5,9 @@
 #include "FlyingEnemyBehavior.h"
 #include "../../enemy/Enemy.h"
 
-namespace jumpyboy {
-    void FlyingEnemyBehavior::CollBehaivor(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) {
-        if(secondObj->getCollisionStrategy() != nullptr) {
-            auto* e = (rootengine::Enemy*)firstObj;
-            e->killEnemy();
-        }
+void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *thisObj, rootengine::PhysicsSprite *otherObj) {
+    if(otherObj->getCollisionStrategy() != nullptr) {
+        auto *e = (rootengine::Enemy*)thisObj;
+        e->killEnemy();
     }
 }
