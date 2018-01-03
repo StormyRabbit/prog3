@@ -87,6 +87,7 @@ Enemy* createFlyingEnemy(){
     FlyingEnemy *fe = FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
     fe->setCollisionStrategy(new jumpyboy::FlyingEnemyBehavior());
     return fe;
+    //return
 };
 
 Enemy* createWalkingEnemy(){

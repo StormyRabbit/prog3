@@ -7,7 +7,7 @@
 namespace jumpyboy {
     void PlayerCollBehavior::handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) {
         if(secondObj->getCollisionStrategy() != nullptr) {
-            if(secondObj->getCollisionStrategy()->standeble)
+            if(secondObj->getCollisionStrategy()->standable)
                 firstObj->setOnGround(true);
         }
     }

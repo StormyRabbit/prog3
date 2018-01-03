@@ -11,7 +11,7 @@ namespace rootengine {
     class CollisionStrategy{
     public:
         virtual void handleCollision(class PhysicsSprite *firstObj, PhysicsSprite *secondObj) = 0;
-        bool standeble = true;
+        bool standable = true;
     private:
     };
 }
