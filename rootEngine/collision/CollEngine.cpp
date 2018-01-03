@@ -44,10 +44,16 @@ namespace rootengine {
         SDL_Rect collisionRect;
 
         if(SDL_IntersectRect(&boundsA,&boundsB, &collisionRect)){
+            std::string currentSpritePathA = aObject->getCurrentSprite();
+            SDL_Surface* surfaceA = IMG_Load(currentSpritePathA.c_str());
+            std::string currentSpritePathB = otherObject->getCurrentSprite();
+            SDL_Surface* surfaceB = IMG_Load(currentSpritePathB.c_str());
             for(int y = 0; y < collisionRect.h; y++)
                 for(int x = 0; x < collisionRect.w; x++)
-                    if(getAlpha(aObject, boundsA.x + x, boundsA.y + y) && getAlpha(otherObject, boundsB.x + x, boundsB.y + y))
+                    if(getAlpha(aObject,surfaceA, boundsA.x + x, boundsA.y + y) && getAlpha(otherObject,surfaceB, boundsB.x + x, boundsB.y + y))
                         return true;
+            SDL_FreeSurface(surfaceA);
+            SDL_FreeSurface(surfaceB);
         }
     }
 
@@ -72,15 +78,13 @@ namespace rootengine {
         return new CollEngine();
     }
 
-    int CollEngine::getAlpha(PhysicsSprite *ps, int x, int y) {
+    int CollEngine::getAlpha(PhysicsSprite *ps, SDL_Surface* surface, int x, int y) {
         //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = ps->getCurrentFrame();
-        std::string currentSpritePath = ps->getCurrentSprite();
-        SDL_Surface* surface = IMG_Load(currentSpritePath.c_str());
         SDL_SetClipRect(surface, &currentFrame);
 
         int bpp = surface->format->BytesPerPixel;
-        Uint8* p = (Uint8*)surface->pixels - y * surface->pitch - x * bpp;
+        Uint8* p = (Uint8*)surface->pixels + y * surface->pitch + x * bpp;
         Uint32  pixelColor;
 
         switch (bpp){
@@ -100,7 +104,7 @@ namespace rootengine {
 
         Uint8 red, green, blue, alpha;
         SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
-        delete surface;
+        SDL_FreeSurface(surface);
         return alpha > 200;
     }
 
