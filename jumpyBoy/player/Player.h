@@ -8,7 +8,7 @@
 #include <map>
 #include "../../rootEngine/sprite/PhysicsSprite.h"
 #include "PlayerState.h"
-#include "../../rootEngine/util/CollEngine.h"
+#include "../../rootEngine/collision/CollEngine.h"
 #include "../../rootEngine/interfaces/PlayerInterface.h"
 #include "Controller.h"
 namespace jumpyboy {

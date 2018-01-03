@@ -75,9 +75,9 @@ namespace rootengine {
     }
 
     void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
-        if(object->getCollisionStrategy() != nullptr) {
-            if(object->getCollisionStrategy()->standeble)
-                player->setOnGround(true);
-        }
+        if(player->getCollisionStrategy() != nullptr)
+            player->getCollisionStrategy()->CollBehaivor(player, object);
+        if(object->getCollisionStrategy() != nullptr)
+            object->getCollisionStrategy()->CollBehaivor(object, player);
     }
 }

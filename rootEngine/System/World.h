@@ -7,7 +7,7 @@
 
 #include "../level/Level.h"
 #include "../level/LevelManager.h"
-#include "../util/CollEngine.h"
+#include "../collision/CollEngine.h"
 
 namespace rootengine {
 

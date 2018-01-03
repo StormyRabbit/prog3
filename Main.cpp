@@ -7,8 +7,9 @@
 #include "enemy/WalkingEnemy.h"
 #include "jumpyBoy/player/Player.h"
 #include "jumpyBoy/hud/HUD.h"
-#include "rootEngine/collision/GroundBehaivor.h"
+#include "jumpyBoy/CollisionStrategies/GroundBehaivor.h"
 #include "jumpyBoy/player/KeyBindings.h"
+#include "jumpyBoy/CollisionStrategies/PlayerCollBehavior.h"
 
 using namespace rootengine;
 LevelManager *createLvlMgr();
@@ -57,7 +58,9 @@ jumpyboy::Player *createPlayer() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
-    return jumpyboy::Player::getInstance(100,100,50,70, playerSprites, frameRects, movingVariables);
+    jumpyboy::Player *p = jumpyboy::Player::getInstance(100,100,50,70, playerSprites, frameRects, movingVariables);
+    p->setCollisionStrategy(new jumpyboy::PlayerCollBehavior());
+    return p;
 }
 
 Enemy* createFlyingEnemy(){
@@ -128,7 +131,7 @@ Level *createFirstLevel() {
     collSprites.push_back(EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
 
     for (EnvironmentSprite* sprite : collSprites){
-        sprite->setCollisionStrategy(new GroundBehaivor());
+        sprite->setCollisionStrategy(new jumpyboy::GroundBehaivor());
         aLvl->addCollEnv(sprite);
     }
 
