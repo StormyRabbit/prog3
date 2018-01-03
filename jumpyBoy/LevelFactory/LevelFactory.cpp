@@ -23,7 +23,7 @@ rootengine::Level *jumpyboy::LevelFactory::firstLvl() {
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
     aLvl->addEnemy(getEnemy::fly());
-    aLvl->addEnemy(getEnemy::slime());
+    //daLvl->addEnemy(getEnemy::slime());
     return aLvl;
 }
 
