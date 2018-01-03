@@ -10,7 +10,8 @@
 namespace rootengine {
     PhysicsSprite::PhysicsSprite(int xPos, int yPos, int width, int height, sMapType sprites, fMapType frames)
             : resetWidth(width), resetHeight(height), framesMap(frames), spriteMap(sprites),
-              Sprite(xPos, yPos, width, height) {}
+              Sprite(xPos, yPos, width, height) {
+    }
     PhysicsSprite::~PhysicsSprite() {
         SDL_DestroyTexture(texture);
     }

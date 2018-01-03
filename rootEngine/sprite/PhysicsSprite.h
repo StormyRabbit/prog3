@@ -13,13 +13,15 @@
 #include "Sprite.h"
 
 namespace rootengine{
-    typedef std::map<std::string, std::string> spritesMap;
+    typedef std::map<std::string, std::string> sMapType;
     typedef std::map<std::string, std::vector<SDL_Rect>> fMapType;
     class PhysicsSprite : public Sprite {
     public:
         void draw() const;
         void animatedTextureChange(std::string keyToMap);
         void setIsDrawable(bool draw);
+        SDL_Rect getCurrentFrame();
+        std::string getCurrentSprite();
         bool checkIfOnGround();
         void setResetHeight(int height);
         void setResetWidth(int width);
@@ -34,7 +36,7 @@ namespace rootengine{
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
     protected:
-        PhysicsSprite(int xPos,int yPos,int width,int height, spritesMap sprites, fMapType frames);
+        PhysicsSprite(int xPos,int yPos,int width,int height, sMapType sprites, fMapType frames);
         ~PhysicsSprite();
         int frame = 0;
     private:
@@ -45,6 +47,7 @@ namespace rootengine{
         std::map<std::string, std::string> spriteMap;
         std::map<std::string, std::vector<SDL_Rect>> framesMap;
         CollisionStrategy* collStrategy = nullptr;
+        std::string currentStateKey;
         int resetHeight;
         int resetWidth;
         bool onGround = false;
