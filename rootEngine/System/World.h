@@ -5,7 +5,7 @@
 #ifndef PROG3_WORLD_H
 #define PROG3_WORLD_H
 
-#include "../level/Level.h"
+#include "../../jumpyBoy/LevelFactory/Level.h"
 #include "../level/LevelManager.h"
 #include "../collision/CollEngine.h"
 

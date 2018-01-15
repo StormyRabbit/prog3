@@ -9,8 +9,8 @@ namespace rootengine {
         if(activePlayer != nullptr)
             activePlayer->tick();
         if(activeLevel != nullptr)
-            activeLevel->updateEnemies();
-        ce->detectCollision(activePlayer, activeLevel->getCollVector());
+            activeLevel->tickLevel();
+        ce->detectCollision(activePlayer, activeLevel->getCollidableObjects());
     }
 
     void World::setPlayer(PhysicsSprite *player) {

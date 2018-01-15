@@ -6,7 +6,7 @@
 #define PROG3_LEVELMANAGER_H
 
 #include <vector>
-#include "Level.h"
+#include "../../jumpyBoy/LevelFactory/Level.h"
 #include "../interfaces/LevelInterface.h"
 
 namespace rootengine {

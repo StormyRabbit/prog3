@@ -6,8 +6,10 @@
 #include "../CollisionStrategies/GroundBehavior.h"
 #include "../enemy/EnemyFactory.h"
 
-rootengine::Level *jumpyboy::LevelFactory::firstLvl() {
-    rootengine::Level* aLvl = rootengine::Level::getInstance();
+namespace jumpyboy {
+
+Level *jumpyboy::LevelFactory::firstLvl() {
+    Level* aLvl = Level::getInstance();
     std::vector<rootengine::EnvironmentSprite*> collSprites;
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
@@ -27,8 +29,8 @@ rootengine::Level *jumpyboy::LevelFactory::firstLvl() {
     return aLvl;
 }
 
-rootengine::Level *jumpyboy::LevelFactory::secondLvl() {
-    rootengine::Level* aLvl = rootengine::Level::getInstance();
+Level *jumpyboy::LevelFactory::secondLvl() {
+    Level* aLvl = Level::getInstance();
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/sand.png"));
     std::vector<SDL_Rect> rects{{0,0,70,70}};
@@ -38,3 +40,4 @@ rootengine::Level *jumpyboy::LevelFactory::secondLvl() {
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/i-know-c.jpg"));
     return aLvl;
 }
+};
