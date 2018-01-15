@@ -10,9 +10,10 @@
 #include "../sprite/NonCollEnvironmentSprite.h"
 #include "../sprite/PhysicsSprite.h"
 #include "../sprite/EnvironmentSprite.h"
+#include "../interfaces/LevelInterface.h"
 
 namespace rootengine {
-    class Level {
+    class Level : public LevelInterface {
     public:
         void addCollEnv(EnvironmentSprite*);
         void setBackGround(NonCollEnvironment*);

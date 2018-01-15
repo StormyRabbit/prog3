@@ -16,7 +16,7 @@ namespace rootengine {
         void updateWorld();
         void drawWorld();
         void setPlayer(PhysicsSprite* player);
-        void setLevel(Level* lvl);
+        void setLevel(LevelInterface* lvl);
         static World *getInstance();
         bool readyForNextLvl();
     protected:
@@ -24,7 +24,7 @@ namespace rootengine {
     private:
         CollEngine *ce = nullptr;
         PhysicsSprite *activePlayer = nullptr;
-        Level *activeLevel = nullptr;
+        LevelInterface *activeLevel = nullptr;
     };
 }
 

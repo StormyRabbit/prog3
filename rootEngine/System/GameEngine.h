@@ -20,7 +20,7 @@
 namespace rootengine {
     class GameEngine  {
         public:
-            void addLvl(Level *);
+            void addLvl(LevelInterface *);
             void setPlayer(PhysicsSprite *);
             void setHUD(Drawable *);
             void addEvent(UserInputCallback *);

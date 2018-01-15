@@ -6,6 +6,7 @@
 #define PROG3_LEVELINTERFACE_H
 namespace rootengine {
     class LevelInterface {
+    public:
         virtual bool isLevelComplete() = 0;
         virtual void drawLevel() = 0;
         virtual void tickLevel() = 0;

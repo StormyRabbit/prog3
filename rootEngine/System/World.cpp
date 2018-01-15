@@ -28,7 +28,7 @@ namespace rootengine {
             activePlayer->draw();
     }
 
-    void World::setLevel(Level *lvl) {
+    void World::setLevel(LevelInterface *lvl) {
         delete activeLevel;
         activeLevel = lvl;
     }

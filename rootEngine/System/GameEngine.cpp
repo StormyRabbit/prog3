@@ -102,7 +102,7 @@ namespace rootengine {
         usrInMgr->addEvent(uic);
     }
 
-    void GameEngine::addLvl(Level *lvl) {
+    void GameEngine::addLvl(LevelInterface *lvl) {
         if(lvlMgr == nullptr)
             lvlMgr = LevelManager::getInstance();
         lvlMgr->addLevel(lvl);
