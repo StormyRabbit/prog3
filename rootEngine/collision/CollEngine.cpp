@@ -43,16 +43,33 @@ namespace rootengine {
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
         SDL_Rect boundsA = aObject->getRect();
         SDL_Rect boundsB = otherObject->getRect();
-        SDL_Rect collisionRect = intersection(aObject,otherObject);
+        //SDL_Rect collisionRect = intersection(aObject,otherObject);
         std::string currentSpritePathA = aObject->getCurrentSprite();
         SDL_Surface* surfaceA = IMG_Load(currentSpritePathA.c_str());
         std::string currentSpritePathB = otherObject->getCurrentSprite();
         SDL_Surface* surfaceB = IMG_Load(currentSpritePathB.c_str());
-        SDL_Rect normalA = normalizeBounds(&collisionRect, aObject);
+
+        int top = std::max(boundsA.y, boundsB.y);
+        int left = std::max(boundsA.x, boundsB.x);
+        int bottom = std::min(boundsA.y + boundsA.h, boundsB.y + boundsB.h);
+        int right = std::min(boundsA.x + boundsA.w, boundsB.x + boundsB.w);
+
+
+        for (int y = top; y < bottom; y++){
+            for (int x = left; x < right; x++){
+                if (getAlpha(aObject, surfaceA, x, y) && getAlpha(otherObject, surfaceB, x, y))
+                    return true;
+            }
+        }
+        return false;
+
+
+
+        /*SDL_Rect normalA = normalizeBounds(&collisionRect, aObject);
         SDL_Rect normalB = normalizeBounds(&collisionRect, otherObject);
         for(int y = 0; y < collisionRect.h; y++) {
             for(int x = 0; x < collisionRect.w; x++) {
-                if(getAlpha(aObject, surfaceA, normalA.x + x, normalA.y + y) && getAlpha(otherObject, surfaceB, normalB.x + x, normalB.y + y))
+                if(getAlpha(aObject, surfaceA, normalA.x + x, normalA.y + y) && getAlpha(otherObject, surfaceB, normalB.x + x, normalB.y + y)){}
                     return true;
             }
 
@@ -60,6 +77,7 @@ namespace rootengine {
             SDL_FreeSurface(surfaceA);
             SDL_FreeSurface(surfaceB);
 
+    */
     }
 
 
