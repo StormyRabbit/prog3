@@ -27,9 +27,9 @@ namespace jumpyboy {
 
     HUD::HUD(rootengine::GameEngine *game) {
         rootengine::HUDSprite* scoreSprite = rootengine::HUDSprite::getInstance(0,0,200,20, "SCORE: ");
-        scoreSprite->setValueToObserver(game, &rootengine::GameEngine::getScore);
+        // scoreSprite->setValueToObserver(game, &rootengine::GameEngine::getScore);
         rootengine::HUDSprite* lifeSprite = rootengine::HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");
-        lifeSprite->setValueToObserver(game, &rootengine::GameEngine::getLives);
+        // lifeSprite->setValueToObserver(game, &rootengine::GameEngine::getLives);
         rootengine::HUDSprite* enemyLeft = rootengine::HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
         addHUDElement(scoreSprite);
         addHUDElement(lifeSprite);

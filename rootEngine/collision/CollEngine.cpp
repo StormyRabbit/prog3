@@ -43,11 +43,8 @@ namespace rootengine {
     bool CollEngine::pixelCollition(PhysicsSprite *aObject, PhysicsSprite *otherObject) {
         SDL_Rect boundsA = aObject->getRect();
         SDL_Rect boundsB = otherObject->getRect();
-        //SDL_Rect collisionRect = intersection(aObject,otherObject);
         std::string currentSpritePathA = aObject->getCurrentSprite();
-        SDL_Surface* surfaceA = IMG_Load(currentSpritePathA.c_str());
         std::string currentSpritePathB = otherObject->getCurrentSprite();
-        SDL_Surface* surfaceB = IMG_Load(currentSpritePathB.c_str());
 
         int top = std::max(boundsA.y, boundsB.y);
         int left = std::max(boundsA.x, boundsB.x);
@@ -55,8 +52,8 @@ namespace rootengine {
         int right = std::min(boundsA.x + boundsA.w, boundsB.x + boundsB.w);
 
 
-        for (int y = top; y < bottom; y++){
-            for (int x = left; x < right; x++){
+        for (int y = top; y < bottom; y++) {
+            for (int x = left; x < right; x++) {
                 if (aObject->getAlphaValue(x, y) && otherObject->getAlphaValue(x, y))
                     return true;
             }

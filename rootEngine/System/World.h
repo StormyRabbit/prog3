@@ -13,7 +13,6 @@ namespace rootengine {
 
     class World {
     public:
-        void executeEvent(const SDL_Event& eve);
         void updateWorld();
         void drawWorld();
         void setPlayer(PhysicsSprite* player);

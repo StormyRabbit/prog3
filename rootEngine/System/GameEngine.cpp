@@ -16,19 +16,19 @@ namespace rootengine {
     }
 
     void GameEngine::handleNextLvl() {
+        activeWorld->setLevel(lvlMgr->getNextLevel());
+        /*
         if(activeWorld->readyForNextLvl()) {
             Level* nextLvl = lvlMgr->getNextLevel();
             if(nextLvl != nullptr)
                 activeWorld->setLevel(nextLvl);
-            else
-                endGame();
         }
+         */
     }
 
     void GameEngine::run() {
         preLoopProcess();
         while (running) {
-            handleNextLvl();
             capTimer->start();
             SDL_RenderClear(sys.getRenderer());
             activeWorld->drawWorld();
@@ -39,11 +39,11 @@ namespace rootengine {
                 if(event.type) {
                     usrInMgr->handleEvent(event);
                     switch (event.type) {
-                    case SDL_QUIT:
-                        running = false;
-                        break;
-                    default:
-                        activeWorld->executeEvent(event); // TODO: gör denna något efter usrInMgr är fixad ?
+                        case SDL_QUIT:
+                            running = false;
+                            break;
+                        default:
+                            break;
                     } // switch end
                 }
             } // while Poll
@@ -68,15 +68,7 @@ namespace rootengine {
     }
 
     void GameEngine::setFPS(int fps) {
-        tickRate = 1000 / fps;
-    }
-
-    int GameEngine::getScore() {
-        return score;
-    }
-
-    void GameEngine::endGame() {
-        // TODO
+        tickRate =  1000 / fps;
     }
 
     void GameEngine::startFPSTimers() {
@@ -95,10 +87,6 @@ namespace rootengine {
         handleNextLvl();
         startFPSTimers();
         fpsTimer->start();
-    }
-
-    int GameEngine::getLives() {
-        return lives;
     }
 
     void GameEngine::setHUD(Drawable *h) {

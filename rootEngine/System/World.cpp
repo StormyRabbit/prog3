@@ -17,9 +17,6 @@ namespace rootengine {
         activePlayer = player;
     }
 
-    void World::executeEvent(const SDL_Event &eve) {
-    }
-
     World *World::getInstance() {
         return new World();
     }

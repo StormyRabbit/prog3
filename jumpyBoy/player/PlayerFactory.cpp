@@ -33,7 +33,7 @@ jumpyboy::Player *jumpyboy::PlayerFactory::player() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
-    jumpyboy::Player *p = jumpyboy::Player::getInstance(500,100,67,92, playerSprites, frameRects, movingVariables);
+    jumpyboy::Player *p = jumpyboy::Player::getInstance(500,100,50,70, playerSprites, frameRects, movingVariables);
     p->setCollisionStrategy(new jumpyboy::PlayerCollBehavior());
     return p;
 }

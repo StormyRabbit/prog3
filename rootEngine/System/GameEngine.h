@@ -26,8 +26,6 @@ namespace rootengine {
             void addEvent(UserInputCallback *);
             void run();
             void handleNextLvl();
-            int getScore();
-            int getLives();
             void setFPS(int);
             static GameEngine *getInstance();
             ~GameEngine();
@@ -37,8 +35,6 @@ namespace rootengine {
             void createWorld();
             void preLoopProcess();
             UserInputMgr *usrInMgr = nullptr;
-            int score{};
-            int lives{};
             World *activeWorld = nullptr;
             bool running = true;
             LevelManager *lvlMgr = nullptr;
@@ -49,7 +45,6 @@ namespace rootengine {
             void pauseTickDur();
             Timer *fpsTimer = nullptr;
             Timer *capTimer = nullptr;
-        void endGame();
     };
 }
 #endif //PROG3_GAMEENGINE_H
