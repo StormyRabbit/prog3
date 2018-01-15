@@ -43,7 +43,7 @@ namespace rootengine{
         int frame = 0;
     private:
         bool isDrawable = true;
-        SDL_Surface *surf; // behövs för pixel detection ?
+        SDL_Surface *surface = nullptr; // behövs för pixel detection ?
         SDL_Texture* texture = nullptr;
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;

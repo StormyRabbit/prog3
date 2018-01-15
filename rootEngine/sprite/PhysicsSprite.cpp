@@ -23,8 +23,13 @@ namespace rootengine {
         framePositions = framesMap.find(currentStateKey)->second;
         std::string pathToDraw = spriteMap.find(currentStateKey)->second;
 
-        if (texture != nullptr)
+        if (surface != nullptr){
+            SDL_FreeSurface(surface);
+        }
+        if (texture != nullptr){
             SDL_DestroyTexture(texture);
+        }
+        surface = IMG_Load(pathToDraw.c_str());
         texture = IMG_LoadTexture(sys.getRenderer(), pathToDraw.c_str());
     }
 
@@ -107,7 +112,7 @@ namespace rootengine {
     }
 
     bool PhysicsSprite::getAlphaValue(int x, int y) {
-        SDL_Surface* surface = IMG_Load(getCurrentSprite().c_str());
+
         int xDelta = x - getRect().x;
         int yDelta = y - getRect().y;
         double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
