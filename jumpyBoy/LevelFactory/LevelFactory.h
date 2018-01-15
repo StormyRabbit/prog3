@@ -5,13 +5,13 @@
 #ifndef PROG3_LEVELFACTORY_H
 #define PROG3_LEVELFACTORY_H
 
-#include "../../rootEngine/level/Level.h"
+#include "Level.h"
 
 namespace jumpyboy {
     class LevelFactory {
     public:
-        static rootengine::Level *firstLvl();
-        static rootengine::Level *secondLvl();
+        static Level *firstLvl();
+        static Level *secondLvl();
     protected:
     private:
     };

@@ -6,14 +6,14 @@
 #include "LevelManager.h"
 namespace rootengine {
 
-    Level *LevelManager::getNextLevel() {
+    LevelInterface *LevelManager::getNextLevel() {
         int lvlToReturn = currentLevel++;
         if(lvlToReturn > levelCollection.size())
             return nullptr;
         return levelCollection[lvlToReturn];
     }
 
-    void LevelManager::addLevel(Level* aLvl) {
+    void LevelManager::addLevel(LevelInterface* aLvl) {
         LevelManager::levelCollection.push_back(aLvl);
     }
 

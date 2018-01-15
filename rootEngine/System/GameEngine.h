@@ -9,7 +9,7 @@
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <vector>
-#include "../level/Level.h"
+#include "../../jumpyBoy/LevelFactory/Level.h"
 #include "../level/LevelManager.h"
 #include "World.h"
 #include "../UserInput/UserInput.h"
@@ -20,7 +20,7 @@
 namespace rootengine {
     class GameEngine  {
         public:
-            void addLvl(Level *);
+            void addLvl(LevelInterface *);
             void setPlayer(PhysicsSprite *);
             void setHUD(Drawable *);
             void addEvent(UserInputCallback *);

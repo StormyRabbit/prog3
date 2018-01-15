@@ -6,18 +6,20 @@
 #define PROG3_LEVELMANAGER_H
 
 #include <vector>
-#include "Level.h"
+#include "../../jumpyBoy/LevelFactory/Level.h"
+#include "../interfaces/LevelInterface.h"
+
 namespace rootengine {
 
 class LevelManager {
 public:
-    void addLevel(Level* );
-    Level *getNextLevel();
+    void addLevel(LevelInterface* );
+    LevelInterface *getNextLevel();
     static LevelManager* getInstance();
 protected:
     LevelManager() = default;
 private:
-    std::vector<Level*> levelCollection;
+    std::vector<LevelInterface*> levelCollection;
     int currentLevel = 0;
 };
 

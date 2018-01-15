@@ -5,7 +5,7 @@
 #ifndef PROG3_WORLD_H
 #define PROG3_WORLD_H
 
-#include "../level/Level.h"
+#include "../../jumpyBoy/LevelFactory/Level.h"
 #include "../level/LevelManager.h"
 #include "../collision/CollEngine.h"
 
@@ -16,7 +16,7 @@ namespace rootengine {
         void updateWorld();
         void drawWorld();
         void setPlayer(PhysicsSprite* player);
-        void setLevel(Level* lvl);
+        void setLevel(LevelInterface* lvl);
         static World *getInstance();
         bool readyForNextLvl();
     protected:
@@ -24,7 +24,7 @@ namespace rootengine {
     private:
         CollEngine *ce = nullptr;
         PhysicsSprite *activePlayer = nullptr;
-        Level *activeLevel = nullptr;
+        LevelInterface *activeLevel = nullptr;
     };
 }
 
