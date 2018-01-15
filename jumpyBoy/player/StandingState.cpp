@@ -6,6 +6,7 @@
 #include "RunningState.h"
 #include "JumpingState.h"
 #include "DodgingState.h"
+#include "FallingState.h"
 
 namespace jumpyboy{
 
@@ -25,7 +26,11 @@ namespace jumpyboy{
         return nullptr;
     }
 
-    void StandingState::updateState(Player& player){}
+    void StandingState::updateState(Player& player){
+        if (!player.checkIfOnGround()){
+            player.enterNewState(new FallingState());
+        }
+    }
 
     void StandingState::enterState(Player &player) {
         player.animatedTextureChange("standing");
