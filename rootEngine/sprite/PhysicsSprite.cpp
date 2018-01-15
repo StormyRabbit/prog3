@@ -105,4 +105,37 @@ namespace rootengine {
     std::string PhysicsSprite::getCurrentSprite() {
         return spriteMap.find(currentStateKey)->second;
     }
+
+    bool PhysicsSprite::getAlphaValue(int x, int y) {
+        SDL_Surface* surface = IMG_Load(getCurrentSprite().c_str());
+        int xDelta = x - getRect().x;
+        int yDelta = y - getRect().y;
+
+        //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
+        SDL_Rect currentFrame = getCurrentFrame();
+        SDL_SetClipRect(surface, &currentFrame);
+
+        int bpp = surface->format->BytesPerPixel;
+        Uint8* p = (Uint8*)surface->pixels + yDelta * surface->pitch + xDelta * bpp;
+        Uint32  pixelColor;
+
+        switch (bpp){
+            case (1):
+                pixelColor = *p;
+                break;
+            case (2):
+                pixelColor = *(Uint16 *)p;
+                break;
+            case (3):
+                pixelColor = p[0] | p[1] << 8 | p[2] << 16;
+                break;
+            case (4):
+                pixelColor = *(Uint32*)p;
+                break;
+        }
+
+        Uint8 red, green, blue, alpha;
+        SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
+        return alpha > 200;
+    }
 }

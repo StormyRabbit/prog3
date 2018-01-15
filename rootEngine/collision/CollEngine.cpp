@@ -57,7 +57,7 @@ namespace rootengine {
 
         for (int y = top; y < bottom; y++){
             for (int x = left; x < right; x++){
-                if (getAlpha(aObject, surfaceA, x, y) && getAlpha(otherObject, surfaceB, x, y))
+                if (aObject->getAlphaValue(x, y) && otherObject->getAlphaValue(x, y))
                     return true;
             }
         }
@@ -101,7 +101,7 @@ namespace rootengine {
     }
 
     bool CollEngine::getAlpha(PhysicsSprite *ps, SDL_Surface* surface, int x, int y) {
-        //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
+        /*//Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = ps->getCurrentFrame();
         SDL_SetClipRect(surface, &currentFrame);
 
@@ -127,6 +127,7 @@ namespace rootengine {
         Uint8 red, green, blue, alpha;
         SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
         return alpha > 200;
+         */
     }
 
     void CollEngine::handleCollision(PhysicsSprite *player, PhysicsSprite *object) {
