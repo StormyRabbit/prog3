@@ -110,6 +110,11 @@ namespace rootengine {
         SDL_Surface* surface = IMG_Load(getCurrentSprite().c_str());
         int xDelta = x - getRect().x;
         int yDelta = y - getRect().y;
+        double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+        double xDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+
+        xDelta = floor(xDelta * xDiff);
+        yDelta = floor(yDelta * yDiff);
 
         //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = getCurrentFrame();
