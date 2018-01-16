@@ -49,6 +49,7 @@ namespace jumpyboy {
 
                 changeRect().y = ceil(getRect().y - yVelocity);
                 yVelocity = yVelocity - gravity;
+                setOnGround(false);
 
                 if (yVelocity <= 0){
                     isBouncing = false;

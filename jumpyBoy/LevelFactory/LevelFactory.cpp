@@ -25,7 +25,7 @@ Level *jumpyboy::LevelFactory::firstLvl() {
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
     aLvl->addEnemy(getEnemy::fly());
-    //daLvl->addEnemy(getEnemy::slime());
+    aLvl->addEnemy(getEnemy::slime());
     return aLvl;
 }
 
