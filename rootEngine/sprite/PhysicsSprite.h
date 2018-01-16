@@ -29,7 +29,7 @@ namespace rootengine{
         CollisionStrategy* getCollisionStrategy();
         virtual void tick();
         int getResetHeight();
-        int getHitAngle(int x, int y);
+        double getHitAngle(int x, int y);
         virtual void collBehavior();
         SDL_Surface *getSurface();
         int getResetWidth();

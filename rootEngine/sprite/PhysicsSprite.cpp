@@ -149,7 +149,7 @@ namespace rootengine {
         return alpha > 200;
     }
 
-    int PhysicsSprite::getHitAngle(int x, int y) {
+    double PhysicsSprite::getHitAngle(int x, int y) {
         int xDelta = x - getRect().x;
         int yDelta = y - getRect().y;
         double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
@@ -158,8 +158,8 @@ namespace rootengine {
         xDelta = floor(xDelta * xDiff);
         yDelta = floor(yDelta * yDiff);
 
-        int circleWZero = getRect().w / 2;
-        int circleHZero = getRect().h / 2;
+        double circleWZero = getRect().w / 2;
+        double circleHZero = getRect().h / 2;
 
         return atan2(xDelta - circleWZero, yDelta - circleHZero);
     }
