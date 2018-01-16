@@ -48,13 +48,15 @@ namespace rootengine {
         int left = std::max(boundsA.x, boundsB.x);
         int bottom = std::min(boundsA.y + boundsA.h, boundsB.y + boundsB.h);
         int right = std::min(boundsA.x + boundsA.w, boundsB.x + boundsB.w);
-        retRect.x = left;
-        retRect.y = top;
+
 
         for (int y = top; y < bottom; y++) {
             for (int x = left; x < right; x++) {
-                if (aObject->getAlphaValue(x, y) && otherObject->getAlphaValue(x, y))
+                if (aObject->getAlphaValue(x, y) && otherObject->getAlphaValue(x, y)) {
+                    retRect.x = x;
+                    retRect.y = y;
                     return true;
+                }
             }
         }
         return false;
