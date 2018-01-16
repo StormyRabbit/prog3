@@ -161,6 +161,7 @@ namespace rootengine {
         double circleWZero = getRect().w / 2;
         double circleHZero = getRect().h / 2;
 
-        return atan2(xDelta - circleWZero, yDelta - circleHZero);
+        return atan2(xDelta - circleWZero, yDelta - circleHZero) * 180 / 3.1415926535897;
+        ;
     }
 }
