@@ -61,4 +61,8 @@ namespace jumpyboy {
 
         }
     }
+
+    void FlyingEnemy::setFlyingDirection(bool isLeft) {
+        flyingLeft = isLeft;
+    }
 }

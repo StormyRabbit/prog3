@@ -113,20 +113,14 @@ namespace rootengine {
 
     bool PhysicsSprite::getAlphaValue(int x, int y) {
 
-        int xDelta = x - getRect().x;
-        int yDelta = y - getRect().y;
-        double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
-        double xDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
-
-        xDelta = floor(xDelta * xDiff);
-        yDelta = floor(yDelta * yDiff);
+        SDL_Point delta = getNormalizedValue(x,y);
 
         //Hämtat från http://www.sdltutorials.com/sdl-per-pixel-collision
         SDL_Rect currentFrame = getCurrentFrame();
         SDL_SetClipRect(surface, &currentFrame);
 
         int bpp = surface->format->BytesPerPixel;
-        Uint8* p = (Uint8*)surface->pixels + yDelta * surface->pitch + xDelta * bpp;
+        Uint8* p = (Uint8*)surface->pixels + delta.y * surface->pitch + delta.x * bpp;
         Uint32  pixelColor;
 
         switch (bpp){
@@ -150,18 +144,25 @@ namespace rootengine {
     }
 
     double PhysicsSprite::getHitAngle(int x, int y) {
-        int xDelta = x - getRect().x;
-        int yDelta = y - getRect().y;
-        double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
-        double xDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
-
-        xDelta = floor(xDelta * xDiff);
-        yDelta = floor(yDelta * yDiff);
+        SDL_Point delta = getNormalizedValue(x,y);
 
         double circleWZero = getRect().w / 2;
         double circleHZero = getRect().h / 2;
 
-        return atan2(xDelta - circleWZero, yDelta - circleHZero) * 180 / 3.1415926535897;
+        return atan2(delta.x - circleWZero, delta.y - circleHZero) * 180 / 3.1415926535897;
         ;
+    }
+
+    SDL_Point PhysicsSprite::getNormalizedValue(int x, int y) {
+        SDL_Point delta;
+        delta.x = x - getRect().x;
+        delta.y = y - getRect().y;
+        double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+        double xDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+
+        delta.x = floor(delta.x * xDiff);
+        delta.y = floor(delta.y * yDiff);
+
+        return delta;
     }
 }

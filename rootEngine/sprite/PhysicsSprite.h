@@ -28,6 +28,7 @@ namespace rootengine{
         void setCollisionStrategy(class CollisionStrategy* collStrategy);
         CollisionStrategy* getCollisionStrategy();
         virtual void tick();
+        SDL_Point getNormalizedValue(int x, int y);
         int getResetHeight();
         double getHitAngle(int x, int y);
         virtual void collBehavior();
