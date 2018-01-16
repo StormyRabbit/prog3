@@ -148,4 +148,19 @@ namespace rootengine {
         SDL_GetRGBA(pixelColor, surface->format, &red, &green, &blue, &alpha);
         return alpha > 200;
     }
+
+    int PhysicsSprite::getHitAngle(int x, int y) {
+        int xDelta = x - getRect().x;
+        int yDelta = y - getRect().y;
+        double yDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+        double xDiff = static_cast<double>(getCurrentFrame().w) / getRect().w;
+
+        xDelta = floor(xDelta * xDiff);
+        yDelta = floor(yDelta * yDiff);
+
+        int circleWZero = getRect().w / 2;
+        int circleHZero = getRect().h / 2;
+
+        return atan2(xDelta - circleWZero, yDelta - circleHZero);
+    }
 }

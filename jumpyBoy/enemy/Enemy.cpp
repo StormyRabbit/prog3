@@ -8,6 +8,7 @@ namespace jumpyboy{
         movingSpeed = enemyValues.find("speed")->second;
         gravity = enemyValues.find("gravity")->second;
         fallingPower = enemyValues.find("fallPower")->second;
+        yVelocity = gravity;
     }
     Enemy::~Enemy(){}
 

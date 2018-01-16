@@ -27,6 +27,7 @@ namespace jumpyboy{
     }
 
     void StandingState::updateState(Player& player){
+        //TODO SKAPAR BUGG DÄR FIGURANIMATION ÄR I LIMBO MELLAN FALLING OCH STANDING STATE!!
         if (!player.checkIfOnGround()){
             player.enterNewState(new FallingState());
         }
