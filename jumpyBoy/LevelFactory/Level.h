@@ -21,7 +21,10 @@ namespace jumpyboy {
         void tickLevel() override;
         bool isLevelComplete() override;
         void drawLevel() override;
+        std::vector<rootengine::PhysicsSprite*> getCollidableEnvironment() override;
         std::vector<rootengine::PhysicsSprite*> getCollidableObjects() override;
+        std::vector<rootengine::PhysicsSprite*> getEnemyCollection();
+
         ~Level();
         static Level* getInstance();
     protected:

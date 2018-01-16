@@ -20,7 +20,7 @@ namespace jumpyboy {
             background->draw();
         for(rootengine::NonCollEnvironment *es : nonCollEnvironment)
             es->draw();
-        for(rootengine::EnvironmentSprite *es : collEnvironment)
+        for(auto* es : collEnvironment)
             es->draw();
         for(jumpyboy::Enemy* enemy : enemyCollection)
             enemy->draw();
@@ -31,7 +31,7 @@ namespace jumpyboy {
     }
 
     Level::~Level() {
-        for(rootengine::EnvironmentSprite *es : collEnvironment)
+        for(auto *es : collEnvironment)
             delete es;
         for(rootengine::NonCollEnvironment *es : nonCollEnvironment)
             delete es;
@@ -62,5 +62,18 @@ namespace jumpyboy {
         retVector.reserve( enemyCollection.size() + collEnvironment.size() );
         retVector.insert( retVector.end(), collEnvironment.begin(), collEnvironment.end() );
         retVector.insert( retVector.end(), enemyCollection.begin(), enemyCollection.end() );
-        return retVector;    }
+        return retVector;
+    }
+
+    std::vector<rootengine::PhysicsSprite *> Level::getCollidableEnvironment() {
+        std::vector<rootengine::PhysicsSprite *> retVector;
+        retVector.insert(retVector.end(), collEnvironment.begin(), collEnvironment.end());
+        return retVector;
+    }
+
+    std::vector<rootengine::PhysicsSprite *> Level::getEnemyCollection() {
+        std::vector<rootengine::PhysicsSprite *> retVector;
+        retVector.insert(retVector.end(), enemyCollection.begin(), enemyCollection.end());
+        return retVector;
+    }
 }

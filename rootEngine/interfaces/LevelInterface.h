@@ -14,6 +14,9 @@ namespace rootengine {
         virtual void drawLevel() = 0;
         virtual void tickLevel() = 0;
         virtual std::vector<PhysicsSprite*> getCollidableObjects() = 0;
+        virtual std::vector<PhysicsSprite*> getCollidableEnvironment() = 0;
+        virtual std::vector<PhysicsSprite*> getEnemyCollection() = 0;
+
     };
 }
 

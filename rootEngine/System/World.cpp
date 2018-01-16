@@ -10,7 +10,10 @@ namespace rootengine {
             activePlayer->tick();
         if(activeLevel != nullptr)
             activeLevel->tickLevel();
-        ce->detectCollision(activePlayer, activeLevel->getCollidableObjects());
+        ce->playerCollision(activePlayer, activeLevel->getCollidableObjects());
+        std::vector<PhysicsSprite*> enemies = activeLevel->getEnemyCollection();
+        for(PhysicsSprite* es : enemies)
+            ce->EnemyCollision(es, activeLevel->getCollidableEnvironment());
     }
 
     void World::setPlayer(PhysicsSprite *player) {

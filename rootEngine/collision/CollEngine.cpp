@@ -62,7 +62,7 @@ namespace rootengine {
         return false;
     }
 
-    void CollEngine::detectCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
+    void CollEngine::playerCollision(PhysicsSprite *player, std::vector<PhysicsSprite *> physObjects) {
         bool collOccured = false;
         for(PhysicsSprite *ps : physObjects) {
             if (rectCollision(player, ps)) {
@@ -86,5 +86,13 @@ namespace rootengine {
             player->getCollisionStrategy()->handleCollision(player, object, collRect);
         if(object->getCollisionStrategy() != nullptr)
             object->getCollisionStrategy()->handleCollision(object, player, collRect);
+    }
+
+    void CollEngine::EnemyCollision(PhysicsSprite *obj, std::vector<PhysicsSprite *> physObjects) {
+        for(PhysicsSprite *ps : physObjects)
+            if(rectCollision(obj, ps)) {
+                obj->setOnGround(true);
+            }
+
     }
 }

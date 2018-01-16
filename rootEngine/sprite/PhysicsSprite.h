@@ -38,10 +38,9 @@ namespace rootengine{
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
         bool getAlphaValue(int x, int y);
-
+        ~PhysicsSprite() override;
     protected:
         PhysicsSprite(int xPos,int yPos,int width,int height, sMapType sprites, fMapType frames);
-        ~PhysicsSprite();
         int frame = 0;
     private:
         bool isDrawable = true;

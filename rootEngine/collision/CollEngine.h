@@ -10,18 +10,17 @@
 namespace rootengine {
     class CollEngine {
     public:
-        void detectCollision(PhysicsSprite *, std::vector<PhysicsSprite*> physObjects);
+        void playerCollision(PhysicsSprite *, std::vector<PhysicsSprite *> physObjects);
+        void EnemyCollision(PhysicsSprite *, std::vector<PhysicsSprite *> physObjects);
+
         static CollEngine *getInstance();
     protected:
         CollEngine() = default;
 
     private:
-        SDL_Rect normalizeBounds(SDL_Rect*, PhysicsSprite*);
         void handleCollision(PhysicsSprite *, PhysicsSprite *, SDL_Rect &);
-        bool getAlpha(PhysicsSprite *,SDL_Surface*, int x, int y );
         bool pixelCollition(PhysicsSprite *, PhysicsSprite *, SDL_Rect &);
         bool rectCollision(PhysicsSprite *aObject, PhysicsSprite *otherObject);
-        SDL_Rect intersection(PhysicsSprite*, PhysicsSprite*);
     };
 }
 
