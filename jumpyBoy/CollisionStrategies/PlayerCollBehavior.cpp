@@ -5,7 +5,7 @@
 #include "PlayerCollBehavior.h"
 
 namespace jumpyboy {
-    void PlayerCollBehavior::handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) {
+    void PlayerCollBehavior::handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj, SDL_Rect &rect) {
         if(secondObj->getCollisionStrategy() != nullptr) {
             if(secondObj->getCollisionStrategy()->standable)
                 firstObj->setOnGround(true);

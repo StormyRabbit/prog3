@@ -12,7 +12,7 @@
 namespace jumpyboy {
     class PlayerCollBehavior : public rootengine::CollisionStrategy {
     public:
-        void handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj) override;
+        void handleCollision(rootengine::PhysicsSprite *firstObj, rootengine::PhysicsSprite *secondObj, SDL_Rect &rect) override;
         //rootengine::CollisionVariables *getCollisionVariables() override;
     private:
         rootengine::CollisionVariables *cv = nullptr;

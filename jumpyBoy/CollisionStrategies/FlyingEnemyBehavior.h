@@ -9,7 +9,7 @@
 
 namespace jumpyboy {
     class FlyingEnemyBehavior: public rootengine::CollisionStrategy {
-        void handleCollision(rootengine::PhysicsSprite *, rootengine::PhysicsSprite *) override;
+        void handleCollision(rootengine::PhysicsSprite *, rootengine::PhysicsSprite *, SDL_Rect &rect) override;
     };
 }
 

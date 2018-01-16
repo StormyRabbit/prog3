@@ -5,7 +5,7 @@
 #include "FlyingEnemyBehavior.h"
 #include "../../jumpyBoy/enemy/Enemy.h"
 
-void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *thisObj, rootengine::PhysicsSprite *otherObj) {
+void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *thisObj, rootengine::PhysicsSprite *otherObj, SDL_Rect &rect) {
     if(otherObj->getCollisionStrategy() != nullptr) {
         auto *e = (jumpyboy::Enemy*)thisObj;
         e->killEnemy();
