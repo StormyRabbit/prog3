@@ -13,7 +13,7 @@
 namespace rootengine {
     class HUDSprite : public Sprite {
     public:
-        static HUDSprite* getInstance(int xPos, int yPos,int width,int height, std::string txt);
+        static HUDSprite* getInstance(int xPos, int yPos, int width, int height, std::string txt);
         std::string getText() const;
         void setText(std::string &newText);
         void draw() const override;
@@ -22,8 +22,8 @@ namespace rootengine {
         ~HUDSprite() override;
 
     protected:
+        HUDSprite(int xPos, int yPos, std::string &txt);
         SDL_Texture* texture;
-        HUDSprite(int xPos, int yPos,int width,int height, std::string &txt);
     private:
         std::string text;
     };

@@ -12,8 +12,8 @@ namespace rootengine {
     template<typename T>
     class ObservingHUDSprite: public HUDSprite{
     public:
-        static ObservingHUDSprite *getInstance(int xPos, int yPos, int width, int height, std::string &txt, T *obj, int(T::*func)() ) {
-            return new ObservingHUDSprite(xPos, yPos, width, height, txt, obj, func);
+        static ObservingHUDSprite *getInstance(int xPos, int yPos, std::string &txt, T *obj, int(T::*func)() ) {
+            return new ObservingHUDSprite(xPos, yPos, txt, obj, func);
         }
 
         void draw() const override {
@@ -27,8 +27,8 @@ namespace rootengine {
             SDL_FreeSurface(surf);
         }
     protected:
-        ObservingHUDSprite(int xPos, int yPos, int width, int height, std::string &txt, T *obj, int(T::*func)())
-                :obj(obj), func(func), HUDSprite(xPos,yPos,width,height, txt) {}
+        ObservingHUDSprite(int xPos, int yPos, std::string &txt, T *obj, int(T::*func)())
+                :obj(obj), func(func), HUDSprite(xPos,yPos, txt) {}
     private:
         T *obj;
         int (T:: *func)();

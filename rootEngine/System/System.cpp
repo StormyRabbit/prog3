@@ -16,7 +16,7 @@ namespace rootengine {
         System::init();
         System::createWindow(1200, 600, "Root engine testing");
         System::createRenderer();
-        System::createFont("assets/fonts/Roboto-Regular.ttf", 10);
+        System::createFont("assets/fonts/Roboto-Regular.ttf", 50);
     }
 
     System::~System() {
@@ -59,6 +59,7 @@ namespace rootengine {
 
     void System::createRenderer() {
         ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+        SDL_SetRenderDrawColor(ren, 0, 0, 0, 0);
         if (ren == nullptr) {
             std::cerr << "render error: " << SDL_GetError() << std::endl;
             SDL_DestroyWindow(win);

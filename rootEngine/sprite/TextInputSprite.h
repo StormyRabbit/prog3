@@ -14,10 +14,16 @@ namespace rootengine {
     class TextInputSprite : public HUDSprite {
     public:
         static TextInputSprite* getInstance(int x, int y, int w, int h, std::string txt);
+        void addText(HUDSprite* sprite);
     protected:
         TextInputSprite(int xPos, int yPos,int width,int height, std::string txt);
     private:
         void keyPressed(SDL_Event event);
+        std::vector<HUDSprite*> textToWelcomeScreen;
+
+        void deleteKeyPressed();
+
+        void drawInfoText();
     };
 }
 

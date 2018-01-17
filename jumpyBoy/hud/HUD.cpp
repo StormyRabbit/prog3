@@ -31,7 +31,7 @@ namespace jumpyboy {
     HUD::HUD(Player *player) {
         std::string test = "LIVES: ";
         typedef rootengine::ObservingHUDSprite<Player> hudPlayer;
-        hudPlayer *testSprite = hudPlayer::getInstance(0, 20, 200, 20, test, player, &Player::getLifesLeft);
+        hudPlayer *testSprite = hudPlayer::getInstance(0, 20, test, player, &Player::getLifesLeft);
         addHUDElement(testSprite);
     }
 }
