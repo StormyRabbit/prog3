@@ -4,7 +4,6 @@
 
 #include <vector>
 #include "HUD.h"
-#include <string>
 #include "../../rootEngine/sprite/ObserveringHUDSprite.h"
 #include <algorithm>
 namespace jumpyboy {

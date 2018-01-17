@@ -16,19 +16,18 @@ namespace rootengine {
     }
 
     void GameEngine::handleNextLvl() {
-        activeWorld->setLevel(lvlMgr->getNextLevel());
-        /*
         if(activeWorld->readyForNextLvl()) {
-            Level* nextLvl = lvlMgr->getNextLevel();
+            LevelInterface* nextLvl = lvlMgr->getNextLevel();
             if(nextLvl != nullptr)
                 activeWorld->setLevel(nextLvl);
         }
-         */
+
     }
 
     void GameEngine::run() {
         preLoopProcess();
         while (running) {
+            handleNextLvl();
             capTimer->start();
             SDL_RenderClear(sys.getRenderer());
             activeWorld->drawWorld();
@@ -52,7 +51,7 @@ namespace rootengine {
             pauseTickDur();
             SDL_RenderPresent(sys.getRenderer());
 
-        } // while runnin.g
+        } // while running
     }
 
     void GameEngine::setPlayer(PhysicsSprite *player) {
@@ -84,7 +83,7 @@ namespace rootengine {
 
 
     void GameEngine::preLoopProcess() {
-        handleNextLvl();
+        activeWorld->setLevel(lvlMgr->getNextLevel());
         startFPSTimers();
         fpsTimer->start();
     }
