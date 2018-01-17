@@ -10,7 +10,7 @@ namespace jumpyboy {
 
 Level *jumpyboy::LevelFactory::firstLvl() {
     Level* aLvl = Level::getInstance();
-    aLvl->textinput = rootengine::TextInputSprite::getInstance(100,100,50, 200, "Enter Name:");
+    //aLvl->textinput = rootengine::TextInputSprite::getInstance(100,100,50, 200, "Enter Name:");
 
     std::vector<rootengine::EnvironmentSprite*> collSprites;
     std::map<std::string, std::string> spritesMapColl;

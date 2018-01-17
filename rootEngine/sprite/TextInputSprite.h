@@ -5,8 +5,10 @@
 #ifndef PROG3_TEXTINPUTSPRITE_H
 #define PROG3_TEXTINPUTSPRITE_H
 
-
+#include <string>
 #include "HUDSprite.h"
+
+
 
 namespace rootengine {
     class TextInputSprite : public HUDSprite {

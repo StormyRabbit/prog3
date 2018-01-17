@@ -16,8 +16,8 @@ namespace jumpyboy {
     }
 
     void Level::drawLevel() {
-        if (textinput != nullptr)
-            textinput->draw();
+        //if (textinput != nullptr)
+          //  textinput->draw();
         if(background != nullptr)
             background->draw();
         for(rootengine::NonCollEnvironment *es : nonCollEnvironment)
