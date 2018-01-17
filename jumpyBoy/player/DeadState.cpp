@@ -17,5 +17,6 @@ namespace jumpyboy{
     }
 
     void DeadState::updateState(class Player &player) {
+        player.changeRect().y--;
     }
 }

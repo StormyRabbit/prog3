@@ -19,6 +19,7 @@ jumpyboy::Player *jumpyboy::PlayerFactory::player() {
     std::vector<SDL_Rect> dodgingFrames{{0,0,69,71}};
     std::vector<SDL_Rect> jumpingFrames{{0,0,67,94}};
     std::vector<SDL_Rect> fallingFrames{{0,0,67,94}};
+    std::vector<SDL_Rect> deadFrames{{0,0,69,92}};
 
     std::map<std::string, std::vector<SDL_Rect>> frameRects;
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("running", runningFrames));
@@ -26,6 +27,7 @@ jumpyboy::Player *jumpyboy::PlayerFactory::player() {
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dodging", dodgingFrames));
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("jumping", jumpingFrames));
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("falling", fallingFrames));
+    frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dead", deadFrames));
 
     //Path to all sprite sheets. MUST HAVE CORRESPONDING VECTORS IN frameRects WITH SAME KEY!"
     std::map<std::string, std::string> playerSprites;
@@ -34,6 +36,7 @@ jumpyboy::Player *jumpyboy::PlayerFactory::player() {
     playerSprites.insert(std::pair<std::string, std::string>("dodging", "assets/sprites/Player/p1_duck.png"));
     playerSprites.insert(std::pair<std::string, std::string>("jumping", "assets/sprites/Player/p1_jump.png"));
     playerSprites.insert(std::pair<std::string, std::string>("falling", "assets/sprites/Player/p1_jump.png"));
+    playerSprites.insert(std::pair<std::string, std::string>("dead", "assets/sprites/Player/p1_hurt.png"));
     jumpyboy::Player *p = jumpyboy::Player::getInstance(500,100,50,70, playerSprites, frameRects, movingVariables);
     p->setCollisionStrategy(new jumpyboy::PlayerCollBehavior());
     return p;

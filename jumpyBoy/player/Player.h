@@ -30,6 +30,7 @@ namespace jumpyboy {
         ~Player() override;
         void handleInput(std::string action, bool isDown);
         int getLifesLeft();
+        void setCanTakeDamage(bool value);
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:

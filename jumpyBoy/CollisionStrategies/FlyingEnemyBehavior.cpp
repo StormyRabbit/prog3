@@ -16,17 +16,20 @@ void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *t
         SDL_Point normRect = e->getNormalizedValue(rect.x, rect.y);
 
         if (normRect.y < (static_cast<double>(e->getRect().h * 0.10)) && e->getIsAlive()){
-            bool hitDirectionLeft;
-            if (normRect.x < (static_cast<double>(e->getRect().w * 0.5))){
-                hitDirectionLeft = false;
-                e->setFlyingDirection(hitDirectionLeft);
-            } else {
-                hitDirectionLeft = true;
-                e->setFlyingDirection(hitDirectionLeft);
+            if (e->getIsAlive()){
+                bool hitDirectionLeft;
+                if (normRect.x < (static_cast<double>(e->getRect().w * 0.5))){
+                    hitDirectionLeft = false;
+                    e->setFlyingDirection(hitDirectionLeft);
+                } else {
+                    hitDirectionLeft = true;
+                    e->setFlyingDirection(hitDirectionLeft);
+                }
+                e->killEnemy();
+                p->getYVelocity() = e->getBouncyPower();
+
+                p->enterNewState(new JumpingState());
             }
-            e->killEnemy();
-            p->getYVelocity() = e->getBouncyPower();
-            p->enterNewState(new JumpingState());
         } else {
             p->kill();
         }

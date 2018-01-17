@@ -5,7 +5,7 @@
 #include "EnemyFactory.h"
 #include "../CollisionStrategies/FlyingEnemyBehavior.h"
 
-jumpyboy::FlyingEnemy *jumpyboy::EnemyFactory::fly() {
+jumpyboy::FlyingEnemy *jumpyboy::EnemyFactory::fly(int x, int y, int w, int h, int maxX, int mixX, int speed) {
     //MUST CONTAIN DEAD! Path to all sprite sheets. MUST HAVE CORRESPONDING VECTORS IN frameRects WITH SAME KEY!"
     std::map<std::string, std::string> sprites;
     sprites.insert(std::pair<std::string, std::string>("moving", "assets/sprites/Enemies/enemies_spritesheet.png"));
@@ -20,13 +20,13 @@ jumpyboy::FlyingEnemy *jumpyboy::EnemyFactory::fly() {
 
 
     std::map<std::string, double> movingVariables;
-    movingVariables.insert(std::pair<std::string, double>("speed", 3));
-    movingVariables.insert(std::pair<std::string, double>("maxX", 1000));
-    movingVariables.insert(std::pair<std::string, double>("minX", 300));
+    movingVariables.insert(std::pair<std::string, double>("speed", speed));
+    movingVariables.insert(std::pair<std::string, double>("maxX", maxX));
+    movingVariables.insert(std::pair<std::string, double>("minX", mixX));
     movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
     movingVariables.insert(std::pair<std::string, double>("fallPower", 7));
     movingVariables.insert(std::pair<std::string, double>("bouncyPower", 9));
-    jumpyboy::FlyingEnemy *fe = jumpyboy::FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
+    jumpyboy::FlyingEnemy *fe = jumpyboy::FlyingEnemy::getInstance(x, y, w, h, sprites, frameRects, movingVariables);
     fe->setCollisionStrategy(new jumpyboy::FlyingEnemyBehavior());
     return fe;
 }

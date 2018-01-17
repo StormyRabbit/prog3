@@ -6,6 +6,8 @@
 #include "StandingState.h"
 #include "FallingState.h"
 #include "../../rootEngine/System/GameEngine.h"
+#include "DeadState.h"
+
 namespace jumpyboy {
 
  Player::Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables)
@@ -72,6 +74,11 @@ namespace jumpyboy {
 
     void Player::kill() {
 
+        if (lifes == 0)
+            enterNewState(new DeadState());
+        else {
+            lifes--;
+        }
     }
 
     void Player::setController(Controller *controll) {
