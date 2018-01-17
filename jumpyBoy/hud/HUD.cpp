@@ -29,14 +29,10 @@ namespace jumpyboy {
     }
 
     HUD::HUD(Player *player) {
-        rootengine::HUDSprite* scoreSprite = rootengine::HUDSprite::getInstance(0,0,200,20, "SCORE: ");
         std::string test = "LIVES: ";
         typedef rootengine::ObservingHUDSprite<Player> hudPlayer;
         hudPlayer *testSprite = hudPlayer::getInstance(0, 20, 200, 20, test, player, &Player::getLifesLeft);
-        rootengine::HUDSprite* enemyLeft = rootengine::HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
-        addHUDElement(scoreSprite);
         addHUDElement(testSprite);
-        addHUDElement(enemyLeft);
     }
 }
 
