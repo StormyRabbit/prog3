@@ -18,7 +18,6 @@ jumpyboy::FlyingEnemy *jumpyboy::EnemyFactory::fly(int x, int y, int w, int h, i
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("moving", movingFrame));
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dead", deadFrame));
 
-
     std::map<std::string, double> movingVariables;
     movingVariables.insert(std::pair<std::string, double>("speed", speed));
     movingVariables.insert(std::pair<std::string, double>("maxX", maxX));
@@ -43,7 +42,6 @@ jumpyboy::WalkingEnemy *jumpyboy::EnemyFactory::slime() {
     std::map<std::string, std::vector<SDL_Rect>> frameRects;
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("moving", movingFrame));
     frameRects.insert(std::pair<std::string, std::vector<SDL_Rect>>("dead", deadFrame));
-
 
     std::map<std::string, double> movingVariables;
     movingVariables.insert(std::pair<std::string, double>("speed", 2));
