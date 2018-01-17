@@ -16,6 +16,8 @@ namespace jumpyboy {
     }
 
     void Level::drawLevel() {
+        if (textinput != nullptr)
+            textinput->draw();
         if(background != nullptr)
             background->draw();
         for(rootengine::NonCollEnvironment *es : nonCollEnvironment)
@@ -76,4 +78,6 @@ namespace jumpyboy {
         retVector.insert(retVector.end(), enemyCollection.begin(), enemyCollection.end());
         return retVector;
     }
+
+
 }

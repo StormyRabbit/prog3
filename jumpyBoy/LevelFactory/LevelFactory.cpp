@@ -10,6 +10,8 @@ namespace jumpyboy {
 
 Level *jumpyboy::LevelFactory::firstLvl() {
     Level* aLvl = Level::getInstance();
+    aLvl->textinput = rootengine::TextInputSprite::getInstance(100,100,50, 200, "Enter Name:");
+
     std::vector<rootengine::EnvironmentSprite*> collSprites;
     std::map<std::string, std::string> spritesMapColl;
     spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
@@ -27,7 +29,9 @@ Level *jumpyboy::LevelFactory::firstLvl() {
     }
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
-    aLvl->addEnemy(getEnemy::fly(100, 200, 50, 40, 500, 100, 3));
+    aLvl->addEnemy(getEnemy::fly(-150, 200, 50, 40, 500, 200, 3));
+    aLvl->addEnemy(getEnemy::fly(-200, 300, 50, 40, 600, 300, 3));
+    aLvl->addEnemy(getEnemy::fly(-100, 400, 50, 40, 700, 400, 3));
     return aLvl;
 }
 
@@ -49,7 +53,10 @@ Level *jumpyboy::LevelFactory::secondLvl() {
     }
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/Ice expansion/Tiles/iceWaterDeepAlt.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
-    aLvl->addEnemy(getEnemy::fly(100, 200, 50, 40, 500, 100, 3));
+    aLvl->addEnemy(getEnemy::fly(-150, 200, 50, 40, 500, 200, 3));
+    aLvl->addEnemy(getEnemy::fly(-200, 300, 50, 40, 600, 300, 3));
+    aLvl->addEnemy(getEnemy::fly(-100, 400, 50, 40, 700, 400, 3));
+    aLvl->addEnemy(getEnemy::fly(-50, 400, 50, 40, 500, 100, 3));
     return aLvl;
 }
 };

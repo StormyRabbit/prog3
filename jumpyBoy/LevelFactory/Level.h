@@ -11,6 +11,7 @@
 #include "../../rootEngine/sprite/PhysicsSprite.h"
 #include "../../rootEngine/sprite/EnvironmentSprite.h"
 #include "../../rootEngine/interfaces/LevelInterface.h"
+#include "../../rootEngine/sprite/TextInputSprite.h"
 
 namespace jumpyboy {
     class Level : public rootengine::LevelInterface {
@@ -21,6 +22,7 @@ namespace jumpyboy {
         void tickLevel() override;
         bool isLevelComplete() override;
         void drawLevel() override;
+        rootengine::TextInputSprite* textinput = nullptr;
         std::vector<rootengine::PhysicsSprite*> getCollidableEnvironment() override;
         std::vector<rootengine::PhysicsSprite*> getCollidableObjects() override;
         std::vector<rootengine::PhysicsSprite*> getEnemyCollection();

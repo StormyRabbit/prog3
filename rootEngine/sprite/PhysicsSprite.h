@@ -30,9 +30,6 @@ namespace rootengine{
         virtual void tick();
         SDL_Point getNormalizedValue(int x, int y);
         int getResetHeight();
-        virtual void collBehavior();
-        SDL_Surface *getSurface();
-        int getResetWidth();
         void setOnGround(bool isOnGround);
         void setOnGroundBorder(bool isBorder);
         bool checkIfOnGroundBorder();
@@ -43,7 +40,7 @@ namespace rootengine{
         int frame = 0;
     private:
         bool isDrawable = true;
-        SDL_Surface *surface = nullptr; // behövs för pixel detection ?
+        SDL_Surface *surface = nullptr;
         SDL_Texture* texture = nullptr;
         std::vector<SDL_Rect> framePositions;
         std::map<std::string, std::string> spriteMap;
@@ -53,7 +50,6 @@ namespace rootengine{
         int resetHeight;
         int resetWidth;
         bool onGround = false;
-        bool onGrundBorder = true;
         void updateSize();
     };
 }

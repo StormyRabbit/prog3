@@ -74,10 +74,6 @@ namespace rootengine {
         onGround = isOnGround;
     }
 
-    int PhysicsSprite::getResetWidth() {
-        return resetWidth;
-    }
-
     int PhysicsSprite::getResetHeight() {
         return resetWidth;
     }
@@ -88,10 +84,6 @@ namespace rootengine {
 
     void PhysicsSprite::setResetHeight(int height) {
         resetHeight = height;
-    }
-
-    void PhysicsSprite::collBehavior() {
-
     }
 
     void PhysicsSprite::setCollisionStrategy(CollisionStrategy *collStrategy) {

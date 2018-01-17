@@ -11,6 +11,7 @@
 namespace rootengine {
     class TextInputSprite : public HUDSprite {
     public:
+        static TextInputSprite* getInstance(int x, int y, int w, int h, std::string txt);
     protected:
         TextInputSprite(int xPos, int yPos,int width,int height, std::string txt);
     private:

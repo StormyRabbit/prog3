@@ -34,3 +34,7 @@ void rootengine::TextInputSprite::keyPressed(SDL_Event event) {
     }
 
 }
+
+rootengine::TextInputSprite *rootengine::TextInputSprite::getInstance(int x, int y, int w, int h, std::string txt) {
+    return new TextInputSprite(x, y, w, h, txt);
+}
