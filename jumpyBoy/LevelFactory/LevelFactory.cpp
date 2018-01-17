@@ -35,17 +35,19 @@ Level *jumpyboy::LevelFactory::secondLvl() {
     Level* aLvl = Level::getInstance();
     std::vector<rootengine::EnvironmentSprite*> collSprites;
     std::map<std::string, std::string> spritesMapColl;
-    spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/sprites/Tiles/grassMid.png"));
+    spritesMapColl.insert(std::pair<std::string, std::string>("default", "assets/Ice expansion/Tiles/tundraMid.png"));
     std::vector<SDL_Rect> rects{{0,0,70,70}};
     std::map<std::string, std::vector<SDL_Rect>> frameMap;
     frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
-    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(500, 400, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(300, 300, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(700, 200, 200, 20, spritesMapColl, frameMap));
     collSprites.push_back(rootengine::EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
     for (rootengine::EnvironmentSprite* sprite : collSprites){
         sprite->setCollisionStrategy(new jumpyboy::GroundBehavior());
         aLvl->addCollEnv(sprite);
     }
-    aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
+    aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/Ice expansion/Tiles/iceWaterDeepAlt.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
     aLvl->addEnemy(getEnemy::fly(100, 200, 50, 40, 500, 100, 3));
     return aLvl;
