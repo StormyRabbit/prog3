@@ -25,7 +25,7 @@ int main(int, char **) {
     jumpyboy::KeyBindings::bindKeybindings(ge, player);
     ge->setPlayer(player);
     ge->setFPS(60);
-    auto ti = rootengine::TextInputSprite::getInstance(100,100,50, 200, "Enter name:");
+    auto* ti = rootengine::TextInputSprite::getInstance(100,100,50, 200, "Enter name:");
     ge->run();
     return 0;
 }
