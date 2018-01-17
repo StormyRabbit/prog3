@@ -13,6 +13,7 @@ namespace jumpyboy {
         static FlyingEnemy* getInstance(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues);
         void tick() override;
         void setFlyingDirection(bool isLeft);
+        int getBouncyPower();
     protected:
         FlyingEnemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues);
         ~FlyingEnemy();
@@ -21,6 +22,7 @@ namespace jumpyboy {
         int flyingMinX;
         bool flyingLeft = false;
         bool isBouncing = false;
+        int bouncyPower;
     };
 }
 

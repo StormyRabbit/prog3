@@ -14,6 +14,7 @@ namespace jumpyboy {
     FlyingEnemy::FlyingEnemy(int xPos, int yPos, int width, int height, std::map<std::string, std::string> sprites, std::map<std::string, std::vector<SDL_Rect>> frames, std::map<std::string, double> enemyValues) : Enemy(xPos, yPos, width, height, sprites, frames, enemyValues) {
         flyingMinX = enemyValues.find("maxX")->second;
         flyingMaxX = enemyValues.find("minX")->second;
+        bouncyPower = enemyValues.find("bouncyPower")->second;
 
         this->animatedTextureChange("moving");
     }
@@ -21,9 +22,9 @@ namespace jumpyboy {
 
     void FlyingEnemy::tick(){
         Enemy::tick();
-        if (this->getRect().x <= flyingMaxX)
+        if (this->getRect().x <= flyingMaxX && getIsAlive())
             flyingLeft = false;
-        if (this->getRect().x >= flyingMinX)
+        if (this->getRect().x >= flyingMinX && getIsAlive())
             flyingLeft = true;
 
         if (flyingLeft){
@@ -33,6 +34,7 @@ namespace jumpyboy {
         }
 
         if (!getIsAlive()){
+            getCollisionStrategy()->standable = false;
             this->animatedTextureChange("dead");
 
             if ((checkIfOnGround())){
@@ -65,5 +67,9 @@ namespace jumpyboy {
 
     void FlyingEnemy::setFlyingDirection(bool isLeft) {
         flyingLeft = isLeft;
+    }
+
+    int FlyingEnemy::getBouncyPower() {
+        return bouncyPower;
     }
 }

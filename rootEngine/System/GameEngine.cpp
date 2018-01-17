@@ -52,7 +52,7 @@ namespace rootengine {
             pauseTickDur();
             SDL_RenderPresent(sys.getRenderer());
 
-        } // while running
+        } // while runnin.g
     }
 
     void GameEngine::setPlayer(PhysicsSprite *player) {

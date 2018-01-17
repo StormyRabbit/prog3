@@ -29,6 +29,7 @@ namespace jumpyboy {
         void setController(class Controller* controller);
         ~Player() override;
         void handleInput(std::string action, bool isDown);
+        int getLifesLeft();
     protected:
         Player(int xPos, int yPos, int width, int height, stringsMap strings, fMapType frames, mvMap movingVariables);
     private:
@@ -38,6 +39,7 @@ namespace jumpyboy {
         double jumpingPower;
         double currentYVelocity = 0;
         double runningSpeed;
+        int lifes;
     };
 }
 #endif //PROG3_PLAYER_H

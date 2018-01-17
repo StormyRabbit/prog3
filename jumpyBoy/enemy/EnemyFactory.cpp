@@ -25,6 +25,7 @@ jumpyboy::FlyingEnemy *jumpyboy::EnemyFactory::fly() {
     movingVariables.insert(std::pair<std::string, double>("minX", 300));
     movingVariables.insert(std::pair<std::string, double>("gravity", 0.2));
     movingVariables.insert(std::pair<std::string, double>("fallPower", 7));
+    movingVariables.insert(std::pair<std::string, double>("bouncyPower", 9));
     jumpyboy::FlyingEnemy *fe = jumpyboy::FlyingEnemy::getInstance(30, 350, 50, 40, sprites, frameRects, movingVariables);
     fe->setCollisionStrategy(new jumpyboy::FlyingEnemyBehavior());
     return fe;

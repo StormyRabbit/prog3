@@ -4,7 +4,6 @@
 
 #include "GroundBehavior.h"
 
-void
-jumpyboy::GroundBehavior::handleCollision(rootengine::PhysicsSprite *, rootengine::PhysicsSprite *, SDL_Rect &rect) {
+void jumpyboy::GroundBehavior::handleCollision(class rootengine::PhysicsSprite *, rootengine::PhysicsSprite *, SDL_Rect &rect) {
 
 }

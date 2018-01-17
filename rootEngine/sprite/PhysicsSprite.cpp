@@ -143,16 +143,6 @@ namespace rootengine {
         return alpha > 200;
     }
 
-    double PhysicsSprite::getHitAngle(int x, int y) {
-        SDL_Point delta = getNormalizedValue(x,y);
-
-        double circleWZero = getRect().w / 2;
-        double circleHZero = getRect().h / 2;
-
-        return atan2(delta.x - circleWZero, delta.y - circleHZero) * 180 / 3.1415926535897;
-        ;
-    }
-
     SDL_Point PhysicsSprite::getNormalizedValue(int x, int y) {
         SDL_Point delta;
         delta.x = x - getRect().x;

@@ -18,9 +18,9 @@ namespace jumpyboy{
         player.changeRect().y = player.getRect().y + posChange;
         player.changeRect().h = player.getResetHeight();
         player.animatedTextureChange("dodging");
-        }
+    }
 
-        PlayerState* DodgingState::handleInput(Player &player, std::string action, bool isDown) {
+    PlayerState* DodgingState::handleInput(Player &player, std::string action, bool isDown) {
 
             if (!isDown) {
                 if (action =="down") {

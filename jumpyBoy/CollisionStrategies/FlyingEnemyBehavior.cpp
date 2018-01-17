@@ -6,6 +6,8 @@
 #include "../../jumpyBoy/enemy/Enemy.h"
 #include "../enemy/FlyingEnemy.h"
 #include "../player/Player.h"
+#include "../player/JumpingState.h"
+#include "../player/RunningJumpState.h"
 
 void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *thisObj, rootengine::PhysicsSprite *otherObj, SDL_Rect &rect) {
     if(otherObj->getCollisionStrategy() != nullptr) {
@@ -13,13 +15,18 @@ void jumpyboy::FlyingEnemyBehavior::handleCollision(rootengine::PhysicsSprite *t
         auto *p = (jumpyboy::Player*)otherObj;
         SDL_Point normRect = e->getNormalizedValue(rect.x, rect.y);
 
-        if (normRect.y < (static_cast<double>(e->getRect().h * 0.25))){
+        if (normRect.y < (static_cast<double>(e->getRect().h * 0.10)) && e->getIsAlive()){
+            bool hitDirectionLeft;
             if (normRect.x < (static_cast<double>(e->getRect().w * 0.5))){
-                e->setFlyingDirection(false);
+                hitDirectionLeft = false;
+                e->setFlyingDirection(hitDirectionLeft);
             } else {
-                e->setFlyingDirection(true);
+                hitDirectionLeft = true;
+                e->setFlyingDirection(hitDirectionLeft);
             }
             e->killEnemy();
+            p->getYVelocity() = e->getBouncyPower();
+            p->enterNewState(new JumpingState());
         } else {
             p->kill();
         }

@@ -30,7 +30,6 @@ namespace rootengine{
         virtual void tick();
         SDL_Point getNormalizedValue(int x, int y);
         int getResetHeight();
-        double getHitAngle(int x, int y);
         virtual void collBehavior();
         SDL_Surface *getSurface();
         int getResetWidth();

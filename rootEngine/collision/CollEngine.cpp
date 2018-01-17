@@ -93,6 +93,5 @@ namespace rootengine {
             if(rectCollision(obj, ps)) {
                 obj->setOnGround(true);
             }
-
     }
 }

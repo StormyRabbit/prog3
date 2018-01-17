@@ -14,6 +14,7 @@ namespace jumpyboy {
         gravity = movingVariables.find("gravity")->second;
         runningSpeed = movingVariables.find("runningSpeed")->second;
         jumpingPower = movingVariables.find("jumpPower")->second;
+        lifes = movingVariables.find("lifes")->second;
         playerState = new StandingState();
         playerState->enterState(*this);
     }
@@ -75,5 +76,9 @@ namespace jumpyboy {
 
     void Player::setController(Controller *controll) {
         controller = controll;
+    }
+
+    int Player::getLifesLeft() {
+        return lifes;
     }
 }
