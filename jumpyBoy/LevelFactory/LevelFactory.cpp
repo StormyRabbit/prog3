@@ -27,7 +27,7 @@ Level *jumpyboy::LevelFactory::firstLvl() {
     }
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
-    aLvl->addEnemy(getEnemy::fly());
+    aLvl->addEnemy(getEnemy::fly(100, 200, 50, 40, 500, 100, 3));
     return aLvl;
 }
 
@@ -47,7 +47,7 @@ Level *jumpyboy::LevelFactory::secondLvl() {
     }
     aLvl->setBackGround(rootengine::NonCollEnvironment::getInstance(0, 0, 1200, 600, "assets/sprites/bg_castle.png"));
     typedef jumpyboy::EnemyFactory getEnemy;
-    aLvl->addEnemy(getEnemy::fly());
+    aLvl->addEnemy(getEnemy::fly(100, 200, 50, 40, 500, 100, 3));
     return aLvl;
 }
 };
