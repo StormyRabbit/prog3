@@ -17,13 +17,15 @@ namespace rootengine {
         std::string getText() const;
         void setText(std::string &newText);
         void draw() const override;
+
+        virtual void update();
         ~HUDSprite() override;
 
     protected:
+        SDL_Texture* texture;
         HUDSprite(int xPos, int yPos,int width,int height, std::string &txt);
     private:
         std::string text;
-        SDL_Texture* texture;
     };
 }
 

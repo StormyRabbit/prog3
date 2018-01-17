@@ -40,4 +40,8 @@ namespace rootengine{
         SDL_DestroyTexture(texture);
     }
 
+    void HUDSprite::update() {
+
+    }
+
 }
