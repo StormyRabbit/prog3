@@ -19,8 +19,8 @@ int main(int, char **) {
     typedef jumpyboy::LevelFactory getLvl;
     ge->addLvl(getLvl::firstLvl());
     ge->addLvl(getLvl::secondLvl());
-    ge->setHUD(jumpyboy::HUD::getInstance(ge));
     jumpyboy::Player *player = jumpyboy::PlayerFactory::player();
+    ge->setHUD(jumpyboy::HUD::getInstance(player));
     jumpyboy::KeyBindings::bindKeybindings(ge, player);
     ge->setPlayer(player);
     ge->setFPS(60);

@@ -4,6 +4,8 @@
 
 #include <vector>
 #include "HUD.h"
+#include <string>
+#include "../../rootEngine/sprite/ObserveringHUDSprite.h"
 #include <algorithm>
 namespace jumpyboy {
 
@@ -11,8 +13,8 @@ namespace jumpyboy {
         hudElements.push_back(he);
     }
 
-    HUD *HUD::getInstance(rootengine::GameEngine *game) {
-        return new HUD(game);
+    HUD *HUD::getInstance(Player *p) {
+        return new HUD(p);
     }
 
     void HUD::draw() {
@@ -25,14 +27,14 @@ namespace jumpyboy {
             delete hs;
     }
 
-    HUD::HUD(rootengine::GameEngine *game) {
+    HUD::HUD(Player *player) {
         rootengine::HUDSprite* scoreSprite = rootengine::HUDSprite::getInstance(0,0,200,20, "SCORE: ");
-        // scoreSprite->setValueToObserver(game, &rootengine::GameEngine::getScore);
-        rootengine::HUDSprite* lifeSprite = rootengine::HUDSprite::getInstance(0,20,200,20, "CURRENT LIFE: ");
-        // lifeSprite->setValueToObserver(game, &rootengine::GameEngine::getLives);
+        std::string test = "test";
+        typedef rootengine::ObservingHUDSprite<Player> hudPlayer;
+        hudPlayer *testSprite = hudPlayer::getInstance(0, 20, 200, 20, test, player, &Player::getLifesLeft);
         rootengine::HUDSprite* enemyLeft = rootengine::HUDSprite::getInstance(500,0,200,20, "ENEMIES LEFT: ");
         addHUDElement(scoreSprite);
-        addHUDElement(lifeSprite);
+        addHUDElement(testSprite);
         addHUDElement(enemyLeft);
     }
 }

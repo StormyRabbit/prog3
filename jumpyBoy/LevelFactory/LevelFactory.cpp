@@ -16,8 +16,11 @@ Level *jumpyboy::LevelFactory::firstLvl() {
     std::vector<SDL_Rect> rects{{0,0,70,70}};
     std::map<std::string, std::vector<SDL_Rect>> frameMap;
     frameMap.insert(std::pair<std::string, std::vector<SDL_Rect>>("default", rects ));
-    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(500, 420, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(500, 400, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(300, 300, 200, 20, spritesMapColl, frameMap));
+    collSprites.push_back(rootengine::EnvironmentSprite::getInstance(700, 200, 200, 20, spritesMapColl, frameMap));
     collSprites.push_back(rootengine::EnvironmentSprite::getInstance(0, 500, 1200, 100, spritesMapColl, frameMap));
+
     for (rootengine::EnvironmentSprite* sprite : collSprites){
         sprite->setCollisionStrategy(new jumpyboy::GroundBehavior());
         aLvl->addCollEnv(sprite);

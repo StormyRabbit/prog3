@@ -7,16 +7,17 @@
 #include <vector>
 #include "../../rootEngine/sprite/HUDSprite.h"
 #include "../../rootEngine/interfaces/Drawable.h"
+#include "../player/Player.h"
 
 namespace jumpyboy {
     class HUD : public rootengine::Drawable {
     public:
         void addHUDElement(rootengine::HUDSprite *he);
-        static HUD* getInstance(rootengine::GameEngine *);
+        static HUD* getInstance(Player *);
         void draw() override;
         ~HUD();
     protected:
-        HUD(rootengine::GameEngine *);
+        explicit HUD(Player *);
     private:
         std::vector<rootengine::HUDSprite *> hudElements;
     };
